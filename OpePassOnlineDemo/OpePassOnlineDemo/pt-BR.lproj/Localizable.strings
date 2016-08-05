@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  OnePassOnlineDemo
+
+  Created by Soloshcheva Aleksandra on 06.07.16.
+  Copyright © 2016 Speech Technology Center. All rights reserved.
+*/
+
+"The user has been successfully removed"="O usuário foi removido com sucesso";
+"Not valid email"="E-mail não é valido";
+"Error"="Erro";
+"Server not respond"="O Servidor não responde";
+

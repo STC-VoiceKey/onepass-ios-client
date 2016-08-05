@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = " УДАЛИТЬ ПОЛЬЗОВАТЕЛЯ "; ObjectID = "2JQ-6W-B4R"; */
+"2JQ-6W-B4R.normalTitle" = " УДАЛИТЬ ПОЛЬЗОВАТЕЛЯ ";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "QEU-Dl-RZx"; */
+"QEU-Dl-RZx.normalTitle" = "Отмена";
+
+/* Class = "UITextView"; text = "Введите почтовый адрес для входа или регистрации"; ObjectID = "Xy3-p3-yPq"; */
+"Xy3-p3-yPq.text" = "Введите почтовый адрес для входа или регистрации";
+
+/* Class = "UIButton"; normalTitle = "Настройки"; ObjectID = "bWA-cL-ulO"; */
+"bWA-cL-ulO.normalTitle" = "Настройки";
+
+/* Class = "UITextField"; placeholder = "  Введите почтовый адрес"; ObjectID = "m9v-wy-TW9"; */
+"m9v-wy-TW9.placeholder" = "  Введите почтовый адрес";
+
+/* Class = "UIButton"; normalTitle = "ВОЙТИ"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.normalTitle" = "ВОЙТИ";
+
+/* Class = "UIButton"; selectedTitle = "SIGN UP"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.selectedTitle" = " РЕГИСТРАЦИЯ ";
+
+/* Class = "UILabel"; text = "Введите почтовый адрес для входа или регистрации"; ObjectID = "0Fe-md-h5V"; */
+"0Fe-md-h5V.text" = "Введите почтовый адрес для входа или регистрации";

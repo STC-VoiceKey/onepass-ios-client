@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  OnePassOnlineDemo
+
+  Created by Soloshcheva Aleksandra on 06.07.16.
+  Copyright © 2016 Speech Technology Center. All rights reserved.
+*/
+"The user has been successfully removed"="회원탈퇴가 완료되었습니다";
+"Not valid email"="이메일 주소가 유효하지 않습니다";
+"Error"="오류";
+"Server not respond"="서버가 응답하지 않습니다";

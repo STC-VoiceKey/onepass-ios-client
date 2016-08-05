@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C90866581D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */; };
+		C90866591D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */; };
+		C908665F1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */; };
+		C90866601D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */; };
+		C90B75D81D2A94B500446ACC /* OnePassUILocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C90B75DA1D2A94B500446ACC /* OnePassUILocalizable.strings */; };
+		C90B75DC1D2A94DA00446ACC /* Enroll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */; };
+		C90B8C381D253B3C005F965E /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90B8C371D253B3C005F965E /* Icons.xcassets */; };
+		C90E25041D2126AA00085793 /* OPUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90E25021D2126AA00085793 /* OPUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C90E25051D2126AA00085793 /* OPUIAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E25031D2126AA00085793 /* OPUIAlertViewController.m */; };
+		C90ED5D71D2D3EA30062CA13 /* Verify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */; };
+		C90ED5EC1D2E52310062CA13 /* OPUIVerifyAccessViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90ED5EA1D2E52310062CA13 /* OPUIVerifyAccessViewController.h */; };
+		C90ED5ED1D2E52310062CA13 /* OPUIVerifyAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90ED5EB1D2E52310062CA13 /* OPUIVerifyAccessViewController.m */; };
+		C90F6CF61D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */; };
+		C90F6CF71D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */; };
+		C913641C1D3E647800D9ADEB /* OPUIBlockSecondTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = C913641A1D3E647800D9ADEB /* OPUIBlockSecondTimer.h */; };
+		C913641D1D3E647800D9ADEB /* OPUIBlockSecondTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = C913641B1D3E647800D9ADEB /* OPUIBlockSecondTimer.m */; };
+		C91A700F1D3DFF0D00AF95A9 /* OPUICauseListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C91A700D1D3DFF0D00AF95A9 /* OPUICauseListViewController.h */; };
+		C91A70101D3DFF0D00AF95A9 /* OPUICauseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91A700E1D3DFF0D00AF95A9 /* OPUICauseListViewController.m */; };
+		C91A70131D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */; };
+		C91A70141D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */; };
+		C91C4B9C1D2172C300D55F39 /* OnePassCaptureResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C940325A1D140D8700C152EA /* OnePassCaptureResources.framework */; };
+		C937A7E01D3CCFE000C850C0 /* UIButton+Disable.h in Headers */ = {isa = PBXBuildFile; fileRef = C937A7DE1D3CCFE000C850C0 /* UIButton+Disable.h */; };
+		C937A7E11D3CCFE000C850C0 /* UIButton+Disable.m in Sources */ = {isa = PBXBuildFile; fileRef = C937A7DF1D3CCFE000C850C0 /* UIButton+Disable.m */; };
+		C937A7E41D3CEA0500C850C0 /* OPUIAccessLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C937A7E21D3CEA0500C850C0 /* OPUIAccessLabel.h */; };
+		C937A7E51D3CEA0500C850C0 /* OPUIAccessLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C937A7E31D3CEA0500C850C0 /* OPUIAccessLabel.m */; };
+		C940328B1D19744A00C152EA /* OPUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C94032891D19744A00C152EA /* OPUINavigationController.h */; };
+		C940328C1D19744A00C152EA /* OPUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C940328A1D19744A00C152EA /* OPUINavigationController.m */; };
+		C947DA5F1D478DA800AE378F /* OPUIProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = C947DA5D1D478DA800AE378F /* OPUIProgressView.h */; };
+		C947DA601D478DA800AE378F /* OPUIProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C947DA5E1D478DA800AE378F /* OPUIProgressView.m */; };
+		C955E0A81D0FFC7A006D2682 /* OnePassUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0A71D0FFC7A006D2682 /* OnePassUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C955E0AF1D0FFC7A006D2682 /* OnePassUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */; };
+		C955E0B41D0FFC7A006D2682 /* OnePassUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E0B31D0FFC7A006D2682 /* OnePassUITests.m */; };
+		C955E0C81D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */; };
+		C955E0C91D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */; };
+		C955E0E61D10369A006D2682 /* OPUILoader.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0E41D10369A006D2682 /* OPUILoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C955E0E71D10369A006D2682 /* OPUILoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E0E51D10369A006D2682 /* OPUILoader.m */; };
+		C955E0E91D10488D006D2682 /* STCUILoaderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0E81D10488D006D2682 /* STCUILoaderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C96079211D1BE28000B9F55E /* OPUIActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = C960791F1D1BE28000B9F55E /* OPUIActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C96079221D1BE28000B9F55E /* OPUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96079201D1BE28000B9F55E /* OPUIActivityIndicatorView.m */; };
+		C96079251D1BE5E200B9F55E /* OPUIButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C96079231D1BE5E200B9F55E /* OPUIButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C96079261D1BE5E200B9F55E /* OPUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C96079241D1BE5E200B9F55E /* OPUIButton.m */; };
+		C96079311D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */; };
+		C96079321D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */; };
+		C964446F1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */; };
+		C96444701D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */; };
+		C9EFA4C51D19888A00CE2118 /* OPUIBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C9EFA4C31D19888A00CE2118 /* OPUIBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9EFA4C61D19888A00CE2118 /* OPUIBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EFA4C41D19888A00CE2118 /* OPUIBaseViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C94032591D140D8700C152EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C94032341D140D5900C152EA;
+			remoteInfo = OnePassCaptureResources;
+		};
+		C940325B1D140D8700C152EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C940323E1D140D5900C152EA;
+			remoteInfo = OnePassCaptureResourcesTests;
+		};
+		C940325E1D140E8D00C152EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C94032331D140D5900C152EA;
+			remoteInfo = OnePassCaptureResources;
+		};
+		C955E0B01D0FFC7A006D2682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C955E09B1D0FFC7A006D2682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C955E0A31D0FFC7A006D2682;
+			remoteInfo = OnePassUI;
+		};
+		C9817A281D21645100F85698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9817A221D21645100F85698 /* OnePassCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C977D5E01D117A2300A3E42D;
+			remoteInfo = OnePassCore;
+		};
+		C9817A2A1D21645100F85698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9817A221D21645100F85698 /* OnePassCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C977D5EA1D117A2300A3E42D;
+			remoteInfo = OnePassCoreTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFailPhotoShotViewController.h; sourceTree = "<group>"; };
+		C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFailPhotoShotViewController.m; sourceTree = "<group>"; };
+		C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFailVoiceViewController.h; sourceTree = "<group>"; };
+		C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFailVoiceViewController.m; sourceTree = "<group>"; };
+		C90B75D91D2A94B500446ACC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
+		C90B75DB1D2A94C800446ACC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
+		C90B8C371D253B3C005F965E /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		C90E25021D2126AA00085793 /* OPUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIAlertViewController.h; sourceTree = "<group>"; };
+		C90E25031D2126AA00085793 /* OPUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIAlertViewController.m; sourceTree = "<group>"; };
+		C90ED5DE1D2D3EA60062CA13 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Verify.strings; sourceTree = "<group>"; };
+		C90ED5DF1D2D3FD70062CA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Verify.storyboard; sourceTree = "<group>"; };
+		C90ED5E01D2D3FDE0062CA13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Verify.strings; sourceTree = "<group>"; };
+		C90ED5EA1D2E52310062CA13 /* OPUIVerifyAccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyAccessViewController.h; sourceTree = "<group>"; };
+		C90ED5EB1D2E52310062CA13 /* OPUIVerifyAccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyAccessViewController.m; sourceTree = "<group>"; };
+		C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollAgreementViewController.h; sourceTree = "<group>"; };
+		C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollAgreementViewController.m; sourceTree = "<group>"; };
+		C913641A1D3E647800D9ADEB /* OPUIBlockSecondTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBlockSecondTimer.h; sourceTree = "<group>"; };
+		C913641B1D3E647800D9ADEB /* OPUIBlockSecondTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBlockSecondTimer.m; sourceTree = "<group>"; };
+		C918CDAB1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Enroll.strings"; sourceTree = "<group>"; };
+		C918CDAC1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Verify.strings"; sourceTree = "<group>"; };
+		C918CDAF1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OnePassUILocalizable.strings"; sourceTree = "<group>"; };
+		C918CDB71D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Enroll.strings; sourceTree = "<group>"; };
+		C918CDB81D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Verify.strings; sourceTree = "<group>"; };
+		C918CDBB1D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
+		C91A700D1D3DFF0D00AF95A9 /* OPUICauseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUICauseListViewController.h; sourceTree = "<group>"; };
+		C91A700E1D3DFF0D00AF95A9 /* OPUICauseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUICauseListViewController.m; sourceTree = "<group>"; };
+		C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyFailViewController.h; sourceTree = "<group>"; };
+		C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyFailViewController.m; sourceTree = "<group>"; };
+		C91A70161D3E07A300AF95A9 /* OPUICorporateColorUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPUICorporateColorUtils.h; sourceTree = "<group>"; };
+		C91C4B971D21727200D55F39 /* OnePassCaptureResources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePassCaptureResources.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/OnePassOnlineDemo-bylemspjorvcaiacjhylmnboilwe/Build/Products/Debug-iphoneos/OnePassCaptureResources.framework"; sourceTree = "<group>"; };
+		C937A7DE1D3CCFE000C850C0 /* UIButton+Disable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Disable.h"; sourceTree = "<group>"; };
+		C937A7DF1D3CCFE000C850C0 /* UIButton+Disable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Disable.m"; sourceTree = "<group>"; };
+		C937A7E21D3CEA0500C850C0 /* OPUIAccessLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIAccessLabel.h; sourceTree = "<group>"; };
+		C937A7E31D3CEA0500C850C0 /* OPUIAccessLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIAccessLabel.m; sourceTree = "<group>"; };
+		C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCaptureResources.xcodeproj; path = ../OnePassCaptureResources/OnePassCaptureResources.xcodeproj; sourceTree = "<group>"; };
+		C94032891D19744A00C152EA /* OPUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUINavigationController.h; sourceTree = "<group>"; };
+		C940328A1D19744A00C152EA /* OPUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUINavigationController.m; sourceTree = "<group>"; };
+		C947DA5D1D478DA800AE378F /* OPUIProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIProgressView.h; sourceTree = "<group>"; };
+		C947DA5E1D478DA800AE378F /* OPUIProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIProgressView.m; sourceTree = "<group>"; };
+		C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C955E0A71D0FFC7A006D2682 /* OnePassUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassUI.h; sourceTree = "<group>"; };
+		C955E0A91D0FFC7A006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C955E0AE1D0FFC7A006D2682 /* OnePassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C955E0B31D0FFC7A006D2682 /* OnePassUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnePassUITests.m; sourceTree = "<group>"; };
+		C955E0B51D0FFC7A006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFaceCaptureViewController.h; sourceTree = "<group>"; };
+		C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFaceCaptureViewController.m; sourceTree = "<group>"; };
+		C955E0E41D10369A006D2682 /* OPUILoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUILoader.h; sourceTree = "<group>"; };
+		C955E0E51D10369A006D2682 /* OPUILoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUILoader.m; sourceTree = "<group>"; };
+		C955E0E81D10488D006D2682 /* STCUILoaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCUILoaderProtocol.h; sourceTree = "<group>"; };
+		C960791F1D1BE28000B9F55E /* OPUIActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIActivityIndicatorView.h; sourceTree = "<group>"; };
+		C96079201D1BE28000B9F55E /* OPUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIActivityIndicatorView.m; sourceTree = "<group>"; };
+		C96079231D1BE5E200B9F55E /* OPUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIButton.h; sourceTree = "<group>"; };
+		C96079241D1BE5E200B9F55E /* OPUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIButton.m; sourceTree = "<group>"; };
+		C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyVideoCaptureViewController.h; sourceTree = "<group>"; };
+		C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyVideoCaptureViewController.m; sourceTree = "<group>"; };
+		C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollVoiceRecordViewController.h; sourceTree = "<group>"; };
+		C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollVoiceRecordViewController.m; sourceTree = "<group>"; };
+		C9817A221D21645100F85698 /* OnePassCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCore.xcodeproj; path = ../OnePassCore/OnePassCore.xcodeproj; sourceTree = "<group>"; };
+		C9D330F41D2A95280049FB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Enroll.storyboard; sourceTree = "<group>"; };
+		C9D330F61D2A95310049FB62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Enroll.strings; sourceTree = "<group>"; };
+		C9D330F81D2A95390049FB62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Enroll.strings; sourceTree = "<group>"; };
+		C9EFA4C31D19888A00CE2118 /* OPUIBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBaseViewController.h; sourceTree = "<group>"; };
+		C9EFA4C41D19888A00CE2118 /* OPUIBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBaseViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C955E0A01D0FFC7A006D2682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91C4B9C1D2172C300D55F39 /* OnePassCaptureResources.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C955E0AB1D0FFC7A006D2682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C955E0AF1D0FFC7A006D2682 /* OnePassUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C91A70151D3E074F00AF95A9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C91A70161D3E07A300AF95A9 /* OPUICorporateColorUtils.h */,
+				C913641A1D3E647800D9ADEB /* OPUIBlockSecondTimer.h */,
+				C913641B1D3E647800D9ADEB /* OPUIBlockSecondTimer.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C937A7DD1D3CCFA200C850C0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C937A7DE1D3CCFE000C850C0 /* UIButton+Disable.h */,
+				C937A7DF1D3CCFE000C850C0 /* UIButton+Disable.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		C94032551D140D8700C152EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C940325A1D140D8700C152EA /* OnePassCaptureResources.framework */,
+				C940325C1D140D8700C152EA /* OnePassCaptureResourcesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C955E09A1D0FFC7A006D2682 = {
+			isa = PBXGroup;
+			children = (
+				C91C4B971D21727200D55F39 /* OnePassCaptureResources.framework */,
+				C9817A221D21645100F85698 /* OnePassCore.xcodeproj */,
+				C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */,
+				C955E0A61D0FFC7A006D2682 /* OnePassUI */,
+				C955E0B21D0FFC7A006D2682 /* OnePassUITests */,
+				C955E0A51D0FFC7A006D2682 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C955E0A51D0FFC7A006D2682 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */,
+				C955E0AE1D0FFC7A006D2682 /* OnePassUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C955E0A61D0FFC7A006D2682 /* OnePassUI */ = {
+			isa = PBXGroup;
+			children = (
+				C955E0A71D0FFC7A006D2682 /* OnePassUI.h */,
+				C955E0E81D10488D006D2682 /* STCUILoaderProtocol.h */,
+				C955E0E41D10369A006D2682 /* OPUILoader.h */,
+				C955E0E51D10369A006D2682 /* OPUILoader.m */,
+				C960791E1D1BE21000B9F55E /* Controls */,
+				C955E0C51D0FFE95006D2682 /* ViewControllers */,
+				C91A70151D3E074F00AF95A9 /* Utils */,
+				C955E0A91D0FFC7A006D2682 /* Info.plist */,
+				C90B8C371D253B3C005F965E /* Icons.xcassets */,
+				C90B75DA1D2A94B500446ACC /* OnePassUILocalizable.strings */,
+			);
+			path = OnePassUI;
+			sourceTree = "<group>";
+		};
+		C955E0B21D0FFC7A006D2682 /* OnePassUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C955E0B31D0FFC7A006D2682 /* OnePassUITests.m */,
+				C955E0B51D0FFC7A006D2682 /* Info.plist */,
+			);
+			path = OnePassUITests;
+			sourceTree = "<group>";
+		};
+		C955E0C51D0FFE95006D2682 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C960792D1D1D2A3E00B9F55E /* Enroll */,
+				C960792E1D1D2AB200B9F55E /* Verify */,
+				C94032891D19744A00C152EA /* OPUINavigationController.h */,
+				C940328A1D19744A00C152EA /* OPUINavigationController.m */,
+				C9EFA4C31D19888A00CE2118 /* OPUIBaseViewController.h */,
+				C9EFA4C41D19888A00CE2118 /* OPUIBaseViewController.m */,
+				C90E25021D2126AA00085793 /* OPUIAlertViewController.h */,
+				C90E25031D2126AA00085793 /* OPUIAlertViewController.m */,
+				C91A700D1D3DFF0D00AF95A9 /* OPUICauseListViewController.h */,
+				C91A700E1D3DFF0D00AF95A9 /* OPUICauseListViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C960791E1D1BE21000B9F55E /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				C937A7DD1D3CCFA200C850C0 /* Category */,
+				C960791F1D1BE28000B9F55E /* OPUIActivityIndicatorView.h */,
+				C96079201D1BE28000B9F55E /* OPUIActivityIndicatorView.m */,
+				C96079231D1BE5E200B9F55E /* OPUIButton.h */,
+				C96079241D1BE5E200B9F55E /* OPUIButton.m */,
+				C937A7E21D3CEA0500C850C0 /* OPUIAccessLabel.h */,
+				C937A7E31D3CEA0500C850C0 /* OPUIAccessLabel.m */,
+				C947DA5D1D478DA800AE378F /* OPUIProgressView.h */,
+				C947DA5E1D478DA800AE378F /* OPUIProgressView.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		C960792D1D1D2A3E00B9F55E /* Enroll */ = {
+			isa = PBXGroup;
+			children = (
+				C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */,
+				C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */,
+				C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */,
+				C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */,
+				C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */,
+				C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */,
+				C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */,
+				C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */,
+				C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */,
+				C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */,
+				C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */,
+			);
+			name = Enroll;
+			sourceTree = "<group>";
+		};
+		C960792E1D1D2AB200B9F55E /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */,
+				C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */,
+				C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */,
+				C90ED5EA1D2E52310062CA13 /* OPUIVerifyAccessViewController.h */,
+				C90ED5EB1D2E52310062CA13 /* OPUIVerifyAccessViewController.m */,
+				C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */,
+				C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */,
+			);
+			name = Verify;
+			sourceTree = "<group>";
+		};
+		C9817A231D21645100F85698 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9817A291D21645100F85698 /* OnePassCore.framework */,
+				C9817A2B1D21645100F85698 /* OnePassCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C955E0A11D0FFC7A006D2682 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C96079251D1BE5E200B9F55E /* OPUIButton.h in Headers */,
+				C940328B1D19744A00C152EA /* OPUINavigationController.h in Headers */,
+				C96079211D1BE28000B9F55E /* OPUIActivityIndicatorView.h in Headers */,
+				C913641C1D3E647800D9ADEB /* OPUIBlockSecondTimer.h in Headers */,
+				C90866581D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h in Headers */,
+				C9EFA4C51D19888A00CE2118 /* OPUIBaseViewController.h in Headers */,
+				C937A7E01D3CCFE000C850C0 /* UIButton+Disable.h in Headers */,
+				C908665F1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h in Headers */,
+				C91A70131D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h in Headers */,
+				C947DA5F1D478DA800AE378F /* OPUIProgressView.h in Headers */,
+				C90F6CF61D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h in Headers */,
+				C90ED5EC1D2E52310062CA13 /* OPUIVerifyAccessViewController.h in Headers */,
+				C955E0E91D10488D006D2682 /* STCUILoaderProtocol.h in Headers */,
+				C90E25041D2126AA00085793 /* OPUIAlertViewController.h in Headers */,
+				C955E0E61D10369A006D2682 /* OPUILoader.h in Headers */,
+				C937A7E41D3CEA0500C850C0 /* OPUIAccessLabel.h in Headers */,
+				C96079311D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h in Headers */,
+				C91A700F1D3DFF0D00AF95A9 /* OPUICauseListViewController.h in Headers */,
+				C955E0C81D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h in Headers */,
+				C964446F1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h in Headers */,
+				C955E0A81D0FFC7A006D2682 /* OnePassUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C955E0A31D0FFC7A006D2682 /* OnePassUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C955E0B81D0FFC7A006D2682 /* Build configuration list for PBXNativeTarget "OnePassUI" */;
+			buildPhases = (
+				C955E09F1D0FFC7A006D2682 /* Sources */,
+				C955E0A01D0FFC7A006D2682 /* Frameworks */,
+				C955E0A11D0FFC7A006D2682 /* Headers */,
+				C955E0A21D0FFC7A006D2682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C940325F1D140E8D00C152EA /* PBXTargetDependency */,
+			);
+			name = OnePassUI;
+			productName = OnePassUI;
+			productReference = C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C955E0AD1D0FFC7A006D2682 /* OnePassUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C955E0BB1D0FFC7A006D2682 /* Build configuration list for PBXNativeTarget "OnePassUITests" */;
+			buildPhases = (
+				C955E0AA1D0FFC7A006D2682 /* Sources */,
+				C955E0AB1D0FFC7A006D2682 /* Frameworks */,
+				C955E0AC1D0FFC7A006D2682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C955E0B11D0FFC7A006D2682 /* PBXTargetDependency */,
+			);
+			name = OnePassUITests;
+			productName = OnePassUITests;
+			productReference = C955E0AE1D0FFC7A006D2682 /* OnePassUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C955E09B1D0FFC7A006D2682 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Soloshcheva Aleksandra";
+				TargetAttributes = {
+					C955E0A31D0FFC7A006D2682 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					C955E0AD1D0FFC7A006D2682 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = C955E09E1D0FFC7A006D2682 /* Build configuration list for PBXProject "OnePassUI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				ru,
+				Base,
+				"pt-BR",
+				ko,
+			);
+			mainGroup = C955E09A1D0FFC7A006D2682;
+			productRefGroup = C955E0A51D0FFC7A006D2682 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C94032551D140D8700C152EA /* Products */;
+					ProjectRef = C94032541D140D8700C152EA /* OnePassCaptureResources.xcodeproj */;
+				},
+				{
+					ProductGroup = C9817A231D21645100F85698 /* Products */;
+					ProjectRef = C9817A221D21645100F85698 /* OnePassCore.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				C955E0A31D0FFC7A006D2682 /* OnePassUI */,
+				C955E0AD1D0FFC7A006D2682 /* OnePassUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C940325A1D140D8700C152EA /* OnePassCaptureResources.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OnePassCaptureResources.framework;
+			remoteRef = C94032591D140D8700C152EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C940325C1D140D8700C152EA /* OnePassCaptureResourcesTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OnePassCaptureResourcesTests.xctest;
+			remoteRef = C940325B1D140D8700C152EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9817A291D21645100F85698 /* OnePassCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OnePassCore.framework;
+			remoteRef = C9817A281D21645100F85698 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9817A2B1D21645100F85698 /* OnePassCoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OnePassCoreTests.xctest;
+			remoteRef = C9817A2A1D21645100F85698 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C955E0A21D0FFC7A006D2682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90B75DC1D2A94DA00446ACC /* Enroll.storyboard in Resources */,
+				C90B75D81D2A94B500446ACC /* OnePassUILocalizable.strings in Resources */,
+				C90ED5D71D2D3EA30062CA13 /* Verify.storyboard in Resources */,
+				C90B8C381D253B3C005F965E /* Icons.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C955E0AC1D0FFC7A006D2682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C955E09F1D0FFC7A006D2682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C913641D1D3E647800D9ADEB /* OPUIBlockSecondTimer.m in Sources */,
+				C90866591D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m in Sources */,
+				C96079261D1BE5E200B9F55E /* OPUIButton.m in Sources */,
+				C9EFA4C61D19888A00CE2118 /* OPUIBaseViewController.m in Sources */,
+				C90866601D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m in Sources */,
+				C937A7E11D3CCFE000C850C0 /* UIButton+Disable.m in Sources */,
+				C955E0C91D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m in Sources */,
+				C940328C1D19744A00C152EA /* OPUINavigationController.m in Sources */,
+				C96444701D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m in Sources */,
+				C96079321D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m in Sources */,
+				C90F6CF71D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m in Sources */,
+				C947DA601D478DA800AE378F /* OPUIProgressView.m in Sources */,
+				C90E25051D2126AA00085793 /* OPUIAlertViewController.m in Sources */,
+				C90ED5ED1D2E52310062CA13 /* OPUIVerifyAccessViewController.m in Sources */,
+				C937A7E51D3CEA0500C850C0 /* OPUIAccessLabel.m in Sources */,
+				C91A70101D3DFF0D00AF95A9 /* OPUICauseListViewController.m in Sources */,
+				C91A70141D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m in Sources */,
+				C955E0E71D10369A006D2682 /* OPUILoader.m in Sources */,
+				C96079221D1BE28000B9F55E /* OPUIActivityIndicatorView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C955E0AA1D0FFC7A006D2682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C955E0B41D0FFC7A006D2682 /* OnePassUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C940325F1D140E8D00C152EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OnePassCaptureResources;
+			targetProxy = C940325E1D140E8D00C152EA /* PBXContainerItemProxy */;
+		};
+		C955E0B11D0FFC7A006D2682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C955E0A31D0FFC7A006D2682 /* OnePassUI */;
+			targetProxy = C955E0B01D0FFC7A006D2682 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C90B75DA1D2A94B500446ACC /* OnePassUILocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90B75D91D2A94B500446ACC /* en */,
+				C90B75DB1D2A94C800446ACC /* ru */,
+				C918CDAF1D4F79F70074E186 /* pt-BR */,
+				C918CDBB1D4F8FFD0074E186 /* ko */,
+			);
+			name = OnePassUILocalizable.strings;
+			sourceTree = SOURCE_ROOT;
+		};
+		C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9D330F41D2A95280049FB62 /* Base */,
+				C9D330F61D2A95310049FB62 /* en */,
+				C9D330F81D2A95390049FB62 /* ru */,
+				C918CDAB1D4F79F70074E186 /* pt-BR */,
+				C918CDB71D4F8FFD0074E186 /* ko */,
+			);
+			name = Enroll.storyboard;
+			sourceTree = "<group>";
+		};
+		C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90ED5DE1D2D3EA60062CA13 /* ru */,
+				C90ED5DF1D2D3FD70062CA13 /* Base */,
+				C90ED5E01D2D3FDE0062CA13 /* en */,
+				C918CDAC1D4F79F70074E186 /* pt-BR */,
+				C918CDB81D4F8FFD0074E186 /* ko */,
+			);
+			name = Verify.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C955E0B61D0FFC7A006D2682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C955E0B71D0FFC7A006D2682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C955E0B91D0FFC7A006D2682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OnePassUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C955E0BA1D0FFC7A006D2682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OnePassUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C955E0BC1D0FFC7A006D2682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OnePassUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C955E0BD1D0FFC7A006D2682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OnePassUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C955E09E1D0FFC7A006D2682 /* Build configuration list for PBXProject "OnePassUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C955E0B61D0FFC7A006D2682 /* Debug */,
+				C955E0B71D0FFC7A006D2682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C955E0B81D0FFC7A006D2682 /* Build configuration list for PBXNativeTarget "OnePassUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C955E0B91D0FFC7A006D2682 /* Debug */,
+				C955E0BA1D0FFC7A006D2682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C955E0BB1D0FFC7A006D2682 /* Build configuration list for PBXNativeTarget "OnePassUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C955E0BC1D0FFC7A006D2682 /* Debug */,
+				C955E0BD1D0FFC7A006D2682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C955E09B1D0FFC7A006D2682 /* Project object */;
+}

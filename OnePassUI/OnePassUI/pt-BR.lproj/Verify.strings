@@ -1,0 +1,20 @@
+
+/* Class = "UILabel"; text = "Press the button and pronounce following digits:"; ObjectID = "0wK-OT-5c0"; */
+"0wK-OT-5c0.text" = "Pressione o botão e pronuncie os seguintes digitos:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "C7w-ZO-07p"; */
+"C7w-ZO-07p.normalTitle" = "Cancelar";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "H1g-3S-fwx"; */
+"H1g-3S-fwx.normalTitle" = "Cancelar";
+
+/* Class = "UILabel"; text = "Possible reasons:"; ObjectID = "JG1-Ks-4e5"; */
+"JG1-Ks-4e5.text" = "Razões possíveis:";
+
+/* Class = "UILabel"; text = "Give it another video"; ObjectID = "PBA-fC-xYh"; */
+"PBA-fC-xYh.text" = "Refaça o video";
+
+/* Class = "UIButton"; normalTitle = "RETAKE THE VIDEO"; ObjectID = "ywT-4T-yb6"; */
+"ywT-4T-yb6.normalTitle" = "REFAÇA O VIDEO";
+
+

@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Please enter email for sign in or sign up"; ObjectID = "0Fe-md-h5V"; */
+"0Fe-md-h5V.text" = "로그인 또는 회원가입을 위해 이메일 주소를 입력해주세요";
+
+/* Class = "UIButton"; normalTitle = " REMOVE CURRENT USER "; ObjectID = "2JQ-6W-B4R"; */
+"2JQ-6W-B4R.normalTitle" = " 계정 삭제 ";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QEU-Dl-RZx"; */
+"QEU-Dl-RZx.normalTitle" = "취소";
+
+/* Class = "UITextField"; placeholder = "  Enter email"; ObjectID = "m9v-wy-TW9"; */
+"m9v-wy-TW9.placeholder" = "이메일";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.normalTitle" = "로그인";
+
+/* Class = "UIButton"; selectedTitle = "SIGN UP"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.selectedTitle" = "회원가입";

@@ -1,0 +1,44 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "C7w-ZO-07p"; */
+"C7w-ZO-07p.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Incorrect pronunciation"; ObjectID = "Dpu-Vg-jPK"; */
+"Dpu-Vg-jPK.text" = "Incorrect pronunciation";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "H1g-3S-fwx"; */
+"H1g-3S-fwx.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Eyes closed"; ObjectID = "JG1-Ks-4e5"; */
+"JG1-Ks-4e5.text" = "Possible reasons:";
+
+/* Class = "UILabel"; text = "Give it another video"; ObjectID = "PBA-fC-xYh"; */
+"PBA-fC-xYh.text" = "Give it another video";
+
+/* Class = "UILabel"; text = "Eyes not found"; ObjectID = "UFV-Vo-Rnd"; */
+"UFV-Vo-Rnd.text" = "Eyes not found";
+
+/* Class = "UILabel"; text = "Other faces detection"; ObjectID = "bFV-C1-CVA"; */
+"bFV-C1-CVA.text" = "Other faces detection";
+
+/* Class = "UILabel"; text = "0 1 2 3 4"; ObjectID = "c9Q-8R-wa9"; */
+"c9Q-8R-wa9.text" = "0 1 2 3 4";
+
+/* Class = "UIButton"; normalTitle = "REC"; ObjectID = "cZL-am-wGa"; */
+"cZL-am-wGa.normalTitle" = "REC";
+
+/* Class = "UIButton"; selectedTitle = "STOP"; ObjectID = "cZL-am-wGa"; */
+"cZL-am-wGa.selectedTitle" = "STOP";
+
+/* Class = "UILabel"; text = "No face detection"; ObjectID = "rAa-BO-0Ok"; */
+"rAa-BO-0Ok.text" = "No face detection";
+
+/* Class = "UILabel"; text = "Poor image quality"; ObjectID = "x5M-Oz-fQq"; */
+"x5M-Oz-fQq.text" = "Poor image quality";
+
+/* Class = "UIButton"; normalTitle = "RETAKE THE VIDEO"; ObjectID = "ywT-4T-yb6"; */
+"ywT-4T-yb6.normalTitle" = "RETAKE THE VIDEO";
+
+"iwJ-ok-ePC.text" = "ДОСТУП РАЗРЕШЁН";
+
+"QjD-zO-rsQ.text" = "ДОСТУП ЗАПРЕЩЁН";
+
