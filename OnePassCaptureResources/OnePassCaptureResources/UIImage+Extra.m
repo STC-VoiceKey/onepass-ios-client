@@ -3,7 +3,7 @@
 //  OnePassCaptureResources
 //
 //  Created by Soloshcheva Aleksandra on 21.07.16.
-//  Copyright © 2016 Soloshcheva Aleksandra. All rights reserved.
+//  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
 #import "UIImage+Extra.h"

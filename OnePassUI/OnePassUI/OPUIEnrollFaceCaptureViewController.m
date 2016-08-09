@@ -36,7 +36,7 @@ static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.photoCaptureManager = [[OPCRCapturePhotoManager alloc] initWithView:self.viewFaceCapture];
+
     self.isObserving = NO;
 }
 
@@ -45,6 +45,7 @@ static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+        self.photoCaptureManager = [[OPCRCapturePhotoManager alloc] initWithView:self.viewFaceCapture];
     [super viewWillAppear:animated];
     [self addObserver:self
            forKeyPath:observeReady4Capture

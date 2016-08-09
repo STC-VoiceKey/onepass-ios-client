@@ -3,7 +3,7 @@
 //  OnePassUI
 //
 //  Created by Soloshcheva Aleksandra on 19.07.16.
-//  Copyright © 2016 Soloshcheva Aleksandra. All rights reserved.
+//  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
 #ifndef OPUICorporateColorUtils_h
