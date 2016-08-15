@@ -6,14 +6,18 @@
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <OnePassUICommon/OnePassUICommon.h>
+#import "OPCRCaptureBaseManager.h"
 
-#import "OPCRCaptureManager.h"
+@interface OPCRCapturePhotoManager : OPCRCaptureBaseManager<IOPCRCapturePhotoManager>
 
-@interface OPCRCapturePhotoManager : OPCRCaptureManager
+@property(nonatomic,readwrite) UIImage *image;
+@property(nonatomic,readwrite) NSData  *jpeg;
 
-@property(nonatomic,readonly) UIImage *image;
-@property(nonatomic,readonly) NSData  *jpeg;
+@property (nonatomic) LoadDataBlock loadDataBlock;
+
+-(void)takePicture;
+
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
 
 @end

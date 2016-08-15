@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <OnePassUI/OnePassUI.h>
+#import <OnePassUICommon/OnePassUICommon.h>
 
 @interface OPODSettingViewController : OPUIBaseViewController
 

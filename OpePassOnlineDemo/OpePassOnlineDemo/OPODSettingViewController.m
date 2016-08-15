@@ -9,6 +9,7 @@
 #import "OPODSettingViewController.h"
 
 #import <OnePassUI/OnePassUI.h>
+#import <OnePassUICommon/OnePassUICommon.h>
 #import <OnePassCoreOnline/OnePassCoreOnline.h>
 #import <OnePassCore/OnePassCore.h>
 

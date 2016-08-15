@@ -263,6 +263,7 @@
     
     AVMutableVideoCompositionLayerInstruction *to = [AVMutableVideoCompositionLayerInstruction
                                                      videoCompositionLayerInstructionWithAssetTrack:videoAssetTrack];
+#warning MIRRORED
     [to setTransform:CGAffineTransformTranslate(videoAssetTrack.preferredTransform,160,0)
               atTime:kCMTimeZero];
     

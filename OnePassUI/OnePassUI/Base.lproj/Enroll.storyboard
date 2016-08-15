@@ -109,6 +109,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cg3-cJ-pfw">
+                                <rect key="frame" x="262" y="540" width="76" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZSZ-7c-KWb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Disagree">
+                                    <color key="titleColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="bl7-A2-JrY" eventType="touchUpInside" id="PkC-Dv-6sa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By proceding you agree to process you biometric data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="jm5-KG-DGR">
+                                <rect key="frame" x="40" y="20" width="520" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="Zz2-Sl-Gv8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6f-4X-Gjk">
+                                <rect key="frame" x="150" y="249" width="300" height="172"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="172" id="ERj-63-yfs"/>
+                                    <constraint firstAttribute="width" constant="300" id="ZsU-K6-1EP"/>
+                                </constraints>
+                                <color key="sectionIndexColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bl7-A2-JrY" id="hjG-qm-68F"/>
+                                    <outlet property="delegate" destination="bl7-A2-JrY" id="lqu-ZX-ekk"/>
+                                </connections>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK0-pw-LXj">
                                 <rect key="frame" x="160" y="480" width="280" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,44 +160,8 @@
                                     <segue destination="0eY-qM-I8e" kind="show" id="gTU-QT-XYb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cg3-cJ-pfw">
-                                <rect key="frame" x="262" y="540" width="76" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ZSZ-7c-KWb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Disagree">
-                                    <color key="titleColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onCancel:" destination="bl7-A2-JrY" eventType="touchUpInside" id="PkC-Dv-6sa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By proceding you agree to process you biometric data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jm5-KG-DGR">
-                                <rect key="frame" x="40" y="20" width="520" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="Zz2-Sl-Gv8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6f-4X-Gjk">
-                                <rect key="frame" x="150" y="264" width="300" height="172"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="172" id="ERj-63-yfs"/>
-                                    <constraint firstAttribute="width" constant="300" id="ZsU-K6-1EP"/>
-                                </constraints>
-                                <color key="sectionIndexColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexBackgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="bl7-A2-JrY" id="hjG-qm-68F"/>
-                                    <outlet property="delegate" destination="bl7-A2-JrY" id="lqu-ZX-ekk"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will take a photo and record three samples of your voice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYN-yL-mMI">
-                                <rect key="frame" x="150" y="218" width="300" height="41"/>
+                                <rect key="frame" x="150" y="203" width="300" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                             <constraint firstItem="jm5-KG-DGR" firstAttribute="leading" secondItem="AxT-KZ-ibM" secondAttribute="leadingMargin" constant="20" id="AdW-K1-5ow"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jm5-KG-DGR" secondAttribute="trailing" constant="40" id="EKW-0V-GPw"/>
                             <constraint firstItem="Cg3-cJ-pfw" firstAttribute="top" secondItem="bK0-pw-LXj" secondAttribute="bottom" constant="20" id="EnJ-Zu-NC0"/>
-                            <constraint firstItem="p6f-4X-Gjk" firstAttribute="centerY" secondItem="AxT-KZ-ibM" secondAttribute="centerY" constant="50" id="H7H-Td-Cnk"/>
+                            <constraint firstItem="p6f-4X-Gjk" firstAttribute="centerY" secondItem="AxT-KZ-ibM" secondAttribute="centerY" constant="35" id="H7H-Td-Cnk"/>
                             <constraint firstItem="35X-HY-eoE" firstAttribute="top" secondItem="Cg3-cJ-pfw" secondAttribute="bottom" constant="20" id="LQK-8s-J1Y"/>
                             <constraint firstItem="bK0-pw-LXj" firstAttribute="centerX" secondItem="AxT-KZ-ibM" secondAttribute="centerX" id="Lra-vC-ICk"/>
                             <constraint firstItem="jm5-KG-DGR" firstAttribute="top" secondItem="aNx-1v-rfi" secondAttribute="bottom" constant="20" id="Q9p-s8-Tg3"/>
@@ -485,7 +485,7 @@
     <resources>
         <image name="mic" width="21" height="32"/>
         <image name="photo" width="32" height="32"/>
-        <image name="progressBackground" width="4" height="4"/>
+        <image name="progressBackground" width="10" height="4"/>
         <image name="stop" width="16" height="16"/>
     </resources>
 </document>

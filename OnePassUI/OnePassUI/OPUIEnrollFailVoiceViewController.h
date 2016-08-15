@@ -6,7 +6,7 @@
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
-#import "OPUICauseListViewController.h"
+#import <OnePassUICommon/OPUICauseListViewController.h>
 
 @interface OPUIEnrollFailVoiceViewController : OPUICauseListViewController
 

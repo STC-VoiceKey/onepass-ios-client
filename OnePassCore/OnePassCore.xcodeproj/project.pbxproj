@@ -18,7 +18,6 @@
 		C977D5F01D117A2300A3E42D /* OnePassCoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */; };
 		C977D6111D117ACC00A3E42D /* ITransport.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6101D117ACC00A3E42D /* ITransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D6281D1190AC00A3E42D /* IPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6271D1190AC00A3E42D /* IPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C977D62A1D11915200A3E42D /* IModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6291D11915200A3E42D /* IModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +45,6 @@
 		C977D5F11D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C977D6101D117ACC00A3E42D /* ITransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITransport.h; sourceTree = "<group>"; };
 		C977D6271D1190AC00A3E42D /* IPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPerson.h; sourceTree = "<group>"; };
-		C977D6291D11915200A3E42D /* IModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,16 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				C977D5E31D117A2300A3E42D /* OnePassCore.h */,
-				C940328D1D19746800C152EA /* ITransportService.h */,
 				C977D5E51D117A2300A3E42D /* Info.plist */,
+				C9F4056C1D5387FD00007549 /* Common */,
+				C9F4056B1D5387D900007549 /* Utils */,
+				C940328D1D19746800C152EA /* ITransportService.h */,
 				C977D6101D117ACC00A3E42D /* ITransport.h */,
 				C977D6271D1190AC00A3E42D /* IPerson.h */,
-				C977D6291D11915200A3E42D /* IModel.h */,
-				C95C738B1D1ABCD500212B22 /* PassphraseManager.h */,
-				C95C738C1D1ABCD500212B22 /* PassphraseManager.m */,
 				C96079611D1D4C0400B9F55E /* IVerifySession.h */,
-				C90A4F051D23A484009F82FA /* STCError.h */,
-				C90A4F061D23A484009F82FA /* STCError.m */,
 			);
 			path = OnePassCore;
 			sourceTree = "<group>";
@@ -113,6 +108,24 @@
 			path = OnePassCoreTests;
 			sourceTree = "<group>";
 		};
+		C9F4056B1D5387D900007549 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C95C738B1D1ABCD500212B22 /* PassphraseManager.h */,
+				C95C738C1D1ABCD500212B22 /* PassphraseManager.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C9F4056C1D5387FD00007549 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C90A4F051D23A484009F82FA /* STCError.h */,
+				C90A4F061D23A484009F82FA /* STCError.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -120,7 +133,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C977D62A1D11915200A3E42D /* IModel.h in Headers */,
 				C940328E1D19746800C152EA /* ITransportService.h in Headers */,
 				C977D6111D117ACC00A3E42D /* ITransport.h in Headers */,
 				C96079621D1D4C0400B9F55E /* IVerifySession.h in Headers */,
@@ -177,7 +189,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Soloshcheva Aleksandra";
+				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C977D5DF1D117A2300A3E42D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -345,6 +357,7 @@
 		C977D5F51D117A2300A3E42D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -356,12 +369,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
 		C977D5F61D117A2300A3E42D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -372,6 +387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Release;
 		};

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "STCUILoaderProtocol.h"
+#import <OnePassUICommon/OnePassUICommon.h>
 
 @interface OPUILoader : NSObject<STCUILoaderProtocol>
 

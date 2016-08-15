@@ -6,14 +6,12 @@
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
-#import <OnePassCaptureResources/OnePassCaptureResources.h>
-#import "OPCRCaptureManager.h"
+#import <OnePassUICommon/OnePassUICommon.h>
+#import "OPCRCaptureBaseManager.h"
 
-typedef void (^LoadVideoBlock) ( NSData *data, NSError *error);
+@interface OPCRCaptureVideoManager : OPCRCaptureBaseManager<IOPCRCaptureVideoManager>
 
-@interface OPCRCaptureVideoManager : OPCRCaptureManager
-
-@property (nonatomic) LoadVideoBlock resultBlock;
+@property (nonatomic) LoadDataBlock loadDataBlock;
 
 @property (nonatomic,readonly) BOOL isRecording;
 -(void)record;

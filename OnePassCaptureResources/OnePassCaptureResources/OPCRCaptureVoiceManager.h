@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <OnePassUICommon/OnePassUICommon.h>
+#import "OPCRCaptureBaseManager.h"
 
+@interface OPCRCaptureVoiceManager : NSObject<IOPCRCaptureVoiceManager>
 
-typedef void (^LoadVoiceBlock) ( NSData *data, NSError *error);
+@property(nonatomic) NSUInteger *passphraseNumber;
+@property (nonatomic,copy) LoadDataBlock loadDataBlock;
 
-@interface OPCRCaptureVoiceManager : NSObject
-
--(id)initWithPassphraseNumber:(NSUInteger) passphrase withResultBlock:(LoadVoiceBlock)block;
+@property(nonatomic) BOOL isRecording;
 
 -(void)record;
 -(void)stop;

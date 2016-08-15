@@ -5,7 +5,6 @@
   Created by Soloshcheva Aleksandra on 04.07.16.
   Copyright © 2016 Speech Technology Center. All rights reserved.
 */
-"Enrollment is successfully completed"="Registro completo";
 
 "No face detection" = "Não foi identificada uma face";
 "Poor image quality" = "Imagem com baixa qualidade";

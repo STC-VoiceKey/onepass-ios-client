@@ -9,8 +9,9 @@
 #import "OPODLoginViewController.h"
 
 
-
+#import <OnePassUI/OnePassUI.h>
 #import <OnePassCoreOnline/OnePassCoreOnline.h>
+#import <OnePassCaptureResources/OnePassCaptureResources.h>
 #import <OnePassCore/OnePassCore.h>
 
 #import "NSString+Email.h"
@@ -21,10 +22,14 @@ static NSString *kSignInSegueIdentifier = @"SignInSegueIdentifier";
 static NSString *kSignUnSegueIdentifier = @"SignUnSegueIdentifier";
 static NSString *kSettingsSegueIdentifier = @"SettingsSegueIdentifier";
 
+static NSString *kVerifyFailSegueIdentifier    = @"kVerifyFailSegueIdentifier";
+static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier";
+
 @interface OPODLoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic,weak) IBOutlet UIButton    *actionButton;
 @property (nonatomic,weak) IBOutlet UITextField *emailTextField;
+//@property
 
 @property (nonatomic) id<IPerson> person;
 
@@ -51,6 +56,18 @@ static NSString *kSettingsSegueIdentifier = @"SettingsSegueIdentifier";
     [super viewDidLoad];
     self.manager = [[OPCOManager alloc] init];
     
+    [[OPUILoader sharedInstance] setEnrollResultBlock:^(BOOL result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [OPUIAlertViewController showWarning:NSLocalizedString(@"Enrollment is successfully completed", nil)
+                              withViewController:self
+                                         handler:nil];
+        });
+    }];
+    
+    __weak typeof(self) weakself = self;
+    [[OPUILoader sharedInstance] setVerifyResultBlock:^(BOOL result) {
+        [weakself performSegueOnMainThreadWithIdentifier:(result) ? kVerifySuccessSegueIdentifier : kVerifyFailSegueIdentifier];
+    }];
     
     if ([self.manager respondsToSelector:@selector(isHostAccessable)])
     {
@@ -203,6 +220,12 @@ static NSString *kSettingsSegueIdentifier = @"SettingsSegueIdentifier";
     return YES;
 }
 
+#pragma mark - Navigation
+
+- (IBAction)unwindExit:(UIStoryboardSegue *)unwindSegue
+{
+}
+
 @end
 
 
@@ -221,7 +244,11 @@ static NSString *kSettingsSegueIdentifier = @"SettingsSegueIdentifier";
 
 -(void)startEnroll{
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *vc = [[OPUILoader sharedInstance] enrollUILoadWithService:[[OPCOManager alloc] init]];
+        
+        UIViewController *vc = [[OPUILoader sharedInstance]
+                                enrollUILoadWithService:[[OPCOManager alloc] init]
+                                withCaptureManager:[OPCRCaptureResourceManager sharedInstance]];
+        
         [self presentViewController:vc animated:YES completion:^{
             [self stopActivityAnimating];
         }];
@@ -230,7 +257,9 @@ static NSString *kSettingsSegueIdentifier = @"SettingsSegueIdentifier";
 
 -(void)startVerify{
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *vc = [[OPUILoader sharedInstance] verifyUILoadWithService:[[OPCOManager alloc] init]];
+        UIViewController *vc = [[OPUILoader sharedInstance]
+                                verifyUILoadWithService:[[OPCOManager alloc] init]
+                                withCaptureManager:[OPCRCaptureResourceManager sharedInstance]];
         [self presentViewController:vc animated:YES completion:^{
             [self stopActivityAnimating];
         }];

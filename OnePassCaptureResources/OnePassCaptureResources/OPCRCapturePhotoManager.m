@@ -7,22 +7,13 @@
 //
 
 #import "OPCRCapturePhotoManager.h"
-#import "OPCRFaceView.h"
+#import <OnePassUICommon/OnePassUICommon.h>
 
 #import "UIImage+Extra.h"
 
 @interface OPCRCapturePhotoManager()<AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic,strong)  AVCaptureVideoDataOutput *videoOutput;
-
-@property(nonatomic,readwrite) UIImage *image;
-@property(nonatomic,readwrite) NSData  *jpeg;
-
-@end
-
-@interface OPCRCapturePhotoManager(PrivateMethods)
-
-- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
 
 @end
 
@@ -47,13 +38,28 @@
     captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;//!!!!Very impotant
     captureConnection.videoMirrored = YES;
     
+    [self.videoOutput setSampleBufferDelegate:self queue:self.sessionQueue];
+    
 }
+
+-(void)takePicture{
+    if (self.loadDataBlock)
+    {
+        if (self.jpeg)  self.loadDataBlock(self.jpeg, nil);
+        else{
+            self.loadDataBlock(nil, [NSError errorWithDomain:@"com.onepass.captureresource"
+                                                        code:400
+                                                    userInfo:@{ NSLocalizedDescriptionKey: @"Can't take a photo"}]);
+        }
+    }
+}
+
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate <NSObject>
 
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-    [self.videoOutput setSampleBufferDelegate:nil queue:nil];
+//    [self.videoOutput setSampleBufferDelegate:nil queue:nil];
     UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
     
     UIImage *imageToDisplay =
@@ -69,12 +75,8 @@
 }
 
 -(void)update{
- [self.videoOutput setSampleBufferDelegate:self queue:self.sessionQueue];
+ //[self.videoOutput setSampleBufferDelegate:self queue:self.sessionQueue];
 }
-
-@end
-
-@implementation OPCRCapturePhotoManager(PrivateMethods)
 
 - (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
 {
@@ -105,6 +107,7 @@
     
     return image;
 }
+
 
 
 

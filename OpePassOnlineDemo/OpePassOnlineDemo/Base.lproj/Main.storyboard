@@ -80,7 +80,7 @@
                                 <color key="textColor" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-cL-ulO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-cL-ulO">
                                 <rect key="frame" x="558" y="30" width="32" height="32"/>
                                 <state key="normal" image="settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,6 +111,8 @@
                         <outlet property="actionButton" destination="uZY-yl-a1d" id="Dmg-We-Uv9"/>
                         <outlet property="activityIndicator" destination="Soe-fC-ssR" id="MSA-su-amV"/>
                         <outlet property="emailTextField" destination="m9v-wy-TW9" id="oq1-LF-pYm"/>
+                        <segue destination="xX8-sw-HNL" kind="show" identifier="kVerifySuccessSegueIdentifier" id="AFC-Pk-o1f"/>
+                        <segue destination="7Xk-p7-nla" kind="show" identifier="kVerifyFailSegueIdentifier" id="o1n-L4-dMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -188,6 +190,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlq-It-qai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1294" y="475"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ncE-sV-GFn">
+            <objects>
+                <viewController id="xX8-sw-HNL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bmi-dc-Jvy"/>
+                        <viewControllerLayoutGuide type="bottom" id="pga-sO-cFK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v1e-gu-hxb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUb-8H-pHt" customClass="OPUIAccessLabel">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="ACCESS GRANTED">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="30" paragraphSpacingBefore="30" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-2G-nUZ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <connections>
+                                    <segue destination="ChE-qo-ynz" kind="unwind" unwindAction="unwindExit:" id="YJX-Df-pQg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dUb-8H-pHt" firstAttribute="top" secondItem="bmi-dc-Jvy" secondAttribute="bottom" id="6vP-9g-C8f"/>
+                            <constraint firstItem="dUb-8H-pHt" firstAttribute="leading" secondItem="v1e-gu-hxb" secondAttribute="leadingMargin" id="BVV-Ug-40g"/>
+                            <constraint firstItem="pga-sO-cFK" firstAttribute="top" secondItem="dUb-8H-pHt" secondAttribute="bottom" id="Gx7-7s-o6N"/>
+                            <constraint firstItem="g8t-2G-nUZ" firstAttribute="top" secondItem="bmi-dc-Jvy" secondAttribute="bottom" id="Imc-io-0lF"/>
+                            <constraint firstItem="g8t-2G-nUZ" firstAttribute="leading" secondItem="v1e-gu-hxb" secondAttribute="leading" id="POR-X7-WCe"/>
+                            <constraint firstItem="pga-sO-cFK" firstAttribute="top" secondItem="g8t-2G-nUZ" secondAttribute="bottom" id="hsq-n4-AkD"/>
+                            <constraint firstAttribute="trailing" secondItem="g8t-2G-nUZ" secondAttribute="trailing" id="qg8-kJ-fEG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dUb-8H-pHt" secondAttribute="trailing" id="zIi-7Z-Qy7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mDx-M4-VWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ChE-qo-ynz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="213" y="1336"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GWp-Ez-Z7Y">
+            <objects>
+                <viewController id="7Xk-p7-nla" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rYX-tN-JHN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Piy-oF-Xt6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oJ8-se-EPY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUL-VV-rIF" customClass="OPUIAccessLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="ACCESS DENIED">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="30" paragraphSpacingBefore="30" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-sL-CkN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <connections>
+                                    <segue destination="gZC-qT-PnT" kind="unwind" unwindAction="unwindExit:" id="OTH-nF-eyI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vUL-VV-rIF" firstAttribute="leading" secondItem="oJ8-se-EPY" secondAttribute="leading" id="14Y-Xh-YkQ"/>
+                            <constraint firstAttribute="trailing" secondItem="c8v-sL-CkN" secondAttribute="trailing" id="3cO-CD-dqI"/>
+                            <constraint firstItem="c8v-sL-CkN" firstAttribute="top" secondItem="rYX-tN-JHN" secondAttribute="bottom" id="C5D-hd-vjv"/>
+                            <constraint firstItem="Piy-oF-Xt6" firstAttribute="top" secondItem="c8v-sL-CkN" secondAttribute="bottom" id="CRV-Ex-EsU"/>
+                            <constraint firstAttribute="trailing" secondItem="vUL-VV-rIF" secondAttribute="trailing" id="JPD-tI-UHx"/>
+                            <constraint firstItem="c8v-sL-CkN" firstAttribute="leading" secondItem="oJ8-se-EPY" secondAttribute="leading" id="O5o-Lu-aiv"/>
+                            <constraint firstItem="vUL-VV-rIF" firstAttribute="top" secondItem="oJ8-se-EPY" secondAttribute="top" id="eKY-5q-j2E"/>
+                            <constraint firstItem="Piy-oF-Xt6" firstAttribute="top" secondItem="vUL-VV-rIF" secondAttribute="bottom" id="mJ3-Pd-zop"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTB-DA-8Lo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gZC-qT-PnT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="941" y="1336"/>
         </scene>
     </scenes>
     <resources>

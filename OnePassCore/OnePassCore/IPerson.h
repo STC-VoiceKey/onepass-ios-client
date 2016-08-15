@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IModel.h"
 
 @protocol IPerson <NSObject>
 
 @required
 -(NSString *)userID;
 -(BOOL)isFullEnroll;
--(NSArray<IModel> *)model;
+
 @end

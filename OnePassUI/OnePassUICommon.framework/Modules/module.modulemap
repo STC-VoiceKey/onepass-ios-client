@@ -1,0 +1,6 @@
+framework module OnePassUICommon {
+  umbrella header "OnePassUICommon.h"
+
+  export *
+  module * { export * }
+}

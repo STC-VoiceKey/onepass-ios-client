@@ -12,11 +12,8 @@
 
 @interface OPCRCaptureVoiceManager ()<AVAudioRecorderDelegate>
 
-@property (nonatomic,assign) NSUInteger passphraseNumber;
-
 @property (nonatomic) AVAudioSession   *audioSession;
 @property (nonatomic) AVAudioRecorder  *audioRecorder;
-@property (nonatomic,copy) LoadVoiceBlock resultBlock;
 
 @end
 
@@ -31,19 +28,11 @@
 
 @implementation OPCRCaptureVoiceManager
 
--(id)initWithPassphraseNumber:(NSUInteger)passphrase withResultBlock:(LoadVoiceBlock)block{
-    self = [super init];
-    
-    if (self) {
-        self.passphraseNumber = passphrase;
-        self.resultBlock = block;
-    }
-    
-    return self;
-}
-
 
 -(void)setupAVAudioSession{
+    
+    self.isRecording = NO;
+    
     self.audioSession = [AVAudioSession sharedInstance];
     
     NSError *error;
@@ -51,14 +40,14 @@
     [self.audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     
     if(error){
-        if (self.resultBlock) self.resultBlock(nil,error);
+        if (self.loadDataBlock) self.loadDataBlock(nil,error);
         return;
     }
 
     [self.audioSession setActive:YES error:&error];
     
     if(error){
-        if (self.resultBlock) self.resultBlock(nil,error);
+        if (self.loadDataBlock) self.loadDataBlock(nil,error);
         return;
     }
     
@@ -78,12 +67,10 @@
                                                                 AVLinearPCMIsBigEndianKey:[NSNumber numberWithBool:NO]}
                                                             error:&error];
         if(error){
-            if (self.resultBlock) self.resultBlock(nil,error);
+            if (self.loadDataBlock) self.loadDataBlock(nil,error);
             return;
         }
         self.audioRecorder.delegate = self;
-        
-        
     }
 }
 
@@ -91,8 +78,8 @@
     [self setupAVAudioSession];
     [self setupAVAuduoRecorder];
     if ([self.audioRecorder prepareToRecord]) {
+        self.isRecording = YES;
         if([self.audioRecorder record]){
-        
         }
     }
 }
@@ -108,14 +95,19 @@
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     NSError *error = [self convertCaf2WavForFile:[self pathCafTemporallyFile]];
     if(error)
-        self.resultBlock(nil,error);
+    {
+        self.isRecording = NO;
+        self.loadDataBlock(nil,error);
+    }
     
     [recorder deleteRecording];
 }
 
 
 - (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error{
-    if (self.resultBlock) self.resultBlock(nil,error);
+    self.isRecording = NO;
+    if (self.loadDataBlock)
+        self.loadDataBlock(nil,error);
 }
 
 @end
@@ -179,7 +171,7 @@
                                                    audioSettings :audioSetting];
     
     if (![assetReader canAddOutput:audioMixOutput])
-        return assetReader.error ;
+        return assetReader.error;
     [assetReader addOutput :audioMixOutput];
     if (![assetReader startReading])
         return assetReader.error;
@@ -208,7 +200,8 @@
     dispatch_queue_t queue = dispatch_queue_create( "assetWriterQueue", NULL );
     
     [assetWriterInput requestMediaDataWhenReadyOnQueue:queue usingBlock:^{
-        @try {
+        @try
+        {
             while ([assetWriterInput isReadyForMoreMediaData])
             {
                 CMSampleBufferRef sampleBuffer = [audioMixOutput copyNextSampleBuffer];
@@ -229,18 +222,19 @@
             }
             
             [assetWriter finishWritingWithCompletionHandler:^{
-                if(self.resultBlock)
-                    self.resultBlock([NSData dataWithContentsOfURL:[self urlWavTemporallyFile]],nil);
+                self.isRecording = NO;
+                if(self.loadDataBlock)
+                    self.loadDataBlock([NSData dataWithContentsOfURL:[self urlWavTemporallyFile]],nil);
             }];
-        } @catch (NSException *exception) {
-            if(self.resultBlock)
-                self.resultBlock(nil,[NSError errorWithDomain:@"com.onepass.captureresource"
-                                                         code:400
-                                                     userInfo:@{ NSLocalizedDescriptionKey: @"CMSampleBufferRef exeption"}]);
-        } @finally {
-            
         }
-
+        @catch (NSException *exception)
+        {
+            self.isRecording = NO;
+            if(self.loadDataBlock)
+                self.loadDataBlock(nil,[NSError errorWithDomain:@"com.onepass.captureresource"
+                                                           code:400
+                                                       userInfo:@{ NSLocalizedDescriptionKey: @"CMSampleBufferRef exeption"}]);
+        }
     }];
     
     return nil;

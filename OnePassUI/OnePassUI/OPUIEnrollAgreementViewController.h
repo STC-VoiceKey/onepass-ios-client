@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OPUICauseListViewController.h"
+#import <OnePassUICommon/OnePassUICommon.h>
 
 @interface OPUIEnrollAgreementViewController : OPUICauseListViewController
 

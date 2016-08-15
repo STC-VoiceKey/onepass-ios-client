@@ -7,28 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C900E5CB1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C900E5C91D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.h */; };
+		C900E5CC1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C900E5CA1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.m */; };
+		C900E5CF1D5B8132006942AD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C900E5CE1D5B8132006942AD /* CoreImage.framework */; };
 		C91364241D40BA4B00D9ADEB /* UIImage+Extra.h in Headers */ = {isa = PBXBuildFile; fileRef = C91364221D40BA4B00D9ADEB /* UIImage+Extra.h */; };
 		C91364251D40BA4B00D9ADEB /* UIImage+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = C91364231D40BA4B00D9ADEB /* UIImage+Extra.m */; };
 		C913644D1D41FFAC00D9ADEB /* UIImage+FixOrientation.h in Headers */ = {isa = PBXBuildFile; fileRef = C913644B1D41FFAC00D9ADEB /* UIImage+FixOrientation.h */; };
 		C913644E1D41FFAC00D9ADEB /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C913644C1D41FFAC00D9ADEB /* UIImage+FixOrientation.m */; };
-		C918CDBF1D50C5810074E186 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C918CDBE1D50C5810074E186 /* OnePassCore.framework */; };
+		C93D0DE11D5DF21F0052F47C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93D0DE01D5DF21F0052F47C /* ImageIO.framework */; };
 		C94032381D140D5900C152EA /* OnePassCaptureResources.h in Headers */ = {isa = PBXBuildFile; fileRef = C94032371D140D5900C152EA /* OnePassCaptureResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C940323F1D140D5900C152EA /* OnePassCaptureResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94032341D140D5900C152EA /* OnePassCaptureResources.framework */; };
 		C94032441D140D5900C152EA /* OnePassCaptureResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94032431D140D5900C152EA /* OnePassCaptureResourcesTests.m */; };
-		C94032631D140EF100C152EA /* OPCRCapturePhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C94032611D140EF100C152EA /* OPCRCapturePhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C94032631D140EF100C152EA /* OPCRCapturePhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C94032611D140EF100C152EA /* OPCRCapturePhotoManager.h */; };
 		C94032641D140EF100C152EA /* OPCRCapturePhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94032621D140EF100C152EA /* OPCRCapturePhotoManager.m */; };
-		C94032681D1414CF00C152EA /* OPCRPreviewView.h in Headers */ = {isa = PBXBuildFile; fileRef = C94032661D1414CF00C152EA /* OPCRPreviewView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C94032691D1414CF00C152EA /* OPCRPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C94032671D1414CF00C152EA /* OPCRPreviewView.m */; };
-		C94032711D14305D00C152EA /* OPCRFaceView.h in Headers */ = {isa = PBXBuildFile; fileRef = C940326F1D14305D00C152EA /* OPCRFaceView.h */; };
-		C94032721D14305D00C152EA /* OPCRFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = C94032701D14305D00C152EA /* OPCRFaceView.m */; };
+		C9474F901D58C14200E531A7 /* OnePassUICommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9474F7F1D58B02100E531A7 /* OnePassUICommon.framework */; };
+		C9474F9A1D58C83300E531A7 /* OPCRCaptureResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C9474F981D58C83300E531A7 /* OPCRCaptureResourceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9474F9B1D58C83300E531A7 /* OPCRCaptureResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9474F991D58C83300E531A7 /* OPCRCaptureResourceManager.m */; };
 		C947DA6F1D48B44E00AE378F /* OPCRVideoConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = C947DA6D1D48B44E00AE378F /* OPCRVideoConverter.h */; };
 		C947DA701D48B44E00AE378F /* OPCRVideoConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C947DA6E1D48B44E00AE378F /* OPCRVideoConverter.m */; };
-		C95C737D1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C737B1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C95C737D1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C737B1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h */; };
 		C95C737E1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C95C737C1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.m */; };
 		C95C73841D1AA01700212B22 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95C73831D1AA01700212B22 /* AVFoundation.framework */; };
-		C97EE5291D213CA7001A8CCC /* OPCRCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C97EE5271D213CA7001A8CCC /* OPCRCaptureManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C97EE52A1D213CA7001A8CCC /* OPCRCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97EE5281D213CA7001A8CCC /* OPCRCaptureManager.m */; };
-		C97EE52E1D216112001A8CCC /* OPCRCaptureVideoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C97EE52C1D216112001A8CCC /* OPCRCaptureVideoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C97EE5291D213CA7001A8CCC /* OPCRCaptureBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C97EE5271D213CA7001A8CCC /* OPCRCaptureBaseManager.h */; };
+		C97EE52A1D213CA7001A8CCC /* OPCRCaptureBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97EE5281D213CA7001A8CCC /* OPCRCaptureBaseManager.m */; };
+		C97EE52E1D216112001A8CCC /* OPCRCaptureVideoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C97EE52C1D216112001A8CCC /* OPCRCaptureVideoManager.h */; };
 		C97EE52F1D216112001A8CCC /* OPCRCaptureVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97EE52D1D216112001A8CCC /* OPCRCaptureVideoManager.m */; };
 /* End PBXBuildFile section */
 
@@ -40,14 +42,38 @@
 			remoteGlobalIDString = C94032331D140D5900C152EA;
 			remoteInfo = OnePassCaptureResources;
 		};
+		C9474F7E1D58B02100E531A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C9F405811D538AD500007549;
+			remoteInfo = OnePassUICommon;
+		};
+		C9474F801D58B02100E531A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C9F4058B1D538AD500007549;
+			remoteInfo = OnePassUICommonTests;
+		};
+		C9474F911D58C22800E531A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C9F405801D538AD500007549;
+			remoteInfo = OnePassUICommon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C900E5C91D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureExtraPhotoManager.h; sourceTree = "<group>"; };
+		C900E5CA1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureExtraPhotoManager.m; sourceTree = "<group>"; };
+		C900E5CE1D5B8132006942AD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C91364221D40BA4B00D9ADEB /* UIImage+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extra.h"; sourceTree = "<group>"; };
 		C91364231D40BA4B00D9ADEB /* UIImage+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extra.m"; sourceTree = "<group>"; };
 		C913644B1D41FFAC00D9ADEB /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
 		C913644C1D41FFAC00D9ADEB /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
-		C918CDBE1D50C5810074E186 /* OnePassCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePassCore.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/OnePassOnlineDemo-bylemspjorvcaiacjhylmnboilwe/Build/Products/Debug-iphoneos/OnePassCore.framework"; sourceTree = "<group>"; };
+		C93D0DE01D5DF21F0052F47C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C94032341D140D5900C152EA /* OnePassCaptureResources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassCaptureResources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94032371D140D5900C152EA /* OnePassCaptureResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCaptureResources.h; sourceTree = "<group>"; };
 		C94032391D140D5900C152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,17 +82,16 @@
 		C94032451D140D5900C152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94032611D140EF100C152EA /* OPCRCapturePhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCapturePhotoManager.h; sourceTree = "<group>"; };
 		C94032621D140EF100C152EA /* OPCRCapturePhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCapturePhotoManager.m; sourceTree = "<group>"; };
-		C94032661D1414CF00C152EA /* OPCRPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRPreviewView.h; sourceTree = "<group>"; };
-		C94032671D1414CF00C152EA /* OPCRPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRPreviewView.m; sourceTree = "<group>"; };
-		C940326F1D14305D00C152EA /* OPCRFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRFaceView.h; sourceTree = "<group>"; };
-		C94032701D14305D00C152EA /* OPCRFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRFaceView.m; sourceTree = "<group>"; };
+		C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassUICommon.xcodeproj; path = ../OnePassUICommon/OnePassUICommon.xcodeproj; sourceTree = "<group>"; };
+		C9474F981D58C83300E531A7 /* OPCRCaptureResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureResourceManager.h; sourceTree = "<group>"; };
+		C9474F991D58C83300E531A7 /* OPCRCaptureResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureResourceManager.m; sourceTree = "<group>"; };
 		C947DA6D1D48B44E00AE378F /* OPCRVideoConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRVideoConverter.h; sourceTree = "<group>"; };
 		C947DA6E1D48B44E00AE378F /* OPCRVideoConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRVideoConverter.m; sourceTree = "<group>"; };
 		C95C737B1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureVoiceManager.h; sourceTree = "<group>"; };
 		C95C737C1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureVoiceManager.m; sourceTree = "<group>"; };
 		C95C73831D1AA01700212B22 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C97EE5271D213CA7001A8CCC /* OPCRCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureManager.h; sourceTree = "<group>"; };
-		C97EE5281D213CA7001A8CCC /* OPCRCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureManager.m; sourceTree = "<group>"; };
+		C97EE5271D213CA7001A8CCC /* OPCRCaptureBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureBaseManager.h; sourceTree = "<group>"; };
+		C97EE5281D213CA7001A8CCC /* OPCRCaptureBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureBaseManager.m; sourceTree = "<group>"; };
 		C97EE52C1D216112001A8CCC /* OPCRCaptureVideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRCaptureVideoManager.h; sourceTree = "<group>"; };
 		C97EE52D1D216112001A8CCC /* OPCRCaptureVideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRCaptureVideoManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C918CDBF1D50C5810074E186 /* OnePassCore.framework in Frameworks */,
+				C93D0DE11D5DF21F0052F47C /* ImageIO.framework in Frameworks */,
+				C900E5CF1D5B8132006942AD /* CoreImage.framework in Frameworks */,
+				C9474F901D58C14200E531A7 /* OnePassUICommon.framework in Frameworks */,
 				C95C73841D1AA01700212B22 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,8 +133,10 @@
 		C940322A1D140D5900C152EA = {
 			isa = PBXGroup;
 			children = (
-				C918CDBE1D50C5810074E186 /* OnePassCore.framework */,
 				C95C73831D1AA01700212B22 /* AVFoundation.framework */,
+				C900E5CE1D5B8132006942AD /* CoreImage.framework */,
+				C93D0DE01D5DF21F0052F47C /* ImageIO.framework */,
+				C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */,
 				C94032361D140D5900C152EA /* OnePassCaptureResources */,
 				C94032421D140D5900C152EA /* OnePassCaptureResourcesTests */,
 				C94032351D140D5900C152EA /* Products */,
@@ -126,17 +155,15 @@
 		C94032361D140D5900C152EA /* OnePassCaptureResources */ = {
 			isa = PBXGroup;
 			children = (
-				C91364211D40B98400D9ADEB /* Categories */,
 				C94032371D140D5900C152EA /* OnePassCaptureResources.h */,
-				C97EE5271D213CA7001A8CCC /* OPCRCaptureManager.h */,
-				C97EE5281D213CA7001A8CCC /* OPCRCaptureManager.m */,
-				C94032661D1414CF00C152EA /* OPCRPreviewView.h */,
-				C94032671D1414CF00C152EA /* OPCRPreviewView.m */,
-				C940326F1D14305D00C152EA /* OPCRFaceView.h */,
-				C94032701D14305D00C152EA /* OPCRFaceView.m */,
+				C9474F981D58C83300E531A7 /* OPCRCaptureResourceManager.h */,
+				C9474F991D58C83300E531A7 /* OPCRCaptureResourceManager.m */,
+				C97EE5271D213CA7001A8CCC /* OPCRCaptureBaseManager.h */,
+				C97EE5281D213CA7001A8CCC /* OPCRCaptureBaseManager.m */,
+				C94032601D140EA800C152EA /* Photo */,
 				C96079331D1D2CC700B9F55E /* Video */,
 				C95C737A1D1A8E5E00212B22 /* Voice */,
-				C94032601D140EA800C152EA /* Photo */,
+				C91364211D40B98400D9ADEB /* Categories */,
 				C94032391D140D5900C152EA /* Info.plist */,
 			);
 			path = OnePassCaptureResources;
@@ -156,8 +183,19 @@
 			children = (
 				C94032611D140EF100C152EA /* OPCRCapturePhotoManager.h */,
 				C94032621D140EF100C152EA /* OPCRCapturePhotoManager.m */,
+				C900E5C91D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.h */,
+				C900E5CA1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.m */,
 			);
 			name = Photo;
+			sourceTree = "<group>";
+		};
+		C9474F7A1D58B02100E531A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9474F7F1D58B02100E531A7 /* OnePassUICommon.framework */,
+				C9474F811D58B02100E531A7 /* OnePassUICommonTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C95C737A1D1A8E5E00212B22 /* Voice */ = {
@@ -187,16 +225,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C913644D1D41FFAC00D9ADEB /* UIImage+FixOrientation.h in Headers */,
+				C9474F9A1D58C83300E531A7 /* OPCRCaptureResourceManager.h in Headers */,
 				C94032381D140D5900C152EA /* OnePassCaptureResources.h in Headers */,
-				C94032681D1414CF00C152EA /* OPCRPreviewView.h in Headers */,
+				C94032631D140EF100C152EA /* OPCRCapturePhotoManager.h in Headers */,
+				C900E5CB1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.h in Headers */,
+				C97EE5291D213CA7001A8CCC /* OPCRCaptureBaseManager.h in Headers */,
+				C95C737D1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h in Headers */,
 				C947DA6F1D48B44E00AE378F /* OPCRVideoConverter.h in Headers */,
 				C97EE52E1D216112001A8CCC /* OPCRCaptureVideoManager.h in Headers */,
-				C97EE5291D213CA7001A8CCC /* OPCRCaptureManager.h in Headers */,
-				C95C737D1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.h in Headers */,
 				C91364241D40BA4B00D9ADEB /* UIImage+Extra.h in Headers */,
-				C94032711D14305D00C152EA /* OPCRFaceView.h in Headers */,
-				C94032631D140EF100C152EA /* OPCRCapturePhotoManager.h in Headers */,
+				C913644D1D41FFAC00D9ADEB /* UIImage+FixOrientation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +253,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C9474F921D58C22800E531A7 /* PBXTargetDependency */,
 			);
 			name = OnePassCaptureResources;
 			productName = OnePassCaptureResources;
@@ -246,7 +285,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Soloshcheva Aleksandra";
+				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C94032331D140D5900C152EA = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -266,6 +305,12 @@
 			mainGroup = C940322A1D140D5900C152EA;
 			productRefGroup = C94032351D140D5900C152EA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C9474F7A1D58B02100E531A7 /* Products */;
+					ProjectRef = C9474F791D58B02100E531A7 /* OnePassUICommon.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C94032331D140D5900C152EA /* OnePassCaptureResources */,
@@ -273,6 +318,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C9474F7F1D58B02100E531A7 /* OnePassUICommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OnePassUICommon.framework;
+			remoteRef = C9474F7E1D58B02100E531A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9474F811D58B02100E531A7 /* OnePassUICommonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OnePassUICommonTests.xctest;
+			remoteRef = C9474F801D58B02100E531A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C94032321D140D5900C152EA /* Resources */ = {
@@ -296,15 +358,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C900E5CC1D5B7EBC006942AD /* OPCRCaptureExtraPhotoManager.m in Sources */,
 				C94032641D140EF100C152EA /* OPCRCapturePhotoManager.m in Sources */,
 				C95C737E1D1A8E8C00212B22 /* OPCRCaptureVoiceManager.m in Sources */,
+				C9474F9B1D58C83300E531A7 /* OPCRCaptureResourceManager.m in Sources */,
 				C913644E1D41FFAC00D9ADEB /* UIImage+FixOrientation.m in Sources */,
 				C97EE52F1D216112001A8CCC /* OPCRCaptureVideoManager.m in Sources */,
-				C97EE52A1D213CA7001A8CCC /* OPCRCaptureManager.m in Sources */,
+				C97EE52A1D213CA7001A8CCC /* OPCRCaptureBaseManager.m in Sources */,
 				C947DA701D48B44E00AE378F /* OPCRVideoConverter.m in Sources */,
 				C91364251D40BA4B00D9ADEB /* UIImage+Extra.m in Sources */,
-				C94032691D1414CF00C152EA /* OPCRPreviewView.m in Sources */,
-				C94032721D14305D00C152EA /* OPCRFaceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +385,11 @@
 			isa = PBXTargetDependency;
 			target = C94032331D140D5900C152EA /* OnePassCaptureResources */;
 			targetProxy = C94032401D140D5900C152EA /* PBXContainerItemProxy */;
+		};
+		C9474F921D58C22800E531A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OnePassUICommon;
+			targetProxy = C9474F911D58C22800E531A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -424,6 +491,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OnePassCaptureResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -440,6 +511,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OnePassCaptureResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

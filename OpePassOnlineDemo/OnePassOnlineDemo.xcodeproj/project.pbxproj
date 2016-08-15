@@ -12,6 +12,8 @@
 		C90B75BA1D2A79B400446ACC /* OPODSettingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90B75B81D2A79B400446ACC /* OPODSettingViewController.h */; };
 		C90B75BB1D2A79B400446ACC /* OPODSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90B75B91D2A79B400446ACC /* OPODSettingViewController.m */; };
 		C937A7E71D3D1E7D00C850C0 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C937A7E61D3D1E7D00C850C0 /* Logo.png */; };
+		C9474F961D58C6A900E531A7 /* OnePassUICommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9474F951D58C6A900E531A7 /* OnePassUICommon.framework */; };
+		C9474F971D58C6A900E531A7 /* OnePassUICommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9474F951D58C6A900E531A7 /* OnePassUICommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C955DF851D0FF1C8006D2682 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C955DF841D0FF1C8006D2682 /* main.m */; };
 		C955DF881D0FF1C8006D2682 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C955DF871D0FF1C8006D2682 /* AppDelegate.m */; };
 		C955DF8B1D0FF1C8006D2682 /* OPODLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C955DF8A1D0FF1C8006D2682 /* OPODLoginViewController.m */; };
@@ -20,15 +22,17 @@
 		C955DF931D0FF1C8006D2682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C955DF911D0FF1C8006D2682 /* LaunchScreen.storyboard */; };
 		C955DF9E1D0FF1C9006D2682 /* OpePassOnlineDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955DF9D1D0FF1C9006D2682 /* OpePassOnlineDemoTests.m */; };
 		C955DFA91D0FF1C9006D2682 /* OpePassOnlineDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955DFA81D0FF1C9006D2682 /* OpePassOnlineDemoUITests.m */; };
-		C955E0E01D10108E006D2682 /* OnePassUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C955E0D01D100269006D2682 /* OnePassUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C955E1651D117196006D2682 /* OnePassCoreOnline.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C955E1611D1170BF006D2682 /* OnePassCoreOnline.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C95EF9FB1D2BF86400245675 /* passphrases.plist in Resources */ = {isa = PBXBuildFile; fileRef = C95EF9FA1D2BF86400245675 /* passphrases.plist */; };
 		C95EFA001D2BFD2E00245675 /* passphrases.strings in Resources */ = {isa = PBXBuildFile; fileRef = C95EFA021D2BFD2E00245675 /* passphrases.strings */; };
 		C95EFA131D2D0DBE00245675 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C95EFA151D2D0DBE00245675 /* Localizable.strings */; };
-		C9FB14E71D54D134002A0E67 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14E61D54D134002A0E67 /* OnePassCore.framework */; };
-		C9FB14E81D54D134002A0E67 /* OnePassCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14E61D54D134002A0E67 /* OnePassCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C9FB14EC1D54D13C002A0E67 /* OnePassCaptureResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14EB1D54D13C002A0E67 /* OnePassCaptureResources.framework */; };
-		C9FB14ED1D54D13C002A0E67 /* OnePassCaptureResources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14EB1D54D13C002A0E67 /* OnePassCaptureResources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9FB14CF1D54CE06002A0E67 /* OnePassCoreOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E1611D1170BF006D2682 /* OnePassCoreOnline.framework */; };
+		C9FB14D01D54CE06002A0E67 /* OnePassCoreOnline.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C955E1611D1170BF006D2682 /* OnePassCoreOnline.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9FB14D41D54CE21002A0E67 /* OnePassUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E0D01D100269006D2682 /* OnePassUI.framework */; };
+		C9FB14D51D54CE21002A0E67 /* OnePassUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C955E0D01D100269006D2682 /* OnePassUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9FB14D91D54CE5A002A0E67 /* OnePassCaptureResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14D81D54CE5A002A0E67 /* OnePassCaptureResources.framework */; };
+		C9FB14DA1D54CE5A002A0E67 /* OnePassCaptureResources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14D81D54CE5A002A0E67 /* OnePassCaptureResources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9FB14DC1D54CE87002A0E67 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14DB1D54CE87002A0E67 /* OnePassCore.framework */; };
+		C9FB14DD1D54CE87002A0E67 /* OnePassCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB14DB1D54CE87002A0E67 /* OnePassCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +64,6 @@
 			remoteGlobalIDString = C955E0AE1D0FFC7A006D2682;
 			remoteInfo = OnePassUITests;
 		};
-		C955E0DB1D100F67006D2682 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C955E0CA1D100269006D2682 /* OnePassUI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C955E0A31D0FFC7A006D2682;
-			remoteInfo = OnePassUI;
-		};
 		C955E0E11D10108E006D2682 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C955E0CA1D100269006D2682 /* OnePassUI.xcodeproj */;
@@ -88,26 +85,48 @@
 			remoteGlobalIDString = C955E1361D116BA1006D2682;
 			remoteInfo = OnePassCoreOnlineTests;
 		};
-		C955E1661D117196006D2682 /* PBXContainerItemProxy */ = {
+		C98183C11D59FBD200213596 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C98183BB1D59FBD200213596 /* OnePassCaptureResources.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C94032341D140D5900C152EA;
+			remoteInfo = OnePassCaptureResources;
+		};
+		C98183C31D59FBD200213596 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C98183BB1D59FBD200213596 /* OnePassCaptureResources.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C940323E1D140D5900C152EA;
+			remoteInfo = OnePassCaptureResourcesTests;
+		};
+		C9FB14D11D54CE06002A0E67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C955E15B1D1170BF006D2682 /* OnePassCoreOnline.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = C955E12B1D116BA1006D2682;
 			remoteInfo = OnePassCoreOnline;
 		};
+		C9FB14D61D54CE21002A0E67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C955E0CA1D100269006D2682 /* OnePassUI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C955E0A31D0FFC7A006D2682;
+			remoteInfo = OnePassUI;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C955E0E31D10108E006D2682 /* Embed Frameworks */ = {
+		C9FB14D31D54CE06002A0E67 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C955E1651D117196006D2682 /* OnePassCoreOnline.framework in Embed Frameworks */,
-				C9FB14E81D54D134002A0E67 /* OnePassCore.framework in Embed Frameworks */,
-				C955E0E01D10108E006D2682 /* OnePassUI.framework in Embed Frameworks */,
-				C9FB14ED1D54D13C002A0E67 /* OnePassCaptureResources.framework in Embed Frameworks */,
+				C9474F971D58C6A900E531A7 /* OnePassUICommon.framework in Embed Frameworks */,
+				C9FB14D51D54CE21002A0E67 /* OnePassUI.framework in Embed Frameworks */,
+				C9FB14DA1D54CE5A002A0E67 /* OnePassCaptureResources.framework in Embed Frameworks */,
+				C9FB14D01D54CE06002A0E67 /* OnePassCoreOnline.framework in Embed Frameworks */,
+				C9FB14DD1D54CE87002A0E67 /* OnePassCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +152,7 @@
 		C918CDBD1D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C91968E91D12BA8E0046E3D6 /* OpePassOnlineDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OpePassOnlineDemo.entitlements; sourceTree = "<group>"; };
 		C937A7E61D3D1E7D00C850C0 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		C9474F951D58C6A900E531A7 /* OnePassUICommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = OnePassUICommon.framework; path = "/Users/soloshcheva/Desktop/VoiceKey/Clients/OnePass/iOS/OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassUICommon.framework"; sourceTree = "<absolute>"; };
 		C955DF801D0FF1C8006D2682 /* OnePassOnlineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnePassOnlineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C955DF841D0FF1C8006D2682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C955DF861D0FF1C8006D2682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -159,8 +179,9 @@
 		C95EFA141D2D0DBE00245675 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C95EFA161D2D0DC200245675 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C95EFA171D2D0DC300245675 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C9FB14E61D54D134002A0E67 /* OnePassCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = OnePassCore.framework; path = "/Users/soloshcheva/Desktop/onepass-ios-client/OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassCore.framework"; sourceTree = "<absolute>"; };
-		C9FB14EB1D54D13C002A0E67 /* OnePassCaptureResources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = OnePassCaptureResources.framework; path = "/Users/soloshcheva/Desktop/onepass-ios-client/OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassCaptureResources.framework"; sourceTree = "<absolute>"; };
+		C98183BB1D59FBD200213596 /* OnePassCaptureResources.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCaptureResources.xcodeproj; path = ../OnePassCaptureResources/OnePassCaptureResources.xcodeproj; sourceTree = "<group>"; };
+		C9FB14D81D54CE5A002A0E67 /* OnePassCaptureResources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = OnePassCaptureResources.framework; path = "/Users/soloshcheva/Desktop/VoiceKey/Clients/OnePass/iOS/OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassCaptureResources.framework"; sourceTree = "<absolute>"; };
+		C9FB14DB1D54CE87002A0E67 /* OnePassCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = OnePassCore.framework; path = "/Users/soloshcheva/Desktop/VoiceKey/Clients/OnePass/iOS/OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassCore.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +189,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9FB14E71D54D134002A0E67 /* OnePassCore.framework in Frameworks */,
-				C9FB14EC1D54D13C002A0E67 /* OnePassCaptureResources.framework in Frameworks */,
+				C9FB14D41D54CE21002A0E67 /* OnePassUI.framework in Frameworks */,
+				C9FB14D91D54CE5A002A0E67 /* OnePassCaptureResources.framework in Frameworks */,
+				C9474F961D58C6A900E531A7 /* OnePassUICommon.framework in Frameworks */,
+				C9FB14CF1D54CE06002A0E67 /* OnePassCoreOnline.framework in Frameworks */,
+				C9FB14DC1D54CE87002A0E67 /* OnePassCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,8 +217,10 @@
 		C955DF771D0FF1C8006D2682 = {
 			isa = PBXGroup;
 			children = (
-				C9FB14EB1D54D13C002A0E67 /* OnePassCaptureResources.framework */,
-				C9FB14E61D54D134002A0E67 /* OnePassCore.framework */,
+				C9FB14D81D54CE5A002A0E67 /* OnePassCaptureResources.framework */,
+				C9FB14DB1D54CE87002A0E67 /* OnePassCore.framework */,
+				C9474F951D58C6A900E531A7 /* OnePassUICommon.framework */,
+				C98183BB1D59FBD200213596 /* OnePassCaptureResources.xcodeproj */,
 				C955E15B1D1170BF006D2682 /* OnePassCoreOnline.xcodeproj */,
 				C955E0CA1D100269006D2682 /* OnePassUI.xcodeproj */,
 				C955DF821D0FF1C8006D2682 /* OpePassOnlineDemo */,
@@ -293,6 +319,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		C98183BC1D59FBD200213596 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C98183C21D59FBD200213596 /* OnePassCaptureResources.framework */,
+				C98183C41D59FBD200213596 /* OnePassCaptureResourcesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -315,15 +350,15 @@
 				C955DF7C1D0FF1C8006D2682 /* Sources */,
 				C955DF7D1D0FF1C8006D2682 /* Frameworks */,
 				C955DF7E1D0FF1C8006D2682 /* Resources */,
-				C955E0E31D10108E006D2682 /* Embed Frameworks */,
 				C955E0EA1D1049FE006D2682 /* Headers */,
+				C9FB14D31D54CE06002A0E67 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C955E0DC1D100F67006D2682 /* PBXTargetDependency */,
 				C955E0E21D10108E006D2682 /* PBXTargetDependency */,
-				C955E1671D117196006D2682 /* PBXTargetDependency */,
+				C9FB14D21D54CE06002A0E67 /* PBXTargetDependency */,
+				C9FB14D71D54CE21002A0E67 /* PBXTargetDependency */,
 			);
 			name = OnePassOnlineDemo;
 			productName = OpePassOnlineDemo;
@@ -410,6 +445,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = C98183BC1D59FBD200213596 /* Products */;
+					ProjectRef = C98183BB1D59FBD200213596 /* OnePassCaptureResources.xcodeproj */;
+				},
+				{
 					ProductGroup = C955E15C1D1170BF006D2682 /* Products */;
 					ProjectRef = C955E15B1D1170BF006D2682 /* OnePassCoreOnline.xcodeproj */;
 				},
@@ -454,6 +493,20 @@
 			fileType = wrapper.cfbundle;
 			path = OnePassCoreOnlineTests.xctest;
 			remoteRef = C955E1621D1170BF006D2682 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C98183C21D59FBD200213596 /* OnePassCaptureResources.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OnePassCaptureResources.framework;
+			remoteRef = C98183C11D59FBD200213596 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C98183C41D59FBD200213596 /* OnePassCaptureResourcesTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OnePassCaptureResourcesTests.xctest;
+			remoteRef = C98183C31D59FBD200213596 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -531,20 +584,20 @@
 			target = C955DF7F1D0FF1C8006D2682 /* OnePassOnlineDemo */;
 			targetProxy = C955DFA51D0FF1C9006D2682 /* PBXContainerItemProxy */;
 		};
-		C955E0DC1D100F67006D2682 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OnePassUI;
-			targetProxy = C955E0DB1D100F67006D2682 /* PBXContainerItemProxy */;
-		};
 		C955E0E21D10108E006D2682 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OnePassUI;
 			targetProxy = C955E0E11D10108E006D2682 /* PBXContainerItemProxy */;
 		};
-		C955E1671D117196006D2682 /* PBXTargetDependency */ = {
+		C9FB14D21D54CE06002A0E67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OnePassCoreOnline;
-			targetProxy = C955E1661D117196006D2682 /* PBXContainerItemProxy */;
+			targetProxy = C9FB14D11D54CE06002A0E67 /* PBXContainerItemProxy */;
+		};
+		C9FB14D71D54CE21002A0E67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OnePassUI;
+			targetProxy = C9FB14D61D54CE21002A0E67 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -689,10 +742,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OpePassOnlineDemo/OpePassOnlineDemo.entitlements;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = OpePassOnlineDemo/Info.plist;
@@ -712,7 +765,7 @@
 				CODE_SIGN_ENTITLEMENTS = OpePassOnlineDemo/OpePassOnlineDemo.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = OpePassOnlineDemo/Info.plist;

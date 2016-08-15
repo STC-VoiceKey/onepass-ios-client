@@ -1,0 +1,6 @@
+framework module OnePassCore {
+  umbrella header "OnePassCore.h"
+
+  export *
+  module * { export * }
+}

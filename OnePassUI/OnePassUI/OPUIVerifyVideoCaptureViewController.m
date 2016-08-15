@@ -8,13 +8,13 @@
 
 #import "OPUIVerifyVideoCaptureViewController.h"
 
-#import "OPUIAlertViewController.h"
-#import "OPUIBlockSecondTimer.h"
+#import <OnePassUICommon/OnePassUICommon.h>
+
 
 @import Photos;
 
-#import <OnePassCaptureResources/OnePassCaptureResources.h>
 #import <OnePassCore/OnePassCore.h>
+#import "OPUILoader.h"
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -23,10 +23,6 @@
 static NSString *kVideoCaptureTimeoutName  = @"VideoCaptureTimeout";
 static NSString *kVideoFailSegueIdentifier = @"kVideoFailSegueIdentifier";
 
-static NSString *kVerifyFailSegueIdentifier    = @"kVerifyFailSegueIdentifier";
-static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier";
-
-
 @interface OPUIVerifyVideoCaptureViewController ()
 
 @property (nonatomic,weak) IBOutlet OPCRPreviewView         *viewVideoCapture;
@@ -34,7 +30,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
 @property (nonatomic,weak) IBOutlet UILabel                 *sequenceLabel;
 @property (nonatomic,weak) IBOutlet UIButton                *captureButton;
 
-@property (nonatomic,strong) OPCRCaptureVideoManager *videoCaptureManager;
+@property (nonatomic,strong) id<IOPCRCaptureVideoManager> videoCaptureManager;
 
 @property (nonatomic) id<IVerifySession> session;
 
@@ -61,10 +57,12 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
-    self.videoCaptureManager = [[OPCRCaptureVideoManager alloc] initWithView:self.viewVideoCapture];
-    
+    [super viewWillAppear:animated];
+
+    self.videoCaptureManager = [self.captureManager videoManager];
+    [self.videoCaptureManager setPreview:self.viewVideoCapture];
     [self.videoCaptureManager startRunning];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -78,7 +76,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
                           weakself.timeProgress.progress = seconds/[weakself.timeout floatValue];
                       });
                   }
-                                                          withResultBlock:^(float seconds)
+                        withResultBlock:^(float seconds)
                   {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           weakself.timeProgress.progress = 0 ;
@@ -108,7 +106,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
                   }];
     [self.closeVerificationSessionTimer startWithTime:180];
     
-    self.videoCaptureManager.resultBlock = ^(NSData *data, NSError *error)
+    self.videoCaptureManager.loadDataBlock = ^(NSData *data, NSError *error)
     {
         dispatch_async( dispatch_get_main_queue(), ^{
             weakself.timeProgress.progress = 0;
@@ -126,7 +124,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
                                                });
                                            }];
             }
-            else [weakself performSegueOnMainThreadWithIdentifier:kVerifyFailSegueIdentifier];
+            else [[OPUILoader sharedInstance] verifyResultBlock](NO);
             
             [weakself stopActivityAnimating];
         }
@@ -168,14 +166,21 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
                               [weakself stopActivityAnimating];
                               [weakself.service closeVerification:[weakself.session verificationSessionID]
                                               withCompletionBlock:nil];
+                              
+                              
                               if (!error)
                               {
                                   if ([responceObject[@"status"] isEqualToString:@"SUCCESS"])
-                                      [weakself performSegueOnMainThreadWithIdentifier:kVerifySuccessSegueIdentifier];
+                                      [[OPUILoader sharedInstance] verifyResultBlock](YES);
                                   else
-                                      [weakself performSegueOnMainThreadWithIdentifier:kVerifyFailSegueIdentifier];
+                                      [[OPUILoader sharedInstance] verifyResultBlock](NO);
                               }else
-                                  [weakself performSegueOnMainThreadWithIdentifier:kVerifyFailSegueIdentifier];
+                                  [[OPUILoader sharedInstance] verifyResultBlock](NO);
+                              
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                 [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
+                              });
+                             
                           }];
                          
                      }

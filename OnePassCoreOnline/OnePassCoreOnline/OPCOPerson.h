@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <OnePassCore/IPerson.h>
-#import <OnePassCore/IModel.h>
 
 @interface OPCOPerson : NSObject<IPerson>
 
@@ -18,7 +17,6 @@
 
 @property (nonatomic) BOOL isFullEnroll;
 
-@property (nonatomic) NSArray<IModel> *model;
 /*-(NSString *)userID;
  -(BOOL)isFullEnroll;
  -(NSArray<IModel> *)model;*/

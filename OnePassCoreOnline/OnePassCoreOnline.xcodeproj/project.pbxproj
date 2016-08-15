@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C90ED5E91D2E3BCC0062CA13 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C90ED5E71D2E3BCC0062CA13 /* Reachability.m */; };
-		C91C4B7A1D21664E00D55F39 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91C4B791D21664E00D55F39 /* OnePassCore.framework */; };
 		C955E1301D116BA1006D2682 /* OnePassCoreOnline.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C955E1371D116BA1006D2682 /* OnePassCoreOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E12C1D116BA1006D2682 /* OnePassCoreOnline.framework */; };
 		C955E13C1D116BA1006D2682 /* OnePassCoreOnlineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */; };
@@ -16,13 +15,13 @@
 		C955E15A1D117079006D2682 /* OPCOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E1581D117079006D2682 /* OPCOManager.m */; };
 		C960793D1D1D3CB700B9F55E /* OPCOVerificationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */; };
 		C960793E1D1D3CB700B9F55E /* OPCOVerificationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */; };
-		C977D61B1D117B1F00A3E42D /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D6181D117B1100A3E42D /* OnePassCore.framework */; };
 		C977D62D1D119BF900A3E42D /* OPCOPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D62B1D119BF900A3E42D /* OPCOPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D62E1D119BF900A3E42D /* OPCOPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D62C1D119BF900A3E42D /* OPCOPerson.m */; };
 		C9B12CB51D226D80003A0FF4 /* NSURLResponse+IsSuccess.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B12CB31D226D80003A0FF4 /* NSURLResponse+IsSuccess.h */; };
 		C9B12CB61D226D80003A0FF4 /* NSURLResponse+IsSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B12CB41D226D80003A0FF4 /* NSURLResponse+IsSuccess.m */; };
 		C9D9841F1D13CF24003B6056 /* NSObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */; };
 		C9D984201D13CF24003B6056 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D9841E1D13CF24003B6056 /* NSObject+JSON.m */; };
+		C9DAECB01D5228040052510C /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D6181D117B1100A3E42D /* OnePassCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +58,6 @@
 /* Begin PBXFileReference section */
 		C90ED5E61D2E3BCC0062CA13 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C90ED5E71D2E3BCC0062CA13 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		C91C4B791D21664E00D55F39 /* OnePassCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePassCore.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/OnePassCoreOnline-gkcrknrczuqetcdcriowhtxuxegv/Build/Products/Debug-iphoneos/OnePassCore.framework"; sourceTree = "<group>"; };
 		C955E12C1D116BA1006D2682 /* OnePassCoreOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassCoreOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCoreOnline.h; sourceTree = "<group>"; };
 		C955E1311D116BA1006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +75,7 @@
 		C9B12CB41D226D80003A0FF4 /* NSURLResponse+IsSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+IsSuccess.m"; sourceTree = "<group>"; };
 		C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
 		C9D9841E1D13CF24003B6056 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
+		C9DAECAE1D5227ED0052510C /* OnePassCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OnePassCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C977D61B1D117B1F00A3E42D /* OnePassCore.framework in Frameworks */,
-				C91C4B7A1D21664E00D55F39 /* OnePassCore.framework in Frameworks */,
+				C9DAECB01D5228040052510C /* OnePassCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +118,7 @@
 		C955E1221D116BA1006D2682 = {
 			isa = PBXGroup;
 			children = (
-				C91C4B791D21664E00D55F39 /* OnePassCore.framework */,
+				C9DAECAE1D5227ED0052510C /* OnePassCore.framework */,
 				C977D6121D117B1100A3E42D /* OnePassCore.xcodeproj */,
 				C955E12E1D116BA1006D2682 /* OnePassCoreOnline */,
 				C955E13A1D116BA1006D2682 /* OnePassCoreOnlineTests */,
@@ -253,8 +251,9 @@
 		C955E1231D116BA1006D2682 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = STC;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Soloshcheva Aleksandra";
+				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C955E12B1D116BA1006D2682 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -460,6 +459,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OnePassCoreOnline",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = OnePassCoreOnline/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -481,6 +481,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OnePassCoreOnline",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = OnePassCoreOnline/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

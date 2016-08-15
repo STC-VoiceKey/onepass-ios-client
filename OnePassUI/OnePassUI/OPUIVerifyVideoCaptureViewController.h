@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OPUIBaseViewController.h"
+#import <OnePassUICommon/OPUIBaseViewController.h>
 
 @interface OPUIVerifyVideoCaptureViewController : OPUIBaseViewController
 

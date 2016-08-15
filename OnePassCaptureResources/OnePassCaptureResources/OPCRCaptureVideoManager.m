@@ -45,7 +45,7 @@
     if ([self.session canAddOutput:self.movieFileOutput])
         [self.session addOutput:self.movieFileOutput];
     else
-        self.resultBlock(nil,nil);
+        self.loadDataBlock(nil,nil);
     
     AVCaptureConnection *videoConnection = nil;
     
@@ -60,7 +60,8 @@
         }
     }
     
-    if([videoConnection isVideoMirroringSupported])      videoConnection.videoMirrored = YES;
+    if([videoConnection isVideoMirroringSupported])
+        videoConnection.videoMirrored = YES;
     
     AVCaptureDevice      *audioDevice = [AVCaptureDevice      defaultDeviceWithMediaType:AVMediaTypeAudio];
     AVCaptureDeviceInput *audioInput  = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:nil];
@@ -123,8 +124,8 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 {
     if(error)
     {
-        if(self.resultBlock)
-            self.resultBlock(nil,error);
+        if(self.loadDataBlock)
+            self.loadDataBlock(nil,error);
     }
     else   [self compressVideo];
 }
@@ -192,14 +193,14 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     {
         self.isRecording = NO;
         if (error) {
-            weakself.resultBlock(nil,error);
+            weakself.loadDataBlock(nil,error);
         }
         else
         {
             NSData *data = [NSData dataWithContentsOfURL:[weakself urlForCompressedFile]];
             [self reset];
             if(data)
-                weakself.resultBlock(data,nil);
+                weakself.loadDataBlock(data,nil);
             
         }
     }];

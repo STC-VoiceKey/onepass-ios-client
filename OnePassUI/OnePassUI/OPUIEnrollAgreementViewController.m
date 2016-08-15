@@ -7,7 +7,7 @@
 //
 
 #import "OPUIEnrollAgreementViewController.h"
-#import "OPUIAlertViewController.h"
+#import <OnePassUICommon/OnePassUICommon.h>
 
 @interface OPUIEnrollAgreementViewController ()
 

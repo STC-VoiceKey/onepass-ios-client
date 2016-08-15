@@ -1,4 +1,4 @@
-//
+ //
 //  STCUILoader.m
 //  OnePassUI
 //
@@ -8,11 +8,20 @@
 
 #import "OPUILoader.h"
 #import <OnePassCore/OnePassCore.h>
+#import <OnePassUICommon/OnePassUICommon.h>
 
+@interface OPUILoader()
+
+@property (nonatomic) ResultBlock enrollResultBlock;
+@property (nonatomic) ResultBlock verifyResultBlock;
+
+@end
 
 @interface OPUILoader(PrivateMethods)
 
--(UIViewController *)loadStoriboard:(NSString *)storiboardName withService:(id<ITransport>)service;
+-(UIViewController *)loadStoriboard:(NSString *)storiboardName
+                        withService:(id<ITransport>)service
+                 withCaptureManager:(id<IOPCRCaptureManager>)manager;
 
 @end
 
@@ -28,24 +37,31 @@
     return sharedInstance;
 }
 
--(UIViewController *)enrollUILoadWithService:(id<ITransport>) service{
-    return [self loadStoriboard:@"Enroll" withService:service];
+-(UIViewController *)enrollUILoadWithService:(id<ITransport>)service withCaptureManager:(id<IOPCRCaptureManager>)manager{
+    return [self loadStoriboard:@"Enroll" withService:service withCaptureManager:manager];
 }
 
--(UIViewController *)verifyUILoadWithService:(id<ITransport>) service{
-    return [self loadStoriboard:@"Verify" withService:service];
+-(UIViewController *)verifyUILoadWithService:(id<ITransport>) service withCaptureManager:(id<IOPCRCaptureManager>)manager{
+    return [self loadStoriboard:@"Verify" withService:service withCaptureManager:manager];
 }
+
+
 @end
 
 @implementation OPUILoader(PrivateMethods)
 
--(UIViewController *)loadStoriboard:(NSString *)storiboardName withService:(id<ITransport>)service{
+-(UIViewController *)loadStoriboard:(NSString *)storiboardName
+                        withService:(id<ITransport>)service
+                 withCaptureManager:(id<IOPCRCaptureManager>)manager{
     NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
     UIViewController *vc = [[UIStoryboard storyboardWithName:storiboardName bundle: frameworkBundle] instantiateInitialViewController];
     if([vc conformsToProtocol:@protocol(ITransportService)]){
         id<ITransportService> vcService = (id<ITransportService>)vc;
         [vcService setService:service ];
-        NSLog(@"%@",[vcService service]);
+    }
+    if([vc conformsToProtocol:@protocol(IsIOPCRCaptureManager)]){
+        id<IsIOPCRCaptureManager> vcManager = (id<IsIOPCRCaptureManager>)vc;
+        [vcManager setCaptureManager:manager];
     }
     return vc;
 }

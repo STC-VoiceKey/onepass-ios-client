@@ -7,12 +7,12 @@
 //
 
 #import "OPUIEnrollVoiceRecordViewController.h"
+#import "OPUILoader.h"
 
-#import <OnePassCaptureResources/OnePassCaptureResources.h>
 #import <OnePassCore/PassphraseManager.h>
 
-#import "OPUIAlertViewController.h"
-#import "OPUIBlockSecondTimer.h"
+#import <OnePassUICommon/OnePassUICommon.h>
+
 
 static NSString *kVoiceCaptureTimeoutName = @"VoiceCaptureTimeout";
 
@@ -30,9 +30,8 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
 @property (nonatomic,weak) IBOutlet UILabel         *sequenceLabel;
 @property (nonatomic,weak) IBOutlet UIProgressView  *timeProgress;
 
-@property (nonatomic,strong) OPCRCaptureVoiceManager *voiceManager;
+@property (nonatomic,strong) id<IOPCRCaptureVoiceManager> voiceManager;
 
-@property (nonatomic) BOOL isRecording;
 @property (nonatomic) NSArray<NSString *> *randomDigits;
 
 @property (nonatomic) OPUIBlockSecondTimer *timer;
@@ -67,12 +66,10 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
     
     self.timeProgress.progress = 0 ;
     self.timeout  = [[NSBundle mainBundle] objectForInfoDictionaryKey:kVoiceCaptureTimeoutName];
-    
-    self.isRecording = NO;
 }
 
 -(void)applicationDidEnterBackground{
-    if(self.isRecording)
+    if([self.voiceManager isRecording])
         [self stopRecord];
     [self performSegueWithIdentifier:kExitVoiceSegueIdentifier sender:self];
 
@@ -92,12 +89,14 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
         dispatch_async(dispatch_get_main_queue(), ^{
             weakself.timeProgress.progress = 0 ;
         });
-        if(weakself.isRecording) [weakself stopRecord];
+        if([weakself.voiceManager isRecording]) [weakself stopRecord];
     }];
 
     
-    self.voiceManager = [[OPCRCaptureVoiceManager alloc] initWithPassphraseNumber:self.numberOfSample
-                                                                  withResultBlock:^(NSData *data, NSError *error)
+    self.voiceManager =  [self.captureManager voiceManager];
+    
+    [self.voiceManager setPassphraseNumber:[NSNumber numberWithInteger:self.numberOfSample]];
+    [self.voiceManager setLoadDataBlock:^(NSData *data, NSError *error)
     {
         if (!error && data)
         {
@@ -109,37 +108,34 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
             [weakself startActivityAnimating];
             
             [weakself.service addVoiceFile:data
-                        withPassphrase:[self wordsSequence]
-                             forPerson:self.userID
-                   withCompletionBlock:^(NSDictionary *responceObject, NSError *error)
-            {
-                [weakself stopActivityAnimating];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if(!error){
-                        if (weakself.numberOfSample!=3) [weakself showItself];
-                        else{
-                            [OPUIAlertViewController showWarning:NSLocalizedStringFromTableInBundle(@"Enrollment is successfully completed", @"OnePassUILocalizable",[NSBundle bundleForClass:[weakself class]], nil)
-                                              withViewController:self
-                                                         handler:^(UIAlertAction *action)
-                            {
-                                dispatch_async( dispatch_get_main_queue(), ^{
-                                    [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
-                                });
-                            }];
-                        }
-                    }
-                    else
-                    {
-                        if([error.domain isEqualToString:NSURLErrorDomain])
-                        {
-                            [weakself showErrorOnMainThread:error];
-                            [weakself.startButton setSelected:NO];
-                        }
-                        else
-                            [weakself performSegueOnMainThreadWithIdentifier:kVoiceFailSegueIdentifier];
-                    }
-                });
-            }];
+                            withPassphrase:[weakself wordsSequence]
+                                 forPerson:weakself.userID
+                       withCompletionBlock:^(NSDictionary *responceObject, NSError *error)
+             {
+                 [weakself stopActivityAnimating];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if(!error){
+                         if (weakself.numberOfSample!=3) [weakself showItself];
+                         else{
+                             [[OPUILoader sharedInstance] enrollResultBlock](YES);
+                             dispatch_async( dispatch_get_main_queue(), ^{
+                                 [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
+                             });
+                             
+                         }
+                     }
+                     else
+                     {
+                         if([error.domain isEqualToString:NSURLErrorDomain])
+                         {
+                             [weakself showErrorOnMainThread:error];
+                             [weakself.startButton setSelected:NO];
+                         }
+                         else
+                             [weakself performSegueOnMainThreadWithIdentifier:kVoiceFailSegueIdentifier];
+                     }
+                 });
+             }];
         }
         else
             [weakself performSegueOnMainThreadWithIdentifier:kVoiceFailSegueIdentifier];
@@ -154,9 +150,8 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
 
 #pragma  mark - IBActions
 -(IBAction)onStart:(id)sender{
-    
-    if(self.isRecording)    [self stopRecord];
-    else   [self startRecord];
+    if([self.voiceManager isRecording])    [self stopRecord];
+    else                                   [self startRecord];
     
 }
 
@@ -180,21 +175,15 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
 @implementation OPUIEnrollVoiceRecordViewController(PrivateMethods)
 
 -(void)startRecord{
-    self.isRecording = YES;
     [self.startButton setSelected:YES];
-
-    
     [self.voiceManager record];
     [self.timer startWithTime:[self.timeout floatValue]];
     
 }
--(void)stopRecord{
-    
-    self.isRecording = NO;
+-(void)stopRecord
+{
     [self.timer stop];
-    
     self.timeProgress.progress = 0 ;
-    
     [self.voiceManager stop];
 }
 
