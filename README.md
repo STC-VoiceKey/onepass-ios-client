@@ -1,5 +1,8 @@
+![itunesartwork 2x](https://cloud.githubusercontent.com/assets/20855360/23412071/78504558-fde5-11e6-9b27-363bc6b08364.png)
+
 # onepass-ios-client
 iOS client for OnePass server.
+
 
 ## REST API
 <p>URL: https://onepass.tech/vkonepass/rest/v4/</p>
