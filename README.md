@@ -5,7 +5,6 @@ OnePassDemoOnline demonstrates a functionality of a biometric authentication bas
 ## REST API
 <p>URL: https://onepass.tech/vkonepass/rest/v4/</p>
 <p>HELP: https://onepass.tech/vkonepass/help/</p>
->>>>>>> origin/master
 
 ## How To Get Started
 - [Download OnePassDemoOnline](https://github.com/STC-VoiceKey/onepass-ios-client/archive/master.zip) and try out the included iOS example app
