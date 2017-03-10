@@ -1,4 +1,4 @@
-//
+ //
 //  main.m
 //  OpePassOnlineDemo
 //
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+#import "OPLDAppDelegate.h"
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([OPLDAppDelegate class]));
     }
 }

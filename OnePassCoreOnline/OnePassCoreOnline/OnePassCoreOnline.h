@@ -14,9 +14,9 @@ FOUNDATION_EXPORT double OnePassCoreOnlineVersionNumber;
 //! Project version string for OnePassCoreOnline.
 FOUNDATION_EXPORT const unsigned char OnePassCoreOnlineVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <OnePassCoreOnline/PublicHeader.h>
-#import "OPCOManager.h"
-#import "OPCOPerson.h"
+#import <OnePassCoreOnline/OPCOManager.h>
+#import <OnePassCoreOnline/OPCOPerson.h>
+#import <OnePassCoreOnline/OPCOVerificationSession.h>
 
 
 

@@ -21,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7</string>
+	<string>2.8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -33,10 +33,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Biometric Auth </string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Biometric Auth </string>
 	<key>PassphrasePlistName</key>
 	<string>passphrases</string>
 	<key>PassphraseStringName</key>
 	<string>passphrases</string>
+	<key>STCVersionDescription</key>
+	<string>Online Version With Design</string>
 	<key>ServerUrl</key>
 	<string>https://onepass.tech/vkonepass/rest/v4</string>
 	<key>ServerUrls</key>
@@ -50,7 +56,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>iPhone</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>iPad</string>
+	<key>UIMainStoryboardFile~iphone</key>
+	<string>iPhone</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -60,14 +70,30 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~iphone</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>VideoCaptureTimeout</key>
 	<integer>5</integer>
 	<key>VoiceCaptureTimeout</key>
 	<integer>10</integer>
+	<key>VoiceNoiseLimit</key>
+	<integer>1500</integer>
+	<key>iPad</key>
+	<string></string>
 </dict>
 </plist>

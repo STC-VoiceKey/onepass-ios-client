@@ -1,0 +1,36 @@
+/* 
+  OnePassUILocalizable.strings
+  OnePassUI
+
+  Created by Soloshcheva Aleksandra on 04.07.16.
+  Copyright © 2016 Speech Technology Center. All rights reserved.
+*/
+"Enrollment is successfully completed"="Enrollment is successfully completed";
+
+"No face detection" = "No face detection";
+"Poor image quality" = "Poor image quality";
+"Eyes closed" = "Eyes closed";
+"Incorrect pronunciation" = "Incorrect pronunciation";
+"Eyes not found" = "Eyes not found";
+"Other faces detection" = "Other faces detection";
+
+"We will take a photo and record three samples of your voice" = "We will take a photo and record three samples of your voice";
+
+"Take off sunglasses" = "Take off sunglasses";
+"Make sure it's quiet" = "Make sure it's quiet";
+"Find a well lit place" = "Find a well lit place";
+"Make your ordinary face" = "Make your ordinary face";
+
+"Too noisy"="Too noisy";
+
+"No eyes detected" = "No eyes detected";
+
+"Many faces detected" = "Many faces detected";
+
+"No face detected" = "No face detected";
+
+"Pour light" = "Pour light";
+
+"Shacking detected" = "Shacking detected";
+
+"Pronounce digits" = "Pronounce the digits";

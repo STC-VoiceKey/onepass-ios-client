@@ -13,18 +13,14 @@
 -(id)initWithJSON:(NSDictionary *)json{
     self = [super init];
     
-    if (self)
-    {
+    if (self) {
         if (json[@"verificationId"] && json[@"password"]) {
             self.verificationSessionID = json[@"verificationId"];
             self.passphrase = json[@"password"] ;
-        }
-        else
-        {
+        } else {
             @throw  [NSException exceptionWithName:@"NoValidSessionData"
                                             reason:@"Invalid verification session data from server"
                                           userInfo:nil];
-
         }
     }
     

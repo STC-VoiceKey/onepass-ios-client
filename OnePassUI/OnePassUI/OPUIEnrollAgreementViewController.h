@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <OnePassUICommon/OnePassUICommon.h>
+#import "OPUIBaseViewController.h"
 
-@interface OPUIEnrollAgreementViewController : OPUICauseListViewController
+/**
+ The view controller displays the agreement and requirements
+ */
+@interface OPUIEnrollAgreementViewController : OPUIBaseViewController
 
 @end

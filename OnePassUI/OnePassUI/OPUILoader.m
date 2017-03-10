@@ -8,27 +8,41 @@
 
 #import "OPUILoader.h"
 #import <OnePassCore/OnePassCore.h>
-#import <OnePassUICommon/OnePassUICommon.h>
+#import <OnePassCapture/OnePassCapture.h>
 
 @interface OPUILoader()
 
+/**
+ Is the enrollment 'ResultBlock'
+ */
 @property (nonatomic) ResultBlock enrollResultBlock;
+
+/**
+ Is the verification 'ResultBlock'
+ */
 @property (nonatomic) ResultBlock verifyResultBlock;
 
 @end
 
 @interface OPUILoader(PrivateMethods)
 
--(UIViewController *)loadStoriboard:(NSString *)storiboardName
-                        withService:(id<ITransport>)service
-                 withCaptureManager:(id<IOPCRCaptureManager>)manager;
+/**
+ Loads the initial view controller from the storyboard and presets the transport service and the capture manager
+
+ @param storyboardName The storyboard name
+ @param service The 'IOPCTransportProtocol' implementation
+ @param manager The 'IOPCCaptureManagerProtocol' implementation
+ @return The initial view controller of the storyboard
+ */
+-(UIViewController *)loadStoryboard:(NSString *)storyboardName
+                        withService:(id<IOPCTransportProtocol>)service
+                 withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager;
 
 @end
 
 @implementation OPUILoader
 
-+ (id<STCUILoaderProtocol>)sharedInstance
-{
++ (id<IOPUILoaderProtocol>)sharedInstance{
     static dispatch_once_t once;
     static id sharedInstance;
     dispatch_once(&once, ^{
@@ -37,32 +51,37 @@
     return sharedInstance;
 }
 
--(UIViewController *)enrollUILoadWithService:(id<ITransport>)service withCaptureManager:(id<IOPCRCaptureManager>)manager{
-    return [self loadStoriboard:@"Enroll" withService:service withCaptureManager:manager];
+-(UIViewController *)enrollUILoadWithService:(id<IOPCTransportProtocol>)service withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
+    NSString *storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"Enroll_iPad" : @"Enroll_iPhone";
+    return [self loadStoryboard:storyboardName withService:service withCaptureManager:manager];
 }
 
--(UIViewController *)verifyUILoadWithService:(id<ITransport>) service withCaptureManager:(id<IOPCRCaptureManager>)manager{
-    return [self loadStoriboard:@"Verify" withService:service withCaptureManager:manager];
+-(UIViewController *)verifyUILoadWithService:(id<IOPCTransportProtocol>) service withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
+    NSString *storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"Verify_iPad" : @"Verify_iPhone";
+    return [self loadStoryboard:storyboardName withService:service withCaptureManager:manager];
 }
-
 
 @end
 
 @implementation OPUILoader(PrivateMethods)
 
--(UIViewController *)loadStoriboard:(NSString *)storiboardName
-                        withService:(id<ITransport>)service
-                 withCaptureManager:(id<IOPCRCaptureManager>)manager{
+-(UIViewController *)loadStoryboard:(NSString *)storyboardName
+                        withService:(id<IOPCTransportProtocol>)service
+                 withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
+    
     NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
-    UIViewController *vc = [[UIStoryboard storyboardWithName:storiboardName bundle: frameworkBundle] instantiateInitialViewController];
-    if([vc conformsToProtocol:@protocol(ITransportService)]){
-        id<ITransportService> vcService = (id<ITransportService>)vc;
+    UIViewController *vc = [[UIStoryboard storyboardWithName:storyboardName bundle:frameworkBundle] instantiateInitialViewController];
+    
+    if([vc conformsToProtocol:@protocol(IOPCTransportableProtocol)]){
+        id<IOPCTransportableProtocol> vcService = (id<IOPCTransportableProtocol>)vc;
         [vcService setService:service ];
     }
-    if([vc conformsToProtocol:@protocol(IsIOPCRCaptureManager)]){
-        id<IsIOPCRCaptureManager> vcManager = (id<IsIOPCRCaptureManager>)vc;
+    
+    if([vc conformsToProtocol:@protocol(IOPCIsCaptureManagerProtocol)]){
+        id<IOPCIsCaptureManagerProtocol> vcManager = (id<IOPCIsCaptureManagerProtocol>)vc;
         [vcManager setCaptureManager:manager];
     }
+    
     return vc;
 }
 

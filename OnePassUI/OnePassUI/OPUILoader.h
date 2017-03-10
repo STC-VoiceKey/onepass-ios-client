@@ -9,12 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import <OnePassUICommon/OnePassUICommon.h>
+#import "IOPUILoaderProtocol.h"
 
-@interface OPUILoader : NSObject<STCUILoaderProtocol>
+/**
+ The instance of 'IOPUILoaderProtocol'.
+ */
+@interface OPUILoader : NSObject<IOPUILoaderProtocol>
 
-+ (id<STCUILoaderProtocol>)sharedInstance;
+///---------------------------
+/// @name Initialization
+///---------------------------
 
-
+/**
+ The shared default instance of `IOPUILoaderProtocol` initialized with default values.
+ */
++(id<IOPUILoaderProtocol>)sharedInstance;
 
 @end

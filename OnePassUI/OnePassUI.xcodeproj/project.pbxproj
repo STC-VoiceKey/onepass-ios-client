@@ -7,41 +7,98 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C90866581D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */; };
-		C90866591D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */; };
-		C908665F1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */; };
-		C90866601D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */; };
+		C905C59F1E52F724000FAEAF /* OPUITimedBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C905C59D1E52F724000FAEAF /* OPUITimedBaseViewController.h */; };
+		C905C5A01E52F724000FAEAF /* OPUITimedBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C905C59E1E52F724000FAEAF /* OPUITimedBaseViewController.m */; };
 		C90B75D81D2A94B500446ACC /* OnePassUILocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C90B75DA1D2A94B500446ACC /* OnePassUILocalizable.strings */; };
-		C90B75DC1D2A94DA00446ACC /* Enroll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */; };
+		C90B75DC1D2A94DA00446ACC /* Enroll_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90B75DE1D2A94DA00446ACC /* Enroll_iPhone.storyboard */; };
 		C90B8C381D253B3C005F965E /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90B8C371D253B3C005F965E /* Icons.xcassets */; };
-		C90ED5D71D2D3EA30062CA13 /* Verify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */; };
+		C90E28ED1DC8D544006407FE /* OPUIActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = C90E28EB1DC8D544006407FE /* OPUIActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C90E28EE1DC8D544006407FE /* OPUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E28EC1DC8D544006407FE /* OPUIActivityIndicatorView.m */; };
+		C90E28F61DC8DF57006407FE /* OPUI3QuarterArcView.h in Headers */ = {isa = PBXBuildFile; fileRef = C90E28F41DC8DF57006407FE /* OPUI3QuarterArcView.h */; };
+		C90E28F71DC8DF57006407FE /* OPUI3QuarterArvView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90E28F51DC8DF57006407FE /* OPUI3QuarterArvView.m */; };
+		C90ED5D71D2D3EA30062CA13 /* Verify_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90ED5D91D2D3EA30062CA13 /* Verify_iPhone.storyboard */; };
 		C90F6CF61D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */; };
 		C90F6CF71D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */; };
-		C91A70131D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */; };
-		C91A70141D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */; };
-		C9474EE11D54E37300E531A7 /* OnePassUICommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9474EE01D54E37300E531A7 /* OnePassUICommon.framework */; };
+		C90FEC7B1DFEFE7700E919BF /* OPUIWarningView.h in Headers */ = {isa = PBXBuildFile; fileRef = C90FEC791DFEFE7700E919BF /* OPUIWarningView.h */; };
+		C90FEC7C1DFEFE7700E919BF /* OPUIWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FEC7A1DFEFE7700E919BF /* OPUIWarningView.m */; };
+		C922FAE11DB90289005F5602 /* OPUITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = C922FADF1DB90289005F5602 /* OPUITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C922FAE21DB90289005F5602 /* OPUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C922FAE01DB90289005F5602 /* OPUITextField.m */; };
+		C935F6781DC0B2000018CC4D /* OPUIFaceNotFoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C935F6771DC0B2000018CC4D /* OPUIFaceNotFoundView.xib */; };
+		C93765DD1DDDB7500018F1F3 /* OPUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C93765DB1DDDB7500018F1F3 /* OPUINavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C93765DE1DDDB7500018F1F3 /* OPUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93765DC1DDDB7500018F1F3 /* OPUINavigationController.m */; };
+		C93826021DF597D10032D289 /* OPUIVoiceVisualizerView.h in Headers */ = {isa = PBXBuildFile; fileRef = C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C93826031DF597D10032D289 /* OPUIVoiceVisualizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93826011DF597D10032D289 /* OPUIVoiceVisualizerView.m */; };
+		C938E93A1DC3A368001F5BF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C938E9391DC3A368001F5BF9 /* CoreGraphics.framework */; };
+		C93FE50F1E4A1FB5001961DC /* Verify_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C93FE5111E4A1FB5001961DC /* Verify_iPad.storyboard */; };
+		C93FE5241E4B0D2A001961DC /* OPUIRotatableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C93FE5221E4B0D2A001961DC /* OPUIRotatableViewController.h */; };
+		C93FE5251E4B0D2A001961DC /* OPUIRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93FE5231E4B0D2A001961DC /* OPUIRotatableViewController.m */; };
+		C946CBEC1E3F37110041A4D5 /* OPUIWhiteBorderView.h in Headers */ = {isa = PBXBuildFile; fileRef = C946CBEA1E3F37110041A4D5 /* OPUIWhiteBorderView.h */; };
+		C946CBED1E3F37110041A4D5 /* OPUIWhiteBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C946CBEB1E3F37110041A4D5 /* OPUIWhiteBorderView.m */; };
 		C9474F661D587AE500E531A7 /* OPUILoader.h in Headers */ = {isa = PBXBuildFile; fileRef = C9474F641D587AE500E531A7 /* OPUILoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9474F671D587AE500E531A7 /* OPUILoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C9474F651D587AE500E531A7 /* OPUILoader.m */; };
+		C949F57B1E13E380007D099C /* OPUIVerifyCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C949F5791E13E380007D099C /* OPUIVerifyCaptureManager.h */; };
+		C949F57C1E13E380007D099C /* OPUIVerifyCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C949F57A1E13E380007D099C /* OPUIVerifyCaptureManager.m */; };
+		C94D29671DC8C06E00BFB8F1 /* OPUICircleProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = C94D29651DC8C06E00BFB8F1 /* OPUICircleProgressView.h */; };
+		C94D29681DC8C06E00BFB8F1 /* OPUICircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D29661DC8C06E00BFB8F1 /* OPUICircleProgressView.m */; };
+		C94E40A11E0BF01200CB1E7F /* OPUIPushAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = C94E409F1E0BF01200CB1E7F /* OPUIPushAnimator.h */; };
+		C94E40A21E0BF01200CB1E7F /* OPUIPushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C94E40A01E0BF01200CB1E7F /* OPUIPushAnimator.m */; };
+		C94E40A51E0BF02000CB1E7F /* OPUIPopAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = C94E40A31E0BF02000CB1E7F /* OPUIPopAnimator.h */; };
+		C94E40A61E0BF02000CB1E7F /* OPUIPopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C94E40A41E0BF02000CB1E7F /* OPUIPopAnimator.m */; };
+		C953CF2F1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF2B1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.h */; };
+		C953CF301DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = C953CF2C1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.m */; };
+		C953CF311DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF2D1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h */; };
+		C953CF321DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = C953CF2E1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m */; };
+		C953CF391DE6E3A100FD1A4D /* OPUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF331DE6E3A100FD1A4D /* OPUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C953CF3A1DE6E3A100FD1A4D /* OPUIAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C953CF341DE6E3A100FD1A4D /* OPUIAlertViewController.m */; };
+		C953CF3D1DE6E3A100FD1A4D /* OPUIBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF371DE6E3A100FD1A4D /* OPUIBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C953CF3E1DE6E3A100FD1A4D /* OPUIBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C953CF381DE6E3A100FD1A4D /* OPUIBaseViewController.m */; };
+		C953CF481DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF431DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h */; };
+		C953CF591DE6E3D700FD1A4D /* OPUIBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF571DE6E3D700FD1A4D /* OPUIBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C953CF5A1DE6E3D700FD1A4D /* OPUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C953CF581DE6E3D700FD1A4D /* OPUIBarButtonItem.m */; };
+		C953CF681DE70D0800FD1A4D /* IOPUILoaderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C953CF671DE70D0800FD1A4D /* IOPUILoaderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C955E0A81D0FFC7A006D2682 /* OnePassUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0A71D0FFC7A006D2682 /* OnePassUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C955E0AF1D0FFC7A006D2682 /* OnePassUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */; };
 		C955E0B41D0FFC7A006D2682 /* OnePassUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E0B31D0FFC7A006D2682 /* OnePassUITests.m */; };
 		C955E0C81D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */; };
 		C955E0C91D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */; };
-		C96079311D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */; };
-		C96079321D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */; };
+		C957D69F1E4DAB8E0072FEA5 /* OPUIErrorView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C957D6A11E4DAB8E0072FEA5 /* OPUIErrorView_iPad.xib */; };
+		C957D6AD1E4DAC460072FEA5 /* OPUIErrorView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C957D6AF1E4DAC460072FEA5 /* OPUIErrorView_iPhone.xib */; };
+		C96079311D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C960792F1D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.h */; };
+		C96079321D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96079301D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.m */; };
 		C964446F1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */; };
 		C96444701D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */; };
+		C96783FF1DF96D6E003C699E /* OPUIIndicatorsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C96783FD1DF96D6E003C699E /* OPUIIndicatorsViewController.h */; };
+		C96784001DF96D6E003C699E /* OPUIIndicatorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96783FE1DF96D6E003C699E /* OPUIIndicatorsViewController.m */; };
+		C972F8C71DCB4B740006552F /* OPUIDelayedSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = C972F8C51DCB4B740006552F /* OPUIDelayedSegue.h */; };
+		C972F8C81DCB4B740006552F /* OPUIDelayedSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C972F8C61DCB4B740006552F /* OPUIDelayedSegue.m */; };
+		C97A6D021DCB76B600676561 /* UIActivityIndicatorView+Status.h in Headers */ = {isa = PBXBuildFile; fileRef = C97A6D001DCB76B600676561 /* UIActivityIndicatorView+Status.h */; };
+		C97A6D031DCB76B600676561 /* UIActivityIndicatorView+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A6D011DCB76B600676561 /* UIActivityIndicatorView+Status.m */; };
+		C97A6D0A1DD0D4F700676561 /* OPUIDigitLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C97A6D081DD0D4F700676561 /* OPUIDigitLabel.h */; };
+		C97A6D0B1DD0D4F700676561 /* OPUIDigitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A6D091DD0D4F700676561 /* OPUIDigitLabel.m */; };
+		C97A6D151DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h in Headers */ = {isa = PBXBuildFile; fileRef = C97A6D131DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h */; };
+		C97A6D161DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A6D141DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m */; };
+		C98CF0141DD1FF7C00174281 /* OPUIResultView.h in Headers */ = {isa = PBXBuildFile; fileRef = C98CF0121DD1FF7C00174281 /* OPUIResultView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C98CF0151DD1FF7C00174281 /* OPUIResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CF0131DD1FF7C00174281 /* OPUIResultView.m */; };
+		C98CF01F1DD3312D00174281 /* OPUIDivergentCirclesView.h in Headers */ = {isa = PBXBuildFile; fileRef = C98CF01D1DD3312D00174281 /* OPUIDivergentCirclesView.h */; };
+		C98CF0201DD3312D00174281 /* OPUIDivergentCirclesView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CF01E1DD3312D00174281 /* OPUIDivergentCirclesView.m */; };
+		C98CF02A1DD4932200174281 /* OPUIErrorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C98CF0281DD4932200174281 /* OPUIErrorViewController.h */; };
+		C98CF02B1DD4932200174281 /* OPUIErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CF0291DD4932200174281 /* OPUIErrorViewController.m */; };
+		C99F6E051DC8AEF000F3B227 /* UIDevice+Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = C99F6E031DC8AEF000F3B227 /* UIDevice+Platform.h */; };
+		C99F6E061DC8AEF000F3B227 /* UIDevice+Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F6E041DC8AEF000F3B227 /* UIDevice+Platform.m */; };
+		C9C76DD51DC2155E0034EA09 /* OPUILayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C76DD31DC2155E0034EA09 /* OPUILayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9C76DD61DC2155E0034EA09 /* OPUILayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C76DD41DC2155E0034EA09 /* OPUILayoutConstraint.m */; };
+		C9C76DDC1DC237A20034EA09 /* OPUISpacingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C76DDA1DC237A20034EA09 /* OPUISpacingLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9C76DDD1DC237A20034EA09 /* OPUISpacingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C76DDB1DC237A20034EA09 /* OPUISpacingLabel.m */; };
+		C9C76DE01DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C76DDE1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.h */; };
+		C9C76DE11DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C76DDF1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m */; };
+		C9D245751DF95252003439D7 /* blank-male-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D245741DF95252003439D7 /* blank-male-mask.png */; };
+		C9EE48A81E41D2CE0075A03D /* Enroll_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EE48AA1E41D2CE0075A03D /* Enroll_iPad.storyboard */; };
 		C9FB14CC1D54CCF1002A0E67 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9817A291D21645100F85698 /* OnePassCore.framework */; };
+		C9FC4C5D1E02EEEC00C69F99 /* UIView+DrawShapes.h in Headers */ = {isa = PBXBuildFile; fileRef = C9FC4C5B1E02EEEC00C69F99 /* UIView+DrawShapes.h */; };
+		C9FC4C5E1E02EEEC00C69F99 /* UIView+DrawShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FC4C5C1E02EEEC00C69F99 /* UIView+DrawShapes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C9474ED61D54E2A000E531A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C9F405801D538AD500007549;
-			remoteInfo = OnePassUICommon;
-		};
 		C955E0B01D0FFC7A006D2682 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C955E09B1D0FFC7A006D2682 /* Project object */;
@@ -63,46 +120,88 @@
 			remoteGlobalIDString = C977D5EA1D117A2300A3E42D;
 			remoteInfo = OnePassCoreTests;
 		};
-		C9F405AC1D538C2800007549 /* PBXContainerItemProxy */ = {
+		C9BEA59F1DE72E5100E0ADA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */;
+			containerPortal = C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C9F405811D538AD500007549;
-			remoteInfo = OnePassUICommon;
+			remoteInfo = OnePassCapture;
 		};
-		C9F405AE1D538C2800007549 /* PBXContainerItemProxy */ = {
+		C9BEA5A11DE72E5100E0ADA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */;
+			containerPortal = C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C9F4058B1D538AD500007549;
-			remoteInfo = OnePassUICommonTests;
+			remoteInfo = OnePassCaptureTests;
+		};
+		C9BEA5A41DE72EA000E0ADA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C9F405801D538AD500007549;
+			remoteInfo = OnePassCapture;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFailPhotoShotViewController.h; sourceTree = "<group>"; };
-		C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFailPhotoShotViewController.m; sourceTree = "<group>"; };
-		C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFailVoiceViewController.h; sourceTree = "<group>"; };
-		C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFailVoiceViewController.m; sourceTree = "<group>"; };
+		C905C59D1E52F724000FAEAF /* OPUITimedBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUITimedBaseViewController.h; sourceTree = "<group>"; };
+		C905C59E1E52F724000FAEAF /* OPUITimedBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUITimedBaseViewController.m; sourceTree = "<group>"; };
 		C90B75D91D2A94B500446ACC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
 		C90B75DB1D2A94C800446ACC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
 		C90B8C371D253B3C005F965E /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
-		C90ED5DE1D2D3EA60062CA13 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Verify.strings; sourceTree = "<group>"; };
-		C90ED5DF1D2D3FD70062CA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Verify.storyboard; sourceTree = "<group>"; };
-		C90ED5E01D2D3FDE0062CA13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Verify.strings; sourceTree = "<group>"; };
+		C90E28EB1DC8D544006407FE /* OPUIActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIActivityIndicatorView.h; sourceTree = "<group>"; };
+		C90E28EC1DC8D544006407FE /* OPUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIActivityIndicatorView.m; sourceTree = "<group>"; };
+		C90E28F41DC8DF57006407FE /* OPUI3QuarterArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUI3QuarterArcView.h; path = Design/OPUI3QuarterArcView.h; sourceTree = "<group>"; };
+		C90E28F51DC8DF57006407FE /* OPUI3QuarterArvView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUI3QuarterArvView.m; path = Design/OPUI3QuarterArvView.m; sourceTree = "<group>"; };
+		C90ED5DE1D2D3EA60062CA13 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Verify_iPhone.strings; sourceTree = "<group>"; };
+		C90ED5DF1D2D3FD70062CA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Verify_iPhone.storyboard; sourceTree = "<group>"; };
+		C90ED5E01D2D3FDE0062CA13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Verify_iPhone.strings; sourceTree = "<group>"; };
 		C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollAgreementViewController.h; sourceTree = "<group>"; };
 		C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollAgreementViewController.m; sourceTree = "<group>"; };
-		C918CDAB1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Enroll.strings"; sourceTree = "<group>"; };
-		C918CDAC1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Verify.strings"; sourceTree = "<group>"; };
+		C90FEC791DFEFE7700E919BF /* OPUIWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIWarningView.h; sourceTree = "<group>"; };
+		C90FEC7A1DFEFE7700E919BF /* OPUIWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIWarningView.m; sourceTree = "<group>"; };
 		C918CDAF1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OnePassUILocalizable.strings"; sourceTree = "<group>"; };
-		C918CDB71D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Enroll.strings; sourceTree = "<group>"; };
-		C918CDB81D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Verify.strings; sourceTree = "<group>"; };
+		C918CDB81D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Verify_iPhone.strings; sourceTree = "<group>"; };
 		C918CDBB1D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
-		C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyFailViewController.h; sourceTree = "<group>"; };
-		C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyFailViewController.m; sourceTree = "<group>"; };
-		C9474EE01D54E37300E531A7 /* OnePassUICommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePassUICommon.framework; path = "../OpePassOnlineDemo/DerivedData/OnePassOnlineDemo/Build/Products/Debug-iphoneos/OnePassUICommon.framework"; sourceTree = "<group>"; };
+		C922FADF1DB90289005F5602 /* OPUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUITextField.h; path = Design/OPUITextField.h; sourceTree = "<group>"; };
+		C922FAE01DB90289005F5602 /* OPUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUITextField.m; path = Design/OPUITextField.m; sourceTree = "<group>"; };
+		C935F6771DC0B2000018CC4D /* OPUIFaceNotFoundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPUIFaceNotFoundView.xib; sourceTree = "<group>"; };
+		C93765DB1DDDB7500018F1F3 /* OPUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUINavigationController.h; sourceTree = "<group>"; };
+		C93765DC1DDDB7500018F1F3 /* OPUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUINavigationController.m; sourceTree = "<group>"; };
+		C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVoiceVisualizerView.h; sourceTree = "<group>"; };
+		C93826011DF597D10032D289 /* OPUIVoiceVisualizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVoiceVisualizerView.m; sourceTree = "<group>"; };
+		C938E9391DC3A368001F5BF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C93FE5101E4A1FB5001961DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Verify_iPad.storyboard; sourceTree = "<group>"; };
+		C93FE5131E4A1FB8001961DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Verify_iPad.strings; sourceTree = "<group>"; };
+		C93FE5151E4A1FB9001961DC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Verify_iPad.strings; sourceTree = "<group>"; };
+		C93FE5171E4A1FBA001961DC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Verify_iPad.strings"; sourceTree = "<group>"; };
+		C93FE5191E4A1FBB001961DC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Verify_iPad.strings; sourceTree = "<group>"; };
+		C93FE5221E4B0D2A001961DC /* OPUIRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIRotatableViewController.h; sourceTree = "<group>"; };
+		C93FE5231E4B0D2A001961DC /* OPUIRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIRotatableViewController.m; sourceTree = "<group>"; };
+		C946CBEA1E3F37110041A4D5 /* OPUIWhiteBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIWhiteBorderView.h; sourceTree = "<group>"; };
+		C946CBEB1E3F37110041A4D5 /* OPUIWhiteBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIWhiteBorderView.m; sourceTree = "<group>"; };
 		C9474F641D587AE500E531A7 /* OPUILoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUILoader.h; sourceTree = "<group>"; };
 		C9474F651D587AE500E531A7 /* OPUILoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUILoader.m; sourceTree = "<group>"; };
+		C949F5791E13E380007D099C /* OPUIVerifyCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyCaptureManager.h; sourceTree = "<group>"; };
+		C949F57A1E13E380007D099C /* OPUIVerifyCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyCaptureManager.m; sourceTree = "<group>"; };
+		C94D29651DC8C06E00BFB8F1 /* OPUICircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUICircleProgressView.h; path = Design/OPUICircleProgressView.h; sourceTree = "<group>"; };
+		C94D29661DC8C06E00BFB8F1 /* OPUICircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUICircleProgressView.m; path = Design/OPUICircleProgressView.m; sourceTree = "<group>"; };
+		C94E409F1E0BF01200CB1E7F /* OPUIPushAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIPushAnimator.h; sourceTree = "<group>"; };
+		C94E40A01E0BF01200CB1E7F /* OPUIPushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIPushAnimator.m; sourceTree = "<group>"; };
+		C94E40A31E0BF02000CB1E7F /* OPUIPopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIPopAnimator.h; sourceTree = "<group>"; };
+		C94E40A41E0BF02000CB1E7F /* OPUIPopAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIPopAnimator.m; sourceTree = "<group>"; };
+		C953CF2B1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBlockCentisecondsTimer.h; sourceTree = "<group>"; };
+		C953CF2C1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBlockCentisecondsTimer.m; sourceTree = "<group>"; };
+		C953CF2D1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBlockSecondTimer.h; sourceTree = "<group>"; };
+		C953CF2E1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBlockSecondTimer.m; sourceTree = "<group>"; };
+		C953CF331DE6E3A100FD1A4D /* OPUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIAlertViewController.h; sourceTree = "<group>"; };
+		C953CF341DE6E3A100FD1A4D /* OPUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIAlertViewController.m; sourceTree = "<group>"; };
+		C953CF371DE6E3A100FD1A4D /* OPUIBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBaseViewController.h; sourceTree = "<group>"; };
+		C953CF381DE6E3A100FD1A4D /* OPUIBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBaseViewController.m; sourceTree = "<group>"; };
+		C953CF431DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUICorporateColorUtils.h; sourceTree = "<group>"; };
+		C953CF571DE6E3D700FD1A4D /* OPUIBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIBarButtonItem.h; sourceTree = "<group>"; };
+		C953CF581DE6E3D700FD1A4D /* OPUIBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIBarButtonItem.m; sourceTree = "<group>"; };
+		C953CF671DE70D0800FD1A4D /* IOPUILoaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPUILoaderProtocol.h; sourceTree = "<group>"; };
 		C955E0A41D0FFC7A006D2682 /* OnePassUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C955E0A71D0FFC7A006D2682 /* OnePassUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassUI.h; sourceTree = "<group>"; };
 		C955E0A91D0FFC7A006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,15 +210,60 @@
 		C955E0B51D0FFC7A006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollFaceCaptureViewController.h; sourceTree = "<group>"; };
 		C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollFaceCaptureViewController.m; sourceTree = "<group>"; };
-		C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyVideoCaptureViewController.h; sourceTree = "<group>"; };
-		C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyVideoCaptureViewController.m; sourceTree = "<group>"; };
+		C9567C9C1D6C7AF6004FBAE4 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Verify_iPhone.strings"; sourceTree = "<group>"; };
+		C957D6A01E4DAB8E0072FEA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OPUIErrorView_iPad.xib; sourceTree = "<group>"; };
+		C957D6A61E4DAB920072FEA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OPUIErrorView_iPad.strings; sourceTree = "<group>"; };
+		C957D6A81E4DAB930072FEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OPUIErrorView_iPad.strings; sourceTree = "<group>"; };
+		C957D6AA1E4DAB940072FEA5 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OPUIErrorView_iPad.strings"; sourceTree = "<group>"; };
+		C957D6AC1E4DAB950072FEA5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/OPUIErrorView_iPad.strings; sourceTree = "<group>"; };
+		C957D6AE1E4DAC460072FEA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OPUIErrorView_iPhone.xib; sourceTree = "<group>"; };
+		C957D6B11E4DAC4A0072FEA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OPUIErrorView_iPhone.strings; sourceTree = "<group>"; };
+		C957D6B31E4DAC4C0072FEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OPUIErrorView_iPhone.strings; sourceTree = "<group>"; };
+		C957D6B51E4DAC4D0072FEA5 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OPUIErrorView_iPhone.strings"; sourceTree = "<group>"; };
+		C957D6B71E4DAC4E0072FEA5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/OPUIErrorView_iPhone.strings; sourceTree = "<group>"; };
+		C960792F1D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyCaptureViewController.h; sourceTree = "<group>"; };
+		C96079301D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyCaptureViewController.m; sourceTree = "<group>"; };
 		C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIEnrollVoiceRecordViewController.h; sourceTree = "<group>"; };
 		C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIEnrollVoiceRecordViewController.m; sourceTree = "<group>"; };
+		C96783FD1DF96D6E003C699E /* OPUIIndicatorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIIndicatorsViewController.h; sourceTree = "<group>"; };
+		C96783FE1DF96D6E003C699E /* OPUIIndicatorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIIndicatorsViewController.m; sourceTree = "<group>"; };
+		C96FE8081D9D58690052A6DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Enroll_iPhone.strings; sourceTree = "<group>"; };
+		C96FE8091D9D586E0052A6DA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Enroll_iPhone.strings; sourceTree = "<group>"; };
+		C96FE80A1D9D58730052A6DA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Enroll_iPhone.strings"; sourceTree = "<group>"; };
+		C96FE80B1D9D587A0052A6DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Enroll_iPhone.strings; sourceTree = "<group>"; };
+		C972F8C51DCB4B740006552F /* OPUIDelayedSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIDelayedSegue.h; sourceTree = "<group>"; };
+		C972F8C61DCB4B740006552F /* OPUIDelayedSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIDelayedSegue.m; sourceTree = "<group>"; };
+		C97A6D001DCB76B600676561 /* UIActivityIndicatorView+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+Status.h"; path = "Design/UIActivityIndicatorView+Status.h"; sourceTree = "<group>"; };
+		C97A6D011DCB76B600676561 /* UIActivityIndicatorView+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+Status.m"; path = "Design/UIActivityIndicatorView+Status.m"; sourceTree = "<group>"; };
+		C97A6D081DD0D4F700676561 /* OPUIDigitLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUIDigitLabel.h; path = Design/OPUIDigitLabel.h; sourceTree = "<group>"; };
+		C97A6D091DD0D4F700676561 /* OPUIDigitLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUIDigitLabel.m; path = Design/OPUIDigitLabel.m; sourceTree = "<group>"; };
+		C97A6D131DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIActivityIndicatorBlackView.h; sourceTree = "<group>"; };
+		C97A6D141DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIActivityIndicatorBlackView.m; sourceTree = "<group>"; };
 		C9817A221D21645100F85698 /* OnePassCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCore.xcodeproj; path = ../OnePassCore/OnePassCore.xcodeproj; sourceTree = "<group>"; };
-		C9D330F41D2A95280049FB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Enroll.storyboard; sourceTree = "<group>"; };
-		C9D330F61D2A95310049FB62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Enroll.strings; sourceTree = "<group>"; };
-		C9D330F81D2A95390049FB62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Enroll.strings; sourceTree = "<group>"; };
-		C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassUICommon.xcodeproj; path = ../OnePassUICommon/OnePassUICommon.xcodeproj; sourceTree = "<group>"; };
+		C98CF0121DD1FF7C00174281 /* OPUIResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIResultView.h; sourceTree = "<group>"; };
+		C98CF0131DD1FF7C00174281 /* OPUIResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIResultView.m; sourceTree = "<group>"; };
+		C98CF01D1DD3312D00174281 /* OPUIDivergentCirclesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUIDivergentCirclesView.h; path = Design/OPUIDivergentCirclesView.h; sourceTree = "<group>"; };
+		C98CF01E1DD3312D00174281 /* OPUIDivergentCirclesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUIDivergentCirclesView.m; path = Design/OPUIDivergentCirclesView.m; sourceTree = "<group>"; };
+		C98CF0281DD4932200174281 /* OPUIErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUIErrorViewController.h; path = Design/OPUIErrorViewController.h; sourceTree = "<group>"; };
+		C98CF0291DD4932200174281 /* OPUIErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUIErrorViewController.m; path = Design/OPUIErrorViewController.m; sourceTree = "<group>"; };
+		C99F6E031DC8AEF000F3B227 /* UIDevice+Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Platform.h"; sourceTree = "<group>"; };
+		C99F6E041DC8AEF000F3B227 /* UIDevice+Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Platform.m"; sourceTree = "<group>"; };
+		C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCapture.xcodeproj; path = ../OnePassCapture/OnePassCapture.xcodeproj; sourceTree = "<group>"; };
+		C9C76DD31DC2155E0034EA09 /* OPUILayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUILayoutConstraint.h; sourceTree = "<group>"; };
+		C9C76DD41DC2155E0034EA09 /* OPUILayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUILayoutConstraint.m; sourceTree = "<group>"; };
+		C9C76DDA1DC237A20034EA09 /* OPUISpacingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUISpacingLabel.h; path = Design/OPUISpacingLabel.h; sourceTree = "<group>"; };
+		C9C76DDB1DC237A20034EA09 /* OPUISpacingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUISpacingLabel.m; path = Design/OPUISpacingLabel.m; sourceTree = "<group>"; };
+		C9C76DDE1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVerifyIndicatorViewController.h; sourceTree = "<group>"; };
+		C9C76DDF1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVerifyIndicatorViewController.m; sourceTree = "<group>"; };
+		C9D245741DF95252003439D7 /* blank-male-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-male-mask.png"; sourceTree = "<group>"; };
+		C9D330F41D2A95280049FB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Enroll_iPhone.storyboard; sourceTree = "<group>"; };
+		C9EE48A91E41D2CE0075A03D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Enroll_iPad.storyboard; sourceTree = "<group>"; };
+		C9EE48AC1E41D2D10075A03D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Enroll_iPad.strings; sourceTree = "<group>"; };
+		C9EE48AE1E41D2D20075A03D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Enroll_iPad.strings; sourceTree = "<group>"; };
+		C9EE48B01E41D2D30075A03D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Enroll_iPad.strings"; sourceTree = "<group>"; };
+		C9EE48B21E41D2D40075A03D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Enroll_iPad.strings; sourceTree = "<group>"; };
+		C9FC4C5B1E02EEEC00C69F99 /* UIView+DrawShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DrawShapes.h"; sourceTree = "<group>"; };
+		C9FC4C5C1E02EEEC00C69F99 /* UIView+DrawShapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DrawShapes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9474EE11D54E37300E531A7 /* OnePassUICommon.framework in Frameworks */,
+				C938E93A1DC3A368001F5BF9 /* CoreGraphics.framework in Frameworks */,
 				C9FB14CC1D54CCF1002A0E67 /* OnePassCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,15 +287,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C905C5A41E52FF7B000FAEAF /* BaseViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C953CF371DE6E3A100FD1A4D /* OPUIBaseViewController.h */,
+				C953CF381DE6E3A100FD1A4D /* OPUIBaseViewController.m */,
+				C905C59D1E52F724000FAEAF /* OPUITimedBaseViewController.h */,
+				C905C59E1E52F724000FAEAF /* OPUITimedBaseViewController.m */,
+				C93FE5221E4B0D2A001961DC /* OPUIRotatableViewController.h */,
+				C93FE5231E4B0D2A001961DC /* OPUIRotatableViewController.m */,
+			);
+			name = BaseViewControllers;
+			sourceTree = "<group>";
+		};
+		C938E9351DC3A368001F5BF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C938E9391DC3A368001F5BF9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C94E409E1E0BEFF100CB1E7F /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				C94E40A31E0BF02000CB1E7F /* OPUIPopAnimator.h */,
+				C94E40A41E0BF02000CB1E7F /* OPUIPopAnimator.m */,
+				C94E409F1E0BF01200CB1E7F /* OPUIPushAnimator.h */,
+				C94E40A01E0BF01200CB1E7F /* OPUIPushAnimator.m */,
+			);
+			name = Animators;
+			sourceTree = "<group>";
+		};
 		C955E09A1D0FFC7A006D2682 = {
 			isa = PBXGroup;
 			children = (
-				C9474EE01D54E37300E531A7 /* OnePassUICommon.framework */,
-				C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */,
 				C9817A221D21645100F85698 /* OnePassCore.xcodeproj */,
+				C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */,
 				C955E0A61D0FFC7A006D2682 /* OnePassUI */,
 				C955E0B21D0FFC7A006D2682 /* OnePassUITests */,
 				C955E0A51D0FFC7A006D2682 /* Products */,
+				C938E9351DC3A368001F5BF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,11 +344,14 @@
 			isa = PBXGroup;
 			children = (
 				C955E0A71D0FFC7A006D2682 /* OnePassUI.h */,
+				C953CF671DE70D0800FD1A4D /* IOPUILoaderProtocol.h */,
 				C9474F641D587AE500E531A7 /* OPUILoader.h */,
 				C9474F651D587AE500E531A7 /* OPUILoader.m */,
 				C955E0C51D0FFE95006D2682 /* ViewControllers */,
-				C955E0A91D0FFC7A006D2682 /* Info.plist */,
+				C9FB81BB1DB8BAE5009AAE0C /* Design */,
+				C9EB81671DF045B0009BA949 /* Timers */,
 				C90B8C371D253B3C005F965E /* Icons.xcassets */,
+				C955E0A91D0FFC7A006D2682 /* Info.plist */,
 				C90B75DA1D2A94B500446ACC /* OnePassUILocalizable.strings */,
 			);
 			path = OnePassUI;
@@ -190,40 +369,65 @@
 		C955E0C51D0FFE95006D2682 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C960792D1D1D2A3E00B9F55E /* Enroll */,
-				C960792E1D1D2AB200B9F55E /* Verify */,
+				C98CF0251DD4907C00174281 /* Common */,
+				C960792D1D1D2A3E00B9F55E /* Enrollment */,
+				C960792E1D1D2AB200B9F55E /* Verification */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		C960792D1D1D2A3E00B9F55E /* Enroll */ = {
+		C960792D1D1D2A3E00B9F55E /* Enrollment */ = {
 			isa = PBXGroup;
 			children = (
-				C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */,
+				C90B75DE1D2A94DA00446ACC /* Enroll_iPhone.storyboard */,
+				C9EE48AA1E41D2CE0075A03D /* Enroll_iPad.storyboard */,
 				C90F6CF41D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h */,
 				C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */,
 				C955E0C61D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h */,
 				C955E0C71D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m */,
 				C964446D1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h */,
 				C964446E1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m */,
-				C90866561D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h */,
-				C90866571D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m */,
-				C908665D1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h */,
-				C908665E1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m */,
 			);
-			name = Enroll;
+			name = Enrollment;
 			sourceTree = "<group>";
 		};
-		C960792E1D1D2AB200B9F55E /* Verify */ = {
+		C960792E1D1D2AB200B9F55E /* Verification */ = {
 			isa = PBXGroup;
 			children = (
-				C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */,
-				C960792F1D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h */,
-				C96079301D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m */,
-				C91A70111D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h */,
-				C91A70121D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m */,
+				C90ED5D91D2D3EA30062CA13 /* Verify_iPhone.storyboard */,
+				C93FE5111E4A1FB5001961DC /* Verify_iPad.storyboard */,
+				C960792F1D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.h */,
+				C96079301D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.m */,
+				C949F5791E13E380007D099C /* OPUIVerifyCaptureManager.h */,
+				C949F57A1E13E380007D099C /* OPUIVerifyCaptureManager.m */,
+				C9C76DDE1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.h */,
+				C9C76DDF1DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m */,
 			);
-			name = Verify;
+			name = Verification;
+			sourceTree = "<group>";
+		};
+		C9659C331E0AD49B00B31313 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				C972F8C51DCB4B740006552F /* OPUIDelayedSegue.h */,
+				C972F8C61DCB4B740006552F /* OPUIDelayedSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		C97A6D071DCB76BD00676561 /* ActivityIndicatorViews */ = {
+			isa = PBXGroup;
+			children = (
+				C90E28F41DC8DF57006407FE /* OPUI3QuarterArcView.h */,
+				C90E28F51DC8DF57006407FE /* OPUI3QuarterArvView.m */,
+				C97A6D001DCB76B600676561 /* UIActivityIndicatorView+Status.h */,
+				C97A6D011DCB76B600676561 /* UIActivityIndicatorView+Status.m */,
+				C90E28EB1DC8D544006407FE /* OPUIActivityIndicatorView.h */,
+				C90E28EC1DC8D544006407FE /* OPUIActivityIndicatorView.m */,
+				C97A6D131DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h */,
+				C97A6D141DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m */,
+			);
+			name = ActivityIndicatorViews;
 			sourceTree = "<group>";
 		};
 		C9817A231D21645100F85698 /* Products */ = {
@@ -235,13 +439,129 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9F405A81D538C2800007549 /* Products */ = {
+		C982D2151DBE2F5600459C37 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				C9F405AD1D538C2800007549 /* OnePassUICommon.framework */,
-				C9F405AF1D538C2800007549 /* OnePassUICommonTests.xctest */,
+				C9C76DDA1DC237A20034EA09 /* OPUISpacingLabel.h */,
+				C9C76DDB1DC237A20034EA09 /* OPUISpacingLabel.m */,
+				C97A6D081DD0D4F700676561 /* OPUIDigitLabel.h */,
+				C97A6D091DD0D4F700676561 /* OPUIDigitLabel.m */,
+			);
+			name = Labels;
+			sourceTree = "<group>";
+		};
+		C98CF0111DD1FEEA00174281 /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				C9C76DD31DC2155E0034EA09 /* OPUILayoutConstraint.h */,
+				C9C76DD41DC2155E0034EA09 /* OPUILayoutConstraint.m */,
+				C99F6E031DC8AEF000F3B227 /* UIDevice+Platform.h */,
+				C99F6E041DC8AEF000F3B227 /* UIDevice+Platform.m */,
+			);
+			name = Constraints;
+			sourceTree = "<group>";
+		};
+		C98CF0251DD4907C00174281 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C905C5A41E52FF7B000FAEAF /* BaseViewControllers */,
+				C93765DB1DDDB7500018F1F3 /* OPUINavigationController.h */,
+				C93765DC1DDDB7500018F1F3 /* OPUINavigationController.m */,
+				C953CF331DE6E3A100FD1A4D /* OPUIAlertViewController.h */,
+				C953CF341DE6E3A100FD1A4D /* OPUIAlertViewController.m */,
+				C96783FD1DF96D6E003C699E /* OPUIIndicatorsViewController.h */,
+				C96783FE1DF96D6E003C699E /* OPUIIndicatorsViewController.m */,
+				C98CF0281DD4932200174281 /* OPUIErrorViewController.h */,
+				C98CF0291DD4932200174281 /* OPUIErrorViewController.m */,
+				C957D6A11E4DAB8E0072FEA5 /* OPUIErrorView_iPad.xib */,
+				C957D6AF1E4DAC460072FEA5 /* OPUIErrorView_iPhone.xib */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		C98CF03B1DD5EEFE00174281 /* ProgressViews */ = {
+			isa = PBXGroup;
+			children = (
+				C94D29651DC8C06E00BFB8F1 /* OPUICircleProgressView.h */,
+				C94D29661DC8C06E00BFB8F1 /* OPUICircleProgressView.m */,
+			);
+			name = ProgressViews;
+			sourceTree = "<group>";
+		};
+		C9BEA59B1DE72E5100E0ADA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9BEA5A01DE72E5100E0ADA6 /* OnePassCapture.framework */,
+				C9BEA5A21DE72E5100E0ADA6 /* OnePassCaptureTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C9EB81671DF045B0009BA949 /* Timers */ = {
+			isa = PBXGroup;
+			children = (
+				C953CF2B1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.h */,
+				C953CF2C1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.m */,
+				C953CF2D1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h */,
+				C953CF2E1DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m */,
+			);
+			name = Timers;
+			sourceTree = "<group>";
+		};
+		C9EB81681DF04BF6009BA949 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				C922FADF1DB90289005F5602 /* OPUITextField.h */,
+				C922FAE01DB90289005F5602 /* OPUITextField.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		C9EB816A1DF05228009BA949 /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+				C953CF571DE6E3D700FD1A4D /* OPUIBarButtonItem.h */,
+				C953CF581DE6E3D700FD1A4D /* OPUIBarButtonItem.m */,
+			);
+			name = Toolbars;
+			sourceTree = "<group>";
+		};
+		C9FB81BB1DB8BAE5009AAE0C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				C953CF431DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h */,
+				C97A6D071DCB76BD00676561 /* ActivityIndicatorViews */,
+				C94E409E1E0BEFF100CB1E7F /* Animators */,
+				C98CF0111DD1FEEA00174281 /* Constraints */,
+				C9EB81681DF04BF6009BA949 /* Controls */,
+				C982D2151DBE2F5600459C37 /* Labels */,
+				C98CF03B1DD5EEFE00174281 /* ProgressViews */,
+				C9659C331E0AD49B00B31313 /* Segues */,
+				C9EB816A1DF05228009BA949 /* Toolbars */,
+				C9FB81BF1DB8BAF8009AAE0C /* Views */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		C9FB81BF1DB8BAF8009AAE0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9FC4C5B1E02EEEC00C69F99 /* UIView+DrawShapes.h */,
+				C9FC4C5C1E02EEEC00C69F99 /* UIView+DrawShapes.m */,
+				C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */,
+				C93826011DF597D10032D289 /* OPUIVoiceVisualizerView.m */,
+				C98CF0121DD1FF7C00174281 /* OPUIResultView.h */,
+				C98CF0131DD1FF7C00174281 /* OPUIResultView.m */,
+				C98CF01D1DD3312D00174281 /* OPUIDivergentCirclesView.h */,
+				C98CF01E1DD3312D00174281 /* OPUIDivergentCirclesView.m */,
+				C90FEC791DFEFE7700E919BF /* OPUIWarningView.h */,
+				C90FEC7A1DFEFE7700E919BF /* OPUIWarningView.m */,
+				C935F6771DC0B2000018CC4D /* OPUIFaceNotFoundView.xib */,
+				C9D245741DF95252003439D7 /* blank-male-mask.png */,
+				C946CBEA1E3F37110041A4D5 /* OPUIWhiteBorderView.h */,
+				C946CBEB1E3F37110041A4D5 /* OPUIWhiteBorderView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,15 +571,45 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90866581D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.h in Headers */,
+				C953CF3D1DE6E3A100FD1A4D /* OPUIBaseViewController.h in Headers */,
+				C953CF391DE6E3A100FD1A4D /* OPUIAlertViewController.h in Headers */,
+				C953CF311DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h in Headers */,
+				C93FE5241E4B0D2A001961DC /* OPUIRotatableViewController.h in Headers */,
+				C953CF481DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h in Headers */,
+				C90FEC7B1DFEFE7700E919BF /* OPUIWarningView.h in Headers */,
+				C922FAE11DB90289005F5602 /* OPUITextField.h in Headers */,
+				C90E28F61DC8DF57006407FE /* OPUI3QuarterArcView.h in Headers */,
+				C98CF01F1DD3312D00174281 /* OPUIDivergentCirclesView.h in Headers */,
+				C946CBEC1E3F37110041A4D5 /* OPUIWhiteBorderView.h in Headers */,
+				C97A6D021DCB76B600676561 /* UIActivityIndicatorView+Status.h in Headers */,
+				C9C76DD51DC2155E0034EA09 /* OPUILayoutConstraint.h in Headers */,
+				C953CF591DE6E3D700FD1A4D /* OPUIBarButtonItem.h in Headers */,
+				C96783FF1DF96D6E003C699E /* OPUIIndicatorsViewController.h in Headers */,
+				C953CF681DE70D0800FD1A4D /* IOPUILoaderProtocol.h in Headers */,
+				C93826021DF597D10032D289 /* OPUIVoiceVisualizerView.h in Headers */,
+				C94E40A11E0BF01200CB1E7F /* OPUIPushAnimator.h in Headers */,
+				C97A6D151DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h in Headers */,
+				C93765DD1DDDB7500018F1F3 /* OPUINavigationController.h in Headers */,
+				C98CF0141DD1FF7C00174281 /* OPUIResultView.h in Headers */,
+				C905C59F1E52F724000FAEAF /* OPUITimedBaseViewController.h in Headers */,
+				C949F57B1E13E380007D099C /* OPUIVerifyCaptureManager.h in Headers */,
+				C9C76DDC1DC237A20034EA09 /* OPUISpacingLabel.h in Headers */,
+				C90E28ED1DC8D544006407FE /* OPUIActivityIndicatorView.h in Headers */,
+				C9C76DE01DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.h in Headers */,
 				C9474F661D587AE500E531A7 /* OPUILoader.h in Headers */,
-				C908665F1D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.h in Headers */,
-				C91A70131D3E02ED00AF95A9 /* OPUIVerifyFailViewController.h in Headers */,
+				C953CF2F1DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.h in Headers */,
+				C97A6D0A1DD0D4F700676561 /* OPUIDigitLabel.h in Headers */,
+				C972F8C71DCB4B740006552F /* OPUIDelayedSegue.h in Headers */,
 				C90F6CF61D256A2E0085AB3F /* OPUIEnrollAgreementViewController.h in Headers */,
-				C96079311D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.h in Headers */,
+				C96079311D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.h in Headers */,
 				C955E0C81D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.h in Headers */,
+				C94E40A51E0BF02000CB1E7F /* OPUIPopAnimator.h in Headers */,
+				C9FC4C5D1E02EEEC00C69F99 /* UIView+DrawShapes.h in Headers */,
 				C964446F1D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.h in Headers */,
+				C99F6E051DC8AEF000F3B227 /* UIDevice+Platform.h in Headers */,
 				C955E0A81D0FFC7A006D2682 /* OnePassUI.h in Headers */,
+				C98CF02A1DD4932200174281 /* OPUIErrorViewController.h in Headers */,
+				C94D29671DC8C06E00BFB8F1 /* OPUICircleProgressView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +628,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C9474ED71D54E2A000E531A7 /* PBXTargetDependency */,
+				C9BEA5A51DE72EA000E0ADA6 /* PBXTargetDependency */,
 			);
 			name = OnePassUI;
 			productName = OnePassUI;
@@ -309,11 +659,12 @@
 		C955E09B1D0FFC7A006D2682 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C955E0A31D0FFC7A006D2682 = {
 						CreatedOnToolsVersion = 7.3.1;
+						ProvisioningStyle = Automatic;
 					};
 					C955E0AD1D0FFC7A006D2682 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -336,12 +687,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C9817A231D21645100F85698 /* Products */;
-					ProjectRef = C9817A221D21645100F85698 /* OnePassCore.xcodeproj */;
+					ProductGroup = C9BEA59B1DE72E5100E0ADA6 /* Products */;
+					ProjectRef = C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */;
 				},
 				{
-					ProductGroup = C9F405A81D538C2800007549 /* Products */;
-					ProjectRef = C9F405A71D538C2800007549 /* OnePassUICommon.xcodeproj */;
+					ProductGroup = C9817A231D21645100F85698 /* Products */;
+					ProjectRef = C9817A221D21645100F85698 /* OnePassCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -367,18 +718,18 @@
 			remoteRef = C9817A2A1D21645100F85698 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C9F405AD1D538C2800007549 /* OnePassUICommon.framework */ = {
+		C9BEA5A01DE72E5100E0ADA6 /* OnePassCapture.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = OnePassUICommon.framework;
-			remoteRef = C9F405AC1D538C2800007549 /* PBXContainerItemProxy */;
+			path = OnePassCapture.framework;
+			remoteRef = C9BEA59F1DE72E5100E0ADA6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C9F405AF1D538C2800007549 /* OnePassUICommonTests.xctest */ = {
+		C9BEA5A21DE72E5100E0ADA6 /* OnePassCaptureTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = OnePassUICommonTests.xctest;
-			remoteRef = C9F405AE1D538C2800007549 /* PBXContainerItemProxy */;
+			path = OnePassCaptureTests.xctest;
+			remoteRef = C9BEA5A11DE72E5100E0ADA6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -388,9 +739,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90B75DC1D2A94DA00446ACC /* Enroll.storyboard in Resources */,
+				C90B75DC1D2A94DA00446ACC /* Enroll_iPhone.storyboard in Resources */,
 				C90B75D81D2A94B500446ACC /* OnePassUILocalizable.strings in Resources */,
-				C90ED5D71D2D3EA30062CA13 /* Verify.storyboard in Resources */,
+				C9D245751DF95252003439D7 /* blank-male-mask.png in Resources */,
+				C93FE50F1E4A1FB5001961DC /* Verify_iPad.storyboard in Resources */,
+				C90ED5D71D2D3EA30062CA13 /* Verify_iPhone.storyboard in Resources */,
+				C957D6AD1E4DAC460072FEA5 /* OPUIErrorView_iPhone.xib in Resources */,
+				C957D69F1E4DAB8E0072FEA5 /* OPUIErrorView_iPad.xib in Resources */,
+				C935F6781DC0B2000018CC4D /* OPUIFaceNotFoundView.xib in Resources */,
+				C9EE48A81E41D2CE0075A03D /* Enroll_iPad.storyboard in Resources */,
 				C90B8C381D253B3C005F965E /* Icons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,14 +766,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90866591D3E1C6900ED1413 /* OPUIEnrollFailPhotoShotViewController.m in Sources */,
-				C90866601D3E206400ED1413 /* OPUIEnrollFailVoiceViewController.m in Sources */,
 				C955E0C91D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m in Sources */,
+				C949F57C1E13E380007D099C /* OPUIVerifyCaptureManager.m in Sources */,
+				C946CBED1E3F37110041A4D5 /* OPUIWhiteBorderView.m in Sources */,
+				C90FEC7C1DFEFE7700E919BF /* OPUIWarningView.m in Sources */,
+				C972F8C81DCB4B740006552F /* OPUIDelayedSegue.m in Sources */,
 				C96444701D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m in Sources */,
-				C96079321D1D2AF600B9F55E /* OPUIVerifyVideoCaptureViewController.m in Sources */,
+				C9C76DD61DC2155E0034EA09 /* OPUILayoutConstraint.m in Sources */,
+				C97A6D031DCB76B600676561 /* UIActivityIndicatorView+Status.m in Sources */,
+				C96079321D1D2AF600B9F55E /* OPUIVerifyCaptureViewController.m in Sources */,
+				C93FE5251E4B0D2A001961DC /* OPUIRotatableViewController.m in Sources */,
+				C90E28EE1DC8D544006407FE /* OPUIActivityIndicatorView.m in Sources */,
+				C953CF301DE6DD3E00FD1A4D /* OPUIBlockCentisecondsTimer.m in Sources */,
+				C9C76DDD1DC237A20034EA09 /* OPUISpacingLabel.m in Sources */,
 				C90F6CF71D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m in Sources */,
+				C905C5A01E52F724000FAEAF /* OPUITimedBaseViewController.m in Sources */,
+				C98CF0201DD3312D00174281 /* OPUIDivergentCirclesView.m in Sources */,
+				C953CF3A1DE6E3A100FD1A4D /* OPUIAlertViewController.m in Sources */,
+				C953CF5A1DE6E3D700FD1A4D /* OPUIBarButtonItem.m in Sources */,
+				C953CF3E1DE6E3A100FD1A4D /* OPUIBaseViewController.m in Sources */,
+				C93765DE1DDDB7500018F1F3 /* OPUINavigationController.m in Sources */,
+				C9FC4C5E1E02EEEC00C69F99 /* UIView+DrawShapes.m in Sources */,
+				C922FAE21DB90289005F5602 /* OPUITextField.m in Sources */,
+				C97A6D161DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m in Sources */,
+				C94E40A61E0BF02000CB1E7F /* OPUIPopAnimator.m in Sources */,
 				C9474F671D587AE500E531A7 /* OPUILoader.m in Sources */,
-				C91A70141D3E02ED00AF95A9 /* OPUIVerifyFailViewController.m in Sources */,
+				C9C76DE11DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m in Sources */,
+				C99F6E061DC8AEF000F3B227 /* UIDevice+Platform.m in Sources */,
+				C97A6D0B1DD0D4F700676561 /* OPUIDigitLabel.m in Sources */,
+				C94D29681DC8C06E00BFB8F1 /* OPUICircleProgressView.m in Sources */,
+				C98CF0151DD1FF7C00174281 /* OPUIResultView.m in Sources */,
+				C90E28F71DC8DF57006407FE /* OPUI3QuarterArvView.m in Sources */,
+				C94E40A21E0BF01200CB1E7F /* OPUIPushAnimator.m in Sources */,
+				C953CF321DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m in Sources */,
+				C98CF02B1DD4932200174281 /* OPUIErrorViewController.m in Sources */,
+				C93826031DF597D10032D289 /* OPUIVoiceVisualizerView.m in Sources */,
+				C96784001DF96D6E003C699E /* OPUIIndicatorsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,15 +816,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C9474ED71D54E2A000E531A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OnePassUICommon;
-			targetProxy = C9474ED61D54E2A000E531A7 /* PBXContainerItemProxy */;
-		};
 		C955E0B11D0FFC7A006D2682 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C955E0A31D0FFC7A006D2682 /* OnePassUI */;
 			targetProxy = C955E0B01D0FFC7A006D2682 /* PBXContainerItemProxy */;
+		};
+		C9BEA5A51DE72EA000E0ADA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OnePassCapture;
+			targetProxy = C9BEA5A41DE72EA000E0ADA6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -455,28 +840,76 @@
 			name = OnePassUILocalizable.strings;
 			sourceTree = SOURCE_ROOT;
 		};
-		C90B75DE1D2A94DA00446ACC /* Enroll.storyboard */ = {
+		C90B75DE1D2A94DA00446ACC /* Enroll_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C9D330F41D2A95280049FB62 /* Base */,
-				C9D330F61D2A95310049FB62 /* en */,
-				C9D330F81D2A95390049FB62 /* ru */,
-				C918CDAB1D4F79F70074E186 /* pt-BR */,
-				C918CDB71D4F8FFD0074E186 /* ko */,
+				C96FE8081D9D58690052A6DA /* en */,
+				C96FE8091D9D586E0052A6DA /* ru */,
+				C96FE80A1D9D58730052A6DA /* pt-BR */,
+				C96FE80B1D9D587A0052A6DA /* ko */,
 			);
-			name = Enroll.storyboard;
+			name = Enroll_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		C90ED5D91D2D3EA30062CA13 /* Verify.storyboard */ = {
+		C90ED5D91D2D3EA30062CA13 /* Verify_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C90ED5DE1D2D3EA60062CA13 /* ru */,
 				C90ED5DF1D2D3FD70062CA13 /* Base */,
 				C90ED5E01D2D3FDE0062CA13 /* en */,
-				C918CDAC1D4F79F70074E186 /* pt-BR */,
 				C918CDB81D4F8FFD0074E186 /* ko */,
+				C9567C9C1D6C7AF6004FBAE4 /* pt-BR */,
 			);
-			name = Verify.storyboard;
+			name = Verify_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C93FE5111E4A1FB5001961DC /* Verify_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C93FE5101E4A1FB5001961DC /* Base */,
+				C93FE5131E4A1FB8001961DC /* en */,
+				C93FE5151E4A1FB9001961DC /* ru */,
+				C93FE5171E4A1FBA001961DC /* pt-BR */,
+				C93FE5191E4A1FBB001961DC /* ko */,
+			);
+			name = Verify_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C957D6A11E4DAB8E0072FEA5 /* OPUIErrorView_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C957D6A01E4DAB8E0072FEA5 /* Base */,
+				C957D6A61E4DAB920072FEA5 /* en */,
+				C957D6A81E4DAB930072FEA5 /* ru */,
+				C957D6AA1E4DAB940072FEA5 /* pt-BR */,
+				C957D6AC1E4DAB950072FEA5 /* ko */,
+			);
+			name = OPUIErrorView_iPad.xib;
+			sourceTree = "<group>";
+		};
+		C957D6AF1E4DAC460072FEA5 /* OPUIErrorView_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C957D6AE1E4DAC460072FEA5 /* Base */,
+				C957D6B11E4DAC4A0072FEA5 /* en */,
+				C957D6B31E4DAC4C0072FEA5 /* ru */,
+				C957D6B51E4DAC4D0072FEA5 /* pt-BR */,
+				C957D6B71E4DAC4E0072FEA5 /* ko */,
+			);
+			name = OPUIErrorView_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		C9EE48AA1E41D2CE0075A03D /* Enroll_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9EE48A91E41D2CE0075A03D /* Base */,
+				C9EE48AC1E41D2D10075A03D /* en */,
+				C9EE48AE1E41D2D20075A03D /* ru */,
+				C9EE48B01E41D2D30075A03D /* pt-BR */,
+				C9EE48B21E41D2D40075A03D /* ko */,
+			);
+			name = Enroll_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -486,6 +919,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -496,8 +930,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -534,6 +970,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -544,8 +981,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -575,17 +1014,24 @@
 		C955E0B91D0FFC7A006D2682 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "$(inherited)";
 				INFOPLIST_FILE = OnePassUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnePassUI/GoogleAnalyticsLibrary",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -595,10 +1041,12 @@
 		C955E0BA1D0FFC7A006D2682 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -606,6 +1054,10 @@
 				INFOPLIST_FILE = OnePassUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnePassUI/GoogleAnalyticsLibrary",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

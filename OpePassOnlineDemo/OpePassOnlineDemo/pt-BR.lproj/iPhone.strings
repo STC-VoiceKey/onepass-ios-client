@@ -1,0 +1,25 @@
+/* Class = "UIButton"; normalTitle = " REMOVE CURRENT USER "; ObjectID = "2JQ-6W-B4R"; */
+"2JQ-6W-B4R.normalTitle" = " Excluir conta ";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QEU-Dl-RZx"; */
+"QEU-Dl-RZx.normalTitle" = "Cancelar";
+
+/* Class = "UITextField"; placeholder = "  Enter email"; ObjectID = "m9v-wy-TW9"; */
+"m9v-wy-TW9.placeholder" = "Digite e-mail";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.normalTitle" = "ENTRAR";
+
+/* Class = "UIButton"; selectedTitle = "SIGN UP"; ObjectID = "uZY-yl-a1d"; */
+"uO5-jl-mFT.normalTitle" = "REGISTRAR-SE";
+
+"rfE-Xw-15t.text" = "Registe-se completa";
+
+"3l3-AH-6Af.text" = "You can now sign in to your account";
+
+"QWE-u0-5rR.normalTitle" = "Done";
+
+"E7e-hO-gV5.text" = "Access to Your Camera and Microphone";
+"OaW-Jq-UjK.text" = "To take a photo, a voice and a video we need to access your Camera and Microphone";
+"nAG-L5-UWF.normalTitle" = "Go to Settings";
+"erk-bH-NP0.normalTitle" = "Cancel";

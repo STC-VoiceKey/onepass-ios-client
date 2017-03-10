@@ -20,3 +20,24 @@
 
 "Too noisy"="주변 소음이 큽니다";
 "Incorrect pronunciation"="발음이 잘못되었습니다";
+
+"No eyes detected"="눈을 감지할수 없습니다";
+"Many faces detected"="주위에 많은 얼굴이 감지되었습니다";
+"No face detected"="얼굴을 감지할수 없습니다";
+"Pour light"="밝기가 낮습니다";
+"Shacking detected"="흔들림이 감지되었습니다";
+"Pronounce the digits"="숫자를 읽어주세요";
+
+"Give it another video" = "녹화를 다시 시도해주세요";
+
+//-------------------------------------------------
+"Give it another shot"  = "Give it another shot";
+"Give it another voice" = "Give it another recording";
+
+"voice sound is corrupted" = "Voice sound is corrupted";
+"multiple faces found in image" = "Multiple faces found in image";
+"internal server error" = "Internal server error";
+"Languages do not match" = "The etalon language does not match with the application language";
+
+"Left eye is not found on image" = "Left eye is not found on image";
+"Right eye is not found on image" = "Right eye is not found on image";

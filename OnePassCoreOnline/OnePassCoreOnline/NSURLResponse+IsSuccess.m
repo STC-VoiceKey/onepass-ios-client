@@ -11,6 +11,7 @@
 @implementation NSURLResponse (IsSuccess)
 
 -(BOOL)isSuccess{
+    
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)self;
     
     return  (httpResponse.statusCode==200 || httpResponse.statusCode==204 );

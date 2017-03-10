@@ -10,9 +10,9 @@
 
 @implementation NSString (Email)
 
-- (BOOL) isValidEmail{
-    if (!self.length)
-        return NO;
+- (BOOL) isValidEmail
+{
+    if (!self.length) return NO;
     
     NSString *regExPattern = @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$";
     NSRegularExpression *regEx = [[NSRegularExpression alloc] initWithPattern:regExPattern

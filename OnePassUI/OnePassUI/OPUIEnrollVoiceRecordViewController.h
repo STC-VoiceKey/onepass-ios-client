@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <OnePassUICommon/OPUIBaseViewController.h>
+#import "OPUITimedBaseViewController.h"
 
-@interface OPUIEnrollVoiceRecordViewController : OPUIBaseViewController
+/**
+ Captures the voice sample
+ */
+@interface OPUIEnrollVoiceRecordViewController : OPUITimedBaseViewController
 
+/**
+ The order number of the voice sample
+ */
 @property (nonatomic,assign) NSUInteger numberOfSample;
 
 @end

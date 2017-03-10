@@ -18,18 +18,16 @@
     return self;
 }
 
--(id)initWithJSON:(NSDictionary *)json
-{
+-(id)initWithJSON:(NSDictionary *)json {
     self = [self init];
     if (self) {
-        
-        NSLog(@"%@",json);
         self.userID       = json[@"id"];
         
         self.isFullEnroll = NO;
         
         NSInteger validModelCount = 0 ;
         for (NSDictionary *model in json[@"models"]) {
+            
             if ([model[@"type"] isEqualToString:@"FACE_VACS"] && ([model[@"samplesCount"] integerValue]==1) ) {
                 validModelCount++;
             }
@@ -46,7 +44,5 @@
     }
     return self;
 }
-
-
 
 @end

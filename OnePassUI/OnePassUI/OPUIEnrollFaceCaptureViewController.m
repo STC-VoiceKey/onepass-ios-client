@@ -1,6 +1,6 @@
 
 //
-//  STCEnrollFaceCaptureViewController.m
+//  OPUIEnrollFaceCaptureViewController..m
 //  OnePassUI
 //
 //  Created by Soloshcheva Aleksandra on 14.06.16.
@@ -10,128 +10,180 @@
 #import "OPUIEnrollFaceCaptureViewController.h"
 
 #import <OnePassCore/OnePassCore.h>
-#import <OnePassUICommon/OnePassUICommon.h>
+#import <OnePassCapture/OnePassCapture.h>
 
+#import "OPUIIndicatorsViewController.h"
+#import "UIActivityIndicatorView+Status.h"
+#import "OPUIBlockCentisecondsTimer.h"
 
-static NSString *observeReady4Capture         = @"self.photoCaptureManager.isReady";
-static NSString *kPhotoFailSegueIdentifier    = @"kPhotoFailSegueIdentifier";
 static NSString *kPhotoSuccessSegueIdentifier = @"kPhotoSuccessSegueIdentifier";
 static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
-
+static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
 
 @interface OPUIEnrollFaceCaptureViewController ()
 
-@property (nonatomic) id<IOPCRCapturePhotoManager,
-                         IOPCREnvironment,
-                         IOPCRPortraitFeatures> photoCaptureManager;
+/**
+ The view controller manages the positioning face indicators
+ */
+@property (nonatomic, weak) OPUIIndicatorsViewController *indicatorViewController;
 
-@property (nonatomic,weak) IBOutlet OPCRPreviewView   *viewFaceCapture;
-@property (nonatomic,weak) IBOutlet UIButton          *captureButton;
+/**
+ The photo capture manager can implement the extra protocols for the portrait features and environment checking
+ */
+@property (nonatomic)      id<IOPCCapturePhotoManagerProtocol,
+                                 IOPCPortraitFeaturesProtocol,
+                                      IOPCEnvironmentProtocol> photoCaptureManager;
 
-@property (nonatomic) BOOL isObserving;
+/**
+ The view displays the video stream
+ */
+@property (nonatomic, weak) IBOutlet OPCRPreviewView   *viewFaceCapture;
+
+/**
+ The view where the the warning view is added
+ */
+@property (nonatomic, weak) IBOutlet UIView            *viewMaskContainer;
+
+/**
+ Shows that the checking stable timer is running
+ */
+@property (nonatomic) BOOL isTimering;
+
+/**
+ Shows the face picture is stable and the photo can be taken
+ */
+@property (nonatomic) BOOL isStable;
+
+/**
+ The face photo as bytes
+ */
+@property (nonatomic, strong) NSData *data;
 
 @end
 
 @interface OPUIEnrollFaceCaptureViewController(PrivateMethods)
 
+/**
+ Shows the error view controller
+
+ @param error The error
+ */
 -(void)showError:(NSError *)error;
 
 @end
 
 @implementation OPUIEnrollFaceCaptureViewController
 
+#pragma mark - Lifecircle
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.isTimering = NO;
     
-    self.isObserving = NO;
+    [self updateViewConstraints];
 }
 
+
 -(void)applicationDidEnterBackground{
+    [self performSegueWithIdentifier:kExitPhotoSegueIdentifier sender:self];
+}
+
+-(void)networkStateChanged:(BOOL)isHostAccessable{
+    if (!isHostAccessable) {
+        [self performSegueWithIdentifier:kExitPhotoSegueIdentifier sender:self];
+    }
+}
+
+-(void)viewTimerDidExpared{
     [self performSegueWithIdentifier:kExitPhotoSegueIdentifier sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self addObserver:self
-           forKeyPath:observeReady4Capture
-              options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-              context:nil];
-    
-    self.isObserving = YES;
-    
     self.photoCaptureManager = [self.captureManager photoManager];
     [self.photoCaptureManager setPreview:self.viewFaceCapture];
-    [self.photoCaptureManager startRunning];
+    
+    if(self.indicatorViewController) {
+        self.indicatorViewController.frameCaptureManager = self.photoCaptureManager;
+        self.indicatorViewController.viewMaskContainer = self.viewMaskContainer;
+    }
     
     __weak typeof(self) weakself = self;
-    [self.photoCaptureManager setLoadDataBlock:^(NSData *data, NSError *error)
-    {
-        if (error)  [weakself showError:error];
-        else
-        {
-#ifdef DEBUG
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath =  [[paths objectAtIndex:0] stringByAppendingPathComponent:@"enroll.jpeg"];
-            [data writeToFile:filePath atomically:YES];
-            NSLog(@"%lu",(unsigned long)data.length);
-#endif
+    [self.photoCaptureManager setLoadDataBlock:^(NSData *data, NSError *error) {
+        if (error) {
+            [weakself showError:error];
+        } else {
+            weakself.data = [NSData dataWithData:data];
+            
+            [weakself startActivityAnimating];
+            [weakself.indicatorViewController stopObserving];
             [weakself.service addFaceSample:data
-                              forPerson:weakself.userID
-                    withCompletionBlock:^(NSDictionary *responceObject, NSError *error)
-             {
-                 [weakself stopActivityAnimating];
-                 [weakself showError:error];
-             }];
+                                  forPerson:weakself.userID
+                        withCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+                            [weakself showError:error];
+            }];
         }
     }];
     
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.photoCaptureManager stopRunning];
-    
+    [self.photoCaptureManager startRunning];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    if(self.isObserving){
-        [self removeObserver:self forKeyPath:observeReady4Capture];
-        self.isObserving = NO;
-    }
+    
+    [self.photoCaptureManager stopRunning];
     self.photoCaptureManager = nil;
+    
+    if(self.indicatorViewController) {
+        self.indicatorViewController.viewMaskContainer = nil;
+    }
 
+    [self stopActivityAnimating];
 }
 
 -(void)dealloc{
-    if(self.isObserving){
-        [self removeObserver:self forKeyPath:observeReady4Capture];
-        self.isObserving = NO;
-    }
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-
-    if([keyPath  isEqualToString:observeReady4Capture])
-    {
-        self.captureButton.enabled = [self.photoCaptureManager readyForCapture];
-    }
-}
-
-
--(IBAction)onCapture:(id)sender
-{
-    [self startActivityAnimating];
-    
-    [self.photoCaptureManager takePicture];
- 
+    _indicatorViewController.frameCaptureManager = nil;
+    _indicatorViewController.readyBlock = nil;
+    _indicatorViewController = nil;
 }
 
 #pragma mark - Navigation
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:kIndicatorSegueIdentifier]) {
+        if(self.indicatorViewController){
+            self.indicatorViewController.readyBlock = nil;
+        }
+        
+        self.indicatorViewController = (OPUIIndicatorsViewController *)segue.destinationViewController;
+        
+        __weak typeof(self) weakself = self;
+        self.indicatorViewController.readyBlock = ^(BOOL isReady) {
+            if (isReady) {
+                weakself.isStable = YES;
+                if (!weakself.isTimering) {
+                    weakself.isTimering = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        if (weakself.isStable) {
+                            if (weakself.photoCaptureManager.isRunning) {
+                                [weakself startActivityAnimating];
+                                [weakself.photoCaptureManager stopRunning];
+                                [weakself.photoCaptureManager takePicture];
+                            }
+                        }
+                        weakself.isTimering = NO;
+                    });
+                }
+            } else {
+                if(weakself.isTimering) {
+                    weakself.isStable = NO;
+                }
+            }
+        };
+    }
+}
 
-- (IBAction)unwindTryAgain:(UIStoryboardSegue *)unwindSegue
-{
+- (IBAction)unwindTryAgain:(UIStoryboardSegue *)unwindSegue{
 }
 
 @end
@@ -139,13 +191,16 @@ static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
 @implementation OPUIEnrollFaceCaptureViewController(PrivateMethods)
 
 -(void)showError:(NSError *)error{
-    if([error.domain isEqualToString:NSURLErrorDomain])
-    {
-        [self showErrorOnMainThread:error];
+    if([error.domain isEqualToString:NSURLErrorDomain]) {
+        [self performSegueOnMainThreadWithIdentifier:kExitPhotoSegueIdentifier];
+//        [self showErrorOnMainThread:error];
+    } else {
+        if(error) {
+            [self showError:error withTitle:@"Give it another shot"];
+        } else {
+            [self performSegueOnMainThreadWithIdentifier:kPhotoSuccessSegueIdentifier];
+        }
     }
-    else [self performSegueOnMainThreadWithIdentifier:(error ? kPhotoFailSegueIdentifier : kPhotoSuccessSegueIdentifier)];
 }
 
 @end
-
-

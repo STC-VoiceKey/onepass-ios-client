@@ -14,11 +14,8 @@ FOUNDATION_EXPORT double OnePassCoreVersionNumber;
 //! Project version string for OnePassCore.
 FOUNDATION_EXPORT const unsigned char OnePassCoreVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <OnePassCore/PublicHeader.h>
-
-#import <OnePassCore/IVerifySession.h>
-#import <OnePassCore/ITransport.h>
-#import <OnePassCore/ITransportService.h>
-#import <OnePassCore/IPerson.h>
-#import <OnePassCore/PassphraseManager.h>
-#import <OnePassCore/STCError.h>
+#import <OnePassCore/IOPCVerificationSessionProtocol.h>
+#import <OnePassCore/IOPCTransportProtocol.h>
+#import <OnePassCore/IOPCTransportableProtocol.h>
+#import <OnePassCore/IOPCPersonProtocol.h>
+#import <OnePassCore/OPCPassphraseManager.h>

@@ -7,17 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C90A4F071D23A484009F82FA /* STCError.h in Headers */ = {isa = PBXBuildFile; fileRef = C90A4F051D23A484009F82FA /* STCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C90A4F081D23A484009F82FA /* STCError.m in Sources */ = {isa = PBXBuildFile; fileRef = C90A4F061D23A484009F82FA /* STCError.m */; };
-		C940328E1D19746800C152EA /* ITransportService.h in Headers */ = {isa = PBXBuildFile; fileRef = C940328D1D19746800C152EA /* ITransportService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C95C738D1D1ABCD500212B22 /* PassphraseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C738B1D1ABCD500212B22 /* PassphraseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C95C738E1D1ABCD500212B22 /* PassphraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C95C738C1D1ABCD500212B22 /* PassphraseManager.m */; };
-		C96079621D1D4C0400B9F55E /* IVerifySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C96079611D1D4C0400B9F55E /* IVerifySession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C940328E1D19746800C152EA /* IOPCTransportableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C940328D1D19746800C152EA /* IOPCTransportableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C95C738E1D1ABCD500212B22 /* OPCPassphraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */; };
+		C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D5E31D117A2300A3E42D /* OnePassCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D5EB1D117A2300A3E42D /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D5E01D117A2300A3E42D /* OnePassCore.framework */; };
 		C977D5F01D117A2300A3E42D /* OnePassCoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */; };
-		C977D6111D117ACC00A3E42D /* ITransport.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6101D117ACC00A3E42D /* ITransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C977D6281D1190AC00A3E42D /* IPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6271D1190AC00A3E42D /* IPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C977D6111D117ACC00A3E42D /* IOPCTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C977D6281D1190AC00A3E42D /* IOPCPersonProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,20 +29,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C90A4F051D23A484009F82FA /* STCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCError.h; sourceTree = "<group>"; };
-		C90A4F061D23A484009F82FA /* STCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCError.m; sourceTree = "<group>"; };
-		C940328D1D19746800C152EA /* ITransportService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITransportService.h; sourceTree = "<group>"; };
-		C95C738B1D1ABCD500212B22 /* PassphraseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassphraseManager.h; sourceTree = "<group>"; };
-		C95C738C1D1ABCD500212B22 /* PassphraseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassphraseManager.m; sourceTree = "<group>"; };
-		C96079611D1D4C0400B9F55E /* IVerifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVerifySession.h; sourceTree = "<group>"; };
+		C940328D1D19746800C152EA /* IOPCTransportableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCTransportableProtocol.h; sourceTree = "<group>"; };
+		C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCPassphraseManager.h; sourceTree = "<group>"; };
+		C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCPassphraseManager.m; sourceTree = "<group>"; };
+		C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCVerificationSessionProtocol.h; sourceTree = "<group>"; };
 		C977D5E01D117A2300A3E42D /* OnePassCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C977D5E31D117A2300A3E42D /* OnePassCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCore.h; sourceTree = "<group>"; };
 		C977D5E51D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C977D5EA1D117A2300A3E42D /* OnePassCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnePassCoreTests.m; sourceTree = "<group>"; };
 		C977D5F11D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C977D6101D117ACC00A3E42D /* ITransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITransport.h; sourceTree = "<group>"; };
-		C977D6271D1190AC00A3E42D /* IPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPerson.h; sourceTree = "<group>"; };
+		C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCTransportProtocol.h; sourceTree = "<group>"; };
+		C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCPersonProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,13 +84,12 @@
 			isa = PBXGroup;
 			children = (
 				C977D5E31D117A2300A3E42D /* OnePassCore.h */,
-				C977D5E51D117A2300A3E42D /* Info.plist */,
-				C9F4056C1D5387FD00007549 /* Common */,
 				C9F4056B1D5387D900007549 /* Utils */,
-				C940328D1D19746800C152EA /* ITransportService.h */,
-				C977D6101D117ACC00A3E42D /* ITransport.h */,
-				C977D6271D1190AC00A3E42D /* IPerson.h */,
-				C96079611D1D4C0400B9F55E /* IVerifySession.h */,
+				C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */,
+				C940328D1D19746800C152EA /* IOPCTransportableProtocol.h */,
+				C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */,
+				C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */,
+				C977D5E51D117A2300A3E42D /* Info.plist */,
 			);
 			path = OnePassCore;
 			sourceTree = "<group>";
@@ -111,19 +106,10 @@
 		C9F4056B1D5387D900007549 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C95C738B1D1ABCD500212B22 /* PassphraseManager.h */,
-				C95C738C1D1ABCD500212B22 /* PassphraseManager.m */,
+				C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */,
+				C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */,
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		C9F4056C1D5387FD00007549 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C90A4F051D23A484009F82FA /* STCError.h */,
-				C90A4F061D23A484009F82FA /* STCError.m */,
-			);
-			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,12 +119,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C940328E1D19746800C152EA /* ITransportService.h in Headers */,
-				C977D6111D117ACC00A3E42D /* ITransport.h in Headers */,
-				C96079621D1D4C0400B9F55E /* IVerifySession.h in Headers */,
-				C977D6281D1190AC00A3E42D /* IPerson.h in Headers */,
-				C95C738D1D1ABCD500212B22 /* PassphraseManager.h in Headers */,
-				C90A4F071D23A484009F82FA /* STCError.h in Headers */,
+				C940328E1D19746800C152EA /* IOPCTransportableProtocol.h in Headers */,
+				C977D6111D117ACC00A3E42D /* IOPCTransportProtocol.h in Headers */,
+				C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */,
+				C977D6281D1190AC00A3E42D /* IOPCPersonProtocol.h in Headers */,
+				C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */,
 				C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,7 +173,7 @@
 		C977D5D71D117A2300A3E42D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C977D5DF1D117A2300A3E42D = {
@@ -240,8 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95C738E1D1ABCD500212B22 /* PassphraseManager.m in Sources */,
-				C90A4F081D23A484009F82FA /* STCError.m in Sources */,
+				C95C738E1D1ABCD500212B22 /* OPCPassphraseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -276,10 +261,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -316,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -324,10 +313,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -357,6 +349,7 @@
 		C977D5F51D117A2300A3E42D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -376,6 +369,7 @@
 		C977D5F61D117A2300A3E42D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

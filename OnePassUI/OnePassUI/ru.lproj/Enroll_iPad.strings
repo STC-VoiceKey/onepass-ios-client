@@ -1,0 +1,33 @@
+/* Agreement screen */
+/* Class = "UILabel"; text = "В процессе регистрации будут обрабатываться Ваши биометрические данные"; ObjectID = "jm5-KG-DGR"; */
+"xYv-Go-c6B.text" = "В процессе регистрации будут обрабатываться Ваши биометрические данные";
+
+/* Class = "UILabel"; text = "Будет сделана Ваша фотография и записаны три образца Вашего голоса"; ObjectID = "vYN-yL-mMI"; */
+"0NJ-Nb-Ih4.text" = "Будет сделана Ваша фотография и записаны три образца Вашего голоса";
+
+/* Class = "UIButton"; normalTitle = "СОГЛАСЕН"; ObjectID = "bK0-pw-LXj"; */
+"cct-B8-woJ.normalTitle" = "Согласен";
+
+/* Class = "UIButton"; normalTitle = "Не согласен"; ObjectID = "Cg3-cJ-pfw"; */
+"jbG-Kb-5r9.normalTitle" = "Не согласен";
+
+/*---------------*/
+
+/* Capture Photo */
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OGX-rx-6Km"; */
+"jft-A1-j6a.normalTitle" = "Отмена";
+
+/*------------------------------*/
+
+/* Capture Voice */
+/* Class = "UILabel"; text = "Press the button and pronounce following digits:"; ObjectID = "YQo-DU-Hlu"; */
+"rRC-aV-ZqJ.text" = "Нажмите кнопку и произнесите следующие цифры:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
+"20N-bq-EjG.normalTitle" = "Отмена";
+
+//AKn-jX-KsC
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "AKn-jX-KsC"; */
+"AKn-jX-KsC.normalTitle" = "Слишком шумно";
+
+/*------------------------------*/

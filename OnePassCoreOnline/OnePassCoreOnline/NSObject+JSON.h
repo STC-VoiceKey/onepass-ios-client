@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Category provides to serialize the object as JSON
+ */
 @interface NSObject (JSON)
 
-- (NSString*) sp_JSONString;
+/**
+ Serializes itself as JSON
+
+ @return The JSON string
+ */
+- (NSString*) JSONString;
 
 @end

@@ -1,0 +1,45 @@
+
+/* Class = "UIButton"; normalTitle = "Не согласен"; ObjectID = "Cg3-cJ-pfw"; */
+"Cg3-cJ-pfw.normalTitle" = "Не согласен";
+
+/* Class = "UIButton"; normalTitle = "ПОВТОРИТЬ ПОПЫТКУ"; ObjectID = "EV8-0C-loO"; */
+"EV8-0C-loO.normalTitle" = "ПОВТОРИТЬ ПОПЫТКУ";
+
+/* Class = "UILabel"; text = "Возможные причины ошибки:"; ObjectID = "Lxv-Wl-oM8"; */
+"Lxv-Wl-oM8.text" = "Возможные причины ошибки:";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "OGX-rx-6Km"; */
+"OGX-rx-6Km.normalTitle" = "Отмена";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "OO3-qw-a3m"; */
+"OO3-qw-a3m.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Нажмите кнопку и произнесите следующие цифры:"; ObjectID = "YQo-DU-Hlu"; */
+"YQo-DU-Hlu.text" = "Нажмите кнопку и произнесите следующие цифры:";
+
+/* Class = "UIButton"; normalTitle = "СОГЛАСЕН"; ObjectID = "bK0-pw-LXj"; */
+"bK0-pw-LXj.normalTitle" = "Согласен";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "gGs-U9-VLC"; */
+"gGs-U9-VLC.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Попробуйте сделать фотографию еще раз"; ObjectID = "i8d-EU-pQd"; */
+"i8d-EU-pQd.text" = "Попробуйте сделать фотографию еще раз";
+
+/* Class = "UILabel"; text = "В процессе регистрации будут обрабатываться Ваши биометрические данные"; ObjectID = "jm5-KG-DGR"; */
+"jm5-KG-DGR.text" = "В процессе регистрации будут обрабатываться Ваши биометрические данные";
+
+/* Class = "UILabel"; text = "Возможные причины ошибки:"; ObjectID = "lJh-OZ-yMQ"; */
+"lJh-OZ-yMQ.text" = "Возможные причины ошибки:";
+
+/* Class = "UIButton"; normalTitle = "ПОВТОРИТЬ ПОПЫТКУ"; ObjectID = "mwx-GA-lIa"; */
+"mwx-GA-lIa.normalTitle" = "Повторить Попытку";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "nMV-g2-eOr"; */
+"nMV-g2-eOr.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Будет сделана Ваша фотография и записаны три образца Вашего голоса"; ObjectID = "vYN-yL-mMI"; */
+"vYN-yL-mMI.text" = "Будет сделана Ваша фотография и записаны три образца Вашего голоса";
+
+/* Class = "UILabel"; text = "Face off-center"; ObjectID = "NaK-Ua-OyC"; */
+"NaK-Ua-OyC.warning" = "Пожалуйста совместите свое лицо с маской";

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XVp-ko-SPa">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Verify Capture View Controller-->
+        <scene sceneID="ceW-Hh-DuT">
+            <objects>
+                <viewController id="XVp-ko-SPa" customClass="OPUIVerifyCaptureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jQn-WV-CPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="4zb-LS-Mjo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PiF-GU-rc3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDe-oN-8nQ">
+                                <rect key="frame" x="144" y="192" width="480" height="640"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXT-XR-3a6" customClass="OPCRPreviewView">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpI-dp-Wez">
+                                                <rect key="frame" x="216" y="590" width="48" height="30"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onCancell:" destination="XVp-ko-SPa" eventType="touchUpInside" id="WqY-MK-Ypw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="hpI-dp-Wez" secondAttribute="bottom" constant="20" id="fvX-YN-Nqz"/>
+                                            <constraint firstItem="hpI-dp-Wez" firstAttribute="centerX" secondItem="vXT-XR-3a6" secondAttribute="centerX" id="rOP-vQ-5RN"/>
+                                        </constraints>
+                                    </view>
+                                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kRo-1A-5az" userLabel="TP">
+                                        <rect key="frame" x="0.0" y="66" width="480" height="3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="mEn-4d-u7e"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </progressView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDH-mk-D5M">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="wmp-1y-W4U"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="KQW-rm-EFO" kind="embed" identifier="kVerifyIndicatorSegueIdentifier" id="aQL-bz-2Hy"/>
+                                        </connections>
+                                    </containerView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pronounce following digits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5xS-kU-2FA" customClass="OPUIDigitLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="agd-6n-dMg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="firstLabelColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="secondLabelColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ac-fv-ayW">
+                                        <rect key="frame" x="30" y="0.0" width="420" height="600"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vXT-XR-3a6" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" id="0nq-7X-pRS"/>
+                                    <constraint firstItem="GDH-mk-D5M" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" id="7rM-fR-wDe"/>
+                                    <constraint firstItem="5xS-kU-2FA" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" id="8Lp-Zl-qOW"/>
+                                    <constraint firstItem="vXT-XR-3a6" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" id="DDy-zO-Z8V"/>
+                                    <constraint firstItem="6ac-fv-ayW" firstAttribute="top" secondItem="xDe-oN-8nQ" secondAttribute="top" id="DIz-0F-oGN"/>
+                                    <constraint firstAttribute="bottom" secondItem="vXT-XR-3a6" secondAttribute="bottom" id="Dth-QK-rDy"/>
+                                    <constraint firstAttribute="trailing" secondItem="vXT-XR-3a6" secondAttribute="trailing" id="FJD-7F-hxO"/>
+                                    <constraint firstAttribute="trailing" secondItem="5xS-kU-2FA" secondAttribute="trailing" id="GFy-2B-d6y"/>
+                                    <constraint firstItem="vXT-XR-3a6" firstAttribute="top" secondItem="xDe-oN-8nQ" secondAttribute="top" id="LA6-2k-Doq"/>
+                                    <constraint firstAttribute="trailing" secondItem="GDH-mk-D5M" secondAttribute="trailing" id="QqU-lY-wMT"/>
+                                    <constraint firstAttribute="trailing" secondItem="vXT-XR-3a6" secondAttribute="trailing" id="T7L-nn-ZWC"/>
+                                    <constraint firstItem="GDH-mk-D5M" firstAttribute="top" secondItem="xDe-oN-8nQ" secondAttribute="top" id="UC9-u9-xLj"/>
+                                    <constraint firstItem="6ac-fv-ayW" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" constant="30" id="V9Z-6z-Fs7"/>
+                                    <constraint firstAttribute="trailing" secondItem="kRo-1A-5az" secondAttribute="trailing" id="WkX-kP-Vae"/>
+                                    <constraint firstAttribute="trailing" secondItem="6ac-fv-ayW" secondAttribute="trailing" constant="30" id="YF0-y0-w5N"/>
+                                    <constraint firstAttribute="width" constant="480" id="bMc-M4-R01"/>
+                                    <constraint firstItem="kRo-1A-5az" firstAttribute="leading" secondItem="xDe-oN-8nQ" secondAttribute="leading" id="da4-ae-V5m"/>
+                                    <constraint firstAttribute="bottom" secondItem="6ac-fv-ayW" secondAttribute="bottom" constant="40" id="g2a-zL-2L3"/>
+                                    <constraint firstItem="5xS-kU-2FA" firstAttribute="top" secondItem="xDe-oN-8nQ" secondAttribute="top" id="j7J-yl-nD1"/>
+                                    <constraint firstItem="kRo-1A-5az" firstAttribute="top" secondItem="GDH-mk-D5M" secondAttribute="bottom" id="kFF-Wz-JVK"/>
+                                    <constraint firstAttribute="height" constant="640" id="udJ-kY-uMo"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kaa-7e-wyI" customClass="OPUIActivityIndicatorBlackView">
+                                <rect key="frame" x="365" y="493" width="37" height="37"/>
+                                <color key="color" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Kaa-7e-wyI" firstAttribute="centerX" secondItem="PiF-GU-rc3" secondAttribute="centerX" id="3m1-kc-6Gh"/>
+                            <constraint firstItem="Kaa-7e-wyI" firstAttribute="centerY" secondItem="PiF-GU-rc3" secondAttribute="centerY" id="Ow5-E9-o17"/>
+                            <constraint firstItem="xDe-oN-8nQ" firstAttribute="centerY" secondItem="PiF-GU-rc3" secondAttribute="centerY" id="Zcr-M4-oJg"/>
+                            <constraint firstItem="xDe-oN-8nQ" firstAttribute="centerX" secondItem="PiF-GU-rc3" secondAttribute="centerX" id="nhm-Ah-T7Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8G0-4M-9oZ"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Kaa-7e-wyI" id="UdH-m3-Qog"/>
+                        <outlet property="containerView" destination="GDH-mk-D5M" id="iGZ-yE-18b"/>
+                        <outlet property="heightConstraint" destination="udJ-kY-uMo" id="zbN-sy-LVn"/>
+                        <outlet property="sequenceLabel" destination="5xS-kU-2FA" id="DVO-1N-UIH"/>
+                        <outlet property="timeProgress" destination="kRo-1A-5az" id="gxb-UA-Gwd"/>
+                        <outlet property="viewMaskContainer" destination="6ac-fv-ayW" id="wLf-LA-Xsz"/>
+                        <outlet property="viewVideoCapture" destination="vXT-XR-3a6" id="wyV-CY-Lqb"/>
+                        <outlet property="widthConstraint" destination="bMc-M4-R01" id="ood-rh-hgM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtG-jw-dA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34.399999999999999" y="200.14992503748127"/>
+        </scene>
+        <!--Verify Indicator View Controller-->
+        <scene sceneID="Qw3-NH-Apw">
+            <objects>
+                <viewController id="KQW-rm-EFO" customClass="OPUIVerifyIndicatorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tHv-Av-tPI"/>
+                        <viewControllerLayoutGuide type="bottom" id="UD2-aZ-VCe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fQD-yu-47F">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="fIH-sS-pYQ" userLabel="FT">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4EL-do-6Fg"/>
+                                    <barButtonItem image="otherface" id="Xu3-iT-faZ" customClass="OPUIBarButtonItem">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Many faces detected"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </barButtonItem>
+                                    <barButtonItem width="37" style="plain" systemItem="fixedSpace" id="DVl-Kh-jTo"/>
+                                    <barButtonItem image="noface" id="Jn8-Sv-utB" customClass="OPUIBarButtonItem">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Face off-center"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="xibName" value="OPUIFaceNotFoundView"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </barButtonItem>
+                                    <barButtonItem width="37" style="plain" systemItem="fixedSpace" id="mt6-pq-EmI"/>
+                                    <barButtonItem image="light" id="UKg-5j-KOQ" customClass="OPUIBarButtonItem">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Pour light"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="taz-kK-7wC"/>
+                                    <barButtonItem image="silence" id="MM0-ns-qig" customClass="OPUIBarButtonItem">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Too noisy"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uoY-Wn-pD5"/>
+                                </items>
+                                <color key="tintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fIH-sS-pYQ" firstAttribute="leading" secondItem="fQD-yu-47F" secondAttribute="leading" id="0WU-il-nlc"/>
+                            <constraint firstAttribute="bottom" secondItem="fIH-sS-pYQ" secondAttribute="bottom" id="IeA-Xu-An2"/>
+                            <constraint firstAttribute="trailing" secondItem="fIH-sS-pYQ" secondAttribute="trailing" id="aHg-UT-3Uf"/>
+                            <constraint firstItem="fIH-sS-pYQ" firstAttribute="top" secondItem="fQD-yu-47F" secondAttribute="top" id="xgu-VT-e7L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bbBrightness" destination="UKg-5j-KOQ" id="XfL-Yf-oWQ"/>
+                        <outlet property="bbFaceFound" destination="Jn8-Sv-utB" id="PnG-Ip-xnn"/>
+                        <outlet property="bbNoisy" destination="MM0-ns-qig" id="Mch-aI-Mxm"/>
+                        <outlet property="bbSingleFace" destination="Xu3-iT-faZ" id="nQX-fH-G8s"/>
+                        <outlet property="indicatorToolbar" destination="fIH-sS-pYQ" id="AKe-NH-Jn4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQO-Yx-LrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="-215"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="light" width="32" height="32"/>
+        <image name="noface" width="32" height="32"/>
+        <image name="otherface" width="32" height="32"/>
+        <image name="silence" width="32" height="32"/>
+    </resources>
+</document>

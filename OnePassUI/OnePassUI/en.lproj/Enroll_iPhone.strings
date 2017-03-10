@@ -1,0 +1,50 @@
+
+/* Class = "UILabel"; text = "1 of 3"; ObjectID = "0fr-qk-LY7"; */
+"0fr-qk-LY7.text" = "1 of 3";
+
+
+/* Class = "UIButton"; normalTitle = "Disagree"; ObjectID = "Cg3-cJ-pfw"; */
+"Cg3-cJ-pfw.normalTitle" = "Disagree";
+
+/* Class = "UIButton"; normalTitle = "RETAKE THE PHOTO"; ObjectID = "EV8-0C-loO"; */
+"EV8-0C-loO.normalTitle" = "Retake The Photo";
+
+/* Class = "UILabel"; text = "Possible reasons:"; ObjectID = "Lxv-Wl-oM8"; */
+"Lxv-Wl-oM8.text" = "Possible reasons:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OGX-rx-6Km"; */
+"OGX-rx-6Km.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
+"OO3-qw-a3m.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "0 1 2 3 4 5 6 7 8 9"; ObjectID = "TTi-rU-s6Z"; */
+"TTi-rU-s6Z.text" = "0 1 2 3 4 5 6 7 8 9";
+
+/* Class = "UILabel"; text = "Press the button and pronounce following digits:"; ObjectID = "YQo-DU-Hlu"; */
+"YQo-DU-Hlu.text" = "Press the button and pronounce following digits:";
+
+/* Class = "UIButton"; normalTitle = "AGREE AND CONTINUE"; ObjectID = "bK0-pw-LXj"; */
+"bK0-pw-LXj.normalTitle" = "Continue";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "gGs-U9-VLC"; */
+"gGs-U9-VLC.normalTitle" = "Cancel";
+
+
+/* Class = "UILabel"; text = "By proceeding you agree to process your biometric data"; ObjectID = "jm5-KG-DGR"; */
+"jm5-KG-DGR.text" = "By proceeding you agree to process your biometric data";
+
+/* Class = "UILabel"; text = "Possible reasons:"; ObjectID = "lJh-OZ-yMQ"; */
+"lJh-OZ-yMQ.text" = "Possible reasons:";
+
+/* Class = "UIButton"; normalTitle = "RETAKE THE RECORDING"; ObjectID = "mwx-GA-lIa"; */
+"mwx-GA-lIa.normalTitle" = "Retake The Recording";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "nMV-g2-eOr"; */
+"nMV-g2-eOr.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "We will take a photo and record three samples of your voice"; ObjectID = "vYN-yL-mMI"; */
+"vYN-yL-mMI.text" = "We will take a photo and record three samples of your voice";
+
+/* Class = "UILabel"; text = "Face off-center"; ObjectID = "NaK-Ua-OyC"; */
+"NaK-Ua-OyC.warning" = "Please position your face into the mask";

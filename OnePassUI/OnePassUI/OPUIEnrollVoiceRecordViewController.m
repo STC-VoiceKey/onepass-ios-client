@@ -1,4 +1,4 @@
- //
+//
 //  OPUIBaseVoiceRecordViewController.m
 //  OnePassUI
 //
@@ -8,165 +8,321 @@
 
 #import "OPUIEnrollVoiceRecordViewController.h"
 #import "OPUILoader.h"
+#import "UIActivityIndicatorView+Status.h"
+#import "OPUIVoiceVisualizerView.h"
+#import "OPUIBlockCentisecondsTimer.h"
 
-#import <OnePassCore/PassphraseManager.h>
-
-#import <OnePassUICommon/OnePassUICommon.h>
-
+#import <OnePassCore/OPCPassphraseManager.h>
+#import <OnePassCapture/OnePassCapture.h>
 
 static NSString *kVoiceCaptureTimeoutName = @"VoiceCaptureTimeout";
 
+#pragma mark - Segue Identifiers
 static NSString *kVoiceRecordStoryboardIdentifier  = @"kVoiceRecordStoryboardIdentifier";
-static NSString *kVoiceFailSegueIdentifier         = @"kVoiceFailSegueIdentifier";
+static NSString *kVoiceSussessSegueIdentifier      = @"kVoiceSussessSegueIdentifier";
+static NSString *kExitVoiceSegueIdentifier         = @"kExitVoiceSegueIdentifier";
 
-static NSString *kVoiceSussessSegueIdentifier  = @"kVoiceSussessSegueIdentifier";
-static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
-
+#pragma mark - Observation Fields
+static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
 
 @interface OPUIEnrollVoiceRecordViewController()
 
-@property (nonatomic,weak) IBOutlet UIButton        *startButton;
-@property (nonatomic,weak) IBOutlet UILabel         *pageLabel;
-@property (nonatomic,weak) IBOutlet UILabel         *sequenceLabel;
-@property (nonatomic,weak) IBOutlet UIProgressView  *timeProgress;
+#pragma mark - Outlets
+@property (nonatomic, weak) IBOutlet UIButton        *startButton;
+@property (nonatomic, weak) IBOutlet UILabel         *pageLabel;
+@property (nonatomic, weak) IBOutlet UILabel         *sequenceLabel;
+@property (nonatomic, weak) IBOutlet UIProgressView  *timeProgress;
+@property (nonatomic, weak) IBOutlet UIView          *noiseIndicator;
+@property (nonatomic, weak) IBOutlet OPUIVoiceVisualizerView *voiceView;
 
-@property (nonatomic,strong) id<IOPCRCaptureVoiceManager> voiceManager;
+/**
+ The manager of the capture voice
+ */
+@property (nonatomic, strong) id<IOPCCaptureVoiceManagerProtocol>  voiceManager;
 
+/**
+ The manager which provides information about the noise enviroment
+ */
+@property (nonatomic, strong) id<IOPCNoisyProtocol>                noiseAnalyzer;
+/**
+ The manager which displays voice wave
+ */
+@property (nonatomic, weak)   id<IOPCIsVoiceVisualizerProtocol>    voiceVisualizer;
+
+/**
+ Keeps the randomized digits sequence
+ */
 @property (nonatomic) NSArray<NSString *> *randomDigits;
 
-@property (nonatomic) OPUIBlockSecondTimer *timer;
-@property (nonatomic) NSNumber *timeout;
+/**
+ The value of the voice duration
+ */
+@property (nonatomic) NSNumber    *timeout;
 
+/**
+ The timer that fires when the voice should be finished
+ */
+@property (nonatomic) OPUIBlockCentisecondsTimer *voiceLimitDurationTimer;
+
+/**
+ The manager for creating and controlling the passphrase
+ */
+@property (nonatomic) OPCPassphraseManager *passphraseManager;
+
+/**
+ Starts recording
+
+ @param sender The sender
+ */
 -(IBAction)onStart:(id)sender;
 
 @end
 
 @interface OPUIEnrollVoiceRecordViewController(PrivateMethods)
 
+/**
+ Forms the digit sequence based on the order number of voice sample
+ 
+ @return The word sequence
+ */
 -(NSString *)digitSequence;
+
+/**
+ Forms the word sequence based on the digit sequence
+
+ @return The word sequence
+ */
 -(NSString *)wordsSequence;
 
--(void)showItself;
-
+/**
+ Starts recording
+ */
 -(void)startRecord;
+
+/**
+ Stops recording
+ */
 -(void)stopRecord;
+
+/**
+ Sets sequence label parameters
+ */
+-(void)setupSequenceLabel;
+
+/**
+ Sets sequence time progress parameters
+ */
+-(void)setupTimeProgress;
+
+/**
+ Shows the activity indicators with the status marker
+
+ @param error The error
+ */
+-(void)setupActivityIndicatorWithError:(NSError *)error;
+
+/**
+ Closes screen
+ */
+-(void)close;
 
 @end
 
 @implementation OPUIEnrollVoiceRecordViewController
 
-#pragma mark - lifecyrcle
+#pragma mark - Lifecyrcle
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    if(self.numberOfSample==0) self.numberOfSample = 1;
+    self.passphraseManager = OPCPassphraseManager.sharedInstance;
     
-    self.sequenceLabel.text = [self digitSequence];
-    self.pageLabel.text = [NSString stringWithFormat:@"%lu/3",(unsigned long)self.numberOfSample];
-    
-    self.timeProgress.progress = 0 ;
-    self.timeout  = [[NSBundle mainBundle] objectForInfoDictionaryKey:kVoiceCaptureTimeoutName];
+    [self setupSequenceLabel];
+    [self setupTimeProgress];
 }
 
 -(void)applicationDidEnterBackground{
-    if([self.voiceManager isRecording])
-        [self stopRecord];
-    [self performSegueWithIdentifier:kExitVoiceSegueIdentifier sender:self];
+    [self close];
+}
 
+-(void)viewTimerDidExpared{
+    if(!self.voiceManager.isRecording) {
+        [self close];
+    }
+}
+
+-(void)networkStateChanged:(BOOL)isHostAccessable{
+    if (!isHostAccessable) {
+         [self close];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.startButton setSelected:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    __weak OPUIEnrollVoiceRecordViewController *weakself = self;
-    self.timer = [[OPUIBlockSecondTimer alloc] initTimerWithProgressBlock:^(float seconds)
-    {
+    
+    [self.activityIndicator resetActivityIndicatorStatus];
+    
+    __weak typeof(self) weakself = self;
+    self.voiceLimitDurationTimer = [[OPUIBlockCentisecondsTimer alloc] initTimerWithProgressBlock:^(float seconds){
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakself.timeProgress.progress = seconds/[weakself.timeout floatValue];
+            weakself.timeProgress.progress = seconds * 10/[weakself.timeout floatValue];
         });
     }
-                                                          withResultBlock:^(float seconds)
+                                                                                  withResultBlock:^(float seconds)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakself.timeProgress.progress = 0 ;
         });
-        if([weakself.voiceManager isRecording]) [weakself stopRecord];
+        
+        if([weakself.voiceManager isRecording]) {
+            [weakself startActivityAnimating];
+            [weakself stopRecord];
+        }
     }];
 
-    
     self.voiceManager =  [self.captureManager voiceManager];
     
+    if([self.voiceManager conformsToProtocol:@protocol(IOPCIsVoiceVisualizerProtocol)]) {
+        self.voiceVisualizer = (id<IOPCIsVoiceVisualizerProtocol>)self.voiceManager;
+        [self.voiceVisualizer setPreview:self.voiceView];
+    }
+    
+    if([self.voiceManager conformsToProtocol:@protocol(IOPCNoisyProtocol)]) {
+        [self addObserverForKeyPath:observeNoiseValue];
+
+        self.noiseIndicator.hidden = NO;
+
+        self.noiseAnalyzer = (id<IOPCNoisyProtocol>)self.voiceManager;
+        [self.noiseAnalyzer startNoiseAnalyzer];
+    }
+    
     [self.voiceManager setPassphraseNumber:[NSNumber numberWithInteger:self.numberOfSample]];
-    [self.voiceManager setLoadDataBlock:^(NSData *data, NSError *error)
-    {
-        if (!error && data)
-        {
-#ifdef DEBUG
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *verifyPath =  [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"reg%lu.wav",(unsigned long)weakself.numberOfSample]];
-            [data writeToFile:verifyPath atomically:YES];
-#endif
-            [weakself startActivityAnimating];
+    if([self.voiceManager respondsToSelector:@selector(setPassphrase:)]) {
+        [self.voiceManager setPassphrase:self.wordsSequence];
+    }
+    
+    [self.voiceManager setLoadDataBlock:^(NSData *data, NSError *error){
+        [weakself startActivityAnimating];
+        [weakself.voiceLimitDurationTimer stop];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakself.timeProgress.progress = 0 ;
+        });
+        
+        if (!error && data) {
             
             [weakself.service addVoiceFile:data
                             withPassphrase:[weakself wordsSequence]
                                  forPerson:weakself.userID
-                       withCompletionBlock:^(NSDictionary *responceObject, NSError *error)
-             {
-                 [weakself stopActivityAnimating];
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     if(!error){
-                         if (weakself.numberOfSample!=3) [weakself showItself];
-                         else{
-                             [[OPUILoader sharedInstance] enrollResultBlock](YES);
-                             dispatch_async( dispatch_get_main_queue(), ^{
-                                 [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
-                             });
-                             
-                         }
-                     }
-                     else
-                     {
-                         if([error.domain isEqualToString:NSURLErrorDomain])
-                         {
-                             [weakself showErrorOnMainThread:error];
-                             [weakself.startButton setSelected:NO];
-                         }
-                         else
-                             [weakself performSegueOnMainThreadWithIdentifier:kVoiceFailSegueIdentifier];
-                     }
-                 });
-             }];
+                       withCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+                 
+                           [weakself setupActivityIndicatorWithError:error];
+                           
+                           dispatch_async(dispatch_get_main_queue(), ^{
+                               if(!error) {
+                                   if (weakself.numberOfSample != 3) {
+                                       [weakself performSegueOnMainThreadWithIdentifier:kVoiceSussessSegueIdentifier];
+                                   } else {
+                                       [weakself startActivityAnimating];
+                                       
+                                       [OPUILoader.sharedInstance enrollResultBlock](YES,nil);
+                                       dispatch_async( dispatch_get_main_queue(), ^{
+                                           [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                       });
+                                   }
+                                   [weakself stopActivityAnimating];
+                               } else {
+                                   if([error.domain isEqualToString:NSURLErrorDomain]) {
+                                       [weakself showErrorOnMainThread:error];
+                                   } else {
+                                       [weakself showError:error withTitle:@"Give it another voice"];
+                                   }
+                               }
+                           });
+                       }];
         }
-        else
-            [weakself performSegueOnMainThreadWithIdentifier:kVoiceFailSegueIdentifier];
+        else {
+            [weakself showError:error withTitle:@"Give it another voice"];
+        }
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.voiceView.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    
+    if([self.voiceManager isRecording]) {
+        [self.voiceManager stop];
+    } else {
+        if (self.noiseAnalyzer) {
+            [self removeObserver:self forKeyPath:observeNoiseValue];
+            
+            [self.noiseAnalyzer stopNoiseAnalyzer];
+            self.noiseAnalyzer = nil;
+        } 
+    }
+    
     self.voiceManager = nil;
 }
 
-
-#pragma  mark - IBActions
--(IBAction)onStart:(id)sender{
-    if([self.voiceManager isRecording])    [self stopRecord];
-    else                                   [self startRecord];
-    
+-(void)dealloc{
+    if(_noiseAnalyzer) {
+        [self removeObserver:self forKeyPath:observeNoiseValue];
+    }
 }
 
-- (IBAction)unwindVoiceTryAgain:(UIStoryboardSegue *)unwindSegue
-{
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(id)object
+                       change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                      context:(void *)context{
+    
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    
+    if ([keyPath isEqualToString:observeNoiseValue]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.noiseIndicator.hidden = [self.noiseAnalyzer isNoNoisy];
+            self.startButton.enabled = self.noiseIndicator.hidden;
+        });
+    }
+}
+
+#pragma mark - IBActions
+-(IBAction)onStart:(id)sender{
+    
+    if([self.voiceManager isRecording]) {
+        self.voiceView.hidden = YES;
+        [self startActivityAnimating];
+        [self stopRecord];
+    } else {
+        self.voiceView.hidden = NO;
+        [self startRecord];
+    }
+}
+
+- (IBAction)unwindVoiceTryAgain:(UIStoryboardSegue *)unwindSegue{
     [self.startButton setSelected:NO];
 }
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [super prepareForSegue:segue sender:sender];
-    
-    if([segue.identifier isEqualToString:kVoiceSussessSegueIdentifier]){
+  
+    if([segue.identifier isEqualToString:kVoiceSussessSegueIdentifier]) {
         OPUIEnrollVoiceRecordViewController *vc = (OPUIEnrollVoiceRecordViewController *)segue.destinationViewController;
-        vc.numberOfSample = self.numberOfSample+1;
+        vc.numberOfSample = self.numberOfSample + 1;
+    }
+    
+    if([segue.identifier isEqualToString:kExitVoiceSegueIdentifier]) {
+        [self.voiceManager setLoadDataBlock:nil];
     }
 }
 
@@ -175,51 +331,77 @@ static NSString *kExitVoiceSegueIdentifier     = @"kExitVoiceSegueIdentifier";
 @implementation OPUIEnrollVoiceRecordViewController(PrivateMethods)
 
 -(void)startRecord{
-    [self.startButton setSelected:YES];
-    [self.voiceManager record];
-    [self.timer startWithTime:[self.timeout floatValue]];
+    if (self.noiseAnalyzer) {
+        [self.noiseAnalyzer stopNoiseAnalyzer];
+    }
     
+    self.startButton.selected = YES;
+    
+    [self.voiceManager record];
+    [self.voiceLimitDurationTimer startWithTime:self.timeout.floatValue];
 }
--(void)stopRecord
-{
-    [self.timer stop];
-    self.timeProgress.progress = 0 ;
+
+-(void)stopRecord{
     [self.voiceManager stop];
 }
 
--(void)showItself
-{
-    OPUIEnrollVoiceRecordViewController *vc = (OPUIEnrollVoiceRecordViewController *)[[UIStoryboard storyboardWithName:@"Enroll"
-                                                                                                                bundle: [NSBundle bundleForClass:[self class]]]
-                                                                               instantiateViewControllerWithIdentifier:kVoiceRecordStoryboardIdentifier];
-    vc.numberOfSample = self.numberOfSample + 1;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 -(NSString *)digitSequence{
-    
-    switch (self.numberOfSample)
-    {
-        case 1: return [[PassphraseManager sharedInstance] passphraseDigitString];
-        case 2: return [[PassphraseManager sharedInstance] passphraseReverseDigitString];
-        case 3: self.randomDigits = [[PassphraseManager sharedInstance] passphraseRandomDigitArray];
-            return [[PassphraseManager sharedInstance] passphraseRandomStringWithArray:self.randomDigits];
+    switch (self.numberOfSample) {
+        case 1:
+            return self.passphraseManager.passphraseSymbolString;
+        case 2:
+            return self.passphraseManager.passphraseReverseSymbolString;
+        case 3:
+            self.randomDigits = self.passphraseManager.passphraseRandomSymbolArray;
+            return [self.passphraseManager  passphraseRandomStringWithArray:self.randomDigits];
     }
-    
     return nil;
 }
 
--(NSString *)wordsSequence
-{
-    switch (self.numberOfSample)
-    {
-        case 1: return [[PassphraseManager sharedInstance] passphraseLocalizedString];
-        case 2: return [[PassphraseManager sharedInstance] passphraseReverseString];
-        case 3: return [[PassphraseManager sharedInstance] passphraseRandomStringWithArray:[[PassphraseManager sharedInstance] passphraseRandomArray:self.randomDigits]];
+-(NSString *)wordsSequence{
+    switch (self.numberOfSample) {
+        case 1:
+            return self.passphraseManager.passphraseLocalizedSymbolString;
+        case 2:
+            return self.passphraseManager.passphraseLocalizedReverseSymbolString;
+        case 3:
+            return [self.passphraseManager passphraseRandomStringWithArray:[OPCPassphraseManager.sharedInstance passphraseRandomizeArray:self.randomDigits]];
+    }
+    return nil;
+}
+
+-(void)setupSequenceLabel{
+    
+    if(self.numberOfSample == 0) {
+        self.numberOfSample = 1;
     }
     
-    return nil;
+    self.sequenceLabel.text = self.digitSequence;
+    self.pageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.numberOfSample];
+    [self.pageLabel sizeToFit];
+}
+
+-(void)setupTimeProgress{
+    self.timeProgress.progress = 0 ;
+    self.timeout = [NSBundle.mainBundle objectForInfoDictionaryKey:kVoiceCaptureTimeoutName];
+    self.timeout = @(100*self.timeout.floatValue);
+}
+
+-(void)setupActivityIndicatorWithError:(NSError *)error{
+    if(error) {
+        [self.activityIndicator setActivityIndicatorStatus2Fail];
+    } else {
+        [self.activityIndicator setActivityIndicatorStatus2Success];
+    }
+}
+
+-(void)close {
+    if([self.voiceManager isRecording]) {
+        [self.voiceManager setLoadDataBlock:nil];
+        [self stopRecord];
+    }
+    
+    [self performSegueWithIdentifier:kExitVoiceSegueIdentifier sender:self];
 }
 
 @end

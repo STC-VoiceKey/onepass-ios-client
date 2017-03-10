@@ -13,11 +13,28 @@
 "Eyes not found" = "Não foram encontrados os olhos";
 "Other faces detection" = "Foram detectadas outras faces";
 
-"We will take a photo and record three samples of your voice" = "ΩWe will take a photo and record three samples of your voiceΩ";
-
 "Take off sunglasses" = "Retire óculos escuros";
 "Make sure it's quiet" = "Certifique-se que seja silencioso";
 "Find a well lit place" = "Encontre um local bem iluminado";
 "Make your ordinary face" = "Mantenha seu semblante natural";
 "Too noisy"="Muito barulho";
 
+"No eyes detected"="Olhos não detetados";
+"Many faces detected"="Várias faces detetadas";
+"No face detected"="Face não detetada";
+"Pour light"="Luz fraca";
+"Shacking detected"="Detetada moviementação de celular";
+"Pronounce the digits"="Pronuncie os digitos";
+
+"Give it another video" = "Refaça o video";
+"Give it another shot"  = "Refaça o foto";
+"Give it another voice" = "Refaça o gravação";
+//----------------------------------------------------------
+"voice sound is corrupted" = "Voice sound is corrupted";
+"We will take a photo and record three samples of your voice" = "We will take a photo and record three samples of your voice";
+"multiple faces found in image" = "Multiple faces found in image";
+"internal server error" = "Internal server error";
+"Languages do not match" = "The etalon language does not match with the application language";
+
+"Left eye is not found on image" = "Left eye is not found on image";
+"Right eye is not found on image" = "Right eye is not found on image";

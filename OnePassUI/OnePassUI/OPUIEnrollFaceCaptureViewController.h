@@ -1,5 +1,5 @@
 //
-//  STCEnrollFaceCaptureViewController.h
+//  OPUIEnrollFaceCaptureViewController.h
 //  OnePassUI
 //
 //  Created by Soloshcheva Aleksandra on 14.06.16.
@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <OnePassUICommon/OnePassUICommon.h>
+#import "OPUIRotatableViewController.h"
 
-@interface OPUIEnrollFaceCaptureViewController : OPUIBaseViewController
+/**
+ Displays the video stream in the view and captures the face picture
+ */
+@interface OPUIEnrollFaceCaptureViewController : OPUIRotatableViewController
 
 @end

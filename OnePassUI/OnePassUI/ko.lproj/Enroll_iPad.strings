@@ -1,0 +1,36 @@
+/*Agreement screen*/
+
+/* Class = "UILabel"; text = "가입신청자는 생채정보 등록에 동의합니다"; ObjectID = "jm5-KG-DGR"; */
+"xYv-Go-c6B.text" = "가입신청자는 생채정보 등록에 동의합니다";
+
+/* Class = "UILabel"; text = "가입신청자의 사진을 촬영하고 3회의 음성녹음을 통해 샘플을 등록합니다"; ObjectID = "vYN-yL-mMI"; */
+"0NJ-Nb-Ih4.text" = "가입신청자의 사진을 촬영하고 3회의 음성녹음을 통해 샘플을 등록합니다";
+
+/* Class = "UIButton"; normalTitle = "동의 및 진행"; ObjectID = "bK0-pw-LXj"; */
+"cct-B8-woJ.normalTitle" = "동의 및 진행";
+
+/* Class = "UIButton"; normalTitle = "비동의"; ObjectID = "Cg3-cJ-pfw"; */
+"jbG-Kb-5r9.normalTitle" = "비동의";
+
+/*------------------------*/
+
+/* Capture Photo */
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "OGX-rx-6Km"; */
+"jft-A1-j6a.normalTitle" = "취소";
+
+/*------------------------*/
+
+/* Capture Voice */
+/* Class = "UILabel"; text = "Press the button and pronounce following digits:"; ObjectID = "YQo-DU-Hlu"; */
+"rRC-aV-ZqJ.text" = "“녹화” 버튼을 누르시고 화면에 나오는 숫자를 차례대로 읽어주세요:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
+"20N-bq-EjG.normalTitle" = "취소";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "AKn-jX-KsC"; */
+"AKn-jX-KsC.normalTitle" = "너무 시끄럽다";
+
+/*------------------------------*/
+
+
+

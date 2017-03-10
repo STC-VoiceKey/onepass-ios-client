@@ -16,10 +16,37 @@
 "Eyes not found" = "Глаза не найдены";
 "Other faces detection" = "На фото несколько лиц";
 
-
 "Take off sunglasses" = "Снимите очки";
 "Make sure it's quiet" = "Убедитесь что тихо";
 "Find a well lit place" = "Найдите освещенное место";
 "Make your ordinary face" = "Сделайте нейтральное выражение лица";
 
 "Too noisy"="Слишком шумно";
+
+"No eyes detected" = "Глаза не обнаружены";
+
+"Many faces detected" = "Несколько лиц";
+
+"No face detected" = "Лицо не обнаружено";
+
+"Pour light" = "Плохое освещение";
+
+"Shacking detected" = "Изображение дрожит";
+
+"Pronounce the digits" = "Произнесите цифры";
+"Give it another video" = "Попробуйте сделать другое видео";
+
+"Face off-center" = "Пожалуйста совместите лицо с маской";
+
+"Give it another video" = "Попробуйте сделать другое видео";
+"Give it another shot"  = "Попробуйте сделать другое снимок";
+"Give it another voice" = "Попробуйте сделать другую запись";
+
+"voice sound is corrupted" = "Звуковой файл поврежден";
+"multiple faces found in image" = "Несколько лиц в кадре";
+"internal server error" = "Внутренняя ошибка сервера";
+
+"Languages do not match" = "Язык эталона не соответствует языку приложения";
+
+"Left eye is not found on image" = "Левый глаз не найден на снимке";
+"Right eye is not found on image" = "Правый глаз не найден на снимке";

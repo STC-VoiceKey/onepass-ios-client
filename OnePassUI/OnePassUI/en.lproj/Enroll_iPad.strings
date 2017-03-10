@@ -1,0 +1,34 @@
+/*Agreement screen*/
+/* Class = "UILabel"; text = "By proceeding you agree to process your biometric data"; ObjectID = "jm5-KG-DGR"; */
+"xYv-Go-c6B.text" = "By proceeding you agree to process your biometric data";
+
+/* Class = "UILabel"; text = "We will take a photo and record three samples of your voice"; ObjectID = "vYN-yL-mMI"; */
+"0NJ-Nb-Ih4.text" = "We will take a photo and record three samples of your voice";
+
+/* Class = "UIButton"; normalTitle = "AGREE AND CONTINUE"; ObjectID = "bK0-pw-LXj"; */
+"cct-B8-woJ.normalTitle" = "Continue";
+
+/* Class = "UIButton"; normalTitle = "Disagree"; ObjectID = "Cg3-cJ-pfw"; */
+"jbG-Kb-5r9.normalTitle" = "Disagree";
+
+/*------------------------------*/
+
+/* Capture Photo */
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OGX-rx-6Km"; */
+"jft-A1-j6a.normalTitle" = "Cancel";
+
+/*------------------------------*/
+
+/* Capture Voice */
+/* Class = "UILabel"; text = "Press the button and pronounce following digits:"; ObjectID = "YQo-DU-Hlu"; */
+"rRC-aV-ZqJ.text" = "Press the button and pronounce following digits:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
+"20N-bq-EjG.normalTitle" = "Cancel";
+
+//AKn-jX-KsC
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "AKn-jX-KsC"; */
+"AKn-jX-KsC.normalTitle" = "Too noisy";
+/*------------------------------*/
+
+

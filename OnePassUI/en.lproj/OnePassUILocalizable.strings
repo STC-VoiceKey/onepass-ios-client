@@ -5,7 +5,6 @@
   Created by Soloshcheva Aleksandra on 04.07.16.
   Copyright © 2016 Speech Technology Center. All rights reserved.
 */
-"Enrollment is successfully completed"="Enrollment is successfully completed";
 
 "No face detection" = "No face detection";
 "Poor image quality" = "Poor image quality";
@@ -22,3 +21,25 @@
 "Make your ordinary face" = "Make your ordinary face";
 
 "Too noisy"="Too noisy";
+
+"No eyes detected" = "No eyes detected";
+"Many faces detected" = "Many faces detected";
+"No face detected" = "No face detected";
+"Pour light" = "Pour light";
+"Shacking detected" = "Shacking detected";
+
+"Pronounce digits" = "Pronounce the digits";
+
+"Face off-center" = "Please position your face into the mask";
+
+"Give it another video" = "Give it another video";
+"Give it another shot"  = "Give it another shot";
+"Give it another voice" = "Give it another recording";
+
+/*Errors*/
+"voice sound is corrupted" = "Voice sound is corrupted";
+"multiple faces found in image" = "Multiple faces found in image";
+
+"Languages do not match" = "The etalon language does not match with the application language";
+"Left eye is not found on image" = "Left eye is not found on image";
+"Right eye is not found on image" = "Right eye is not found on image";

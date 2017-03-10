@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7ji-uk-4Xz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="9fg-3Z-Jmk">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="7ji-uk-4Xz" customClass="OPUINavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YFH-4n-t74">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="drA-Xh-jDk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hF-wP-UcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-306" y="475"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="OPODLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-yl-a1d">
+                                <rect key="frame" x="40" y="266" width="295" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FYm-64-YGV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="SIGN IN">
+                                    <color key="titleColor" red="1" green="0.85882352939999995" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SignInSegueIdentifier" id="01P-a9-AUZ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="m9v-wy-TW9" customClass="OPUITextField">
+                                <rect key="frame" x="0.0" y="200" width="375" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="owL-LO-4OZ"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.16470588235294117" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Quw-9g-15Q"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-cL-ulO">
+                                <rect key="frame" x="333" y="30" width="32" height="32"/>
+                                <state key="normal" image="settings">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LGV-Qz-O0c" kind="show" identifier="SettingsSegueIdentifier" id="tK3-sI-D4e"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyLogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="5cZ-Oq-whx">
+                                <rect key="frame" x="138" y="60" width="100" height="100"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-fC-ssR">
+                                <rect key="frame" x="169" y="273" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uO5-jl-mFT">
+                                <rect key="frame" x="156" y="363" width="64" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SignUpSegueIdentifier" id="Kpb-8y-a3k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uZY-yl-a1d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="246" id="2gQ-0g-eUb" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="208"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="246"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="274"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="Soe-fC-ssR" firstAttribute="centerX" secondItem="uZY-yl-a1d" secondAttribute="centerX" id="JWb-Mv-3PP"/>
+                            <constraint firstAttribute="trailing" secondItem="bWA-cL-ulO" secondAttribute="trailing" constant="10" id="LQK-No-LdS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uO5-jl-mFT" secondAttribute="bottom" constant="270" id="Lq6-Kw-86d" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="270"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="270"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="250"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="uZY-yl-a1d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="Peh-iy-bh6"/>
+                            <constraint firstAttribute="trailing" secondItem="uZY-yl-a1d" secondAttribute="trailing" constant="40" id="SBn-yE-c79"/>
+                            <constraint firstItem="Soe-fC-ssR" firstAttribute="centerY" secondItem="uZY-yl-a1d" secondAttribute="centerY" id="c2a-9z-4zO"/>
+                            <constraint firstItem="5cZ-Oq-whx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="gGx-eL-Ev7" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="m9v-wy-TW9" secondAttribute="trailing" id="hVv-qj-RhM"/>
+                            <constraint firstItem="Soe-fC-ssR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oI2-eQ-YuU"/>
+                            <constraint firstItem="m9v-wy-TW9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="180" id="oj3-gu-VGf" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="152"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="180"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="208"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="bWA-cL-ulO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="opx-Vf-169"/>
+                            <constraint firstItem="m9v-wy-TW9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vvi-u1-oAu"/>
+                            <constraint firstItem="5cZ-Oq-whx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xh5-p4-Szp"/>
+                            <constraint firstItem="uO5-jl-mFT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xxb-1r-Wro"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wNq-Si-RpI"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Soe-fC-ssR" id="MSA-su-amV"/>
+                        <outlet property="emailTextField" destination="m9v-wy-TW9" id="oq1-LF-pYm"/>
+                        <outlet property="signInButton" destination="uZY-yl-a1d" id="Vex-iI-HUP"/>
+                        <outlet property="signUpButton" destination="uO5-jl-mFT" id="6vu-yk-Dbm"/>
+                        <segue destination="xX8-sw-HNL" kind="show" identifier="kVerifySuccessSegueIdentifier" id="AFC-Pk-o1f"/>
+                        <segue destination="7Xk-p7-nla" kind="show" identifier="kVerifyFailSegueIdentifier" id="o1n-L4-dMv"/>
+                        <segue destination="hUG-aL-2xf" kind="show" identifier="SignUpCompleteSegueIdentifier" id="o0q-Gb-fFJ"/>
+                        <segue destination="5LZ-KO-sFE" kind="show" identifier="AccessSegueIdentifier" id="QRU-le-P2M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="475"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="reg-Lw-NDB">
+            <objects>
+                <viewController id="hUG-aL-2xf" customClass="OPUIBaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wYQ-1i-4GE"/>
+                        <viewControllerLayoutGuide type="bottom" id="AYB-hF-wwW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DjP-Ta-YdZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfE-Xw-15t">
+                                <rect key="frame" x="85" y="144" width="206" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="0.90363666373239437" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWE-u0-5rR">
+                                <rect key="frame" x="38" y="573" width="300" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="ESj-Oe-3GZ"/>
+                                    <constraint firstAttribute="width" constant="300" id="cyF-cP-bhF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="1" green="0.85882352939999995" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="3n7-0w-Fs0" kind="unwind" unwindAction="unwindExit:" id="hwW-GF-3g1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now sign in to your account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="3l3-AH-6Af">
+                                <rect key="frame" x="36" y="194" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156862745094" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="QWE-u0-5rR" firstAttribute="centerX" secondItem="DjP-Ta-YdZ" secondAttribute="centerX" id="5mY-1O-yTl"/>
+                            <constraint firstItem="3l3-AH-6Af" firstAttribute="top" secondItem="wYQ-1i-4GE" secondAttribute="bottom" constant="174" id="T33-3b-1Q9" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="157"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="174"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="208"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="rfE-Xw-15t" firstAttribute="centerX" secondItem="DjP-Ta-YdZ" secondAttribute="centerX" id="TqF-co-Xhb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3l3-AH-6Af" secondAttribute="trailing" constant="20" id="V8b-JW-Iu9"/>
+                            <constraint firstItem="3l3-AH-6Af" firstAttribute="leading" secondItem="DjP-Ta-YdZ" secondAttribute="leadingMargin" constant="20" id="aKK-WT-US8"/>
+                            <constraint firstItem="3l3-AH-6Af" firstAttribute="centerX" secondItem="DjP-Ta-YdZ" secondAttribute="centerX" id="epE-EZ-YNB"/>
+                            <constraint firstItem="rfE-Xw-15t" firstAttribute="top" secondItem="wYQ-1i-4GE" secondAttribute="bottom" constant="124" id="qDZ-Ec-2hm" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="104"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="124"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="144"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="AYB-hF-wwW" firstAttribute="top" secondItem="QWE-u0-5rR" secondAttribute="bottom" constant="48" id="zNB-ZA-qh7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYd-xI-njP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3n7-0w-Fs0" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-161" y="1389"/>
+        </scene>
+        <!--Access Resource View Controller-->
+        <scene sceneID="R0n-ge-z32">
+            <objects>
+                <viewController id="5LZ-KO-sFE" customClass="OPODAccessResourceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HDA-eP-BKP"/>
+                        <viewControllerLayoutGuide type="bottom" id="XB1-89-vpd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nkV-TD-Y4D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access to You Camera and Microphone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7e-hO-gV5">
+                                <rect key="frame" x="30" y="124" width="315" height="57.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="0.90363666369999995" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAG-L5-UWF">
+                                <rect key="frame" x="37.5" y="561" width="300" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="CsS-KW-AVp"/>
+                                    <constraint firstAttribute="width" constant="300" id="tnW-h8-7Gv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Go to Settings">
+                                    <color key="titleColor" red="1" green="0.85882352939999995" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSettings:" destination="5LZ-KO-sFE" eventType="touchUpInside" id="j0m-eI-Paq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To take a photo, a voice and a video we need to access your Camera and Microphone" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaW-Jq-UjK">
+                                <rect key="frame" x="36" y="202" width="303" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erk-bH-NP0">
+                                <rect key="frame" x="159" y="613" width="56" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="TP1-yg-PXD" kind="unwind" unwindAction="unwindExit:" id="5ex-Mk-sK2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="erk-bH-NP0" firstAttribute="centerX" secondItem="nkV-TD-Y4D" secondAttribute="centerX" id="A8Z-3i-OCk"/>
+                            <constraint firstItem="XB1-89-vpd" firstAttribute="top" secondItem="nAG-L5-UWF" secondAttribute="bottom" constant="60" id="DyK-H4-DXW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OaW-Jq-UjK" secondAttribute="trailing" constant="20" id="SUF-9B-qV4"/>
+                            <constraint firstItem="E7e-hO-gV5" firstAttribute="leading" secondItem="nkV-TD-Y4D" secondAttribute="leading" constant="30" id="UDg-In-z2L"/>
+                            <constraint firstItem="E7e-hO-gV5" firstAttribute="top" secondItem="HDA-eP-BKP" secondAttribute="bottom" constant="104" id="Wr7-wa-TDS"/>
+                            <constraint firstItem="OaW-Jq-UjK" firstAttribute="leading" secondItem="nkV-TD-Y4D" secondAttribute="leadingMargin" constant="20" id="YKQ-bK-YUz"/>
+                            <constraint firstItem="E7e-hO-gV5" firstAttribute="centerX" secondItem="nkV-TD-Y4D" secondAttribute="centerX" id="YkW-YB-bxk"/>
+                            <constraint firstItem="nAG-L5-UWF" firstAttribute="centerX" secondItem="nkV-TD-Y4D" secondAttribute="centerX" id="aED-Os-qQR"/>
+                            <constraint firstAttribute="trailing" secondItem="E7e-hO-gV5" secondAttribute="trailing" constant="30" id="feZ-Qj-ZwB"/>
+                            <constraint firstItem="OaW-Jq-UjK" firstAttribute="centerX" secondItem="nkV-TD-Y4D" secondAttribute="centerX" id="k6D-JU-8Vx"/>
+                            <constraint firstItem="OaW-Jq-UjK" firstAttribute="top" secondItem="E7e-hO-gV5" secondAttribute="bottom" constant="20" id="kpn-QW-nO9"/>
+                            <constraint firstItem="XB1-89-vpd" firstAttribute="top" secondItem="erk-bH-NP0" secondAttribute="bottom" constant="20" id="pK9-hc-2it"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMg-st-hEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TP1-yg-PXD" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="-340.47976011994007"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="Fgf-DU-8jl">
+            <objects>
+                <viewController id="LGV-Qz-O0c" customClass="OPODSettingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j3c-93-YcZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="WJP-Qw-ls5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6nZ-tR-Thv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JQ-6W-B4R">
+                                <rect key="frame" x="30" y="266" width="315" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ml4-lc-N5X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title=" REMOVE CURRENT USER ">
+                                    <color key="titleColor" red="1" green="0.85882352939999995" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRemove:" destination="LGV-Qz-O0c" eventType="touchUpInside" id="k1G-EJ-Zzd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEU-Dl-RZx">
+                                <rect key="frame" x="160" y="613" width="56" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="OFo-uS-8s6" kind="unwind" unwindAction="unwindExit:" id="Y3C-c6-duV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qyg-xd-pdm" customClass="OPUITextField">
+                                <rect key="frame" x="0.0" y="200" width="375" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="CtP-5V-ZVi"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.16470588235294117" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LGV-Qz-O0c" id="j3E-Om-hP4"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*.*" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dRR-CP-GR9">
+                                <rect key="frame" x="36" y="40" width="303" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="0.90363666369999995" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6q3-GQ-c25">
+                                <rect key="frame" x="169" y="273" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6q3-GQ-c25" firstAttribute="centerX" secondItem="2JQ-6W-B4R" secondAttribute="centerX" id="2Hp-JW-FVv"/>
+                            <constraint firstAttribute="trailing" secondItem="Qyg-xd-pdm" secondAttribute="trailing" id="7HL-1d-bO2"/>
+                            <constraint firstItem="6q3-GQ-c25" firstAttribute="centerY" secondItem="2JQ-6W-B4R" secondAttribute="centerY" id="D6E-a2-FUb"/>
+                            <constraint firstItem="QEU-Dl-RZx" firstAttribute="centerX" secondItem="6nZ-tR-Thv" secondAttribute="centerX" id="DtG-Vu-4r0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dRR-CP-GR9" secondAttribute="trailing" constant="20" id="NUb-N0-mea"/>
+                            <constraint firstItem="Qyg-xd-pdm" firstAttribute="top" secondItem="j3c-93-YcZ" secondAttribute="bottom" constant="180" id="Qjc-QQ-L5P" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="152"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="180"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="208"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="WJP-Qw-ls5" firstAttribute="top" secondItem="QEU-Dl-RZx" secondAttribute="bottom" constant="20" id="XRP-XL-fSu"/>
+                            <constraint firstItem="2JQ-6W-B4R" firstAttribute="top" secondItem="6nZ-tR-Thv" secondAttribute="top" constant="266" id="Z0t-kk-eBZ" customClass="OPUILayoutConstraint">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                        <real key="value" value="238"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                        <real key="value" value="294"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                        <real key="value" value="266"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="dRR-CP-GR9" firstAttribute="leading" secondItem="6nZ-tR-Thv" secondAttribute="leadingMargin" constant="20" id="e0G-Qf-93n"/>
+                            <constraint firstItem="2JQ-6W-B4R" firstAttribute="leading" secondItem="6nZ-tR-Thv" secondAttribute="leading" constant="30" id="iAR-IH-cXk"/>
+                            <constraint firstItem="Qyg-xd-pdm" firstAttribute="leading" secondItem="6nZ-tR-Thv" secondAttribute="leading" id="oGK-Mj-MSu"/>
+                            <constraint firstItem="dRR-CP-GR9" firstAttribute="top" secondItem="j3c-93-YcZ" secondAttribute="bottom" constant="20" id="s1E-ve-LUY"/>
+                            <constraint firstAttribute="trailing" secondItem="2JQ-6W-B4R" secondAttribute="trailing" constant="30" id="xSG-sz-FmT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qGv-qQ-WDf"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="6q3-GQ-c25" id="7Qk-oL-Gx6"/>
+                        <outlet property="cancelConstraint" destination="XRP-XL-fSu" id="Yb6-Mw-8fC"/>
+                        <outlet property="urlTextField" destination="Qyg-xd-pdm" id="i0k-H2-Sxl"/>
+                        <outlet property="versionLabel" destination="dRR-CP-GR9" id="WeC-1z-frc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xlq-It-qai" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OFo-uS-8s6" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1465" y="475"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="ncE-sV-GFn">
+            <objects>
+                <viewController id="xX8-sw-HNL" customClass="OPUIBaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sWT-Nl-Cjp"/>
+                        <viewControllerLayoutGuide type="bottom" id="cK6-xG-idE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ac-vS-99D" customClass="OPUIResultView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC3-2W-UoK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <segue destination="ChE-qo-ynz" kind="unwind" unwindAction="unwindExit:" id="eSQ-1E-O13"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039215690000001" green="0.39607843139999999" blue="0.18039215689999999" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.27450980390000002" green="0.80392156859999997" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jC3-2W-UoK" secondAttribute="trailing" id="5KE-cT-Cqc"/>
+                            <constraint firstItem="jC3-2W-UoK" firstAttribute="leading" secondItem="2ac-vS-99D" secondAttribute="leading" id="TAi-Q6-tAB"/>
+                            <constraint firstItem="cK6-xG-idE" firstAttribute="top" secondItem="jC3-2W-UoK" secondAttribute="bottom" id="hN9-ue-gXT"/>
+                            <constraint firstItem="jC3-2W-UoK" firstAttribute="top" secondItem="sWT-Nl-Cjp" secondAttribute="bottom" id="tEh-Ub-l75"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                <real key="value" value="70"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="fail" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="button" destination="jC3-2W-UoK" id="34h-bR-OIv"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mDx-M4-VWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ChE-qo-ynz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="598" y="1388"/>
+        </scene>
+        <!--Access Denied View Controller-->
+        <scene sceneID="GWp-Ez-Z7Y">
+            <objects>
+                <viewController id="7Xk-p7-nla" customClass="OPODAccessDeniedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rYX-tN-JHN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Piy-oF-Xt6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oJ8-se-EPY" customClass="OPUIResultView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Lt1-Ky-9Nw">
+                                <rect key="frame" x="36" y="626" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFa-6I-WFh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="606"/>
+                                <connections>
+                                    <segue destination="gZC-qT-PnT" kind="unwind" unwindAction="unwindExit:" id="bGx-YD-x3r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.46274509800000002" green="0.062745098040000002" blue="0.23529411759999999" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.94509803921568625" green="0.27058823529411763" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lt1-Ky-9Nw" firstAttribute="leading" secondItem="oJ8-se-EPY" secondAttribute="leadingMargin" constant="20" id="2Zv-Ec-kDV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lt1-Ky-9Nw" secondAttribute="trailing" constant="20" id="Nnj-zm-Q5s"/>
+                            <constraint firstItem="tFa-6I-WFh" firstAttribute="top" secondItem="rYX-tN-JHN" secondAttribute="bottom" id="S5h-Ta-yY4"/>
+                            <constraint firstItem="tFa-6I-WFh" firstAttribute="leading" secondItem="oJ8-se-EPY" secondAttribute="leading" id="Xpd-ft-zoh"/>
+                            <constraint firstItem="Piy-oF-Xt6" firstAttribute="top" secondItem="Lt1-Ky-9Nw" secondAttribute="bottom" constant="20" id="j72-PP-FHm"/>
+                            <constraint firstAttribute="trailing" secondItem="tFa-6I-WFh" secondAttribute="trailing" id="wtm-AO-KTD"/>
+                            <constraint firstItem="Lt1-Ky-9Nw" firstAttribute="top" secondItem="tFa-6I-WFh" secondAttribute="bottom" id="xfv-6d-z9B"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                <real key="value" value="70"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="fail" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="button" destination="tFa-6I-WFh" id="FCG-5j-B7f"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="Lt1-Ky-9Nw" id="s4N-KI-NxG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTB-DA-8Lo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gZC-qT-PnT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1372" y="1388"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="keyLogoWhite" width="100" height="100"/>
+        <image name="settings" width="32" height="32"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="drA-Xh-jDk"/>
+    </inferredMetricsTieBreakers>
+</document>
