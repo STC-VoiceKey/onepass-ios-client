@@ -1,6 +1,17 @@
 ![itunesartwork 2x](https://cloud.githubusercontent.com/assets/20855360/23412071/78504558-fde5-11e6-9b27-363bc6b08364.png)
+<<<<<<< HEAD
 
 OnePassDemoOnline demonstrates a functionality of a biometric authentication based on a cloud service provided by STC-innovation 
+=======
+
+# onepass-ios-client
+iOS client for OnePass server.
+
+
+## REST API
+<p>URL: https://onepass.tech/vkonepass/rest/v4/</p>
+<p>HELP: https://onepass.tech/vkonepass/help/</p>
+>>>>>>> origin/master
 
 ## How To Get Started
 - [Download OnePassDemoOnline](https://github.com/STC-VoiceKey/onepass-ios-client/archive/master.zip) and try out the included iOS example app
