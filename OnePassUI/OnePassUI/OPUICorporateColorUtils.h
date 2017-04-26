@@ -22,7 +22,7 @@
 #define OPUICorporateColdWhite  [UIColor colorWithRed:240.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0]
 #define OPUICorporateTurquoise  [UIColor colorWithRed:000.0/255.0 green:154.0/255.0 blue:166.0/255.0 alpha:1.0]
 
-#define OPUIFontSFRegularWithSize(fSize) [UIFont fontWithName:@".SFUIText"        size:fSize]
-#define OPUIFontSFBoldWithSize(fSize)    [UIFont fontWithName:@".SFUIDisplay"     size:fSize]
+#define OPUIFontSFRegularWithSize(fSize) [UIFont systemFontOfSize:fSize]
+#define OPUIFontSFBoldWithSize(fSize)    [UIFont boldSystemFontOfSize:fSize]
 
 #endif /* OPUICorporateColorUtils_h */
