@@ -18,7 +18,7 @@ typedef void (^TimerSecondBlock)(float seconds);
 
 @implementation OPUIBlockSecondTimer
 
--(void)startWithTime:(float)value{
+-(void)startWithTime:(float)value {
     self.seconds = value;
     
     [self createBlockWithTime:self.seconds

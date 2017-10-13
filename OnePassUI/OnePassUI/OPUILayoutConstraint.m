@@ -12,7 +12,13 @@
 
 @implementation OPUILayoutConstraint
 
--(CGFloat)constant{
+-(CGFloat)constant {
+    if (UIScreen.mainScreen.nativeScale > 2) {
+        if (UIDevice.currentDevice.deviceType == UIDeviceGroupLarge) {
+            return self.largeDevicesValue;
+        } else
+        return self.smallDevicesValue;
+    }
     switch (UIDevice.currentDevice.deviceType) {
         case UIDeviceGroupLarge:
             return self.largeDevicesValue;
@@ -20,6 +26,7 @@
             return self.smallDevicesValue;
         case UIDeviceGroupMiddle:
             return self.middleDevicesValue;
+            
         default:
             break;
     }

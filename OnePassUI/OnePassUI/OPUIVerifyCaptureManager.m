@@ -47,7 +47,7 @@
 }
 
 #pragma mark - IOPCSessionProtocol
--(void)setPreview:(OPCRPreviewView *)preview{
+-(void)setPreview:(id<IOPCPreviewView>)preview{
     if (self.videoCaptureManager) {
         [self.videoCaptureManager setPreview:preview];
     }

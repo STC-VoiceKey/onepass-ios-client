@@ -41,18 +41,19 @@
 
 @implementation OPUIActivityIndicatorView
 
--(UIView *)createBackgroundView{
+-(UIView *)createBackgroundView {
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.superview.bounds];
     
     backgroundView.backgroundColor = OPUITurquoiseWithAlpha(1);
 
     self.arcView.showFail = NO;
+    self.hidesWhenStopped = YES;
     
     return backgroundView;
 }
 
--(void)startAnimating{
+-(void)startAnimating {
     [super startAnimating];
     
     [NSNotificationCenter.defaultCenter addObserver:self
@@ -60,22 +61,20 @@
                                                name:UIDeviceOrientationDidChangeNotification
                                              object:nil];
     
-    self.hidesWhenStopped = NO;
     if (self.backgroundView == nil) {
         self.arcView = [self createArcView];
-        
         self.backgroundView = [self createBackgroundView];
-
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.backgroundView addSubview:self.arcView];
+            [self.superview addSubview:self.backgroundView];
+        });
     } else {
-        self.backgroundView.frame = self.superview.bounds;
-        self.arcView.frame = self.superview.bounds;
+        self.backgroundView.alpha = 1;
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.superview addSubview:self.backgroundView];
-        [self.superview bringSubviewToFront:self.backgroundView];
-    });
+    self.backgroundView.frame = self.superview.bounds;
+    self.arcView.frame = self.superview.bounds;
+    [self.superview bringSubviewToFront:self.backgroundView];
 }
 
 -(void)dealloc{
@@ -83,35 +82,30 @@
     _delayedTimer = nil;
 }
 
--(void)stopAnimating{
+-(void)stopAnimating {
     if(!self.isAnimating) {
        return;
     }
     
-    [NSNotificationCenter.defaultCenter removeObserver:self
-                                                  name:UIDeviceOrientationDidChangeNotification
-                                                object:nil];
+    __weak typeof(self.backgroundView) weakBackgroundView = self.backgroundView;
+
+    [UIView animateWithDuration:2.2
+                     animations:^{
+                         if (weakBackgroundView) {
+                             weakBackgroundView.alpha = 0.0;
+                         }
+                     }
+                     completion:^(BOOL finished){
+                         if (weakBackgroundView) {
+                            // weakBackgroundView.alpha = 1.0;
+                             [weakBackgroundView.superview sendSubviewToBack:weakBackgroundView];
+                         }
+                     }];
     
-    self.arcView.finisning = YES;
-    
-    if(!self.delayedTimer.isValid) {
-        self.delayedTimer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                           repeats:NO
-                                                             block:^(NSTimer * _Nonnull timer){
-                                                                 if (self) {
-                                                                     [self.delayedTimer invalidate];
-                                                                     self.delayedTimer = nil;
-                                                                     
-                                                                     [super stopAnimating];
-                                                                     [self.backgroundView removeFromSuperview];
-                                                                     self.hidesWhenStopped = YES;
-                                                                     self.arcView.finisning = NO;
-                                                                 }
-                                                             }];
-    }
+    [super stopAnimating];
 }
 
--(void)setTag:(NSInteger)tag{
+-(void)setTag:(NSInteger)tag {
     switch (tag) {
         case 1:
             self.arcView.showFail = YES;
@@ -126,11 +120,12 @@
             break;
     }
 }
+
 @end
 
 @implementation  OPUIActivityIndicatorView (PrivateMethods)
 
--(OPUI3QuarterArcView *)createArcView{
+-(OPUI3QuarterArcView *)createArcView {
     OPUI3QuarterArcView *arcView = [[OPUI3QuarterArcView alloc] initWithFrame:self.superview.frame];
     arcView.center = self.center;
     arcView.tintColor = self.color;
@@ -140,7 +135,7 @@
     return arcView;
 }
 
--(void)updateOrientation{
+-(void)updateOrientation {
     self.backgroundView.frame = self.backgroundView.superview.bounds;
     for (UIView *view in self.backgroundView.subviews) {
         view.frame = self.backgroundView.superview.bounds;

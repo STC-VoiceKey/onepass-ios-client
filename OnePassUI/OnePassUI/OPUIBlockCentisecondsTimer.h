@@ -45,7 +45,6 @@ typedef void (^TimerBlock)(float);
 -(id)initTimerWithProgressBlock:(TimerBlock)progressBlock
                 withResultBlock:(TimerBlock)resultBlock;
 
-
 /**
  Starts the timer with duration
 

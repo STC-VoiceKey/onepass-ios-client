@@ -39,10 +39,11 @@
              withViewController:(UIViewController *)viewController
                         handler:(void (^ __nullable)(UIAlertAction *action))handler{
     
-    NSString *localizedError = NSLocalizedStringFromTableInBundle(@"Error", @"OnePassUILocalizable", [NSBundle bundleForClass:[self class]], nil);
+    NSString *localizedError       = NSLocalizedStringFromTableInBundle(@"Error", @"OnePassUILocalizable", [NSBundle bundleForClass:[self class]], nil);
+    NSString *localizedDescription = NSLocalizedStringFromTableInBundle(error.localizedDescription, @"OnePassUILocalizable", [NSBundle bundleForClass:[self class]], nil);
     
     UIAlertController *alertController = [self alertControllerWithTitle:localizedError
-                                                                message:error.localizedDescription
+                                                                message:localizedDescription
                                                          preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
@@ -81,7 +82,92 @@
                        completion:nil];
     });
     return alertController;
+}
 
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                    cancelHandler:(void (^)(UIAlertAction *))cancelHandler
+                    deleteHandler:(void (^)(UIAlertAction *))deleteHandler{
+    
+    UIAlertController *alertController = [self alertControllerWithTitle:header
+                                                                message:warning
+                                                         preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", ni)
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:cancelHandler];
+    [alertController addAction:okAction];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", ni)
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:deleteHandler];
+    
+    [alertController addAction:cancelAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [viewController presentViewController:alertController
+                                     animated:YES
+                                   completion:nil];
+    });
+    return alertController;
+}
+
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                    cancelHandler:(void (^)(UIAlertAction *action))okHandler
+                  settingsHandler:(void (^)(UIAlertAction *action))cancelHandler{
+    
+    UIAlertController *alertController = [self alertControllerWithTitle:header
+                                                                message:warning
+                                                         preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", ni)
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:cancelHandler];
+    [alertController addAction:okAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", ni)
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:okHandler];
+    
+    [alertController addAction:cancelAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [viewController presentViewController:alertController
+                                     animated:YES
+                                   completion:nil];
+    });
+    return alertController;
+}
+
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                        okHandler:(void (^)(UIAlertAction *action))okHandler
+                    cancelHandler:(void (^)(UIAlertAction *action))cancelHandler{
+    UIAlertController *alertController = [self alertControllerWithTitle:header
+                                                                message:warning
+                                                         preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", ni)
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:cancelHandler];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", ni)
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:okHandler];
+    
+    [alertController addAction:okAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [viewController presentViewController:alertController
+                                     animated:YES
+                                   completion:nil];
+    });
+    return alertController;
 }
 
 + (UIAlertController *)alertControllerWithTitle:(nullable NSString *)title

@@ -1,0 +1,26 @@
+/* Class = "UIButton"; normalTitle = " REMOVE CURRENT USER "; ObjectID = "2JQ-6W-B4R"; */
+"2JQ-6W-B4R.normalTitle" = " 계정 삭제 ";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QEU-Dl-RZx"; */
+"QEU-Dl-RZx.normalTitle" = "취소";
+
+/* Class = "UITextField"; placeholder = "  Enter email"; ObjectID = "m9v-wy-TW9"; */
+"4hI-RS-DVo.placeholder" = "이메일";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.normalTitle" = "로그인";
+
+/* Class = "UIButton"; selectedTitle = "SIGN UP"; ObjectID = "uZY-yl-a1d"; */
+"uO5-jl-mFT.normalTitle" = "회원가입";
+
+"rfE-Xw-15t.text" = "Sign Up Complete";
+
+"3l3-AH-6Af.text" = "You can now sign in to your account";
+
+"QWE-u0-5rR.normalTitle" = "Done";
+
+"E7e-hO-gV5.text" = "Access to Your Camera and Microphone";
+"OaW-Jq-UjK.text" = "To take a photo, a voice and a video we need to access your camera and microphone";
+"nAG-L5-UWF.normalTitle" = "Continue";
+"erk-bH-NP0.normalTitle" = "Cancel";
+"2JQ-6W-B4R.normalTitle" = "Save";

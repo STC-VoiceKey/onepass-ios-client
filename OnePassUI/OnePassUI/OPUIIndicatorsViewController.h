@@ -22,33 +22,15 @@ typedef void (^ReadyBlock) (BOOL isReady);
 @interface OPUIIndicatorsViewController : OPUIBaseViewController
 
 /**
- The color of the indicator when the indicator status is success
- */
-@property (nonatomic, readonly)    UIColor *goodColor;
-
-/**
- The color of indicator when the indicator status is not success
- */
-@property (nonatomic, readonly)    UIColor *failColor;
-
-
-/**
- The indicator toolbar
- */
-@property (nonatomic, weak) IBOutlet UIToolbar *indicatorToolbar;
-
-/**
  The view where the face mask is shown
  */
 @property (nonatomic, weak)  UIView *viewMaskContainer;
-
 
 /**
  The instance of 'IOPCPortraitFeaturesProtocol' and 'IOPCEnvironmentProtocol'
  */
 @property (nonatomic) id<IOPCPortraitFeaturesProtocol,
                               IOPCEnvironmentProtocol> frameCaptureManager;
-
 
 /**
  The block

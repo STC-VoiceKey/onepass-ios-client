@@ -9,27 +9,38 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <OnePassCapture/OnePassCapture.h>
-#import <ImageIO/ImageIO.h>
 
 /**
  The base class for all classes which capture visual resources.
  */
-@interface OPCSCaptureBaseManager : NSObject<IOPCSessionProtocol,AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface OPCSCaptureBaseManager : NSObject< IOPCSessionProtocol,
+                                              IOPCPortraitFeaturesProtocol,
+                                              AVCaptureVideoDataOutputSampleBufferDelegate,
+                                              IOPCInterfaceOrientationProtocol>
 
 /**
  The unchangeable instance of AVCaptureSession
  */
-@property (nonatomic,strong,readonly)    AVCaptureSession *session;
+@property ( nonatomic, strong, readonly)    AVCaptureSession *session;
 
 /**
  Is instance of AVCaptureVideoDataOutput which produce video frames
  */
-@property (nonatomic,strong)     AVCaptureVideoDataOutput *videoOutput;
+@property ( nonatomic, strong)     AVCaptureVideoDataOutput *videoOutput;
+
+/**
+ 
+ */
+#warning docs
+@property ( nonatomic) CIImage *currentImage;
+
+#warning docs
+@property (nonatomic) OPCAvailableOrientation interfaceOrientation;
 
 /**
  Is the view showing the video stream
  */
-@property (nonatomic,weak)                OPCRPreviewView *viewForRelay;
+@property ( nonatomic, weak)       id<IOPCPreviewView> viewForRelay;
 
 /**
  The implementation of 'IOPCPortraitFeaturesProtocol'
@@ -64,11 +75,21 @@
 -(void)checkEnviroment:(CMSampleBufferRef)sampleBuffer;
 
 /**
- Converts CMSampleBufferRef to UIImage
+ Converts CMSampleBufferRef to CIImage
 
  @param sampleBuffer The buffer
  @return The image
  */
-- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
+- (CIImage *)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
+
+/**
+ Is implementation of 'IOPCInterfaceOrientationProtocol'
+ */
+-(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation;
+
+/**
+ Updates the selected camera
+ */
+-(void)setupCaptureDevice;
 
 @end

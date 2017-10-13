@@ -7,7 +7,6 @@
 //
 
 #import "OPCSCaptureVideoManager.h"
-#import "UIImage+Extra.h"
 
 #import "OPCSVideoConverter.h"
 
@@ -38,31 +37,9 @@
  */
 @property (nonatomic) NSString      *pathTemporallyCompressedFile;
 
-/**
- The last image taken before the recording starts
- */
-@property (nonatomic) UIImage       *lastimage;
-
-/**
- The view that is shown between switching outputs of AVCaptureSession
-
- @warning It is nessesary because there is a moment when the display turns dark during the outputs switching
- */
-@property (nonatomic) UIImageView   *snapshot;
-
 @end
 
 @interface OPCSCaptureVideoManager(PrivateMethods)
-
-/**
- Shows the last image on the device display during the outputs switching
- */
--(void)showSnapshot;
-
-/**
- Hides the last image from the device display
- */
--(void)hideSnapshot;
 
 /**
  The URL of the video
@@ -85,34 +62,24 @@
 
 @implementation OPCSCaptureVideoManager
 
--(void)setupAVCapture{
+-(void)setupAVCapture {
     [super setupAVCapture];
     
     self.isRecording = NO;
 }
 
 #pragma mark - IOPCRecordProtocol
--(void)prepare2record{
+-(void)prepare2record {
     if (!self.isRecording) {
-        [self showSnapshot];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-            
-            [self changeSessionConfiguration];
-            
-            if (self.ready2RecordBlock) {
-                self.ready2RecordBlock(YES);
-            }
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self hideSnapshot];
-            });
-        });
+        if (self.ready2RecordBlock) {
+            self.ready2RecordBlock(YES);
+        }
+        [self changeSessionConfiguration];
     }
 }
 
 #pragma mark - IOPCRecordProtocol
--(void)record{
+-(void)record {
     if (!self.isRecording) {
         self.isRecording = YES;
         [self.movieFileOutput startRecordingToOutputFileURL:self.urlForTemporallyFile
@@ -120,29 +87,18 @@
     }
 }
 
--(void)stop{
+-(void)stop {
     if(self.isRecording) {
+        self.isRecording = NO;
         [self.movieFileOutput stopRecording];
     }
-}
-
-#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
-- (void)captureOutput:(AVCaptureOutput *)captureOutput
-didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection{
-    
-    [self checkEnviroment:sampleBuffer];
-    [self checkPortraitFeatures:sampleBuffer];
-
-    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
-    self.lastimage = [image correctImageOrientation:image];
 }
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput
 didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
       fromConnections:(NSArray *)connections
-                error:(NSError *)error{
+                error:(NSError *)error {
     if(error) {
         if(self.loadDataBlock) {
             self.loadDataBlock(nil,error);
@@ -152,26 +108,16 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     }
 }
 
+
+-(CIImage *)snapshot {
+    return self.currentImage;
+}
+
 @end
 
 @implementation OPCSCaptureVideoManager(PrivateMethods)
 
--(void)showSnapshot{
-    self.snapshot = [[UIImageView alloc] initWithFrame:self.viewForRelay.bounds];
-    self.snapshot.contentMode = UIViewContentModeScaleAspectFill;
-    self.snapshot.image = [UIImage imageWithCGImage:self.lastimage.CGImage
-                                              scale:self.lastimage.scale
-                                        orientation:UIImageOrientationUpMirrored];
-    
-    [self.viewForRelay addSubview:self.snapshot];
-}
-
--(void)hideSnapshot{
-    [self.snapshot removeFromSuperview];
-    self.snapshot = nil;
-}
-
--(void)reset{
+-(void)reset {
     [self removeTemporallyFile:self.pathTemporallyFile];
     [self removeTemporallyFile:self.pathTemporallyCompressedFile];
 
@@ -181,29 +127,29 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     self.pathTemporallyCompressedFile = nil;
 }
 
--(NSURL *)urlForTemporallyFile{
+-(NSURL *)urlForTemporallyFile {
     return [NSURL fileURLWithPath:self.tempFilePath];
 }
 
--(NSURL *)urlForCompressedFile{
+-(NSURL *)urlForCompressedFile {
     return [NSURL fileURLWithPath:self.tempCompressedFilePath];
 }
 
 -(NSString *)tempFilePath{
-    if(!self.pathTemporallyFile){
+    if(!self.pathTemporallyFile) {
         self.pathTemporallyFile = [NSString stringWithFormat:@"%@verify%@.mov", NSTemporaryDirectory(), NSDate.date];
     }
     return self.pathTemporallyFile;
 }
 
--(NSString *)tempCompressedFilePath{
+-(NSString *)tempCompressedFilePath {
     if (!self.pathTemporallyCompressedFile) {
         self.pathTemporallyCompressedFile = [NSString stringWithFormat:@"%@verifyCompressed%@.mov", NSTemporaryDirectory(), NSDate.date];
     }
     return self.pathTemporallyCompressedFile;
 }
 
--(NSError *)removeTemporallyFile:(NSString *)filename{
+-(NSError *)removeTemporallyFile:(NSString *)filename {
     NSError *error;
     [NSFileManager.defaultManager removeItemAtPath:filename error:&error];
     if (error) {
@@ -212,9 +158,10 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     return error;
 }
 
--(void)compressVideo{
+-(void)compressVideo {
     self.videoConverter = [[OPCSVideoConverter alloc] initWithAssetURL:self.urlForTemporallyFile
                                                            toOutputURL:self.urlForCompressedFile];
+    self.interfaceOrientation = self.interfaceOrientation;
     
     __weak typeof(self) weakself = self;
     [self.videoConverter exportAsynchronouslyWithCompletionHandler:^(NSError *error) {
@@ -233,8 +180,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     }];
 }
 
--(void)changeSessionConfiguration{
-    
+-(void)changeSessionConfiguration {
     [self.session beginConfiguration];
     
     self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
@@ -260,7 +206,21 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     }
     
     if(videoConnection.isVideoOrientationSupported) {
-        [videoConnection setVideoOrientation:(AVCaptureVideoOrientation)UIDevice.currentDevice.orientation];
+        AVCaptureVideoOrientation videoOrientation;
+        switch (self.interfaceOrientation ) {
+            case OPCAvailableOrientationRight:
+                videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+                break;
+                
+            case OPCAvailableOrientationLeft:
+                videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+                break;
+                
+            default:
+                videoOrientation = AVCaptureVideoOrientationPortrait;
+                break;
+        }
+        videoConnection.videoOrientation = videoOrientation;
     }
     
     AVCaptureDevice      *audioDevice = [AVCaptureDevice      defaultDeviceWithMediaType:AVMediaTypeAudio];

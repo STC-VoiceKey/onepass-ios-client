@@ -15,6 +15,7 @@
 #import "OPUIIndicatorsViewController.h"
 #import "UIActivityIndicatorView+Status.h"
 #import "OPUIBlockCentisecondsTimer.h"
+#import "OPCRPreviewView.h"
 
 static NSString *kPhotoSuccessSegueIdentifier = @"kPhotoSuccessSegueIdentifier";
 static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
@@ -32,7 +33,8 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
  */
 @property (nonatomic)      id<IOPCCapturePhotoManagerProtocol,
                                  IOPCPortraitFeaturesProtocol,
-                                      IOPCEnvironmentProtocol> photoCaptureManager;
+                                      IOPCEnvironmentProtocol,
+                                IOPCInterfaceOrientationProtocol> photoCaptureManager;
 
 /**
  The view displays the video stream
@@ -54,11 +56,6 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
  */
 @property (nonatomic) BOOL isStable;
 
-/**
- The face photo as bytes
- */
-@property (nonatomic, strong) NSData *data;
-
 @end
 
 @interface OPUIEnrollFaceCaptureViewController(PrivateMethods)
@@ -70,6 +67,9 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
  */
 -(void)showError:(NSError *)error;
 
+#warning docs
+-(UIImage *)imageCI2UI:(CIImage *)ciImage;
+
 @end
 
 @implementation OPUIEnrollFaceCaptureViewController
@@ -80,7 +80,7 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
 
     self.isTimering = NO;
     
-    [self updateViewConstraints];
+    [self updateOrientation];
 }
 
 
@@ -110,11 +110,18 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     }
     
     __weak typeof(self) weakself = self;
-    [self.photoCaptureManager setLoadDataBlock:^(NSData *data, NSError *error) {
+    [self.photoCaptureManager setLoadImageBlock:^(CIImage *ciImage, NSError *error) {
         if (error) {
             [weakself showError:error];
         } else {
-            weakself.data = [NSData dataWithData:data];
+            UIImage *uiImage = [weakself imageCI2UI:ciImage];
+            NSData  *data    = UIImageJPEGRepresentation(uiImage, 0.9);
+            
+#ifdef DEBUG
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *jpgPath =  [[paths objectAtIndex:0] stringByAppendingPathComponent:@"face.jpg"];
+            [data writeToFile:jpgPath atomically:YES];
+#endif
             
             [weakself startActivityAnimating];
             [weakself.indicatorViewController stopObserving];
@@ -127,6 +134,7 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     }];
     
     [self.photoCaptureManager startRunning];
+    [self updateOrientation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -140,6 +148,12 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     }
 
     [self stopActivityAnimating];
+}
+
+-(void)updateOrientation{
+    [super updateOrientation];
+    
+    [self.photoCaptureManager setInterfaceOrientation:self.currentOrientation];
 }
 
 -(void)dealloc{
@@ -193,7 +207,6 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
 -(void)showError:(NSError *)error{
     if([error.domain isEqualToString:NSURLErrorDomain]) {
         [self performSegueOnMainThreadWithIdentifier:kExitPhotoSegueIdentifier];
-//        [self showErrorOnMainThread:error];
     } else {
         if(error) {
             [self showError:error withTitle:@"Give it another shot"];
@@ -203,4 +216,14 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     }
 }
 
+-(UIImage *)imageCI2UI:(CIImage *)ciImage{
+    CIContext *ciContext = [CIContext contextWithOptions:nil];
+    CGImageRef cgImageRef = [ciContext createCGImage:ciImage fromRect:ciImage.extent];
+    
+    UIImage *nsImage = [UIImage imageWithCGImage:cgImageRef];
+    
+    CGImageRelease(cgImageRef);
+    return nsImage;
+
+}
 @end

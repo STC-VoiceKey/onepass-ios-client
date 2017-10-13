@@ -7,10 +7,9 @@
 //
 
 #import "OPUIIndicatorsViewController.h"
-#import "OPUICorporateColorUtils.h"
 #import "OPUIBlockSecondTimer.h"
 #import "OPUIWarningView.h"
-#import "OPUIBarButtonItem.h"
+#import "OPUIIndicatorImageView.h"
 
 static NSString *observeIsSingleFace = @"self.frameCaptureManager.isSingleFace";
 static NSString *observeIsFaceFound  = @"self.frameCaptureManager.isFaceFound";
@@ -20,17 +19,11 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 
 @interface OPUIIndicatorsViewController ()
 
-@property (nonatomic) UIColor *goodColor;
-@property (nonatomic) UIColor *failColor;
-
-/**
- The indicator button outlets
- */
-@property (nonatomic, weak) IBOutlet OPUIBarButtonItem   *bbSingleFace;
-@property (nonatomic, weak) IBOutlet OPUIBarButtonItem   *bbFaceFound;
-@property (nonatomic, weak) IBOutlet OPUIBarButtonItem   *bbEyesFound;
-@property (nonatomic, weak) IBOutlet OPUIBarButtonItem   *bbBrightness;
-@property (nonatomic, weak) IBOutlet OPUIBarButtonItem   *bbTremor;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageSingleFace;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageFaceFound;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageEyesFound;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageBrightness;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageTremor;
 
 /**
  The view with the mask to help position the face
@@ -57,6 +50,14 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
  */
 @property (nonatomic) OPUIBlockSecondTimer  *faceNoFoundTimer;
 
+///**
+// Shows the mask visibility
+//
+// @return YES, if the face positioning mask is visible
+// */
+//@property (nonatomic) BOOL isMaskShown;
+
+@property (nonatomic) UIInterfaceOrientation interfaceOrientation;
 @end
 
 @interface OPUIIndicatorsViewController (PrivatesMethods)
@@ -67,13 +68,6 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 -(void)updateIndicators;
 
 /**
- Shows the mask visibility
-
- @return YES, if the face positioning mask is visible
- */
--(BOOL)isMaskShown;
-
-/**
  Shows the face positioning mask
  */
 -(void)showMask;
@@ -82,35 +76,34 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
  Hides the face positioning mask
  */
 -(void)hideMask;
+-(void)removeMask;
 
 /**
  Is invoked when the device orientation is changed 
  */
 -(void)updateOrientation;
 
+#warning docs
+-(void)resetIndicators;
+
+
 @end
 
 @implementation OPUIIndicatorsViewController
 
--(void)viewDidLoad{
+-(void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.indicatorToolbar setBackgroundImage:[UIImage new]
-                      forToolbarPosition:UIToolbarPositionAny
-                              barMetrics:UIBarMetricsDefault];
-    
-    self.indicatorToolbar.backgroundColor = OPUIBlackWithAlpha(0.5);
-    
-    self.goodColor = OPUIWhiteWithAlpha(0.4);
-    self.failColor = OPUIRedWithAlpha(1);
-    
+
     self.isObserving = NO;
     self.isListerning = NO;
+    self.interfaceOrientation = UIApplication.sharedApplication.statusBarOrientation;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
+    
+    [self resetIndicators];
     
     if (self.frameCaptureManager){
         self.isReady = NO;
@@ -144,13 +137,12 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     self.isListerning = NO;
     
-    if(self.isMaskShown)
-        [self hideMask];
+    [self removeMask];
     
     if(self.isObserving) {
         [self removeObserver:self forKeyPath:observeIsEyesFound];
@@ -184,8 +176,7 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 -(void)observeValueForKeyPath:(NSString *)keyPath
                      ofObject:(id)object
                        change:(NSDictionary<NSString *,id> *)change
-                      context:(void *)context{
-    
+                      context:(void *)context {
     if(!self.isListerning) {
         return;
     }
@@ -214,13 +205,8 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
         && [self.frameCaptureManager isBrightness];
 }
 
--(void)stopObserving{
-    
-    [self.bbSingleFace  setTintColor:self.goodColor];
-    [self.bbTremor      setTintColor:self.goodColor];
-    [self.bbEyesFound   setTintColor:self.goodColor];
-    [self.bbFaceFound   setTintColor:self.goodColor];
-    [self.bbBrightness  setTintColor:self.goodColor];
+-(void)stopObserving {
+    [self resetIndicators];
     
     self.isListerning = NO;
 }
@@ -229,60 +215,60 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 
 @implementation OPUIIndicatorsViewController (PrivatesMethods)
 
--(void)updateIndicators
-{
-    __weak typeof(self) weakself = self;
-   dispatch_async(dispatch_get_main_queue(),^{
-       
-       [weakself.bbFaceFound setTintColor:([weakself.frameCaptureManager isFaceFound] ? weakself.goodColor: weakself.failColor)];
-       
-       if (![weakself.frameCaptureManager isFaceFound]) {
-           
-           [weakself.bbSingleFace setTintColor:weakself.goodColor];
-           [weakself.bbTremor     setTintColor:weakself.goodColor];
-           [weakself.bbEyesFound  setTintColor:weakself.goodColor];
-           
-           if(![weakself.faceNoFoundTimer isProcessing]) {
-               [weakself.faceNoFoundTimer startWithTime:2];
-           }
-        } else {
-            
-            [weakself.faceNoFoundTimer stop];
-            [weakself hideMask];
-            
-            [weakself.bbSingleFace setTintColor:([weakself.frameCaptureManager isSingleFace] ? weakself.goodColor: weakself.failColor)];
-            [weakself.bbEyesFound  setTintColor:([weakself.frameCaptureManager isEyesFound]  ? weakself.goodColor: weakself.failColor)];
-            [weakself.bbTremor     setTintColor:([weakself.frameCaptureManager isNoTremor]   ? weakself.goodColor: weakself.failColor)];
+-(void)resetIndicators{
+    self.imageSingleFace.active = NO;
+    self.imageTremor.active     = NO;
+    self.imageEyesFound.active  = NO;
+    self.imageFaceFound.active  = NO;
+    self.imageBrightness.active = NO;
+}
+
+-(void)updateIndicators {
+    if (!self.frameCaptureManager.isFaceFound) {
+        self.imageFaceFound.active = YES;
+        
+        self.imageSingleFace.active = NO;
+        self.imageTremor.active     = NO;
+        self.imageEyesFound.active  = NO;
+        
+        if(![self.faceNoFoundTimer isProcessing]) {
+            [self.faceNoFoundTimer startWithTime:2];
         }
+        
+    } else {
+        [self.faceNoFoundTimer stop];
        
-       [weakself.bbBrightness  setTintColor:([weakself.frameCaptureManager isBrightness]  ? weakself.goodColor: weakself.failColor)];
-    });
+        [self hideMask];
+        
+        self.imageFaceFound.active = NO;
+        
+        self.imageSingleFace.active = !self.frameCaptureManager.isSingleFace;
+        self.imageEyesFound.active  = !self.frameCaptureManager.isEyesFound;
+        self.imageTremor.active     = !self.frameCaptureManager.isNoTremor;
+    }
+    
+    self.imageBrightness.active = ![self.frameCaptureManager isBrightness];
 }
 
 -(BOOL)isMaskShown{
-    return (self.maskView != nil);
+    if ( (self.maskView!=nil) && (self.maskView.alpha!=0) ) {
+        return YES;
+    }
+    return NO;
 }
-
 -(void)showMask{
-    
     if(self.isMaskShown) {
         return;
     }
     
-    NSBundle *currentBundle = [NSBundle bundleForClass:[self class]];
-    NSArray *nib = [currentBundle loadNibNamed:self.bbFaceFound.xibName owner:self options:nil];
-    self.maskView = (OPUIWarningView *)[nib objectAtIndex:0];
-    self.maskView.frame = self.viewMaskContainer.bounds;
-    self.maskView.warning = NSLocalizedStringFromTableInBundle(self.bbFaceFound.warning, @"OnePassUILocalizable", currentBundle, nil);
-
-    [self.viewMaskContainer addSubview:self.maskView];
-
+    if (self.maskView == nil ) {
+        [self addMask];
+    }
     self.maskView.alpha = 0;
     [UIView animateWithDuration:0.5f
                      animations:^{
-        [self.maskView setAlpha:1.0f];
-    }
-                     completion:nil];
+                         [self.maskView setAlpha:1.0f];
+                     } completion:nil];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(updateOrientation)
@@ -291,25 +277,59 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 }
 
 -(void)hideMask{
-    
-    if(self.maskView){
-        [UIView animateWithDuration:0.5f
-                         animations:^{
-                             [self.maskView setAlpha:0.0f];
-                         }
-                         completion:^(BOOL finished) {
-                             [self.maskView removeFromSuperview];
-                             self.maskView = nil;
-                         }];
+    if(!self.isMaskShown) {
+        return;
     }
+
+
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 self.maskView.alpha = 0.0f;
+                             });
     
     [NSNotificationCenter.defaultCenter removeObserver:self
                                                   name:UIDeviceOrientationDidChangeNotification
                                                 object:nil];
 }
 
--(void)updateOrientation{
+-(void)addMask {
+    NSLog(@"add mask");
+    NSBundle *currentBundle = [NSBundle bundleForClass:[self class]];
+    NSArray *nib = [currentBundle loadNibNamed:@"OPUIFaceNotFoundView" owner:self options:nil];
+    self.maskView = (OPUIWarningView *)[nib objectAtIndex:0];
     self.maskView.frame = self.viewMaskContainer.bounds;
+    self.maskView.warning = NSLocalizedStringFromTableInBundle(@"Face off-center", @"OnePassUILocalizable", currentBundle, nil);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.viewMaskContainer addSubview:self.maskView];
+    });
+    
+    self.maskView.alpha = 0;
+
+}
+
+-(void)removeMask {
+    NSLog(@"remove mask");
+    [self hideMask];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.maskView removeFromSuperview];
+        self.maskView = nil;
+    });
+}
+
+-(void)updateOrientation{
+
+    UIInterfaceOrientation currentOrientation = UIApplication.sharedApplication.statusBarOrientation;
+    
+    if(currentOrientation == self.interfaceOrientation) {
+        return;
+    }
+    self.interfaceOrientation = currentOrientation;
+    
+    if (self.isMaskShown) {
+        [self removeMask];
+   //     [self addMask];
+//        [self showMask];
+    }
 }
 
 @end

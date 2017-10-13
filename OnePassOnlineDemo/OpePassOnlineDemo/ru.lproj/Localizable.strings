@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  OnePassOnlineDemo
+
+  Created by Soloshcheva Aleksandra on 06.07.16.
+  Copyright © 2016 Speech Technology Center. All rights reserved.
+*/
+"The user has been successfully removed"="Пользователь был успешно удален";
+"Not valid email"="Некорректный почтовый адрес";
+"Error"="Ошибка";
+"Server not respond"="Сервер не отвечает";
+"Video converter error"="Ошибка конвертации видео";
+
+"Enrollment is successfully completed" = "Регистрация успешно завершена";
+"Delete User" = "Удаление Пользователя";
+"Are you sure you want to remove user %@?" = "Вы действительно хотите удалить пользователя %@?";
+"Cancel" = "Отмена";
+"Delete" = "Удалить";
+
+"Access to Your Camera and Microphone" = "Доступ к Камере и Микрофону";
+"To take a photo, a voice and a video we need to access your camera and microphone" = "Необходимо разрешить доступ к камере и микрофону, чтобы получить снимок, голос и видео";
+"Settings"="Настройки";
+"Default Settings"="Настройки по Умолчанию";
+"Restore default settings?"="Восстановить настройки по умолчанию?";
+"Enter email"="Введите почтовый адрес";

@@ -10,13 +10,14 @@
 
 @implementation OPUIActivityIndicatorBlackView
 
--(UIView *)createBackgroundView{
+-(UIView *)createBackgroundView {
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.superview.bounds];
     
     UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     visualEffectView.frame  = backgroundView.bounds;
 
+    
     [backgroundView addSubview:visualEffectView];
     
     return backgroundView;

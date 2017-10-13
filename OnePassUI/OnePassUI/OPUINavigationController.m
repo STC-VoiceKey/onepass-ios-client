@@ -12,7 +12,6 @@
 @implementation OPUINavigationController
 
 -(void)setService:(id<IOPCTransportProtocol>)service{
-    
     _service = service;
     if([self.topViewController conformsToProtocol:@protocol(IOPCTransportableProtocol)] && self.service){
         id<IOPCTransportableProtocol> vcService =  (id<IOPCTransportableProtocol>) self.topViewController;

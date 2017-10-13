@@ -25,7 +25,7 @@ NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotifi
 
 #pragma mark - Supporting functions
 
-#define kShouldPrintReachabilityFlags 1
+//#define kShouldPrintReachabilityFlags 1
 
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char* comment)
 {
@@ -147,12 +147,12 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	if (_reachabilityRef != NULL)
 	{
 		SCNetworkReachabilityUnscheduleFromRunLoop(_reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+        SCNetworkReachabilitySetCallback(_reachabilityRef, NULL, NULL);
 	}
 }
 
 
-- (void)dealloc
-{
+- (void)dealloc{
 	[self stopNotifier];
 	if (_reachabilityRef != NULL)
 	{
@@ -197,6 +197,9 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
             returnValue = ReachableViaWiFi;
         }
     }
+    
+//#define OSX
+#ifndef OSX
 
 	if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
 	{
@@ -205,6 +208,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
          */
 		returnValue = ReachableViaWWAN;
 	}
+#endif
     
 	return returnValue;
 }

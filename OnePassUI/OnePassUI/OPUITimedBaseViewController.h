@@ -8,7 +8,6 @@
 
 #import <OnePassUI/OnePassUI.h>
 
-
 /**
  The view controller used for all view controllers which should be off after 3 minutes
  */

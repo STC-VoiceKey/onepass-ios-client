@@ -10,18 +10,18 @@
 		C903545B1DE46B33003DC340 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D6181D117B1100A3E42D /* OnePassCore.framework */; };
 		C90ED5E91D2E3BCC0062CA13 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C90ED5E71D2E3BCC0062CA13 /* Reachability.m */; };
 		C9226CCD1DF582A600647A84 /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9226CCC1DF582A600647A84 /* OnePassCore.framework */; };
+		C92835C41ED475710032FCF1 /* OPCOManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C92835C21ED475710032FCF1 /* OPCOManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C92835C51ED475710032FCF1 /* OPCOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92835C31ED475710032FCF1 /* OPCOManager.m */; };
 		C955E1301D116BA1006D2682 /* OnePassCoreOnline.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C955E1371D116BA1006D2682 /* OnePassCoreOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E12C1D116BA1006D2682 /* OnePassCoreOnline.framework */; };
 		C955E13C1D116BA1006D2682 /* OnePassCoreOnlineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */; };
-		C955E1591D117079006D2682 /* OPCOManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E1571D117079006D2682 /* OPCOManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C955E15A1D117079006D2682 /* OPCOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E1581D117079006D2682 /* OPCOManager.m */; };
 		C960793D1D1D3CB700B9F55E /* OPCOVerificationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C960793E1D1D3CB700B9F55E /* OPCOVerificationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */; };
 		C977D62D1D119BF900A3E42D /* OPCOPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D62B1D119BF900A3E42D /* OPCOPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D62E1D119BF900A3E42D /* OPCOPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D62C1D119BF900A3E42D /* OPCOPerson.m */; };
 		C9A77DE51DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h in Headers */ = {isa = PBXBuildFile; fileRef = C9A77DE31DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h */; };
 		C9A77DE61DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A77DE41DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m */; };
-		C9D9841F1D13CF24003B6056 /* NSObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */; };
+		C9D9841F1D13CF24003B6056 /* NSObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9D984201D13CF24003B6056 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D9841E1D13CF24003B6056 /* NSObject+JSON.m */; };
 /* End PBXBuildFile section */
 
@@ -60,14 +60,14 @@
 		C90ED5E61D2E3BCC0062CA13 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C90ED5E71D2E3BCC0062CA13 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C9226CCC1DF582A600647A84 /* OnePassCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePassCore.framework; path = "../OnePassLivenessDemo/DerivedData/OnePassLivenessDemo/Build/Products/Debug-iphoneos/OnePassCore.framework"; sourceTree = "<group>"; };
+		C92835C21ED475710032FCF1 /* OPCOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCOManager.h; sourceTree = "<group>"; };
+		C92835C31ED475710032FCF1 /* OPCOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCOManager.m; sourceTree = "<group>"; };
 		C955E12C1D116BA1006D2682 /* OnePassCoreOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassCoreOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCoreOnline.h; sourceTree = "<group>"; };
 		C955E1311D116BA1006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C955E1361D116BA1006D2682 /* OnePassCoreOnlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassCoreOnlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnePassCoreOnlineTests.m; sourceTree = "<group>"; };
 		C955E13D1D116BA1006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C955E1571D117079006D2682 /* OPCOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCOManager.h; sourceTree = "<group>"; };
-		C955E1581D117079006D2682 /* OPCOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCOManager.m; sourceTree = "<group>"; };
 		C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCOVerificationSession.h; sourceTree = "<group>"; };
 		C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCOVerificationSession.m; sourceTree = "<group>"; };
 		C977D6121D117B1100A3E42D /* OnePassCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCore.xcodeproj; path = ../OnePassCore/OnePassCore.xcodeproj; sourceTree = "<group>"; };
@@ -117,6 +117,26 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		C92835BB1ED472FC0032FCF1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C92835C21ED475710032FCF1 /* OPCOManager.h */,
+				C92835C31ED475710032FCF1 /* OPCOManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		C92835BD1ED4730D0032FCF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C977D62B1D119BF900A3E42D /* OPCOPerson.h */,
+				C977D62C1D119BF900A3E42D /* OPCOPerson.m */,
+				C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */,
+				C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C955E1221D116BA1006D2682 = {
 			isa = PBXGroup;
 			children = (
@@ -143,12 +163,8 @@
 				C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */,
 				C90ED5E31D2E3B930062CA13 /* Libraries */,
 				C9D9841B1D13CF02003B6056 /* Category */,
-				C955E1571D117079006D2682 /* OPCOManager.h */,
-				C955E1581D117079006D2682 /* OPCOManager.m */,
-				C977D62B1D119BF900A3E42D /* OPCOPerson.h */,
-				C977D62C1D119BF900A3E42D /* OPCOPerson.m */,
-				C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */,
-				C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */,
+				C92835BD1ED4730D0032FCF1 /* Models */,
+				C92835BB1ED472FC0032FCF1 /* Managers */,
 				C955E1311D116BA1006D2682 /* Info.plist */,
 			);
 			path = OnePassCoreOnline;
@@ -190,11 +206,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C955E1591D117079006D2682 /* OPCOManager.h in Headers */,
 				C960793D1D1D3CB700B9F55E /* OPCOVerificationSession.h in Headers */,
 				C9A77DE51DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h in Headers */,
-				C977D62D1D119BF900A3E42D /* OPCOPerson.h in Headers */,
+				C92835C41ED475710032FCF1 /* OPCOManager.h in Headers */,
 				C9D9841F1D13CF24003B6056 /* NSObject+JSON.h in Headers */,
+				C977D62D1D119BF900A3E42D /* OPCOPerson.h in Headers */,
 				C955E1301D116BA1006D2682 /* OnePassCoreOnline.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +262,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = STC;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C955E12B1D116BA1006D2682 = {
@@ -321,9 +337,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C960793E1D1D3CB700B9F55E /* OPCOVerificationSession.m in Sources */,
-				C955E15A1D117079006D2682 /* OPCOManager.m in Sources */,
 				C9D984201D13CF24003B6056 /* NSObject+JSON.m in Sources */,
 				C90ED5E91D2E3BCC0062CA13 /* Reachability.m in Sources */,
+				C92835C51ED475710032FCF1 /* OPCOManager.m in Sources */,
 				C977D62E1D119BF900A3E42D /* OPCOPerson.m in Sources */,
 				C9A77DE61DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m in Sources */,
 			);
@@ -362,14 +378,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -387,17 +409,24 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=macosx*]" = (
+					"DEBUG=1",
+					"$(inherited)",
+					OSX,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -412,14 +441,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -437,11 +472,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -461,12 +498,19 @@
 					"$(PROJECT_DIR)/OnePassCoreOnline",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=macosx*]" = (
+					"DEBUG=1",
+					OSX,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = OnePassCoreOnline/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -485,11 +529,14 @@
 					"$(PROJECT_DIR)/OnePassCoreOnline",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = OnePassCoreOnline/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

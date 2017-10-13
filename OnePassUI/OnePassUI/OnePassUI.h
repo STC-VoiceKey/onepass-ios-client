@@ -17,7 +17,8 @@ FOUNDATION_EXPORT const unsigned char OnePassUIVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <OnePassUI/PublicHeader.h>
 
 #import <OnePassUI/OPUILoader.h>
-#import <OnePassUI/OPUITextField.h>
+#import <OnePassUI/OPUITextView.h>
+#import <OnePassUI/UITextView+Placeholder.h>
 #import <OnePassUI/OPUISpacingLabel.h>
 
 #import <OnePassUI/OPUIVoiceVisualizerView.h>

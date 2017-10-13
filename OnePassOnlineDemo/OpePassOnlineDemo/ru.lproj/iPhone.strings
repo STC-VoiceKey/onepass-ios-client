@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = " УДАЛИТЬ ПОЛЬЗОВАТЕЛЯ "; ObjectID = "2JQ-6W-B4R"; */
+"2JQ-6W-B4R.normalTitle" = "Удалить Пользователя";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "QEU-Dl-RZx"; */
+"QEU-Dl-RZx.normalTitle" = "Отмена";
+
+/* Class = "UITextField"; placeholder = "  Введите почтовый адрес"; ObjectID = "m9v-wy-TW9"; */
+"4hI-RS-DVo.placeholder" = "Введите почтовый адрес";
+
+/* Class = "UIButton"; selectedTitle = "SIGN UP"; ObjectID = "uZY-yl-a1d"; */
+"uO5-jl-mFT.normalTitle" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "ВОЙТИ"; ObjectID = "uZY-yl-a1d"; */
+"uZY-yl-a1d.normalTitle" = "Войти";
+
+"rfE-Xw-15t.text" = "Регистрация завершена";
+
+"3l3-AH-6Af.text" = "Теперь Вы можете войти в свой аккаунт";
+
+"QWE-u0-5rR.normalTitle" = "Готово";
+
+"E7e-hO-gV5.text" = "Доступ к Камере и Микрофону";
+"OaW-Jq-UjK.text" = "Необходимо разрешить доступ к камере и микрофону, чтобы получить снимок, голос и видео";
+"nAG-L5-UWF.normalTitle" = "К Настройкам";
+
+"erk-bH-NP0.normalTitle" = "Отмена";
+
+"Dzd-mC-0mR.normalTitle" = "Сохранить";
+"Y0h-ta-dRb.normalTitle" = "Настройки по Умолчанию";

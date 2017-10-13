@@ -6,7 +6,8 @@
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <OnePassCapture/OnePassCapture.h>
 
 /**
  Converts the video format to the another one with the preset quality
@@ -15,7 +16,7 @@
  @warning Uses QuickTime movie files 320x240(240x320) H.264 Linear PCM
 */
 
-@interface OPCSVideoConverter : NSObject
+@interface OPCSVideoConverter : NSObject<IOPCInterfaceOrientationProtocol>
 
 ///-------------------------------------------------------
 ///     @name Initialization

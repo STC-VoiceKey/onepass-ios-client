@@ -13,6 +13,7 @@
 #import "OPUIAlertViewController.h"
 #import "OPUIVerifyCaptureManager.h"
 #import "OPUILoader.h"
+#import "OPCRPreviewView.h"
 
 #import <OnePassCore/OnePassCore.h>
 #import <OnePassCapture/OnePassCapture.h>
@@ -64,6 +65,9 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
  */
 @property (nonatomic, weak) OPUIVerifyIndicatorViewController *indicatorViewController;
 
+#warning docs
+@property (nonatomic) UIImageView *snapshotView;
+
 @end
 
 @interface OPUIVerifyCaptureViewController(PrivateMethods)
@@ -86,6 +90,11 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
  */
 -(void)verificationDataAdded:(NSDictionary *)responceObject
                    withError:(NSError *)error;
+
+#warning docs
+
+-(void)showSnapshot;
+-(void)hideSnapshot;
 
 @end
 
@@ -139,7 +148,7 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     self.verifyManager = [[OPUIVerifyCaptureManager alloc] init];
@@ -157,19 +166,16 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     [self stopActivityAnimating];
     
     [self.verifyManager startRunning];
+    [self updateOrientation];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
     [self initVideoLimitDurationTimer];
-
     [self initVideoCaptureReady2RecordBlock];
-
     [self initVideoCaptureLoadDataBlock];
-    
     [self initStartVerificationSessionBlock];
-    
     [self initIndicatorReadyBlock];
 
 }
@@ -206,6 +212,8 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
 }
 
 -(IBAction)onCancell:(id)sender{
+    UIButton *cancellButton = (UIButton *)sender;
+    cancellButton.userInteractionEnabled = YES;
     [self.verifyManager stopRunning];
     [self.verifyManager stopNoiseAnalyzer];
     if ([self.verifyManager isRecording]) {
@@ -229,8 +237,8 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     }
 }
 
--(void)viewWillTransitionToSize:(CGSize)size
-      withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+-(void)updateOrientation {
+    [super updateOrientation];
     
     if (self.verifyManager.isRecording) {
         [self.verifyManager setResponceBlock:nil];
@@ -242,14 +250,14 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
         [self hideDigitLabel];
     }
     
-     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self.verifyManager.videoCaptureManager setInterfaceOrientation:self.currentOrientation];
 }
 
 @end
 
 @implementation OPUIVerifyCaptureViewController(PrivateMethods)
 
--(void)hideDigitLabel{
+-(void)hideDigitLabel {
     dispatch_async(dispatch_get_main_queue(),^{
         self.sequenceLabel.text = @"";
         self.sequenceLabel.hidden = YES;
@@ -322,6 +330,30 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     }
 }
 
+-(void)showSnapshot{
+    if (self.verifyManager.videoCaptureManager.snapshot) {
+        self.snapshotView = [[UIImageView alloc] initWithFrame:self.viewVideoCapture.bounds];
+        self.snapshotView.contentMode = UIViewContentModeScaleAspectFill;
+        CIContext *context = [[CIContext alloc] init];
+        CIImage *ciImage = self.verifyManager.videoCaptureManager.snapshot;
+        CGImageRef img = [context createCGImage:ciImage fromRect:[ciImage extent]];
+        
+        self.snapshotView.image = [UIImage imageWithCGImage:img scale:1.0 orientation:UIImageOrientationUpMirrored ];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.viewVideoCapture addSubview:self.snapshotView];
+            [self.viewVideoCapture bringSubviewToFront:self.snapshotView];
+        });
+
+    }
+}
+
+-(void)hideSnapshot{
+    if (self.snapshotView) {
+        [self.snapshotView removeFromSuperview];
+        self.snapshotView = nil;
+    }
+}
+
 @end
 
 @implementation OPUIVerifyCaptureViewController (InitMethods)
@@ -351,16 +383,23 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     weakself.stabilizationTimer = [[OPUIBlockSecondTimer alloc] initTimerWithProgressBlock:nil
                                                                            withResultBlock:^(float seconds) {
                                                                                [weakself.indicatorViewController stopObserving];
-                                                                               [weakself.verifyManager prepare2record];
+                                                                               [weakself showSnapshot];
+                                                                               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+                                                                                   [weakself.verifyManager prepare2record];
+                                                                               });
                                                                            }];
 }
 
 -(void)initVideoCaptureReady2RecordBlock{
     __weak typeof(self) weakself = self;
     [self.verifyManager.videoCaptureManager setReady2RecordBlock:^(BOOL status) {
-        [weakself showDigitLabel];
-        [weakself.verifyManager record];
-        [weakself.videoLimitDurationTimer startWithTime:weakself.timeout.floatValue];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+            [weakself showDigitLabel];
+            [weakself.verifyManager record];
+            
+            [weakself.videoLimitDurationTimer startWithTime:weakself.timeout.floatValue];
+            [weakself hideSnapshot];
+        });
         
     }];
 }
@@ -374,7 +413,7 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
         
         if (error) {
             if([error.domain isEqualToString:NSURLErrorDomain]) {
-                [weakself showError:error];
+                 [weakself onCancell:nil];
             } else {
                 [weakself showError:error withTitle:@"Give it another video"];
             }
@@ -429,12 +468,7 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     __weak typeof(self) weakself = self;
     [OPUIAlertViewController showError:error
                     withViewController:weakself
-                               handler:^(UIAlertAction *action) {
-                                   dispatch_async( dispatch_get_main_queue(), ^{
-                                       [weakself.navigationController dismissViewControllerAnimated:YES
-                                                                                         completion:nil];
-                                   });
-                               }];
+                               handler:nil];
 }
 
 @end

@@ -1,9 +1,0 @@
-/* 
-  Localizable.strings
-  OnePassOnlineDemo
-
-  Created by Soloshcheva Aleksandra on 06.07.16.
-  Copyright © 2016 Speech Technology Center. All rights reserved.
-*/
-"Server not respond"="Server is not responding";
-"Enrollment is successfully completed"="Enrollment is successfully completed";

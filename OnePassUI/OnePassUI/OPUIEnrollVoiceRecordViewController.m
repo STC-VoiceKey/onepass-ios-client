@@ -206,7 +206,7 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
         [self.voiceManager setPassphrase:self.wordsSequence];
     }
     
-    [self.voiceManager setLoadDataBlock:^(NSData *data, NSError *error){
+    [self.voiceManager setLoadDataBlock:^(NSData *data, NSError *error) {
         [weakself startActivityAnimating];
         [weakself.voiceLimitDurationTimer stop];
         
@@ -235,14 +235,15 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
                                            [weakself.navigationController dismissViewControllerAnimated:YES completion:nil];
                                        });
                                    }
-                                   [weakself stopActivityAnimating];
                                } else {
                                    if([error.domain isEqualToString:NSURLErrorDomain]) {
-                                       [weakself showErrorOnMainThread:error];
+                                       //[weakself showErrorOnMainThread:error];
+                                       [weakself close];
                                    } else {
                                        [weakself showError:error withTitle:@"Give it another voice"];
                                    }
                                }
+                               [weakself stopActivityAnimating];
                            });
                        }];
         }

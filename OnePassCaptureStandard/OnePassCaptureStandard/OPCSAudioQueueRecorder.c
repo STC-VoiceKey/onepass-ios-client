@@ -10,8 +10,7 @@
 
 void FormatError( OSStatus error);
 //https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioQueueProgrammingGuide/AQRecord/RecordingAudio.html
-OPCSAudioQueueRecorderRef OPCRAudioQueueSourceCreate(OPCSAudioQueueRecorderCallbackPointer callback, void *userInfo)
-{
+OPCSAudioQueueRecorderRef OPCRAudioQueueSourceCreate(OPCSAudioQueueRecorderCallbackPointer callback, void *userInfo) {
     OPCSAudioQueueRecorderRef ref = (OPCSAudioQueueRecorderRef)calloc(sizeof(struct OPCSAudioQueueRecorder), 1);
 
     ref->dataFormat.mFormatID = kAudioFormatLinearPCM;
@@ -29,10 +28,9 @@ OPCSAudioQueueRecorderRef OPCRAudioQueueSourceCreate(OPCSAudioQueueRecorderCallb
     return ref;
 }
 
-void OPCSAudioQueueSourceDestroy(OPCSAudioQueueRecorderRef ref){
+void OPCSAudioQueueSourceDestroy(OPCSAudioQueueRecorderRef ref) {
     
-    if(ref->queue)
-    {
+    if(ref->queue) {
       OSStatus status = AudioQueueDispose ( ref->queue, true);
        FormatError(status);
     }
@@ -54,7 +52,7 @@ static void OPCSAudioQueueHandleInputBuffer (
                                              const AudioStreamPacketDescription   *inPacketDesc
                                              ) ;
 
-OSStatus OPCSAudioQueueSourceStartRecord(OPCSAudioQueueRecorderRef ref){
+OSStatus OPCSAudioQueueSourceStartRecord(OPCSAudioQueueRecorderRef ref) {
     OSStatus status = noErr;
     
     if(ref->isRunning)
@@ -62,6 +60,7 @@ OSStatus OPCSAudioQueueSourceStartRecord(OPCSAudioQueueRecorderRef ref){
     
     ref->isRunning = true;
     
+#ifndef OSX
     status = AudioSessionInitialize(NULL, NULL, NULL, NULL);
     if (status!=noErr) {
         FormatError(status);
@@ -73,7 +72,7 @@ OSStatus OPCSAudioQueueSourceStartRecord(OPCSAudioQueueRecorderRef ref){
         FormatError(status);
         return status;
     }
-    
+#endif
 
     status = AudioQueueNewInput(&ref->dataFormat, OPCSAudioQueueHandleInputBuffer, ref, NULL, kCFRunLoopCommonModes, 0, &(ref->queue));
     
@@ -90,8 +89,7 @@ OSStatus OPCSAudioQueueSourceStartRecord(OPCSAudioQueueRecorderRef ref){
         return status;
     }
     
-    for (int i = 0; i < kNumberBuffers; ++i)
-    {
+    for (int i = 0; i < kNumberBuffers; ++i) {
         status = AudioQueueAllocateBuffer ( ref->queue, 4410, &ref->buffers[i]);
         if (status!=noErr) {
             FormatError(status);

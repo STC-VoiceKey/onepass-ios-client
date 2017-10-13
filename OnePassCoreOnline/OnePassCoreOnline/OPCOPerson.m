@@ -28,7 +28,7 @@
         NSInteger validModelCount = 0 ;
         for (NSDictionary *model in json[@"models"]) {
             
-            if ([model[@"type"] isEqualToString:@"FACE_VACS"] && ([model[@"samplesCount"] integerValue]==1) ) {
+            if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samplesCount"] integerValue]==1) ) {
                 validModelCount++;
             }
             

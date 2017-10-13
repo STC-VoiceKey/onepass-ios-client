@@ -12,7 +12,7 @@
 
 -(void)drawCircleInCenter:(CGPoint)center
                withRadius:(float)radius
-                inContext:(CGContextRef )context{
+                inContext:(CGContextRef )context {
     CGRect rect = (CGRect) {
         .origin.x = center.x - radius,
         .origin.y = center.y - radius,
@@ -27,7 +27,7 @@
         withStartAngle:(float)startAngle
           withEndAngle:(float)endAngle
             withRadius:(float)radius
-             inContext:(CGContextRef)context{
+             inContext:(CGContextRef)context {
     CGMutablePathRef trackPath = CGPathCreateMutable();
     CGPathMoveToPoint(trackPath, NULL, center.x, center.y);
     CGPathAddArc(trackPath, NULL, center.x, center.y, radius, startAngle, endAngle, TRUE);
@@ -39,7 +39,7 @@
 
 -(void)drawCrossInCenter:(CGPoint)center
               withRadius:(float)radius
-               inContext:(CGContextRef)context{
+               inContext:(CGContextRef)context {
     [self drawCrossLineInCenter:CGPointMake(center.x, center.y + radius)
                      withRadius:radius
                        andAngle:-M_PI/4
@@ -53,7 +53,7 @@
 -(void)drawCrossLineInCenter:(CGPoint)center
                   withRadius:(CGFloat)radius
                     andAngle:(CGFloat)radians
-                   inContext:(CGContextRef)context{
+                   inContext:(CGContextRef)context {
     CGAffineTransform move = CGAffineTransformMakeTranslation(center.x - radius/2, center.y + (radius/2)*radians/fabs(radians));
     CGAffineTransform rotation = CGAffineTransformRotate(move, radians);
     
@@ -71,7 +71,7 @@
 
 -(void)drawMarkerInCenter:(CGPoint)center
                withRadius:(float)radius
-                inContext:(CGContextRef)context{
+                inContext:(CGContextRef)context {
     
     [self drawRotatedRect:CGRectMake(0, 0, radius, radius/2)
                   inPoint:CGPointMake(center.x - radius/2 , center.y + kLineWidth)
@@ -88,7 +88,7 @@
 -(void)drawRotatedRect:(CGRect)rect
                inPoint:(CGPoint)point
              withAngel:(CGFloat)angle
-             inContext:(CGContextRef)context{
+             inContext:(CGContextRef)context {
     CGAffineTransform move = CGAffineTransformMakeTranslation(point.x , point.y);
     CGAffineTransform rotation = CGAffineTransformRotate(move, angle);
     

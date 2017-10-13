@@ -44,25 +44,28 @@
 @implementation OPUITextField
 
 - (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
 
     self.textColor = UIColor.whiteColor;
     self.tintColor = OPUIYellowWithAlpha(1);
-    self.font = OPUIFontSFRegularWithSize(22);
-    
+
     self.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 34, 5)];
     self.leftViewMode = UITextFieldViewModeAlways;
-    
+
     [self drawYellowBorder];
-    
+
     if(self.placeholder) {
         NSDictionary *placeholderAttributes = @{NSForegroundColorAttributeName:OPUIWhiteWithAlpha(0.5),
-                                                            NSFontAttributeName:OPUIFontSFRegularWithSize(22)};
+                                                            NSFontAttributeName:[UIFont systemFontOfSize:22]};
+
         self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder
                                                                      attributes:placeholderAttributes];
     }
 }
 
--(void)showValidationMessage:(NSString *)warning{
+
+-(void)showValidationMessage:(NSString *)warning {
     
     if(!self.rightView) {
         self.rightView = [self createRightImageView];
@@ -74,26 +77,29 @@
         self.warningLabel = [self createWarningLabel];
         [self.superview addSubview:self.warningLabel];
     }
-    self.warningLabel.hidden = NO;
-    self.warningLabel.text = warning;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.warningLabel.hidden = NO;
+        self.warningLabel.text = warning;
+    });
 }
 
--(void)hideValidationMessage{
-    
-    if(self.warningLabel) {
-        self.warningLabel.hidden = YES;
-    }
-    
-    if(self.rightView) {
-        self.rightView.hidden = YES;
-    }
+-(void)hideValidationMessage {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(self.warningLabel) {
+            self.warningLabel.hidden = YES;
+        }
+        
+        if(self.rightView) {
+            self.rightView.hidden = YES;
+        }
+    });
 }
 
 @end
 
 @implementation OPUITextField(PrivateMethods)
 
--(void)drawYellowBorder{
+-(void)drawYellowBorder {
     
     [self drawLineFromPoint:self.bounds.origin
                     toPoint:CGPointMake(self.bounds.origin.x + self.bounds.size.width, self.bounds.origin.y)
@@ -106,7 +112,7 @@
 
 -(void)drawLineFromPoint:(CGPoint)startPoint
                  toPoint:(CGPoint)endPoint
-                 ofColor:(UIColor *)color{
+                 ofColor:(UIColor *)color {
     CGRect rect = (CGRect) {
         .origin.x = startPoint.x ,
         .origin.y = startPoint.y ,
@@ -122,7 +128,7 @@
     [self.layer addSublayer:lineLayer];
 }
 
--(UIImageView *)createRightImageView{
+-(UIImageView *)createRightImageView {
     CGRect rect = (CGRect) {
         .origin.x = 0 ,
         .origin.y = 0 ,
@@ -138,7 +144,7 @@
     return rightImageView;
 }
 
--(UILabel *)createWarningLabel{
+-(UILabel *)createWarningLabel {
     CGRect rect = (CGRect) {
         .origin.x = self.leftView.bounds.size.width ,
         .origin.y = self.frame.origin.y + self.bounds.size.height - 10 ,

@@ -5,15 +5,16 @@
 //  Created by Soloshcheva Aleksandra on 28.12.16.
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <OnePassCapture/OnePassCapture.h>
 #import <OnePassCore/OnePassCore.h>
 
 
+
 @interface OPUIVerifyCaptureManager : NSObject<IOPCRecordProtocol,
-                                              IOPCNoisyProtocol,
-                                            IOPCSessionProtocol>
+                                                IOPCNoisyProtocol,
+                                              IOPCSessionProtocol>
 
 /**
  The 'IOPCTransportProtocol' implementation

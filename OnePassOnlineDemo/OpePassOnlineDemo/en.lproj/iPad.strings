@@ -1,0 +1,25 @@
+
+/* Class = "UIButton"; normalTitle = " REMOVE CURRENT USER "; ObjectID = "2JQ-6W-B4R"; */
+"tU3-Vn-5H5.normalTitle" = "Remove Current User";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QEU-Dl-RZx"; */
+"RdZ-zJ-bEM.normalTitle" = "Cancel";
+
+/* Class = "UITextField"; placeholder = "  Enter email"; ObjectID = "m9v-wy-TW9"; */
+"M4g-I4-7ZG.placeholder" = "Enter email";
+"qzb-e4-kKV.placeholder" = "Enter email";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "uZY-yl-a1d"; */
+"wrB-qz-bl7.normalTitle" = "Log In";
+
+/* Class = "UIButton"; selectedTitle = "Sign Up"; ObjectID = "uZY-yl-a1d"; */
+"3WE-C8-jXY.normalTitle" = "Sign Up";
+
+"5Xq-cP-3W8.text" = "Sign Up Complete";
+
+"P5T-kK-oYe.text" = "You can now sign in to your account";
+
+"cyJ-Sp-T9C.normalTitle" = "Done";
+"gvh-uw-HYg.normalTitle" = "Save";
+"yYD-08-D8F.normalTitle" = "Default Settings";
+

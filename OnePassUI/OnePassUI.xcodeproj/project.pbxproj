@@ -21,14 +21,14 @@
 		C90F6CF71D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F6CF51D256A2E0085AB3F /* OPUIEnrollAgreementViewController.m */; };
 		C90FEC7B1DFEFE7700E919BF /* OPUIWarningView.h in Headers */ = {isa = PBXBuildFile; fileRef = C90FEC791DFEFE7700E919BF /* OPUIWarningView.h */; };
 		C90FEC7C1DFEFE7700E919BF /* OPUIWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FEC7A1DFEFE7700E919BF /* OPUIWarningView.m */; };
-		C922FAE11DB90289005F5602 /* OPUITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = C922FADF1DB90289005F5602 /* OPUITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C922FAE21DB90289005F5602 /* OPUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C922FAE01DB90289005F5602 /* OPUITextField.m */; };
 		C935F6781DC0B2000018CC4D /* OPUIFaceNotFoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C935F6771DC0B2000018CC4D /* OPUIFaceNotFoundView.xib */; };
 		C93765DD1DDDB7500018F1F3 /* OPUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C93765DB1DDDB7500018F1F3 /* OPUINavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C93765DE1DDDB7500018F1F3 /* OPUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93765DC1DDDB7500018F1F3 /* OPUINavigationController.m */; };
 		C93826021DF597D10032D289 /* OPUIVoiceVisualizerView.h in Headers */ = {isa = PBXBuildFile; fileRef = C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C93826031DF597D10032D289 /* OPUIVoiceVisualizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93826011DF597D10032D289 /* OPUIVoiceVisualizerView.m */; };
 		C938E93A1DC3A368001F5BF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C938E9391DC3A368001F5BF9 /* CoreGraphics.framework */; };
+		C93DBBC91F84E0430034187E /* OPUIIndicatorImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = C93DBBC71F84E0430034187E /* OPUIIndicatorImageView.h */; };
+		C93DBBCA1F84E0430034187E /* OPUIIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93DBBC81F84E0430034187E /* OPUIIndicatorImageView.m */; };
 		C93FE50F1E4A1FB5001961DC /* Verify_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C93FE5111E4A1FB5001961DC /* Verify_iPad.storyboard */; };
 		C93FE5241E4B0D2A001961DC /* OPUIRotatableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C93FE5221E4B0D2A001961DC /* OPUIRotatableViewController.h */; };
 		C93FE5251E4B0D2A001961DC /* OPUIRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93FE5231E4B0D2A001961DC /* OPUIRotatableViewController.m */; };
@@ -85,6 +85,12 @@
 		C98CF02B1DD4932200174281 /* OPUIErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CF0291DD4932200174281 /* OPUIErrorViewController.m */; };
 		C99F6E051DC8AEF000F3B227 /* UIDevice+Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = C99F6E031DC8AEF000F3B227 /* UIDevice+Platform.h */; };
 		C99F6E061DC8AEF000F3B227 /* UIDevice+Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F6E041DC8AEF000F3B227 /* UIDevice+Platform.m */; };
+		C9AD215C1EE051E40029AAF3 /* OPCRPreviewView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9AD215A1EE051E40029AAF3 /* OPCRPreviewView.h */; };
+		C9AD215D1EE051E40029AAF3 /* OPCRPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AD215B1EE051E40029AAF3 /* OPCRPreviewView.m */; };
+		C9B298301F851E73001B5F81 /* OPUITextView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B2982E1F851E73001B5F81 /* OPUITextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B298311F851E73001B5F81 /* OPUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B2982F1F851E73001B5F81 /* OPUITextView.m */; };
+		C9B298371F852DB5001B5F81 /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B298351F852DB4001B5F81 /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B298381F852DB5001B5F81 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B298361F852DB5001B5F81 /* UITextView+Placeholder.m */; };
 		C9C76DD51DC2155E0034EA09 /* OPUILayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C76DD31DC2155E0034EA09 /* OPUILayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9C76DD61DC2155E0034EA09 /* OPUILayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C76DD41DC2155E0034EA09 /* OPUILayoutConstraint.m */; };
 		C9C76DDC1DC237A20034EA09 /* OPUISpacingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C76DDA1DC237A20034EA09 /* OPUISpacingLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -163,14 +169,14 @@
 		C918CDAF1D4F79F70074E186 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OnePassUILocalizable.strings"; sourceTree = "<group>"; };
 		C918CDB81D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Verify_iPhone.strings; sourceTree = "<group>"; };
 		C918CDBB1D4F8FFD0074E186 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/OnePassUILocalizable.strings; sourceTree = "<group>"; };
-		C922FADF1DB90289005F5602 /* OPUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPUITextField.h; path = Design/OPUITextField.h; sourceTree = "<group>"; };
-		C922FAE01DB90289005F5602 /* OPUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUITextField.m; path = Design/OPUITextField.m; sourceTree = "<group>"; };
 		C935F6771DC0B2000018CC4D /* OPUIFaceNotFoundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPUIFaceNotFoundView.xib; sourceTree = "<group>"; };
 		C93765DB1DDDB7500018F1F3 /* OPUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUINavigationController.h; sourceTree = "<group>"; };
 		C93765DC1DDDB7500018F1F3 /* OPUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUINavigationController.m; sourceTree = "<group>"; };
 		C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUIVoiceVisualizerView.h; sourceTree = "<group>"; };
 		C93826011DF597D10032D289 /* OPUIVoiceVisualizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUIVoiceVisualizerView.m; sourceTree = "<group>"; };
 		C938E9391DC3A368001F5BF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C93DBBC71F84E0430034187E /* OPUIIndicatorImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPUIIndicatorImageView.h; sourceTree = "<group>"; };
+		C93DBBC81F84E0430034187E /* OPUIIndicatorImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPUIIndicatorImageView.m; sourceTree = "<group>"; };
 		C93FE5101E4A1FB5001961DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Verify_iPad.storyboard; sourceTree = "<group>"; };
 		C93FE5131E4A1FB8001961DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Verify_iPad.strings; sourceTree = "<group>"; };
 		C93FE5151E4A1FB9001961DC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Verify_iPad.strings; sourceTree = "<group>"; };
@@ -248,6 +254,12 @@
 		C98CF0291DD4932200174281 /* OPUIErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPUIErrorViewController.m; path = Design/OPUIErrorViewController.m; sourceTree = "<group>"; };
 		C99F6E031DC8AEF000F3B227 /* UIDevice+Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Platform.h"; sourceTree = "<group>"; };
 		C99F6E041DC8AEF000F3B227 /* UIDevice+Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Platform.m"; sourceTree = "<group>"; };
+		C9AD215A1EE051E40029AAF3 /* OPCRPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCRPreviewView.h; sourceTree = "<group>"; };
+		C9AD215B1EE051E40029AAF3 /* OPCRPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCRPreviewView.m; sourceTree = "<group>"; };
+		C9B2982E1F851E73001B5F81 /* OPUITextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPUITextView.h; sourceTree = "<group>"; };
+		C9B2982F1F851E73001B5F81 /* OPUITextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPUITextView.m; sourceTree = "<group>"; };
+		C9B298351F852DB4001B5F81 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		C9B298361F852DB5001B5F81 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		C9BEA59A1DE72E5100E0ADA6 /* OnePassCapture.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCapture.xcodeproj; path = ../OnePassCapture/OnePassCapture.xcodeproj; sourceTree = "<group>"; };
 		C9C76DD31DC2155E0034EA09 /* OPUILayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPUILayoutConstraint.h; sourceTree = "<group>"; };
 		C9C76DD41DC2155E0034EA09 /* OPUILayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPUILayoutConstraint.m; sourceTree = "<group>"; };
@@ -511,8 +523,10 @@
 		C9EB81681DF04BF6009BA949 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				C922FADF1DB90289005F5602 /* OPUITextField.h */,
-				C922FAE01DB90289005F5602 /* OPUITextField.m */,
+				C9B298351F852DB4001B5F81 /* UITextView+Placeholder.h */,
+				C9B298361F852DB5001B5F81 /* UITextView+Placeholder.m */,
+				C9B2982E1F851E73001B5F81 /* OPUITextView.h */,
+				C9B2982F1F851E73001B5F81 /* OPUITextView.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -546,6 +560,8 @@
 		C9FB81BF1DB8BAF8009AAE0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9AD215A1EE051E40029AAF3 /* OPCRPreviewView.h */,
+				C9AD215B1EE051E40029AAF3 /* OPCRPreviewView.m */,
 				C9FC4C5B1E02EEEC00C69F99 /* UIView+DrawShapes.h */,
 				C9FC4C5C1E02EEEC00C69F99 /* UIView+DrawShapes.m */,
 				C93826001DF597D10032D289 /* OPUIVoiceVisualizerView.h */,
@@ -560,6 +576,8 @@
 				C9D245741DF95252003439D7 /* blank-male-mask.png */,
 				C946CBEA1E3F37110041A4D5 /* OPUIWhiteBorderView.h */,
 				C946CBEB1E3F37110041A4D5 /* OPUIWhiteBorderView.m */,
+				C93DBBC71F84E0430034187E /* OPUIIndicatorImageView.h */,
+				C93DBBC81F84E0430034187E /* OPUIIndicatorImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -574,24 +592,27 @@
 				C953CF3D1DE6E3A100FD1A4D /* OPUIBaseViewController.h in Headers */,
 				C953CF391DE6E3A100FD1A4D /* OPUIAlertViewController.h in Headers */,
 				C953CF311DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.h in Headers */,
-				C93FE5241E4B0D2A001961DC /* OPUIRotatableViewController.h in Headers */,
 				C953CF481DE6E3AD00FD1A4D /* OPUICorporateColorUtils.h in Headers */,
 				C90FEC7B1DFEFE7700E919BF /* OPUIWarningView.h in Headers */,
-				C922FAE11DB90289005F5602 /* OPUITextField.h in Headers */,
 				C90E28F61DC8DF57006407FE /* OPUI3QuarterArcView.h in Headers */,
 				C98CF01F1DD3312D00174281 /* OPUIDivergentCirclesView.h in Headers */,
 				C946CBEC1E3F37110041A4D5 /* OPUIWhiteBorderView.h in Headers */,
+				C9B298301F851E73001B5F81 /* OPUITextView.h in Headers */,
 				C97A6D021DCB76B600676561 /* UIActivityIndicatorView+Status.h in Headers */,
 				C9C76DD51DC2155E0034EA09 /* OPUILayoutConstraint.h in Headers */,
 				C953CF591DE6E3D700FD1A4D /* OPUIBarButtonItem.h in Headers */,
+				C9B298371F852DB5001B5F81 /* UITextView+Placeholder.h in Headers */,
 				C96783FF1DF96D6E003C699E /* OPUIIndicatorsViewController.h in Headers */,
 				C953CF681DE70D0800FD1A4D /* IOPUILoaderProtocol.h in Headers */,
+				C93DBBC91F84E0430034187E /* OPUIIndicatorImageView.h in Headers */,
 				C93826021DF597D10032D289 /* OPUIVoiceVisualizerView.h in Headers */,
+				C905C59F1E52F724000FAEAF /* OPUITimedBaseViewController.h in Headers */,
+				C9AD215C1EE051E40029AAF3 /* OPCRPreviewView.h in Headers */,
+				C93FE5241E4B0D2A001961DC /* OPUIRotatableViewController.h in Headers */,
 				C94E40A11E0BF01200CB1E7F /* OPUIPushAnimator.h in Headers */,
 				C97A6D151DD1DD9800676561 /* OPUIActivityIndicatorBlackView.h in Headers */,
 				C93765DD1DDDB7500018F1F3 /* OPUINavigationController.h in Headers */,
 				C98CF0141DD1FF7C00174281 /* OPUIResultView.h in Headers */,
-				C905C59F1E52F724000FAEAF /* OPUITimedBaseViewController.h in Headers */,
 				C949F57B1E13E380007D099C /* OPUIVerifyCaptureManager.h in Headers */,
 				C9C76DDC1DC237A20034EA09 /* OPUISpacingLabel.h in Headers */,
 				C90E28ED1DC8D544006407FE /* OPUIActivityIndicatorView.h in Headers */,
@@ -659,7 +680,7 @@
 		C955E09B1D0FFC7A006D2682 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C955E0A31D0FFC7A006D2682 = {
@@ -769,6 +790,7 @@
 				C955E0C91D0FFF40006D2682 /* OPUIEnrollFaceCaptureViewController.m in Sources */,
 				C949F57C1E13E380007D099C /* OPUIVerifyCaptureManager.m in Sources */,
 				C946CBED1E3F37110041A4D5 /* OPUIWhiteBorderView.m in Sources */,
+				C9AD215D1EE051E40029AAF3 /* OPCRPreviewView.m in Sources */,
 				C90FEC7C1DFEFE7700E919BF /* OPUIWarningView.m in Sources */,
 				C972F8C81DCB4B740006552F /* OPUIDelayedSegue.m in Sources */,
 				C96444701D1A886900799D13 /* OPUIEnrollVoiceRecordViewController.m in Sources */,
@@ -787,11 +809,12 @@
 				C953CF3E1DE6E3A100FD1A4D /* OPUIBaseViewController.m in Sources */,
 				C93765DE1DDDB7500018F1F3 /* OPUINavigationController.m in Sources */,
 				C9FC4C5E1E02EEEC00C69F99 /* UIView+DrawShapes.m in Sources */,
-				C922FAE21DB90289005F5602 /* OPUITextField.m in Sources */,
+				C9B298381F852DB5001B5F81 /* UITextView+Placeholder.m in Sources */,
 				C97A6D161DD1DD9800676561 /* OPUIActivityIndicatorBlackView.m in Sources */,
 				C94E40A61E0BF02000CB1E7F /* OPUIPopAnimator.m in Sources */,
 				C9474F671D587AE500E531A7 /* OPUILoader.m in Sources */,
 				C9C76DE11DC2405D0034EA09 /* OPUIVerifyIndicatorViewController.m in Sources */,
+				C93DBBCA1F84E0430034187E /* OPUIIndicatorImageView.m in Sources */,
 				C99F6E061DC8AEF000F3B227 /* UIDevice+Platform.m in Sources */,
 				C97A6D0B1DD0D4F700676561 /* OPUIDigitLabel.m in Sources */,
 				C94D29681DC8C06E00BFB8F1 /* OPUICircleProgressView.m in Sources */,
@@ -799,6 +822,7 @@
 				C90E28F71DC8DF57006407FE /* OPUI3QuarterArvView.m in Sources */,
 				C94E40A21E0BF01200CB1E7F /* OPUIPushAnimator.m in Sources */,
 				C953CF321DE6DD3E00FD1A4D /* OPUIBlockSecondTimer.m in Sources */,
+				C9B298311F851E73001B5F81 /* OPUITextView.m in Sources */,
 				C98CF02B1DD4932200174281 /* OPUIErrorViewController.m in Sources */,
 				C93826031DF597D10032D289 /* OPUIVoiceVisualizerView.m in Sources */,
 				C96784001DF96D6E003C699E /* OPUIIndicatorsViewController.m in Sources */,
@@ -925,14 +949,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -976,14 +1006,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

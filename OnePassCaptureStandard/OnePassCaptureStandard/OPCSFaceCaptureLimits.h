@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
+#warning docs
 @interface OPCSFaceLimit : NSObject
 
 @property(nonatomic) float widthLimit;
@@ -24,8 +25,6 @@
 @interface OPCSFaceCaptureLimits : NSObject
 
 @property (nonatomic) BOOL isCaptured;
-
--(OPCSFaceLimit *)limit;
 
 -(BOOL)checkFace:(CGRect)face
         inScreen:(CGRect)screen;

@@ -61,6 +61,10 @@
  */
 @property (nonatomic, strong) void (^completionHandler)(NSError *error);
 
+#warning docs
+@property (nonatomic) OPCAvailableOrientation interfaceOrientation;
+
+
 @end
 
 
@@ -132,7 +136,7 @@
     return self;
 }
 
-- (void)exportAsynchronouslyWithCompletionHandler:(void (^)(NSError *error))handler{
+- (void)exportAsynchronouslyWithCompletionHandler:(void (^)(NSError *error))handler {
 
     NSParameterAssert(handler != nil);
     self.completionHandler = handler;
@@ -252,24 +256,28 @@
     }
 }
 
+
+
+-(BOOL)isPortraitOrientation{
+    return (self.interfaceOrientation==OPCAvailableOrientationUp);
+}
+
 @end
 
 
 @implementation OPCSVideoConverter(PrivateMethods)
 
--(NSError *)videoCoverterError{
+-(NSError *)videoCoverterError {
     return [NSError errorWithDomain:@"com.onepass.captureresource"
                                code:400
                            userInfo:@{ NSLocalizedDescriptionKey: @"Video converter error"}];
 }
 
--(NSDictionary *)videoSettings{
-    BOOL isLandscape = UIDeviceOrientationIsLandscape                                                                                           (UIDevice.currentDevice.orientation);
-    
+-(NSDictionary *)videoSettings {
     return @{
              AVVideoCodecKey: AVVideoCodecH264,
-             AVVideoWidthKey: isLandscape ? @320 : @240,
-             AVVideoHeightKey: isLandscape ? @240 : @320,
+             AVVideoWidthKey: !self.isPortraitOrientation ? @320 : @240,
+             AVVideoHeightKey: !self.isPortraitOrientation ? @240 : @320,
              AVVideoCompressionPropertiesKey: @{
                      AVVideoAverageBitRateKey: @100000,
                      AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel
@@ -277,7 +285,7 @@
              };
 }
 
--(NSDictionary *)audioSettings{
+-(NSDictionary *)audioSettings {
     return @{
              AVFormatIDKey: @(kAudioFormatLinearPCM),
              AVNumberOfChannelsKey: @1,
@@ -290,7 +298,7 @@
              };
 }
 
--(AVVideoComposition *)videoCompositionWithAssetsURL:(NSURL *)url{
+-(AVVideoComposition *)videoCompositionWithAssetsURL:(NSURL *)url {
     
     AVURLAsset *video = [[AVURLAsset alloc] initWithURL:url
                                                 options:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], AVURLAssetPreferPreciseDurationAndTimingKey, nil]];
@@ -312,7 +320,7 @@
     
     // Video Compostion
     AVMutableVideoCompositionInstruction *transition = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-    transition.backgroundColor = [[UIColor clearColor] CGColor];
+//    transition.backgroundColor = CIColor.clearColor.CGColor;
     transition.timeRange = timeRange;
     transition.layerInstructions = [NSArray arrayWithObjects:to, nil];
     
@@ -323,7 +331,7 @@
     return videoComposition;
 }
 
-- (BOOL)encodeReadySamplesFromOutput:(AVAssetReaderOutput *)output toInput:(AVAssetWriterInput *)input{
+- (BOOL)encodeReadySamplesFromOutput:(AVAssetReaderOutput *)output toInput:(AVAssetWriterInput *)input {
     while (input.isReadyForMoreMediaData) {
         CMSampleBufferRef sampleBuffer = [output copyNextSampleBuffer];
         if (sampleBuffer) {
@@ -391,7 +399,7 @@
 }
 
 -(CGSize)videoSize{
-    return UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation) ? CGSizeMake(640, 480) : CGSizeMake(480, 640);
+    return !self.isPortraitOrientation ? CGSizeMake(640, 480) : CGSizeMake(480, 640);
 }
 
 @end

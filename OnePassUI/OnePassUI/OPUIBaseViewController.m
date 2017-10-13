@@ -9,6 +9,7 @@
 #import "OPUIBaseViewController.h"
 
 #import "OPUIAlertViewController.h"
+#import "OPUINavigationController.h"
 #import "OPUICorporateColorUtils.h"
 #import "OPUIErrorViewController.h"
 #import "OPUIPopAnimator.h"
@@ -45,7 +46,6 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
     
     self.callObserver = [[CXCallObserver alloc] init];
     [self.callObserver setDelegate:self queue:nil];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -100,7 +100,7 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:kIsHostAccessableObservation]) {
-        [self networkStateChanged:[self.service isHostAccessable]];
+        [self networkStateChanged:self.service.isHostAccessable];
     }
 }
 
@@ -141,24 +141,29 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 
 #pragma mark - Activiy indicator
 -(void)startActivityAnimating{
-    if(!self.activityIndicator.isAnimating){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator startAnimating];
-        });
-    }
+    __weak typeof(self) weakself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (weakself) {
+            [weakself.activityIndicator startAnimating];
+        }
+    });
 }
 
 -(void)stopActivityAnimating{
-    if(self.activityIndicator.isAnimating) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator stopAnimating];
-        });
-    }
+    __weak typeof(self) weakself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (weakself) {
+            [weakself.activityIndicator stopAnimating];
+        }
+    });
 }
 
+#pragma mark - Common
+
 -(void)performSegueOnMainThreadWithIdentifier:(NSString *)identifier{
+    __weak typeof(self) weakself = self;
      dispatch_async(dispatch_get_main_queue(), ^{
-         [self performSegueWithIdentifier:identifier sender:self];
+         [weakself performSegueWithIdentifier:identifier sender:self];
      });
 }
 
@@ -172,10 +177,10 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 
 -(void)showError:(NSError *)error
         withTitle:(NSString *)title{
-    [self showError:error
-          withTitle:title
-          withBundle:[NSBundle bundleForClass:[self class]]
-withLocalizationFile:@"OnePassUILocalizable"];
+        [self showError:error
+              withTitle:title
+             withBundle:[NSBundle bundleForClass:[self class]]
+   withLocalizationFile:@"OnePassUILocalizable"];
 }
 
 -(void)showError:(NSError *)error

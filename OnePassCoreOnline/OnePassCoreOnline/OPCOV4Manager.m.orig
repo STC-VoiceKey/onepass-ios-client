@@ -1,0 +1,461 @@
+//
+//  OPCOV4Manager.m
+//  OnePassCoreOnline
+//
+//  Created by Soloshcheva Aleksandra on 23.05.17.
+//  Copyright © 2017 Speech Technology Center. All rights reserved.
+//
+
+#import "OPCOV4Manager.h"
+
+#import "OPCOPerson.h"
+#import "OPCOVerificationSession.h"
+#import "NSObject+JSON.h"
+#import "NSURLResponse+IsSuccess.h"
+#import "Reachability.h"
+
+@interface OPCOV4Manager()
+
+/**
+ Is instance of the third party library Reachability(from apple)
+ Used to check the reachability of a given host name.
+ */
+@property (nonatomic) Reachability *internetReachability;
+
+/**
+ Shows that the host is accessible
+ */
+@property (nonatomic) BOOL isHostAccessable;
+
+@end
+
+@implementation OPCOV4Manager
+
+-(id)init{
+    self = [super init];
+    
+    if(self){
+        NSString *serverUrlFromDefaults = [NSUserDefaults.standardUserDefaults stringForKey:kOnePassServerURL];
+        
+        if (serverUrlFromDefaults && serverUrlFromDefaults.length>0) {
+            _serverUrl = [NSString stringWithString:serverUrlFromDefaults];
+        }
+        else{
+            _serverUrl = [NSBundle.mainBundle objectForInfoDictionaryKey:@"ServerUrl"];
+            [NSUserDefaults.standardUserDefaults setObject:_serverUrl forKey:kOnePassServerURL];
+            [NSUserDefaults.standardUserDefaults synchronize];
+        }
+        
+        NSLog(@"server url - %@",_serverUrl);
+        
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(reachabilityChanged:)
+                                                   name:kReachabilityChangedNotification
+                                                 object:nil];
+        
+        self.internetReachability = [Reachability reachabilityForInternetConnection];
+        [self.internetReachability startNotifier];
+        [self updateInterfaceWithReachability:self.internetReachability];
+    }
+    
+    return self;
+}
+
+-(BOOL)isSessionStarted {
+    return YES;
+}
+
+/**
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)note {
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    [self updateInterfaceWithReachability:curReach];
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability {
+    
+    if (reachability == self.internetReachability) {
+        NetworkStatus netStatus = [reachability currentReachabilityStatus];
+        NSLog(@"internet netStatus = %ld",(long)netStatus);
+        
+        self.isHostAccessable = (netStatus!=NotReachable);
+    }
+}
+
+-(void)changeServerURL:(NSString *)url {
+    _serverUrl = url;
+    [NSUserDefaults.standardUserDefaults setObject:_serverUrl forKey:kOnePassServerURL];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
+-(void)createSessionWithCompletionBlock:(ResponceBlock)block {
+
+    if(block) {
+        block(nil,nil);
+    }
+}
+
+-(void)deleteSessionWithCompletionBlock:(ResponceBlock)block {
+    if(block) {
+        block(nil,nil);
+    }
+}
+
+-(void)createPerson:(NSString *)personId withCompletionBlock:(ResponceBlock) block{
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kCreatePersonById,_serverUrl]
+                                                          withBody:@{kPersonIdURLParam:personId}
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     NSLog(@"create person -  %@",response);
+                                                     if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                 }];
+    
+    [task resume];
+}
+
+-(void)readPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block{
+    ResponceBlock resultBlock = block;
+    
+    __unused NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kReadPersonById, _serverUrl, personId]
+                                                                  withBody:nil
+                                                         completionHandler:^(NSData * _Nullable data,
+                                                                             NSURLResponse * _Nullable response,
+                                                                             NSError * _Nullable error){
+                                                             NSLog(@"read person %@",response);
+                                                             if(!error){
+                                                                 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                                 if(resultBlock){
+                                                                     if([response isSuccess]) resultBlock(json,nil);
+                                                                     else                     resultBlock(nil,[self errorWithData:data]);
+                                                                 }
+                                                             }else{
+                                                                 resultBlock(nil,error);
+                                                                 return ;
+                                                             }
+                                                             
+                                                         }];
+    
+    [task resume];
+}
+
+-(void)deletePerson:(NSString *)personId withCompletionBlock:(ResponceBlock) block{
+    
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kDeletePersonById,_serverUrl,personId]
+                                                   completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                       if (!error){
+                                                           NSLog(@"delete person -  %@",response);
+                                                           if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                       }else{
+                                                           resultBlock(nil,error);
+                                                           return ;
+                                                       }
+                                                   }];
+    
+    [task resume];
+}
+
+#pragma mark - Face Sample Upload
+
+-(void)addFaceSample:(NSData *)imageData forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block{
+    ResponceBlock resultBlock = block;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+
+    NSString *verifyPath =  [[paths objectAtIndex:0] stringByAppendingPathComponent:@"face_left.jpg"];
+    [imageData writeToFile:verifyPath atomically:YES];
+
+    NSString *base64Path =  [[paths objectAtIndex:0] stringByAppendingPathComponent:@"face_left.base64"];
+    [[imageData base64EncodedStringWithOptions:0] writeToFile:base64Path atomically:YES];
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddFaceSample2EnrollmentReference,_serverUrl,personId]
+                                                          withBody:@{kSampleURLParam:@{kDataURLParam:[imageData base64EncodedStringWithOptions:0]}}
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     if (!error){
+                                                         NSLog(@"add face sample - %@",response);
+                                                         if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                     }else{
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                     
+                                                 }];
+    
+    [task resume];
+}
+
+-(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block{
+    //POST /person/{person_id}/voice/dynamic/file
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddVoiceFile2EnrollmentReference,_serverUrl,personId]
+                                                          withBody:@{  kDataURLParam:[voiceData base64EncodedStringWithOptions:0],
+                                                                       kPasswordURLParam:passphrase,
+                                                                       kGenderURLParam:@0}
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     
+                                                     NSLog(@"%@",response);
+                                                     if (!error){
+                                                         if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    [task resume];
+}
+
+#pragma mark - VERIFICATION
+
+-(void)startVerificationSession:(NSString *)personId withCompletionBlock:(ResponceVerifyBlock)block
+{
+    ResponceVerifyBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kStartVerificationSession,_serverUrl,personId]
+                                                         withBody:nil
+                                                completionHandler:^(NSData * _Nullable data,
+                                                                    NSURLResponse * _Nullable response,
+                                                                    NSError * _Nullable error){
+                                                    if (!error){
+                                                        NSLog(@"start session %@",response);
+                                                        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                        if ([response isSuccess]) {
+                                                            OPCOVerificationSession *session = [[OPCOVerificationSession alloc] initWithJSON:json];
+                                                            if(resultBlock) resultBlock(session,nil);
+                                                        } else
+                                                            if(resultBlock) resultBlock(nil,[self errorWithData:data]);
+                                                        
+                                                    } else {
+                                                        resultBlock(nil,error);
+                                                        return ;
+                                                    }
+                                                }];
+    
+    [task resume];
+}
+
+-(void)addVerificationVideo:(NSData *)video
+                 forSession:(NSString *)session
+               withPasscode:(NSString *)passcode
+        withCompletionBlock:(ResponceBlock)block
+{
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddVideo2VerificationSession,_serverUrl,session]
+                                                          withBody:@{kDataURLParam:[video base64EncodedStringWithOptions:0],kPasswordURLParam:passcode}
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     if (!error){
+                                                         NSLog(@"add video sample %@",response);
+                                                         if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    
+    [task resume];
+}
+
+-(void)addVerificationData:(NSData *)imageData
+         withVoiceFeatures:(NSData *)voiceFeatures
+            withLdFeatures:(NSData *)ldFeatures
+                forSession:(NSString *)session
+              withPasscode:(NSString *)passcode
+       withCompletionBlock:(ResponceBlock)block{
+    ResponceBlock resultBlock = block;
+    if ((imageData==nil) || (voiceFeatures==nil) || (ldFeatures==nil)) {
+        resultBlock(nil,[NSError errorWithDomain:@"com.speachpro.onepass"
+                                            code:400
+                                        userInfo:@{ NSLocalizedDescriptionKey: @"No valid data for verification" }]);
+        return;
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *loggingFolder =  [paths objectAtIndex:0];
+    
+    NSString *ldFeaturesPath =  [loggingFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"ldFeatures.bin"]];
+    [ldFeatures writeToFile:ldFeaturesPath atomically:YES];
+    NSString *voiceFeaturesPath =  [loggingFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"voiceFeatures.bin"]];
+    [voiceFeatures writeToFile:voiceFeaturesPath atomically:YES];
+    
+    NSDictionary *body = @{kFeaturesURLParam:@{kDataURLParam:[voiceFeatures base64EncodedStringWithOptions:0]},
+                           kFaceURLParam:@{kSampleURLParam:@{kDataURLParam:[imageData base64EncodedStringWithOptions:0]}},
+                           kLDFeaturesURLParam:@{kDataURLParam:[ldFeatures base64EncodedStringWithOptions:0]},
+                           kPasswordURLParam:passcode};
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddData2VerificationSession,_serverUrl,session]
+                                                          withBody:body
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                     if (!error){
+                                                         NSLog(@"add data sample %@",response);
+                                                         if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    [task resume];
+}
+
+-(void)verify:(NSString *)session withCompletionBlock:(ResponceBlock)block{
+    //GET /verification/{verification_id}
+    ResponceBlock resultBlock = block;
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kVerifyPerson,_serverUrl,session]
+                                                         withBody:nil
+                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                  {
+                                      if (!error) {
+                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                          NSLog(@"verify - \n%@",response);
+                                          
+                                          if(resultBlock) resultBlock(json,[response isSuccess] ? nil : [self errorWithData:data]);
+                                      } else {
+                                          resultBlock(nil,error);
+                                          return ;
+                                      }
+                                  }];
+    
+    [task resume];
+}
+
+-(void)verifyScore:(NSString *)session withCompletionBlock:(ResponceBlock)block{
+    //GET /verification/{verification_id}
+    ResponceBlock resultBlock = block;
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kVerificationScore, _serverUrl, session]
+                                                         withBody:nil
+                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                    if (!error) {
+                                                        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                        NSLog(@"verify - !!!!! SCORE !!!!! \n%@",json);
+                                                        
+                                                        if(resultBlock) resultBlock(json,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                    } else {
+                                                        resultBlock(nil,error);
+                                                        return ;
+                                                    }
+                                                }];
+    
+    [task resume];
+}
+
+-(void)closeVerification:(NSString *)session withCompletionBlock:(ResponceBlock)block
+{
+    //DELETE /verification/{verification_id}
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kCloseVerificationSession,_serverUrl,session]
+                                                   completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                       if (!error) {
+                                                           NSLog(@"close session %@",response);
+                                                           if(resultBlock) resultBlock( nil, [response isSuccess] ? nil : [self errorWithData:data]);
+                                                       } else {
+                                                           if(resultBlock) resultBlock(nil,error);
+                                                           return ;
+                                                       }
+                                                   }];
+    
+    [task resume];
+}
+
+@end
+
+///-----------------------
+/// Private Methods
+///-----------------------
+@implementation OPCOV4Manager(PrivateMethods)
+
+-(NSURLSessionDataTask *)taskGetRequestForURLString:(NSString *)urlString
+                                           withBody:(NSDictionary *)body
+                                  completionHandler:(void (^)(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    
+    return [self taskRequestWithTypeRequest:@"GET"
+                                   withBody:body
+                               forURLString:urlString
+                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                              if (completionHandler) {
+                                  completionHandler(data,response,error);
+                              }
+                          }];
+    
+}
+
+-(NSURLSessionDataTask *)taskPostRequestForURLString:(NSString *)urlString
+                                            withBody:(NSDictionary *)body
+                                   completionHandler:(void (^)(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    
+    return [self taskRequestWithTypeRequest:@"POST"
+                                   withBody:body
+                               forURLString:urlString
+                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                              if (completionHandler) {
+                                  completionHandler(data,response,error);
+                              }
+                          }];
+    
+}
+
+-(NSURLSessionDataTask *)taskDeleteRequestForURLString:(NSString *)urlString
+                                     completionHandler:(void (^)(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    return [self taskRequestWithTypeRequest:@"DELETE"
+                                   withBody:nil
+                               forURLString:urlString
+                          completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                              if (completionHandler) {
+                                  completionHandler(data,response,error);
+                              }
+                          }];
+}
+
+
+-(NSURLSessionDataTask *)taskRequestWithTypeRequest:(NSString *)type
+                                           withBody:(NSDictionary *)body
+                                       forURLString:(NSString *)urlString
+                                  completionHandler:(void (^)(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL:[NSURL URLWithString:urlString]
+                                    cachePolicy: NSURLRequestReloadIgnoringCacheData
+                                    timeoutInterval: 20];
+    
+    [request setHTTPMethod:type];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    if(body){
+        NSString *bodyJSON = [body JSONString];
+        [request setHTTPBody:[bodyJSON dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    return [NSURLSession.sharedSession dataTaskWithRequest:request
+                                         completionHandler:^(NSData * _Nullable data,
+                                                             NSURLResponse * _Nullable response,
+                                                             NSError * _Nullable error) {
+                                             if (completionHandler) {
+                                                 completionHandler(data,response,error);
+                                             }
+                                         }];
+}
+
+-(NSError *)errorWithData:(NSData *)errorData{
+    NSString *errorString = [[NSString alloc] initWithData:errorData encoding: NSUTF8StringEncoding];
+    NSLog(@"%@",errorString);
+    
+    return [NSError errorWithDomain:@"com.speachpro.onepass"
+                               code:400
+                           userInfo:@{ NSLocalizedDescriptionKey: errorString }];
+    
+}
+
+
+-(NSString *)userID{
+    return [NSUserDefaults.standardUserDefaults objectForKey:kOnePassUserIDKey];
+}
+
+@end
+

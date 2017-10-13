@@ -18,14 +18,12 @@
  */
 typedef void (^ResultBlock)(BOOL result,NSDictionary* score);
 
-
 /**
  Is the 'IOPUILoaderProtocol' provides an ability to start verification or registration
  */
 @protocol IOPUILoaderProtocol <NSObject>
 
 @required
-
 
 /**
  Starts an enrollment process with the capture manager and the transport service
@@ -36,7 +34,6 @@ typedef void (^ResultBlock)(BOOL result,NSDictionary* score);
  */
 -(UIViewController *)enrollUILoadWithService:(id<IOPCTransportProtocol>)service
                           withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager;
-
 
 /**
  Starts a verification process with the capture manager and the transport service

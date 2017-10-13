@@ -27,6 +27,8 @@ static const float kMaxSampleValue = 32768;
  */
 @property (nonatomic) BOOL isStarted;
 
+@property (nonatomic) IBOutlet NSLayoutConstraint *centerConstarint;
+
 @end
 
 @interface OPUIVoiceVisualizerView(PrivateMethods)
@@ -65,7 +67,6 @@ static const float kMaxSampleValue = 32768;
                      length:(NSUInteger)length{
     
     if (!self.isStarted) {
-
         self.frame = CGRectMake(0, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
         self.isStarted = YES;
@@ -73,9 +74,25 @@ static const float kMaxSampleValue = 32768;
         
         __weak typeof(self) weakself = self;
         
-        float offset = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? -weakself.frame.size.width/4 : (-weakself.frame.size.width/2);        [UIView animateWithDuration:9.3 delay:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
-            weakself.frame = CGRectOffset(weakself.frame , offset, 0);
-        } completion:nil];
+        float offset = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? -weakself.frame.size.width/4 : (-weakself.frame.size.width/2);
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.centerConstarint.constant = offset;
+             [UIView animateWithDuration:9.3
+                                   delay:0.7
+                                 options:UIViewAnimationOptionCurveLinear
+                              animations:^{
+                [self.superview setNeedsLayout];
+                [self.superview layoutIfNeeded];
+            }  completion:nil];
+
+//            [UIView animateWithDuration:9.3 delay:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+//                // weakself.frame = CGRectOffset(weakself.frame , offset, 0);
+//                self.centerConstarint.constant = -120;
+//            } completion:nil];
+            
+        });
+
      }
     
     short *pointer = (short *)bytes;

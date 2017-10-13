@@ -22,7 +22,7 @@
 /**
  Trasfers the passphrase
  
- @param passphrase The passphrase
+ @param passPhrase The passphrase
  */
 -(void)setPasshrase:(NSString *)passPhrase;
 

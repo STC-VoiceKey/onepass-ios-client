@@ -8,6 +8,7 @@
 
 #import "OPCSCaptureVoice2BufferManager.h"
 #import "OPCSAudioQueueRecorder.h"
+#import <AVFoundation/AVFoundation.h>
 
 static NSString *kOnePassLimitNoise = @"kOnePassVoiceNoiseLimit";
 static NSString *kVoiceNoiseLimitName = @"VoiceNoiseLimit";
@@ -95,7 +96,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
 ///-------------------------------------------------------
 ///     @name   Initialization
 ///-------------------------------------------------------
--(id)init{
+-(id)init {
     self = [super init];
     if (self) {
         float noiseLimitFromDefaults = [NSUserDefaults.standardUserDefaults floatForKey:kOnePassLimitNoise];
@@ -111,7 +112,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
     return self;
 }
 
--(id)initWithAcousticStopAnalyzer:(id<IOPCAcousticStopProtocol>)acousticAnalyzer{
+-(id)initWithAcousticStopAnalyzer:(id<IOPCAcousticStopProtocol>)acousticAnalyzer {
     self = [self init];
     if (self) {
         self.stopAnalyzer = acousticAnalyzer;
@@ -123,7 +124,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
 ///-------------------------------------------------------
 ///     @name   IOPCNoisyProtocol
 ///-------------------------------------------------------
--(void)startNoiseAnalyzer{
+-(void)startNoiseAnalyzer {
     @synchronized(self) {
         if(!self.isNoiseAnalyzerRunning) {
             self.lastAbsoluteAverage = 0;
@@ -136,7 +137,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
     }
 }
 
--(void)stopNoiseAnalyzer{
+-(void)stopNoiseAnalyzer {
     @synchronized(self) {
         if(self.isNoiseAnalyzerRunning) {
             self.isNoNoisy = YES;
@@ -149,12 +150,9 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
 ///-------------------------------------------------------
 ///     @name   IOPCRecordProtocol
 ///-------------------------------------------------------
--(void)record
-{
-    @synchronized(self)
-    {
+-(void)record {
+    @synchronized(self) {
         if(self.isRecording) {
-            
             if (self.loadDataBlock) {
                 self.loadDataBlock(nil,[NSError errorWithDomain:@"com.onepass.captureresource"
                                                            code:400
@@ -176,9 +174,9 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
     }
 }
 
--(void)stop{
-    @synchronized(self)
-    {
+-(void)stop {
+    @synchronized(self) {
+        
         if(self.isRecording) {
             self.isRecording = NO;
             
@@ -195,14 +193,11 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
     }
 }
 
--(NSTimeInterval)currentTime{
-    if (self.isRecording) {
-        return OPCSSourceGetCurrentTime(self.source) ;
-    }
-    else return 0;
+-(NSTimeInterval)currentTime {
+    return (self.isRecording) ? OPCSSourceGetCurrentTime(self.source) : 0;
 }
 
--(void)dealloc{
+-(void)dealloc {
     _voiceBuffer = nil;
 }
 
@@ -213,7 +208,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
 ///     @name   IOPCIsVoiceVisualizerProtocol
 ///--------------------------------------------
 
--(void)setPreview:(id<IOPCVoiceVisualizerProtocol>)preview{
+-(void)setPreview:(id<IOPCVoiceVisualizerProtocol>)preview {
     self.voiceView = preview;
 }
 
@@ -221,7 +216,7 @@ void OPCRRecorderCallback(OPCSAudioQueueRecorderRef ref, AudioQueueRef audioQueu
 
 @implementation OPCSCaptureVoice2BufferManager(PrivateMethods)
 
--(NSMutableData *)addWavHeader:(NSData *)wav{
+-(NSMutableData *)addWavHeader:(NSData *)wav {
     NSMutableData *wavHeader = [[NSMutableData alloc] init];
     
     NSUInteger sampleRate = 11025;

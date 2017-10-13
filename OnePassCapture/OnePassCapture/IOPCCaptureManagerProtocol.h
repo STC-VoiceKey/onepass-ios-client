@@ -11,6 +11,7 @@
 #import "IOPCCaptureVideoManagerProtocol.h"
 #import "IOPCCaptureVoiceManagerProtocol.h"
 #import "IOPCCapturePhotoManagerProtocol.h"
+#import "IOPCInterfaceOrientationProtocol.h"
 
 /**
  The 'IOPCCaptureManagerProtocol' provides the access to capture managers.
@@ -45,7 +46,8 @@
 
  @return  The photo capture manager
  */
--(id<IOPCCapturePhotoManagerProtocol,IOPCPortraitFeaturesProtocol,IOPCEnvironmentProtocol>)photoManager;
+#warning docs
+-(id< IOPCCapturePhotoManagerProtocol, IOPCPortraitFeaturesProtocol, IOPCEnvironmentProtocol, IOPCInterfaceOrientationProtocol>)photoManager;
 
 
 @end

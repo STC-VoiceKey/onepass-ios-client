@@ -10,6 +10,15 @@
 #import "OPCSCaptureVideoManager.h"
 #import "OPCSCapturePhotoManager.h"
 #import "OPCSCaptureVoice2BufferManager.h"
+#import "OPCSOSXCapturePhotoManager.h"
+
+@interface OPCSCaptureResourceManager()
+
+@property (nonatomic) OPCSCaptureVideoManager        *videoResourceManager;
+@property (nonatomic) OPCSCaptureVoice2BufferManager *voiceResourceManager;
+@property (nonatomic) OPCSCapturePhotoManager        *photoResourceManager;
+
+@end
 
 @implementation OPCSCaptureResourceManager
 
@@ -27,15 +36,35 @@
 ///-----------------------------------------------------------
 
 -(id<IOPCCaptureVideoManagerProtocol,IOPCPortraitFeaturesProtocol,IOPCEnvironmentProtocol>)videoManager{
-     return [[OPCSCaptureVideoManager alloc] init];
+    static dispatch_once_t oncePhoto;
+    dispatch_once(&oncePhoto, ^{
+        self.videoResourceManager = [[OPCSCaptureVideoManager alloc] init];
+    });
+    return self.videoResourceManager;
 }
 
 -(id<IOPCCaptureVoiceManagerProtocol>)voiceManager{
-    return [[OPCSCaptureVoice2BufferManager alloc] init];
+    static dispatch_once_t onceVoice;
+    dispatch_once(&onceVoice, ^{
+        self.voiceResourceManager = [[OPCSCaptureVoice2BufferManager alloc] init];
+    });
+    return self.voiceResourceManager;
 }
 
--(id<IOPCCapturePhotoManagerProtocol,IOPCPortraitFeaturesProtocol,IOPCEnvironmentProtocol>)photoManager{
-    return [[OPCSCapturePhotoManager alloc] init];
+-(id< IOPCCapturePhotoManagerProtocol,
+      IOPCPortraitFeaturesProtocol,
+      IOPCEnvironmentProtocol,
+      IOPCInterfaceOrientationProtocol>)photoManager{
+    
+    static dispatch_once_t oncePhoto;
+    dispatch_once(&oncePhoto, ^{
+#ifndef OSX
+        self.photoResourceManager = [[OPCSCapturePhotoManager alloc] init];
+#else
+        self.photoResourceManager = [[OPCSOSXCapturePhotoManager alloc] init];
+#endif
+    });
+    return self.photoResourceManager;
 }
 
 @end

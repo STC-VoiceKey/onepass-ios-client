@@ -35,9 +35,8 @@
     self.block(0);
 }
 
-
 -(void)createBlockWithTime:(float)time
-         withTimeInterval:(NSTimeInterval)timeInterval{
+         withTimeInterval:(NSTimeInterval)timeInterval {
     __weak typeof(self) weakself = self;
     self.block = ^(float i) {
         if (weakself.progress) {
@@ -58,7 +57,7 @@
     };
 }
 
--(BOOL)isProcessing{
+-(BOOL)isProcessing {
     return (self.block != nil);
 }
 

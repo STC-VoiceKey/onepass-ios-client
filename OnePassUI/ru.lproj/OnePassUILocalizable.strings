@@ -17,7 +17,7 @@
 "Other faces detection" = "На фото несколько лиц";
 
 "Take off sunglasses" = "Снимите очки";
-"Make sure it's quiet" = "Убедитесь что тихо";
+"Make sure it's quiet" = "Убедитесь, что вокруг тихо";
 "Find a well lit place" = "Найдите освещенное место";
 "Make your ordinary face" = "Сделайте нейтральное выражение лица";
 
@@ -36,10 +36,10 @@
 "Pronounce the digits" = "Произнесите цифры";
 "Give it another video" = "Попробуйте сделать другое видео";
 
-"Face off-center" = "Пожалуйста совместите лицо с маской";
+"Face off-center" = "Пожалуйста, совместите лицо с маской";
 
 "Give it another video" = "Попробуйте сделать другое видео";
-"Give it another shot"  = "Попробуйте сделать другое снимок";
+"Give it another shot"  = "Попробуйте сделать другой снимок";
 "Give it another voice" = "Попробуйте сделать другую запись";
 
 "voice sound is corrupted" = "Звуковой файл поврежден";
@@ -50,3 +50,5 @@
 
 "Left eye is not found on image" = "Левый глаз не найден на снимке";
 "Right eye is not found on image" = "Правый глаз не найден на снимке";
+"Incorrect URL. Please, enter the correct one."="Неверный URL. Пожалуйста, укажите корректный URL.";
+"Portrait characteristics check failed. Tinted glass detected." = "Portrait characteristics check failed. Tinted glass detected.";

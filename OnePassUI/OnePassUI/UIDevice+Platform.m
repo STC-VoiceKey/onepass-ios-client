@@ -15,7 +15,7 @@
 
 @implementation UIDevice (Platform)
 
--(UIDeviceGroup)deviceType{
+-(UIDeviceGroup)deviceType {
     NSString *result = [self getSysInfoByName:"hw.machine"];
     
     if([result  containsString:@"iPad"] ||
@@ -54,7 +54,7 @@
     return UIDeviceGroupUnknown;
 }
 
-- (NSString *) getSysInfoByName:(char *)typeSpecifier{
+- (NSString *) getSysInfoByName:(char *)typeSpecifier {
     size_t size;
     sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
     

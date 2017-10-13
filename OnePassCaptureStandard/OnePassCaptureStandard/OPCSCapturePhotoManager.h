@@ -7,19 +7,18 @@
 //
 
 #import <OnePassCapture/OnePassCapture.h>
-#import "OPCSCaptureBaseManager.h"
-
+#import "OPCSCaptureIOSBaseManager.h"
 
 /**
  Provides the photo resource 
  */
-@interface OPCSCapturePhotoManager : OPCSCaptureBaseManager<IOPCCapturePhotoManagerProtocol,
+@interface OPCSCapturePhotoManager : OPCSCaptureIOSBaseManager<IOPCCapturePhotoManagerProtocol,
                                                             IOPCPortraitFeaturesProtocol,
                                                             IOPCEnvironmentProtocol>
 /**
   Is implementation of 'IOPCLoadingDataProtocol'
  */
-@property (nonatomic) LoadDataBlock loadDataBlock;
+@property (nonatomic) LoadImageBlock loadImageBlock;
 
 /**
  Is implementation of 'IOPCPhotoProtocol'

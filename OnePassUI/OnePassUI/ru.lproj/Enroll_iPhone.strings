@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "Не согласен"; ObjectID = "Cg3-cJ-pfw"; */
-"Cg3-cJ-pfw.normalTitle" = "Не согласен";
+"Cg3-cJ-pfw.normalTitle" = "Не Согласен";
 
 /* Class = "UIButton"; normalTitle = "ПОВТОРИТЬ ПОПЫТКУ"; ObjectID = "EV8-0C-loO"; */
 "EV8-0C-loO.normalTitle" = "ПОВТОРИТЬ ПОПЫТКУ";
@@ -43,3 +43,5 @@
 
 /* Class = "UILabel"; text = "Face off-center"; ObjectID = "NaK-Ua-OyC"; */
 "NaK-Ua-OyC.warning" = "Пожалуйста совместите свое лицо с маской";
+
+"xW9-Bu-egf.normalTitle" = "Слишком шумно";

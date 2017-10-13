@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t0a-v8-7EL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t0a-v8-7EL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -151,55 +151,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="wf2-UB-tZK" userLabel="FT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1fP-Zq-ZA6"/>
-                                    <barButtonItem image="otherface" id="1SL-9t-uw2" customClass="OPUIBarButtonItem">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Many faces detected"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </barButtonItem>
-                                    <barButtonItem width="37" style="plain" systemItem="fixedSpace" id="U9k-m5-VV2"/>
-                                    <barButtonItem image="noface" id="r5K-38-fEL" customClass="OPUIBarButtonItem">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Face off-center"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="xibName" value="OPUIFaceNotFoundView"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </barButtonItem>
-                                    <barButtonItem width="37" style="plain" systemItem="fixedSpace" id="fu3-fs-FUn"/>
-                                    <barButtonItem image="light" id="nIH-vQ-SHD" customClass="OPUIBarButtonItem">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Pour light"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="M0u-9u-ak6"/>
-                                    <barButtonItem image="silence" id="A5K-d3-xue" customClass="OPUIBarButtonItem">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="warning" value="Too noisy"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fVc-R5-IXw"/>
-                                </items>
-                                <color key="tintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXJ-Pm-WKs">
+                                <rect key="frame" x="90" y="13" width="195" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="otherface" translatesAutoresizingMaskIntoConstraints="NO" id="LVt-o8-NmG" customClass="OPUIIndicatorImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                        <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="OnR-pS-ARp"/>
+                                            <constraint firstAttribute="height" constant="40" id="lJg-E0-yQw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noface" translatesAutoresizingMaskIntoConstraints="NO" id="dsz-Jb-SaT" customClass="OPUIIndicatorImageView">
+                                        <rect key="frame" x="65" y="0.0" width="65" height="40"/>
+                                        <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="WsX-Tu-rRf" customClass="OPUIIndicatorImageView">
+                                        <rect key="frame" x="130" y="0.0" width="65" height="40"/>
+                                        <color key="tintColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dsz-Jb-SaT" firstAttribute="height" secondItem="LVt-o8-NmG" secondAttribute="height" id="366-8x-55W"/>
+                                    <constraint firstItem="dsz-Jb-SaT" firstAttribute="width" secondItem="LVt-o8-NmG" secondAttribute="width" id="3qy-FB-1dL"/>
+                                    <constraint firstItem="WsX-Tu-rRf" firstAttribute="width" secondItem="LVt-o8-NmG" secondAttribute="width" id="jIU-Ty-s9u"/>
+                                    <constraint firstItem="WsX-Tu-rRf" firstAttribute="height" secondItem="LVt-o8-NmG" secondAttribute="height" id="m2E-sE-VbM"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="wf2-UB-tZK" secondAttribute="trailing" id="6vQ-NV-Ahd"/>
-                            <constraint firstItem="wf2-UB-tZK" firstAttribute="leading" secondItem="Hd3-B2-MY2" secondAttribute="leading" id="PR2-fM-tJK"/>
-                            <constraint firstAttribute="bottom" secondItem="wf2-UB-tZK" secondAttribute="bottom" id="XEe-QA-icL"/>
-                            <constraint firstItem="wf2-UB-tZK" firstAttribute="top" secondItem="Hd3-B2-MY2" secondAttribute="top" id="avm-8b-yXq"/>
+                            <constraint firstItem="VXJ-Pm-WKs" firstAttribute="centerY" secondItem="Hd3-B2-MY2" secondAttribute="centerY" id="Cag-sd-Lna"/>
+                            <constraint firstItem="VXJ-Pm-WKs" firstAttribute="centerX" secondItem="Hd3-B2-MY2" secondAttribute="centerX" id="keu-ir-JF5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bbBrightness" destination="nIH-vQ-SHD" id="EDT-VV-lyV"/>
-                        <outlet property="bbFaceFound" destination="r5K-38-fEL" id="r3g-bv-hxe"/>
-                        <outlet property="bbNoisy" destination="A5K-d3-xue" id="NWU-qe-Gpy"/>
-                        <outlet property="bbSingleFace" destination="1SL-9t-uw2" id="o8P-M2-t37"/>
-                        <outlet property="indicatorToolbar" destination="wf2-UB-tZK" id="2Bn-09-Ufc"/>
+                        <outlet property="imageFaceFound" destination="dsz-Jb-SaT" id="jfU-WA-CMJ"/>
+                        <outlet property="imageSingleFace" destination="LVt-o8-NmG" id="g1P-ju-SMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qo4-T9-wMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,9 +196,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="light" width="32" height="32"/>
+        <image name="light" width="20" height="32"/>
         <image name="noface" width="32" height="32"/>
         <image name="otherface" width="32" height="32"/>
-        <image name="silence" width="32" height="32"/>
     </resources>
 </document>

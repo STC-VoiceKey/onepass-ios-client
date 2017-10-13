@@ -41,7 +41,6 @@
  */
 -(NSString *)pathCafTemporallyFile;
 
-
 /**
  Converts the voice file from caf format to wav one
 
@@ -50,6 +49,10 @@
  */
 -(NSError *)convertCaf2WavForFile:(NSString *)audioFilePath;
 
+/**
+ *  The audio settings for the compression
+ */
+-(NSDictionary *)audioSettings;
 @end
 
 @implementation OPCSCaptureVoiceManager
@@ -59,8 +62,7 @@
 -(void)record{
     [self setupAVAudioSession];
     [self setupAVAudioRecorder];
-    if ([self.audioRecorder prepareToRecord])
-    {
+    if ([self.audioRecorder prepareToRecord]) {
         self.isRecording = YES;
         if([self.audioRecorder record]){
             
@@ -69,8 +71,7 @@
 }
 
 -(void)stop{
-    if (self.audioRecorder.isRecording)
-    {
+    if (self.audioRecorder.isRecording) {
         [self.audioRecorder stop];
     }
 }
@@ -83,11 +84,9 @@
 ///------------------------------------------------
 ///     @name AVAudioRecorderDelegate
 ///------------------------------------------------
--(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
-{
+-(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
     NSError *error = [self convertCaf2WavForFile:self.pathCafTemporallyFile];
-    if(error)
-    {
+    if(error) {
         self.isRecording = NO;
         self.loadDataBlock(nil,error);
     }
@@ -96,10 +95,9 @@
 }
 
 
-- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error{
+- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error {
     self.isRecording = NO;
-    if (self.loadDataBlock)
-    {
+    if (self.loadDataBlock) {
         self.loadDataBlock(nil,error);
     }
 }
@@ -108,7 +106,7 @@
 
 @implementation OPCSCaptureVoiceManager(PrivateMethods)
 
--(void)setupAVAudioSession{
+-(void)setupAVAudioSession {
     
     self.isRecording = NO;
     self.audioSession = AVAudioSession.sharedInstance;
@@ -116,7 +114,7 @@
     NSError *error;
     [self.audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     
-    if(error){
+    if(error) {
         if (self.loadDataBlock)
             self.loadDataBlock(nil,error);
         
@@ -125,8 +123,7 @@
     
     [self.audioSession setActive:YES error:&error];
     
-    if(error)
-    {
+    if(error) {
         if (self.loadDataBlock)
             self.loadDataBlock(nil,error);
         return;
@@ -134,10 +131,9 @@
     
 }
 
--(void)setupAVAudioRecorder{
+-(void)setupAVAudioRecorder {
     
-    if(!self.audioRecorder)
-    {
+    if(!self.audioRecorder) {
         NSError *error;
         
         self.audioRecorder = [[AVAudioRecorder alloc] initWithURL:[self urlCafTemporallyFile]
@@ -149,10 +145,10 @@
                                                             error:&error];
         
         
-        if(error)
-        {
-            if (self.loadDataBlock)
+        if(error) {
+            if (self.loadDataBlock) {
                 self.loadDataBlock(nil,error);
+            }
             return;
         }
         self.audioRecorder.delegate = self;
@@ -160,47 +156,43 @@
 }
 
 
--(NSString *)pathCafTemporallyFile
-{
+-(NSString *)pathCafTemporallyFile {
     return [NSString stringWithFormat:@"%@voice%lu.caf", NSTemporaryDirectory(), (unsigned long)self.passphraseNumber];
 }
 
--(NSURL *)urlCafTemporallyFile
-{
+-(NSURL *)urlCafTemporallyFile {
     return [NSURL fileURLWithPath:[self pathCafTemporallyFile]];
 }
 
--(NSString *)pathWavTemporallyFile
-{
+-(NSString *)pathWavTemporallyFile {
     return [NSString stringWithFormat:@"%@voice%lu.wav", NSTemporaryDirectory(), (unsigned long)self.passphraseNumber];
 }
 
--(NSURL *)urlWavTemporallyFile
-{
+-(NSURL *)urlWavTemporallyFile {
     return [NSURL fileURLWithPath:[self pathWavTemporallyFile]];
 }
 
--(NSError *)removeTemporallyFile:(NSString *)filename
-{
+-(NSError *)removeTemporallyFile:(NSString *)filename {
     NSError *error;
     [[NSFileManager defaultManager] removeItemAtPath:filename error:&error];
     return error;
 }
 
--(NSError *)convertCaf2WavForFile:(NSString*)audioFilePath
-{
+-(NSDictionary *)audioSettings {
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            [ NSNumber numberWithFloat:11025.0], AVSampleRateKey,
+            [ NSNumber numberWithInt:1], AVNumberOfChannelsKey,
+            [ NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+            [ NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+            [ NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
+            [ NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
+            [ NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+            [ NSData data], AVChannelLayoutKey, nil ];
+}
+
+-(NSError *)convertCaf2WavForFile:(NSString*)audioFilePath {
     NSError *error = nil ;
-    
-    NSDictionary *audioSetting = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  [ NSNumber numberWithFloat:11025.0], AVSampleRateKey,
-                                  [ NSNumber numberWithInt:1], AVNumberOfChannelsKey,
-                                  [ NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
-                                  [ NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-                                  [ NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
-                                  [ NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
-                                  [ NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-                                  [ NSData data], AVChannelLayoutKey, nil ];
-    
+
     AVURLAsset *URLAsset = [[AVURLAsset alloc]  initWithURL:[NSURL fileURLWithPath:audioFilePath] options:nil];
     
     AVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:URLAsset error:&error];
@@ -212,9 +204,8 @@
                                                     code:400
                                                 userInfo:@{ NSLocalizedDescriptionKey: @"no audio trakcs"}];
     
-    AVAssetReaderAudioMixOutput *audioMixOutput = [AVAssetReaderAudioMixOutput
-                                                   assetReaderAudioMixOutputWithAudioTracks:tracks
-                                                   audioSettings :audioSetting];
+    AVAssetReaderAudioMixOutput *audioMixOutput = [AVAssetReaderAudioMixOutput assetReaderAudioMixOutputWithAudioTracks:tracks
+                                                                                                          audioSettings:self.audioSettings];
     
     if (![assetReader canAddOutput:audioMixOutput])
         return assetReader.error;
@@ -232,7 +223,7 @@
         return error;
     
     AVAssetWriterInput *assetWriterInput = [ AVAssetWriterInput assetWriterInputWithMediaType :AVMediaTypeAudio
-                                                                                outputSettings:audioSetting];
+                                                                                outputSettings:self.audioSettings];
     assetWriterInput.expectsMediaDataInRealTime = NO;
     
     if (![assetWriter canAddInput:assetWriterInput])
@@ -246,43 +237,33 @@
     dispatch_queue_t queue = dispatch_queue_create( "assetWriterQueue", NULL );
     
     [assetWriterInput requestMediaDataWhenReadyOnQueue:queue usingBlock:^{
-        @try
-        {
-            while ([assetWriterInput isReadyForMoreMediaData])
-            {
+        @try {
+            while ([assetWriterInput isReadyForMoreMediaData]) {
                 CMSampleBufferRef sampleBuffer = [audioMixOutput copyNextSampleBuffer];
-                if (sampleBuffer)
-                {
+                if (sampleBuffer) {
                     [assetWriterInput appendSampleBuffer :sampleBuffer];
                     CMSampleBufferInvalidate(sampleBuffer);
                     CFRelease(sampleBuffer);
                     sampleBuffer = NULL;
-                }
-                else
-                {
+                } else {
                     [assetWriterInput markAsFinished];
                     [assetReader cancelReading];
                     break;
                 }
-                
             }
             
             [assetWriter finishWritingWithCompletionHandler:^{
-                if(self.isRecording)
-                {
-                    if(self.loadDataBlock)
-                    {
+                if(self.isRecording) {
+                    if(self.loadDataBlock) {
                         self.isRecording = NO;
                         self.loadDataBlock([NSData dataWithContentsOfURL:[self urlWavTemporallyFile]],nil);
                     }
                 }
             }];
         }
-        @catch (NSException *exception)
-        {
+        @catch (NSException *exception) {
             self.isRecording = NO;
-            if(self.loadDataBlock)
-            {
+            if(self.loadDataBlock) {
                 self.loadDataBlock(nil,[NSError errorWithDomain:@"com.onepass.captureresource"
                                                            code:400
                                                        userInfo:@{ NSLocalizedDescriptionKey: @"CMSampleBufferRef exeption"}]);
@@ -292,8 +273,6 @@
     
     return nil;
 }
-
-
 
 @end
 

@@ -8,9 +8,11 @@
 
 #import "OPCSCaptureBaseManager.h"
 #import <OnePassCapture/OnePassCapture.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <ImageIO/ImageIO.h>
 
-#import "OPCSFaceCaptureLimits.h"
-#import "UIImage+Extra.h"
+#import "OPCSFaceManager.h"
+#import "CIImage+Extra.h"
 
 @interface OPCSCaptureBaseManager()
 
@@ -30,35 +32,14 @@
 @property (nonatomic) CIFaceFeature *previousFace;
 
 /**
- Is the face to be captured
+ The instance of the face manager
  */
-@property (nonatomic) BOOL isCaptured;
+@property (nonatomic) id<IOPCCheckFacePosition,IOPCInterfaceOrientationProtocol> faceManager;
 
-/**
- Shows observation of the orientation changing
- */
-@property (nonatomic) BOOL isOrientationChangedListener;
-
-/**
- The instance of the capture limit values
- */
-@property (nonatomic) OPCSFaceCaptureLimits *captureLimits;
-
+@property (nonatomic) CIDetector *detector;
 @end
 
 @interface OPCSCaptureBaseManager(PrivateMethods)
-
-/**
- Gets the device front camera
-
- @return The front camera as the device input
- */
-- (AVCaptureDeviceInput *)pickCamera;
-
-/**
- Updates the selected camera
- */
-- (void)updateCameraSelection;
 
 /**
  Calculates the brigtness of the frame in the sample buffer
@@ -73,39 +54,24 @@
  */
 -(void)calcTremor:(CIFaceFeature *)face;
 
-/**
- Is invoked when the device orientation is changed
- */
--(void)updateOrientation;
+#warning docs
+-(AVCaptureVideoOrientation)videoOrientation;
 
-/**
- Returns the image size based on the type of device and orienttion
-
- @return The size of image
- */
--(CGSize)imageSize;
+-(CIImage *)fixOrientation:(CIImage *)ciImage;
 
 @end
 
 @implementation OPCSCaptureBaseManager
 
--(void)setIsCaptured:(BOOL)isCaptured{
-    _isCaptured = isCaptured;
-    if (self.captureLimits) {
-        self.captureLimits.isCaptured = _isCaptured;
-    }
-}
-
-- (void) setupAVCapture
-{
-    self.captureLimits = [[OPCSFaceCaptureLimits alloc] init];
+- (void) setupAVCapture {
+    self.faceManager = [[OPCSFaceManager alloc] init];
     
     self.session = [[AVCaptureSession alloc] init];
     
     [self.session setSessionPreset:AVCaptureSessionPreset640x480];
     self.viewForRelay.session = self.session;
     
-    [self updateCameraSelection];
+    [self setupCaptureDevice];
     
     self.sessionQueue = dispatch_queue_create( "CaptureDataOutputQueue", DISPATCH_QUEUE_SERIAL );
     
@@ -127,17 +93,18 @@
     captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;//!!!!Very impotant
     captureConnection.videoMirrored = NO;
     
-    self.isOrientationChangedListener = NO;
+    self.detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                       context:nil
+                                       options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
     
-    [self updateOrientation];
-//    [self.videoOutput setSampleBufferDelegate:self queue:self.sessionQueue];
 }
 
+-(void)setupCaptureDevice{
+}
+
+
 #pragma mark - IOPCSessionProtocol
-///----------------------------------------------------
-///  @name  IOPCSessionProtocol
-///----------------------------------------------------
--(void)setPreview:(OPCRPreviewView *)preview{
+-(void)setPreview:(id<IOPCPreviewView>)preview {
     
     self.viewForRelay = preview;
 
@@ -145,49 +112,31 @@
     AVCaptureVideoPreviewLayer *previewLayer = (AVCaptureVideoPreviewLayer *)self.viewForRelay.layer;
     [previewLayer setMasksToBounds:YES];
     [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [previewLayer setBackgroundColor:[[UIColor whiteColor] CGColor]];
+    [previewLayer setBackgroundColor:(__bridge CGColorRef _Nullable)([CIColor whiteColor])];
     
     [self setupAVCapture];
 }
 
--(void)startRunning{
-    
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(updateOrientation)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
-    self.isOrientationChangedListener = YES;
-    
+-(void)startRunning {
     [self.videoOutput setSampleBufferDelegate:self queue:self.sessionQueue];
-    self.isCaptured = NO;
     [self.session startRunning];
 }
 
--(void)stopRunning{
-    
-    [NSNotificationCenter.defaultCenter removeObserver:self
-                                                  name:UIDeviceOrientationDidChangeNotification
-                                                object:nil];
-    self.isOrientationChangedListener = YES;
-    
+-(void)stopRunning {
     [self.videoOutput setSampleBufferDelegate:nil queue:nil];
-    self.isCaptured = NO;
     [self.session stopRunning];
 }
 
--(BOOL)isRunning{
+-(BOOL)isRunning {
     return self.session.isRunning;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
-
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection{
-    
+       fromConnection:(AVCaptureConnection *)connection {
     [self checkEnviroment:sampleBuffer];
     [self checkPortraitFeatures:sampleBuffer];
-    
 }
 
 -(void)checkEnviroment:(CMSampleBufferRef)sampleBuffer{
@@ -198,189 +147,107 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     });
 }
 
-
 -(void)checkPortraitFeatures:(CMSampleBufferRef)sampleBuffer{
-    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
 
-    UIImage *correctedImage = [[image correctImageOrientation:image] scaledToSize:self.imageSize];
-    
-//                NSString *photoFolder = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-//                NSString *imagePath = [photoFolder stringByAppendingPathComponent:@"test1.jpeg"];
-//                [UIImageJPEGRepresentation(correctedImage, 1) writeToFile:imagePath atomically:YES];
-    
-    CIImage *ciImage = [CIImage imageWithCGImage:correctedImage.CGImage];
-    
-    CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace
-                                              context:nil
-                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
-
-    NSArray* features = [detector featuresInImage:ciImage options:@{CIDetectorEyeBlink:@YES}];
-    
-    if (features.count == 1) {
-        if(!self.isSingleFace)
-            self.isSingleFace = YES;
+    @autoreleasepool {
+        self.currentImage = [self fixOrientation:[self imageFromSampleBuffer:sampleBuffer]];
         
+        NSArray *features = [self.detector featuresInImage:self.currentImage
+                                                   options:@{CIDetectorEyeBlink:@YES}];
+        
+        if (features.count == 1) {
             
-        for(CIFaceFeature* faceFeature in features) {
-            [self calcTremor:faceFeature];
-            if (faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition) {
-                if (!faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed) {
-                    if(!self.isEyesFound) {
-                        self.isEyesFound = YES;
-                    }
+            self.isSingleFace = YES;
+            
+            for(CIFaceFeature* faceFeature in features) {
+                [self calcTremor:faceFeature];
+                
+                if (faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition) {
+                    
+                    self.isEyesFound = (!faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed);
+                    
+                    self.isFaceFound = [self.faceManager isSuitableFaceByRightEye:faceFeature.rightEyePosition
+                                                                        byLeftEye:faceFeature.leftEyePosition
+                                                                           inSize:self.currentImage.extent.size];
                 } else {
-                    if(self.isEyesFound) {
-                        self.isEyesFound = NO;
-                    }
-                }
-            } else {
-                if(self.isEyesFound) {
                     self.isEyesFound = NO;
                 }
             }
-
-            if([self.captureLimits checkFace:faceFeature.bounds inScreen:CGRectMake(0, 0, correctedImage.size.width, correctedImage.size.height)]) {
-                if(!self.isFaceFound) {
-                    self.isFaceFound = YES;
-                    self.isCaptured  = YES;
-                }
-            } else {
-                if(self.isFaceFound) {
-                    self.isFaceFound = NO;
-                }
-            }
-        }
-    }
-    else
-    {
-        if (features.count == 0) {
-            if(self.isFaceFound) {
-                self.isFaceFound = NO;
-            }
-            self.previousFace = nil;
-        }
+        } else {
             
-        if (features.count > 1) {
-            if (!self.isFaceFound) {
-                if(self.isSingleFace) {
-                    self.isSingleFace = NO;
-                }
-            } else {
-                if(self.isSingleFace) {
-                    self.isSingleFace = NO;
-                }
+            if (features.count == 0) {
+                self.isFaceFound = NO;
                 self.previousFace = nil;
             }
+            
+            if (features.count > 1) {
+                if (!self.isFaceFound) {
+                    self.isSingleFace = NO;
+                } else {
+                    self.isSingleFace = NO;
+                    self.previousFace = nil;
+                }
+            }
         }
     }
 }
 
-- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
-{
-    CVImageBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    
-    CVPixelBufferLockBaseAddress(buffer, 0);
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    
-    CGContextRef cgContext = CGBitmapContextCreate(CVPixelBufferGetBaseAddress(buffer),
-                                                   CVPixelBufferGetWidth(buffer),
-                                                   CVPixelBufferGetHeight(buffer),
-                                                   8,
-                                                   CVPixelBufferGetBytesPerRow(buffer),
-                                                   colorSpace,
-                                                   kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    CGColorSpaceRelease(colorSpace);
-    
-    
-    CGImageRef cgImage = CGBitmapContextCreateImage(cgContext);
-    UIImage     *image = [UIImage imageWithCGImage:cgImage
-                                             scale:1.0f
-                                       orientation:UIImageOrientationRight];
-    CGImageRelease(cgImage);
-    CGContextRelease(cgContext);
-    
-    CVPixelBufferUnlockBaseAddress(buffer, 0);
-    
-    return image;
+-(CIImage *)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer {
+    CVImageBufferRef cvImage = CMSampleBufferGetImageBuffer(sampleBuffer);
+    return [[CIImage alloc] initWithCVPixelBuffer:cvImage];
 }
-@end
 
+-(void)setIsFaceFound:(BOOL)isFaceFound {
+    if (_isFaceFound != isFaceFound) {
+        _isFaceFound = isFaceFound;
+    }
+}
+
+-(void)setIsEyesFound:(BOOL)isEyesFound {
+    if (_isEyesFound != isEyesFound) {
+        _isEyesFound = isEyesFound;
+    }
+}
+
+-(void)setIsSingleFace:(BOOL)isSingleFace{
+    if (_isSingleFace != isSingleFace) {
+        _isSingleFace = isSingleFace;
+    }
+}
+
+-(void)setIsNoTremor:(BOOL)isNoTremor {
+    if (_isNoTremor != isNoTremor) {
+        _isNoTremor = isNoTremor;
+    }
+}
+
+-(void)setIsBrightness:(BOOL)isBrightness {
+    if (_isBrightness != isBrightness) {
+        _isBrightness = isBrightness;
+    }
+}
+
+-(BOOL)isPortraitOrientation{
+    return (_interfaceOrientation == OPCAvailableOrientationUp);
+}
+
+@end
 
 @implementation OPCSCaptureBaseManager(PrivateMethods)
 
-- (void) updateCameraSelection
-{
-    [self.session beginConfiguration];
+-(void)calcBrightness:(CMSampleBufferRef)sampleBuffer {
     
-    // have to remove old inputs before we test if we can add a new input
-    NSArray* oldInputs = [self.session inputs];
-    for (AVCaptureInput *oldInput in oldInputs)
-        [self.session removeInput:oldInput];
-    
-    AVCaptureDeviceInput* input = [self pickCamera];
-    if ( ! input ) {
-        // failed, restore old inputs
-        for (AVCaptureInput *oldInput in oldInputs)
-            [self.session addInput:oldInput];
-    } else {
-        // succeeded, set input and update connection states
-        [self.session addInput:input];
-        AVCaptureDevice  *device = input.device;
-        
-        NSError* err;
-        if ( ! [device lockForConfiguration:&err] ) {
-            NSLog(@"Could not lock device: %@",err);
-        }
-    }
-    
-    [self.session commitConfiguration];
-}
-
-- (AVCaptureDeviceInput *)pickCamera
-{
-    AVCaptureDevicePosition desiredPosition = AVCaptureDevicePositionFront;
-    BOOL hadError = NO;
-    for (AVCaptureDevice *d in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if ([d position] == desiredPosition) {
-            NSError *error = nil;
-            AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:d error:&error];
-            if (error) {
-                hadError = YES;
-                //displayErrorOnMainQueue(error, @"Could not initialize for AVMediaTypeVideo");
-            } else if ( [self.session canAddInput:input] ) {
-                return input;
-            }
-        }
-    }
-    if ( ! hadError ) {
-        //displayErrorOnMainQueue(nil, @"No camera found for requested orientation");
-    }
-    return nil;
-}
-
-
--(void)calcBrightness:(CMSampleBufferRef)sampleBuffer{
-
     CFDictionaryRef metadataDict = CMCopyDictionaryOfAttachments( NULL, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
     
     NSDictionary *metadata = [[NSMutableDictionary alloc] initWithDictionary:(__bridge NSDictionary*)metadataDict];
     CFRelease(metadataDict);
     NSDictionary *exifMetadata = [[metadata objectForKey:(NSString *)kCGImagePropertyExifDictionary] mutableCopy];
     float brightnessValue = [[exifMetadata objectForKey:(NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
-    if (brightnessValue < 0) {
-        if (self.isBrightness) {
-            self.isBrightness = NO;
-        }
-    } else {
-        if (!self.isBrightness) {
-            self.isBrightness = YES;
-        }
-    }
+    
+    self.isBrightness = (brightnessValue > 0);
 }
 
--(void)calcTremor:(CIFaceFeature *)face
-{
+-(void)calcTremor:(CIFaceFeature *)face {
     if (self.previousFace) {
         if (face.hasLeftEyePosition && face.hasRightEyePosition) {
             float x = face.bounds.origin.x + face.bounds.size.width/2;
@@ -394,32 +261,56 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             CGPoint prevFaceCenter = CGPointMake(x, y);
             
             float delta = sqrt(pow(faceCenter.x - prevFaceCenter.x, 2) + pow(faceCenter.y - prevFaceCenter.y, 2));
-            
-            if (delta > 10) {
-                if (self.isNoTremor) {
-                    self.isNoTremor = NO;
-                }
-            } else {
-                if (!self.isNoTremor) {
-                    self.isNoTremor = YES;
-                }
-            }
+            self.isNoTremor = (delta < 10);
         }
     }
     
     self.previousFace = face;
 }
 
--(void)updateOrientation{
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+-(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation {
+    _interfaceOrientation = orientation;
     
-    if ( UIDeviceOrientationIsPortrait( deviceOrientation ) || UIDeviceOrientationIsLandscape( deviceOrientation ) ) {
-       self.viewForRelay.videoPreviewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
+    [self.faceManager setInterfaceOrientation:_interfaceOrientation];
+    
+    AVCaptureVideoOrientation videoOrientation;
+    
+    switch (orientation) {
+        case OPCAvailableOrientationRight:
+            videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+            
+        case OPCAvailableOrientationLeft:
+            videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+            
+        default:
+            videoOrientation = AVCaptureVideoOrientationPortrait;
+            break;
     }
+    
+    self.viewForRelay.videoPreviewLayer.connection.videoOrientation = videoOrientation;
+}
+
+-(CIImage *)fixOrientation:(CIImage *)ciImage{
+
+    if (_interfaceOrientation==OPCAvailableOrientationLeft) {
+        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationLeft];
+    }
+    
+    if (_interfaceOrientation==OPCAvailableOrientationRight) {
+        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationRight];
+    }
+    
+    return ciImage;
 }
 
 -(CGSize)imageSize{
-    return UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation) ? CGSizeMake(480, 640) : CGSizeMake(640, 480);
+    return (_interfaceOrientation == OPCAvailableOrientationUp) ? CGSizeMake(480, 640) : CGSizeMake(640, 480);
+}
+
+-(AVCaptureVideoOrientation)videoOrientation {
+    return self.viewForRelay.videoPreviewLayer.connection.videoOrientation;
 }
 
 @end

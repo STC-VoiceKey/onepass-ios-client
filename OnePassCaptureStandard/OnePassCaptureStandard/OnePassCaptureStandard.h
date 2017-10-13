@@ -6,7 +6,7 @@
 //  Copyright © 2016 Speech Technology Center. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for OnePassCaptureStandard.
 FOUNDATION_EXPORT double OnePassCaptureResourcesVersionNumber;
@@ -18,10 +18,7 @@ FOUNDATION_EXPORT const unsigned char OnePassCaptureResourcesVersionString[];
 
 #import <OnePassCaptureStandard/OPCSCaptureResourceManager.h>
 #import <OnePassCaptureStandard/OPCSCaptureBaseManager.h>
-#import <OnePassCaptureStandard/OPCSCaptureVoiceManager.h>
 #import <OnePassCaptureStandard/OPCSCaptureVoice2BufferManager.h>
 
-
-#import <OnePassCaptureStandard/UIImage+Extra.h>
 
 

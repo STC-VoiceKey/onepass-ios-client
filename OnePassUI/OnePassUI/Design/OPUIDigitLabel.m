@@ -12,13 +12,13 @@
 
 @implementation OPUIDigitLabel
 
--(void)drawRect:(CGRect)rect{
+-(void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
     self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
 }
 
--(void)setText:(NSString *)text{
+-(void)setText:(NSString *)text {
     
     self.numberOfLines = 2;
     
@@ -34,6 +34,9 @@
                                         attributes:@{NSForegroundColorAttributeName : self.secondLabelColor,
                                                                 NSFontAttributeName : OPUIFontSFBoldWithSize(36),
                                                                 NSKernAttributeName : @(7)}];
+    
+     
+     
     
     [label appendAttributedString:digit];
     

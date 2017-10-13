@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <OnePassCapture/OnePassCapture.h>
+#import "IOPCPreviewView.h"
 
 /**
  The 'IOPCSessionProtocol' manages the video session
@@ -21,7 +21,7 @@
 
  @param preview The preview view
  */
--(void)setPreview:(OPCRPreviewView *)preview;
+-(void)setPreview:(id<IOPCPreviewView>)preview;
 
 /**
   Runs a video session instance.

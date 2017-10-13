@@ -86,7 +86,7 @@
     return img;
 }
 
-- (UIImage *)convertImageToGrayScale{
+/*- (UIImage *)convertImageToGrayScale {
     // Create image rectangle with current image width/height
     CGRect imageRect = CGRectMake(0, 0, self.size.width, self.size.height);
     
@@ -113,7 +113,7 @@
     
     // Return the new grayscale image
     return newImage;
-}
+}*/
 
 - (UIImage *)scaledToSize:(CGSize)newSize {
     CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
@@ -146,7 +146,7 @@
     return newImage;
 }
 
-- (UIImage*)cropImageWithRect:(CGRect)rect{
+- (UIImage*)cropImageWithRect:(CGRect)rect {
 
     if (self.scale > 1.0f) {
         rect = CGRectMake(rect.origin.x * self.scale,
@@ -161,7 +161,7 @@
     return result;
 }
 
--(UIImage *)rotateImageWithRadians:(double)radians{
+-(UIImage *)rotateImageWithRadians:(double)radians {
     
     UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, self.size.width, self.size.height)];
     CGAffineTransform t = CGAffineTransformMakeRotation( radians);
@@ -184,7 +184,7 @@
     return newImage;
 }
 
--(UIImage *)correctImageOrientation:(UIImage *)image{
+-(UIImage *)correctImageOrientation:(UIImage *)image {
     double radians ;
     
     switch ([UIDevice currentDevice].orientation) {

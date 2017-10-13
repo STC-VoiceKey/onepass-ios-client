@@ -15,9 +15,16 @@
 
 /**
  Checks statusCode is 200 or 204
-
  @return YES, if the condition is satisfied
  */
 -(BOOL)isSuccess;
+
+/**
+ Checks statusCode is 404
+ @return YES, if the condition is satisfied
+ */
+-(BOOL)is404;
+
+-(BOOL)is500;
 
 @end

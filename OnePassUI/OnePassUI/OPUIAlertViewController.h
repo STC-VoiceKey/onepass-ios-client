@@ -15,7 +15,6 @@
  */
 @interface OPUIAlertViewController : NSObject
 
-
 /**
  Creates the alert view controller displaying the warning message.
 
@@ -27,7 +26,6 @@
 +(UIAlertController *)showWarning:(NSString *)warning
                withViewController:(UIViewController *)viewController
                           handler:(void (^)(UIAlertAction *action))handler;
-
 
 /**
  Creates the alert view controller displaying the error.
@@ -53,5 +51,26 @@
 +(UIAlertController *)showWarning:(NSString *)warning
                        withHeader:(NSString *)header
                withViewController:(UIViewController *)viewController
-                          handler:(void (^)(UIAlertAction *))handler;
+                          handler:(void (^)(UIAlertAction *action))handler;
+
+#warning docs
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                    cancelHandler:(void (^)(UIAlertAction *action))cancelHandler
+                    deleteHandler:(void (^)(UIAlertAction *action))deleteHandler;
+
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                        okHandler:(void (^)(UIAlertAction *action))okHandler
+                    cancelHandler:(void (^)(UIAlertAction *action))cancelHandler;
+
++(UIAlertController *)showWarning:(NSString *)warning
+                       withHeader:(NSString *)header
+               withViewController:(UIViewController *)viewController
+                    cancelHandler:(void (^)(UIAlertAction *action))okHandler
+                  settingsHandler:(void (^)(UIAlertAction *action))cancelHandler;
+
+
 @end

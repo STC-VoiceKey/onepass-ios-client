@@ -7,12 +7,13 @@
 //
 
 #import "OPCSFaceCaptureLimits.h"
+#import <UIKit/UIKit.h>
 
 @implementation OPCSFaceLimit
 
 -(id)initWithWidthLimit:(float)widthLimit
       withUpHeightLimit:(float)upHeightLimit
-    withDownHeightLimit:(float)downHeightLimit{
+    withDownHeightLimit:(float)downHeightLimit {
     self = [super init];
     if (self) {
         self.widthLimit      = widthLimit;
@@ -22,7 +23,7 @@
     return self;
 }
 
--(NSString *)debugDescription{
+-(NSString *)debugDescription {
     return  [NSString stringWithFormat:@"widthLimit = %f upHeightLimit=%f downHeightLimit=%f", _widthLimit, _upHeightLimit, _downHeightLimit];
 }
 
@@ -47,7 +48,7 @@
 
 @implementation OPCSFaceCaptureLimits
 
--(id)init{
+-(id)init {
     self = [super init];
     if (self) {
         self.portraitCaptureLimit = [[OPCSFaceLimit alloc] initWithWidthLimit:0.65 withUpHeightLimit:0.15 withDownHeightLimit:0.90];
@@ -59,7 +60,23 @@
     return self;
 }
 
--(OPCSFaceLimit *)limit{
+-(id)initWithPortraitCaptureLimit:(OPCSFaceLimit *)portraitCaptureLimit
+            withPortraitLostLimit:(OPCSFaceLimit *)portraitLostLimit
+        withLandscapeCaptureLimit:(OPCSFaceLimit *)landscapeCaptureLimit
+           withLandscapeLostLimit:(OPCSFaceLimit *)landscapeLostLimit {
+    self = [super init];
+    if (self) {
+        self.portraitCaptureLimit = portraitCaptureLimit;
+        self.portraitLostLimit    = portraitLostLimit;
+        
+        self.landscapeCaptureLimit = landscapeCaptureLimit;
+        self.landscapeLostLimit    = landscapeLostLimit;
+    }
+    return self;
+}
+
+
+-(OPCSFaceLimit *)limit {
 
     if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation)) {
         if (self.isCaptured) {
@@ -76,7 +93,7 @@
     }
 }
 
--(BOOL)checkFace:(CGRect)face inScreen:(CGRect)screen{
+-(BOOL)checkFace:(CGRect)face inScreen:(CGRect)screen {
 
     if ((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) && (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation))) {
         if(![self isCenterLimitPassedForFace:face inScreen:screen]){
@@ -97,28 +114,19 @@
 
 @implementation OPCSFaceCaptureLimits(PrivateMethods)
 
--(BOOL)isWidthLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen{
+-(BOOL)isWidthLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen {
     float deltaWidthPercent = face.size.width/screen.size.width;
     return (deltaWidthPercent > self.limit.widthLimit);
 }
 
--(BOOL)isHeigthLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen{
+-(BOOL)isHeigthLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen {
     float yUp   = face.origin.y;
     float yDown = face.origin.y + face.size.height;
-    /*  float lowHeightLimit  = (self.isCaptured ? 0.10 : 0.15)*height;
-        float highHeightLimit = (self.isCaptured ? 0.90 : 0.85)*height;
-        if ( (y1 > lowHeightLimit) && ( y2 < highHeightLimit ) )*/
-//    NSLog(@"screen = (%f %f) (%f %f)", screen.origin.x, screen.origin.y, screen.size.width,screen.size.height);
-//    
-//    NSLog(@"yUp = %f",yUp);
-//    NSLog(@"yDown = %f",yDown);
-//    
-//    NSLog(@"upHeightLimit = %f",self.limit.upHeightLimit*screen.size.height);
-//    NSLog(@"downHeightLimit = %f",self.limit.downHeightLimit*screen.size.height);
+
     return  ((yUp > self.limit.upHeightLimit*screen.size.height) && (yDown < self.limit.downHeightLimit*screen.size.height) );
 }
 
--(BOOL)isCenterLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen{
+-(BOOL)isCenterLimitPassedForFace:(CGRect)face inScreen:(CGRect)screen {
     
     CGPoint faceCenter   = CGPointMake( face.size.width/2 + face.origin.x, face.size.height/2 + face.origin.y);
     CGPoint screenCenter = CGPointMake( screen.size.width/2, screen.size.height/2);

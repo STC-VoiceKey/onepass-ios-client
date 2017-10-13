@@ -11,7 +11,7 @@
 
 @implementation OPUICircleProgressView
 
-- (void)drawRect:(CGRect)rect{
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     CGPoint centerPoint = CGPointMake(self.bounds.size.width/2.0f, self.bounds.size.height/2.0f);

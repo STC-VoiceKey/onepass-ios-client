@@ -18,9 +18,10 @@
             self.verificationSessionID = json[@"verificationId"];
             self.passphrase = json[@"password"] ;
         } else {
-            @throw  [NSException exceptionWithName:@"NoValidSessionData"
-                                            reason:@"Invalid verification session data from server"
-                                          userInfo:nil];
+            if (json[@"transactionId"] && json[@"password"]) {
+                self.verificationSessionID = json[@"transactionId"];
+                self.passphrase = json[@"password"] ;
+            }
         }
     }
     

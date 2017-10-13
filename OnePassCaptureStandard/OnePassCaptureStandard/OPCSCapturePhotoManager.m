@@ -8,15 +8,14 @@
 
 #import "OPCSCapturePhotoManager.h"
 #import <OnePassCapture/OnePassCapture.h>
+#import <ImageIO/ImageIO.h>
 
-#import "UIImage+Extra.h"
+#import "CIImage+Extra.h"
 
-@interface OPCSCapturePhotoManager()<AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface OPCSCapturePhotoManager(PrivateMethods)
 
-/**
- Represents the taken photo as JPEG
- */
-@property( nonatomic, readwrite) NSData  *jpeg;
+-(NSError *)errorCantTake;
+-(CGSize)size;
 
 @end
 
@@ -24,41 +23,32 @@
 
 #pragma mark - IOPCPhotoProtocol
 
--(void)takePicture{
-    if (self.loadDataBlock)
-    {
-        if (self.jpeg)  self.loadDataBlock(self.jpeg, nil);
-        else
-        {
-            self.loadDataBlock(nil, [NSError errorWithDomain:@"com.onepass.captureresource"
-                                                        code:400
-                                                    userInfo:@{ NSLocalizedDescriptionKey: @"Can't take a photo"}]);
+-(void)takePicture {
+    if (self.loadImageBlock) {
+        
+        CIImage *sizedImage = [self.currentImage scaledToSize:self.size];
+        
+        if (sizedImage) {
+            self.loadImageBlock(sizedImage, nil);
+        } else {
+            self.loadImageBlock(nil, self.errorCantTake);
         }
     }
 }
 
-#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
+@end
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput
-didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection
-{
-    [self checkEnviroment:sampleBuffer];
-    [self checkPortraitFeatures:sampleBuffer];
- 
-    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
+@implementation OPCSCapturePhotoManager(PrivateMethods)
 
-    UIImage *cuttedimage = [image correctImageOrientation:image];
-    
-    if ( UIDeviceOrientationIsLandscape( UIDevice.currentDevice.orientation) ) {
-        cuttedimage = [cuttedimage scaledToSize:CGSizeMake(320, 240)];
-    } else {
-        cuttedimage = [cuttedimage scaledToSize:CGSizeMake(240, 320)];
-    }
-    
-    self.jpeg  = UIImageJPEGRepresentation(cuttedimage, 0.9);
+-(NSError *)errorCantTake {
+    return [NSError errorWithDomain:@"com.onepass.captureresource"
+                               code:400
+                           userInfo:@{ NSLocalizedDescriptionKey: @"Can't take a photo"}];
 }
 
-
+-(CGSize)size{
+#warning move to plist
+    return self.isPortraitOrientation ? CGSizeMake(320, 240) : CGSizeMake(240, 320);
+}
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IOPCPhotoProtocol.h"
-#import "IOPCLoadingDataProtocol.h"
+#import "IOPCLoadingImageProtocol.h"
 #import "IOPCSessionProtocol.h"
 #import "IOPCPortraitFeaturesProtocol.h"
 #import "IOPCEnvironmentProtocol.h"
@@ -21,6 +21,6 @@
     The 'IOPCSessionProtocol' controls the AVSession instance for displaying a video stream
  */
 @protocol IOPCCapturePhotoManagerProtocol <IOPCPhotoProtocol,
-                                     IOPCLoadingDataProtocol,
+                                     IOPCLoadingImageProtocol,
                                          IOPCSessionProtocol>
 @end

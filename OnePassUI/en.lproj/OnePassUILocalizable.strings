@@ -43,3 +43,7 @@
 "Languages do not match" = "The etalon language does not match with the application language";
 "Left eye is not found on image" = "Left eye is not found on image";
 "Right eye is not found on image" = "Right eye is not found on image";
+"Incorrect URL. Please, enter the correct one." = "Incorrect URL. Please, enter the correct one.";
+
+"Portrait characteristics check failed. Tinted glass detected." = "Portrait characteristics check failed. Tinted glass detected.";
+

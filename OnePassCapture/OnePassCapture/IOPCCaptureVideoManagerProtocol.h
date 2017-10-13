@@ -12,6 +12,8 @@
 #import "IOPCSessionProtocol.h"
 #import "IOPCPortraitFeaturesProtocol.h"
 #import "IOPCEnvironmentProtocol.h"
+#import "IOPCSnapshotProtocol.h"
+#import "IOPCInterfaceOrientationProtocol.h"
 
 /**
  Is the block which is called when the manager is ready to start recording
@@ -33,7 +35,9 @@ typedef void (^Ready2RecordBlock) ( BOOL status);
                                  IOPCPortraitFeaturesProtocol,
                                       IOPCEnvironmentProtocol,
                                       IOPCLoadingDataProtocol,
-                                          IOPCSessionProtocol>
+                                          IOPCSessionProtocol,
+                                         IOPCSnapshotProtocol,
+                             IOPCInterfaceOrientationProtocol>
 
 /**
  Setter for 'Ready2RecordBlock' block

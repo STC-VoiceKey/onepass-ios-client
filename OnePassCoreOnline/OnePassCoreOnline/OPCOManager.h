@@ -2,32 +2,41 @@
 //  OPCOManager.h
 //  OnePassCoreOnline
 //
-//  Created by Soloshcheva Aleksandra on 15.06.16.
-//  Copyright © 2016 Speech Technology Center. All rights reserved.
+//  Created by Soloshcheva Aleksandra on 23.05.17.
+//  Copyright © 2017 Speech Technology Center. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//#import "OPCOV4Manager.h"
 #import <OnePassCore/OnePassCore.h>
-
-/**
- Is the implementation of 'IOPCTransportProtocol' for the online version.\n
- Provides the transport service for the server communication.
- API help 
- @see https://onepass.tech/vkonepass/help/
- */
+#import "NSObject+JSON.h"
 
 ///-------------------------------------------------------------
 /// Static Strings
 ///-------------------------------------------------------------
 /**
- The constant name for the server URL in .plist file 
+ The constant name for the server URL in .plist file
  */
-static NSString *kOnePassServerURL   = @"kOnePassServerURL";
+static NSString * _Nonnull kOnePassServerURL   = @"kOnePassServerURL";
 
 /**
  The constant name for the server name in the user defaults store
  */
-static NSString *kOnePassUserIDKey   = @"kOnePassOnlineDemoKeyChainKey";
+static NSString * _Nonnull kOnePassUserIDKey   = @"kOnePassOnlineDemoKeyChainKey";
+///-------------------------------------------------------------
+/// URL Params
+///-------------------------------------------------------------
+static NSString * _Nonnull kUsernameURLParam   = @"username";
+static NSString * _Nonnull kDomainIdURLParam   = @"domainId";
+static NSString * _Nonnull kPersonIdURLParam   = @"personId";
+static NSString * _Nonnull kSampleURLParam     = @"sample";
+static NSString * _Nonnull kDataURLParam       = @"data";
+static NSString * _Nonnull kPasswordURLParam   = @"password";
+static NSString * _Nonnull kGenderURLParam     = @"gender";
+static NSString * _Nonnull kLDFeaturesURLParam = @"ldFeatures";
+static NSString * _Nonnull kFaceURLParam       = @"faceSample";
+static NSString * _Nonnull kFeaturesURLParam   = @"features";
+
+static NSString * _Nonnull kCreateSession   = @"%@/session";
 
 /**
  The constant name for the read person GET request
@@ -35,57 +44,15 @@ static NSString *kOnePassUserIDKey   = @"kOnePassOnlineDemoKeyChainKey";
  example https://onepass.tech/vkonepass/rest/v4/person/test@test.com
  @endcode
  */
-static NSString *kReadPersonById     = @"%@/person/%@";
-
-/**
- The constant name for the create person POST request
- @code
- https://onepass.tech/vkonepass/rest/v4/person?personId=test@test.com
- @endcode
- */
-static NSString *kCreatePersonById   = @"%@/person";
+static NSString * _Nonnull kReadPersonById     = @"%@/person/%@";
 
 /**
  The constant name for the delete person DELETE request
  @code
- https://onepass.tech/vkonepass/rest/v4/person/test@test.com
+ http://vkplatform.speechpro.com/vkonepass/rest/person/test@test.com
  @endcode
  */
-static NSString *kDeletePersonById   = @"%@/person/%@";
-
-/**
- The constant name for the adding face sample for the enrollment reference POST request
- @code
- https://onepass.tech/vkonepass/rest/v4/person/test@test.com/face/sample
- @endcode
- */
-
-static NSString *kAddFaceSample2EnrollmentReference = @"%@/person/%@/face/sample";
-
-/**
- The constant name for the adding voice file for the enrollment reference POST request
- @code
- https://onepass.tech/vkonepass/rest/v4/person/test@test.com/voice/dynamic/file
- @endcode
- */
-static NSString *kAddVoiceFile2EnrollmentReference = @"%@/person/%@/voice/dynamic/file";
-
-/**
- The constant name for the start verification GET request
- @code
- https://onepass.tech/vkonepass/rest/v4/verification/start/test@test.com
- @endcode
- */
-static NSString *kStartVerificationSession = @"%@/verification/start/%@";
-
-/**
- The constant name for the adding video for the verification session POST request
- @code
- https://onepass.tech/vkonepass/rest/v4/verification/f72e1f12-7064-4267-a294-7c3858d0a3da/video/dynamic
- @endcode
- */
-static NSString *kAddVideo2VerificationSession = @"%@/verification/%@/video/dynamic";
-
+static NSString * _Nonnull kDeletePersonById   = @"%@/person/%@";
 /**
  The constant name for the adding data for the verification session POST request
  @code
@@ -93,46 +60,92 @@ static NSString *kAddVideo2VerificationSession = @"%@/verification/%@/video/dyna
  @endcode
  @warning Uses only, if you use FaceSDK on the device
  */
-static NSString *kAddData2VerificationSession = @"%@/verification/%@/data";
+static NSString * _Nonnull kAddData2VerificationSession = @"%@/verification/%@/data";
 
 /**
- The constant name for verifing the person GET request
+ The constant name for the create person and starting registration POST request
  @code
- https://onepass.tech/vkonepass/rest/v4/verification/f72e1f12-7064-4267-a294-7c3858d0a3da
+ @""
  @endcode
-*/
-static NSString *kVerifyPerson = @"%@/verification/%@";
+ */
+static NSString * _Nonnull kStartRegistration   = @"%@/registration/person/%@";
+
+/**
+ The constant name for the adding face sample for the enrollment reference  POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/registration/face/file
+ @endcode
+ */
+static NSString * _Nonnull kAddRegistrationFaceFile  = @"%@/registration/face/file";
+
+/**
+ The constant name for the adding voice file for the enrollment reference POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/registration/voice/dynamic/file
+ @endcode
+ */
+static NSString * _Nonnull kAddRegistrationVoiceFile = @"%@/registration/voice/dynamic/file";
+
+/**
+ The constant name for the start verification POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/person/www%40qqq.aaa
+ @endcode
+ */
+static NSString * _Nonnull kStartVerification        = @"%@/verification/person/%@";
+
+/**
+ The constant name for the adding video for the verification session POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/video/dynamic/file
+ @endcode
+ */
+static NSString * _Nonnull kVerificationVideo        = @"%@/verification/video/dynamic/file";
+
+/**
+ The constant name for the adding face for the verification session POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/face/file
+ @endcode
+ */
+static NSString * _Nonnull kVerificationFace        = @"%@/verification/face/file";
+
+/**
+ The constant name for the verifing the person ПУЕ request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/result
+ @endcode
+ */
+static NSString * _Nonnull KverificationResult       = @"%@/verification/result";
 
 /**
  The constant name for the verification score GET request
- @warning Usually used for debugging.
  @code
- https://onepass.tech/vkonepass/rest/v4/verification/f72e1f12-7064-4267-a294-7c3858d0a3da/score
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/score
  @endcode
  */
-static NSString *kVerificationScore = @"%@/verification/%@/score";
+static NSString * _Nonnull KverificationResultScore  = @"%@/verification/score";
 
 /**
  The constant name for closing the verification session DELETE request
-@code
-https://onepass.tech/vkonepass/rest/v4/verification/f72e1f12-7064-4267-a294-7c3858d0a3da/
-@endcode
-*/
-static NSString *kCloseVerificationSession = @"%@/verification/%@";
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification
+ @endcode
+ */
+static NSString * _Nonnull kVerification             = @"%@/verification";
 
-///-------------------------------------------------------------
-/// URL Params
-///-------------------------------------------------------------
-static NSString *kPersonIdURLParam   = @"personId";
-static NSString *kSampleURLParam     = @"sample";
-static NSString *kDataURLParam       = @"data";
-static NSString *kPasswordURLParam   = @"password";
-static NSString *kGenderURLParam     = @"gender";
-static NSString *kLDFeaturesURLParam = @"ldFeatures";
-static NSString *kFaceURLParam       = @"faceSample";
-static NSString *kFeaturesURLParam   = @"features";
-
-@interface OPCOManager : NSObject<IOPCTransportProtocol>
+static NSString * _Nonnull kChannelURLParam   = @"channel";
+/**
+ Is the implementation of 'IOPCTransportProtocol' for the online version.\n
+ Provides the transport service for the server communication.
+ API help
+ @see http://vkplatform.speechpro.com/vkonepass/help/
+ */
+@interface OPCOManager : NSObject<IOPCTransportProtocol>//OPCOV4Manager
+/**
+ The server USRL string
+ */
+@property (nonatomic,readonly) NSString * _Nonnull serverUrl;
 
 /**
  Shows the host accessibility.
@@ -140,5 +153,6 @@ static NSString *kFeaturesURLParam   = @"features";
  */
 @property (nonatomic,readonly) BOOL isHostAccessable;
 
+@property (nonatomic,readonly) BOOL isSessionStarted;
 
 @end

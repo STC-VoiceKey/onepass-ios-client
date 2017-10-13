@@ -17,29 +17,56 @@
 
 @implementation OPUIRotatableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self updateViewConstraints];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [ NSNotificationCenter.defaultCenter addObserver:self
+                                         selector:@selector(orientationChanged)
+                                             name:UIDeviceOrientationDidChangeNotification
+                                           object:nil];
 }
 
--(void)viewWillTransitionToSize:(CGSize)size
-      withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    [self updateViewConstraints];
-    
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [ NSNotificationCenter.defaultCenter removeObserver:self
+                                                   name:UIDeviceOrientationDidChangeNotification
+                                                 object:nil];
 }
 
--(void)updateViewConstraints{
-    [super updateViewConstraints];
+-(void)orientationChanged{
+    [self updateOrientation];
+    NSLog(@"current orientation %d", self.currentOrientation);
+}
+
+-(void)updateOrientation{
+    UIInterfaceOrientation interfaceOrientation = UIApplication.sharedApplication.statusBarOrientation;
     
-    if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation)) {
-        self.widthConstraint.constant  = 480;
-        self.heightConstraint.constant = 640;
-    } else {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
         self.widthConstraint.constant  = 640;
         self.heightConstraint.constant = 480;
+        
+    } else {
+        self.widthConstraint.constant  = 480;
+        self.heightConstraint.constant = 640;
     }
+    
+}
+
+-(OPCAvailableOrientation)currentOrientation {
+
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+        
+        UIInterfaceOrientation interfaceOrientation = UIApplication.sharedApplication.statusBarOrientation;
+        
+        if (interfaceOrientation==UIInterfaceOrientationLandscapeRight) {
+            return OPCAvailableOrientationRight;
+        }
+        
+        if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+            return OPCAvailableOrientationLeft;
+        }
+    }
+    
+    return OPCAvailableOrientationUp;
 }
 
 @end

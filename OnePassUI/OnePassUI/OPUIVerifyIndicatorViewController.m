@@ -9,6 +9,7 @@
 #import "OPUIVerifyIndicatorViewController.h"
 #import "OPUIBlockSecondTimer.h"
 #import "OPUICorporateColorUtils.h"
+#import "OPUIIndicatorImageView.h"
 
 #import <OnePassCapture/OnePassCapture.h>
 
@@ -16,7 +17,7 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
 
 @interface OPUIVerifyIndicatorViewController ()
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem   *bbNoisy;
+@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *bbNoisy;
 
 /**
  Shows that the controller observes the noise enviroment
@@ -56,7 +57,7 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
     [super viewWillAppear:animated];
     
      if(self.noisyManager) {
-         [self.bbNoisy setTintColor:([self.noisyManager isNoNoisy] ? self.goodColor: self.failColor)];
+         self.bbNoisy.active = self.noisyManager.isNoNoisy;
      }
     
     if([self.frameCaptureManager conformsToProtocol:@protocol(IOPCNoisyProtocol)]) {
@@ -66,24 +67,13 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
         self.isNoisyObserving = YES;
         
         [self.noisyManager startNoiseAnalyzer];
-    } else {
-        __weak typeof(self) weakself = self;
-        dispatch_async( dispatch_get_main_queue(), ^{
-            NSMutableArray *toolBarButtons = [weakself.indicatorToolbar.items mutableCopy];
-            if([toolBarButtons containsObject:weakself.bbNoisy]) {
-                [toolBarButtons removeObject:weakself.bbNoisy]; 
-                [toolBarButtons removeObject:toolBarButtons.lastObject];
-                [weakself.indicatorToolbar setItems:toolBarButtons];
-            }
-        });
     }
-
 }
 
 -(BOOL)calcReady{
     return [self.frameCaptureManager isFaceFound]
         && [self.frameCaptureManager isSingleFace]
-        && [self.frameCaptureManager isBrightness]
+        //&& [self.frameCaptureManager isBrightness]
         && (self.noisyManager ?  [self.noisyManager isNoNoisy] : YES);
 }
 
@@ -112,8 +102,7 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
     
     if ([keyPath isEqualToString:observeNoiseValue]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.bbNoisy
-             setTintColor:([self.noisyManager isNoNoisy] ? self.goodColor: self.failColor)];
+            self.bbNoisy.active = self.noisyManager.isNoNoisy;
         });
     }
     

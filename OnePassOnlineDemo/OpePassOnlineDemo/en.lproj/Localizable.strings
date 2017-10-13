@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  OnePassOnlineDemo
+
+  Created by Soloshcheva Aleksandra on 06.07.16.
+  Copyright © 2016 Speech Technology Center. All rights reserved.
+*/
+"Server not respond"="Server is not responding";
+"Enrollment is successfully completed"="Enrollment is successfully completed";
+"Delete User" = "Remove User";
+"Are you sure you want to remove user %@?" = "Are you sure you want to remove user %@?";
+"Delete" = "Remove";
+
+"Access to Your Camera and Microphone" = "Access to Your Camera and Microphone";
+"To take a photo, a voice and a video we need to access your camera and microphone" = "To take a photo, a voice and a video we need to access your camera and microphone";
+
+"Settings"="Settings";
+"Default Settings"="Default Settings";
+"Restore default settings?"="Restore default settings?";
+

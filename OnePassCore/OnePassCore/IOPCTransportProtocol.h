@@ -38,7 +38,30 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  */
 -(BOOL)isHostAccessable;
 
+/**
+ * Shows the security session started
+ */
+-(BOOL)isSessionStarted;
+
 @required
+
+-(void)changeServerURL:(NSString *)url;
+
+///--------------------------------------------
+/// @name Session service
+///--------------------------------------------
+
+/**
+ * Creates a a security session.
+ * @param block The response block called when the result is received
+ */
+-(void)createSessionWithCompletionBlock:(ResponceBlock) block;
+
+/**
+* Closes and deletes the security session.
+* @param block The response block called when the result is received
+*/
+-(void)deleteSessionWithCompletionBlock:(ResponceBlock) block;
 
 ///--------------------------------------------
 /// @name Person service
@@ -108,6 +131,16 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
                  forSession:(NSString *)session
                withPasscode:(NSString *)passcode
         withCompletionBlock:(ResponceBlock)block;
+
+/**
+ * Adds the verification face for the person.
+ * @param face The face data as a file
+ * @param session The verification session id.
+ * @param block The response block called when the result is received
+ */
+-(void)addVerificationFace:(NSData *)face
+                forSession:(NSString *)session
+       withCompletionBlock:(ResponceBlock)block;
 
 /**
  * Verifies the person authenticity.
