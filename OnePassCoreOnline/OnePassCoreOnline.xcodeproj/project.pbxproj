@@ -14,11 +14,42 @@
 		C92835C51ED475710032FCF1 /* OPCOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92835C31ED475710032FCF1 /* OPCOManager.m */; };
 		C955E1301D116BA1006D2682 /* OnePassCoreOnline.h in Headers */ = {isa = PBXBuildFile; fileRef = C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C955E1371D116BA1006D2682 /* OnePassCoreOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955E12C1D116BA1006D2682 /* OnePassCoreOnline.framework */; };
-		C955E13C1D116BA1006D2682 /* OnePassCoreOnlineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */; };
+		C958C90B1FD6B86600EC13E8 /* face.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C958C90A1FD6B86600EC13E8 /* face.jpg */; };
+		C958C9121FD6B87A00EC13E8 /* шесть.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C90C1FD6B87900EC13E8 /* шесть.mov */; };
+		C958C9131FD6B87A00EC13E8 /* пять.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C90D1FD6B87900EC13E8 /* пять.mov */; };
+		C958C9141FD6B87A00EC13E8 /* три.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C90E1FD6B87900EC13E8 /* три.mov */; };
+		C958C9151FD6B87A00EC13E8 /* четыре.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C90F1FD6B87900EC13E8 /* четыре.mov */; };
+		C958C9161FD6B87A00EC13E8 /* один.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C9101FD6B87A00EC13E8 /* один.mov */; };
+		C958C9171FD6B87A00EC13E8 /* семь.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C9111FD6B87A00EC13E8 /* семь.mov */; };
+		C958C9191FD6B88400EC13E8 /* ноль.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C9181FD6B88400EC13E8 /* ноль.mov */; };
+		C958C91D1FD6B88F00EC13E8 /* два.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C91A1FD6B88F00EC13E8 /* два.mov */; };
+		C958C91E1FD6B88F00EC13E8 /* восемь.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C91B1FD6B88F00EC13E8 /* восемь.mov */; };
+		C958C91F1FD6B88F00EC13E8 /* девять.mov in Resources */ = {isa = PBXBuildFile; fileRef = C958C91C1FD6B88F00EC13E8 /* девять.mov */; };
 		C960793D1D1D3CB700B9F55E /* OPCOVerificationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C960793E1D1D3CB700B9F55E /* OPCOVerificationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */; };
 		C977D62D1D119BF900A3E42D /* OPCOPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D62B1D119BF900A3E42D /* OPCOPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D62E1D119BF900A3E42D /* OPCOPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D62C1D119BF900A3E42D /* OPCOPerson.m */; };
+		C97E1E431FA3618800888087 /* OPCOSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1E421FA3618800888087 /* OPCOSession.m */; };
+		C97E1E521FA36A0A00888087 /* OPCOTestSessionFail.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1E511FA36A0A00888087 /* OPCOTestSessionFail.m */; };
+		C97E1E581FA7447800888087 /* OPCOTestPersonFail.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1E571FA7447800888087 /* OPCOTestPersonFail.m */; };
+		C97E1E5A1FA76D4500888087 /* Faces.plist in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E591FA76D4500888087 /* Faces.plist */; };
+		C97E1E5C1FA7708500888087 /* OPCOTestFaceFail.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1E5B1FA7708500888087 /* OPCOTestFaceFail.m */; };
+		C97E1E981FA8854900888087 /* семь восемь ноль два четыре.mov in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E8E1FA8854800888087 /* семь восемь ноль два четыре.mov */; };
+		C97E1E991FA8854900888087 /* face_right.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E8F1FA8854800888087 /* face_right.jpg */; };
+		C97E1E9A1FA8854900888087 /* два пять один три семь.mov in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E901FA8854800888087 /* два пять один три семь.mov */; };
+		C97E1E9B1FA8854900888087 /* face_left.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E911FA8854900888087 /* face_left.jpg */; };
+		C97E1E9C1FA8854900888087 /* face_down.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E921FA8854900888087 /* face_down.jpg */; };
+		C97E1E9D1FA8854900888087 /* darkglasses.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E931FA8854900888087 /* darkglasses.jpg */; };
+		C97E1E9E1FA8854900888087 /* right_eye_closed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E941FA8854900888087 /* right_eye_closed.jpg */; };
+		C97E1E9F1FA8854900888087 /* face_up.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E951FA8854900888087 /* face_up.jpg */; };
+		C97E1EA01FA8854900888087 /* три ноль девять семь один.mov in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E961FA8854900888087 /* три ноль девять семь один.mov */; };
+		C97E1EA11FA8854900888087 /* left_eye_closed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C97E1E971FA8854900888087 /* left_eye_closed.jpg */; };
+		C97E1EA31FA8999200888087 /* OPCOTestVoiceFail.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1EA21FA8999200888087 /* OPCOTestVoiceFail.m */; };
+		C97E1EA71FA89E1900888087 /* девять восемь семь шесть пять четыре три два один ноль.wav in Resources */ = {isa = PBXBuildFile; fileRef = C97E1EA41FA89E1900888087 /* девять восемь семь шесть пять четыре три два один ноль.wav */; };
+		C97E1EA81FA89E1900888087 /* ноль один два три четыре пять шесть семь восемь девять.wav in Resources */ = {isa = PBXBuildFile; fileRef = C97E1EA51FA89E1900888087 /* ноль один два три четыре пять шесть семь восемь девять.wav */; };
+		C97E1EA91FA89E1900888087 /* три один восемь два девять шесть пять ноль семь четыре.wav in Resources */ = {isa = PBXBuildFile; fileRef = C97E1EA61FA89E1900888087 /* три один восемь два девять шесть пять ноль семь четыре.wav */; };
+		C97E1EBA1FA8B4D900888087 /* OPCOTestAll.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1EB91FA8B4D900888087 /* OPCOTestAll.m */; };
+		C97E1EBD1FA8D08E00888087 /* XCTestCase+Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E1EBC1FA8D08E00888087 /* XCTestCase+Resource.m */; };
 		C9A77DE51DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h in Headers */ = {isa = PBXBuildFile; fileRef = C9A77DE31DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h */; };
 		C9A77DE61DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A77DE41DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m */; };
 		C9D9841F1D13CF24003B6056 /* NSObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,13 +97,46 @@
 		C955E12F1D116BA1006D2682 /* OnePassCoreOnline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCoreOnline.h; sourceTree = "<group>"; };
 		C955E1311D116BA1006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C955E1361D116BA1006D2682 /* OnePassCoreOnlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassCoreOnlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnePassCoreOnlineTests.m; sourceTree = "<group>"; };
 		C955E13D1D116BA1006D2682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C958C90A1FD6B86600EC13E8 /* face.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face.jpg; sourceTree = "<group>"; };
+		C958C90C1FD6B87900EC13E8 /* шесть.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "шесть.mov"; sourceTree = "<group>"; };
+		C958C90D1FD6B87900EC13E8 /* пять.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "пять.mov"; sourceTree = "<group>"; };
+		C958C90E1FD6B87900EC13E8 /* три.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "три.mov"; sourceTree = "<group>"; };
+		C958C90F1FD6B87900EC13E8 /* четыре.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "четыре.mov"; sourceTree = "<group>"; };
+		C958C9101FD6B87A00EC13E8 /* один.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "один.mov"; sourceTree = "<group>"; };
+		C958C9111FD6B87A00EC13E8 /* семь.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "семь.mov"; sourceTree = "<group>"; };
+		C958C9181FD6B88400EC13E8 /* ноль.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "ноль.mov"; sourceTree = "<group>"; };
+		C958C91A1FD6B88F00EC13E8 /* два.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "два.mov"; sourceTree = "<group>"; };
+		C958C91B1FD6B88F00EC13E8 /* восемь.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "восемь.mov"; sourceTree = "<group>"; };
+		C958C91C1FD6B88F00EC13E8 /* девять.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "девять.mov"; sourceTree = "<group>"; };
 		C960793B1D1D3CB700B9F55E /* OPCOVerificationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCOVerificationSession.h; sourceTree = "<group>"; };
 		C960793C1D1D3CB700B9F55E /* OPCOVerificationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCOVerificationSession.m; sourceTree = "<group>"; };
 		C977D6121D117B1100A3E42D /* OnePassCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OnePassCore.xcodeproj; path = ../OnePassCore/OnePassCore.xcodeproj; sourceTree = "<group>"; };
 		C977D62B1D119BF900A3E42D /* OPCOPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCOPerson.h; sourceTree = "<group>"; };
 		C977D62C1D119BF900A3E42D /* OPCOPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCOPerson.m; sourceTree = "<group>"; };
+		C97E1E411FA3618800888087 /* OPCOSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPCOSession.h; sourceTree = "<group>"; };
+		C97E1E421FA3618800888087 /* OPCOSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOSession.m; sourceTree = "<group>"; };
+		C97E1E511FA36A0A00888087 /* OPCOTestSessionFail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOTestSessionFail.m; sourceTree = "<group>"; };
+		C97E1E571FA7447800888087 /* OPCOTestPersonFail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOTestPersonFail.m; sourceTree = "<group>"; };
+		C97E1E591FA76D4500888087 /* Faces.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Faces.plist; sourceTree = "<group>"; };
+		C97E1E5B1FA7708500888087 /* OPCOTestFaceFail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOTestFaceFail.m; sourceTree = "<group>"; };
+		C97E1E8E1FA8854800888087 /* семь восемь ноль два четыре.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "семь восемь ноль два четыре.mov"; sourceTree = "<group>"; };
+		C97E1E8F1FA8854800888087 /* face_right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face_right.jpg; sourceTree = "<group>"; };
+		C97E1E901FA8854800888087 /* два пять один три семь.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "два пять один три семь.mov"; sourceTree = "<group>"; };
+		C97E1E911FA8854900888087 /* face_left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face_left.jpg; sourceTree = "<group>"; };
+		C97E1E921FA8854900888087 /* face_down.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face_down.jpg; sourceTree = "<group>"; };
+		C97E1E931FA8854900888087 /* darkglasses.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = darkglasses.jpg; sourceTree = "<group>"; };
+		C97E1E941FA8854900888087 /* right_eye_closed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right_eye_closed.jpg; sourceTree = "<group>"; };
+		C97E1E951FA8854900888087 /* face_up.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face_up.jpg; sourceTree = "<group>"; };
+		C97E1E961FA8854900888087 /* три ноль девять семь один.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "три ноль девять семь один.mov"; sourceTree = "<group>"; };
+		C97E1E971FA8854900888087 /* left_eye_closed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = left_eye_closed.jpg; sourceTree = "<group>"; };
+		C97E1EA21FA8999200888087 /* OPCOTestVoiceFail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOTestVoiceFail.m; sourceTree = "<group>"; };
+		C97E1EA41FA89E1900888087 /* девять восемь семь шесть пять четыре три два один ноль.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "девять восемь семь шесть пять четыре три два один ноль.wav"; sourceTree = "<group>"; };
+		C97E1EA51FA89E1900888087 /* ноль один два три четыре пять шесть семь восемь девять.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ноль один два три четыре пять шесть семь восемь девять.wav"; sourceTree = "<group>"; };
+		C97E1EA61FA89E1900888087 /* три один восемь два девять шесть пять ноль семь четыре.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "три один восемь два девять шесть пять ноль семь четыре.wav"; sourceTree = "<group>"; };
+		C97E1EB91FA8B4D900888087 /* OPCOTestAll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCOTestAll.m; sourceTree = "<group>"; };
+		C97E1EBB1FA8D08E00888087 /* XCTestCase+Resource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Resource.h"; sourceTree = "<group>"; };
+		C97E1EBC1FA8D08E00888087 /* XCTestCase+Resource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+Resource.m"; sourceTree = "<group>"; };
 		C9A77DE31DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+IsSuccess.h"; sourceTree = "<group>"; };
 		C9A77DE41DE5A8F6004C9C81 /* NSURLResponse+IsSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+IsSuccess.m"; sourceTree = "<group>"; };
 		C9D9841D1D13CF24003B6056 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
@@ -173,8 +237,17 @@
 		C955E13A1D116BA1006D2682 /* OnePassCoreOnlineTests */ = {
 			isa = PBXGroup;
 			children = (
-				C955E13B1D116BA1006D2682 /* OnePassCoreOnlineTests.m */,
+				C9BBDE6F1FA9EA4200C28F0D /* Utils */,
+				C97E1EB91FA8B4D900888087 /* OPCOTestAll.m */,
+				C97E1E511FA36A0A00888087 /* OPCOTestSessionFail.m */,
+				C97E1E571FA7447800888087 /* OPCOTestPersonFail.m */,
+				C97E1E5B1FA7708500888087 /* OPCOTestFaceFail.m */,
+				C97E1EA21FA8999200888087 /* OPCOTestVoiceFail.m */,
+				C97E1EC21FA9B9A600888087 /* Models */,
+				C97E1EC11FA9B84200888087 /* Categories */,
+				C97E1E6C1FA87FD200888087 /* Resources */,
 				C955E13D1D116BA1006D2682 /* Info.plist */,
+				C97E1E591FA76D4500888087 /* Faces.plist */,
 			);
 			path = OnePassCoreOnlineTests;
 			sourceTree = "<group>";
@@ -186,6 +259,62 @@
 				C977D61A1D117B1100A3E42D /* OnePassCoreTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C97E1E6C1FA87FD200888087 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C958C91B1FD6B88F00EC13E8 /* восемь.mov */,
+				C958C91A1FD6B88F00EC13E8 /* два.mov */,
+				C958C91C1FD6B88F00EC13E8 /* девять.mov */,
+				C958C9181FD6B88400EC13E8 /* ноль.mov */,
+				C958C9101FD6B87A00EC13E8 /* один.mov */,
+				C958C90D1FD6B87900EC13E8 /* пять.mov */,
+				C958C9111FD6B87A00EC13E8 /* семь.mov */,
+				C958C90E1FD6B87900EC13E8 /* три.mov */,
+				C958C90F1FD6B87900EC13E8 /* четыре.mov */,
+				C958C90C1FD6B87900EC13E8 /* шесть.mov */,
+				C958C90A1FD6B86600EC13E8 /* face.jpg */,
+				C97E1EA41FA89E1900888087 /* девять восемь семь шесть пять четыре три два один ноль.wav */,
+				C97E1EA51FA89E1900888087 /* ноль один два три четыре пять шесть семь восемь девять.wav */,
+				C97E1EA61FA89E1900888087 /* три один восемь два девять шесть пять ноль семь четыре.wav */,
+				C97E1E901FA8854800888087 /* два пять один три семь.mov */,
+				C97E1E8E1FA8854800888087 /* семь восемь ноль два четыре.mov */,
+				C97E1E961FA8854900888087 /* три ноль девять семь один.mov */,
+				C97E1E931FA8854900888087 /* darkglasses.jpg */,
+				C97E1E921FA8854900888087 /* face_down.jpg */,
+				C97E1E911FA8854900888087 /* face_left.jpg */,
+				C97E1E8F1FA8854800888087 /* face_right.jpg */,
+				C97E1E951FA8854900888087 /* face_up.jpg */,
+				C97E1E971FA8854900888087 /* left_eye_closed.jpg */,
+				C97E1E941FA8854900888087 /* right_eye_closed.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C97E1EC11FA9B84200888087 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C97E1EBB1FA8D08E00888087 /* XCTestCase+Resource.h */,
+				C97E1EBC1FA8D08E00888087 /* XCTestCase+Resource.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C97E1EC21FA9B9A600888087 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C97E1E411FA3618800888087 /* OPCOSession.h */,
+				C97E1E421FA3618800888087 /* OPCOSession.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C9BBDE6F1FA9EA4200C28F0D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C9D9841B1D13CF02003B6056 /* Category */ = {
@@ -270,6 +399,7 @@
 					};
 					C955E1351D116BA1006D2682 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -326,6 +456,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97E1E981FA8854900888087 /* семь восемь ноль два четыре.mov in Resources */,
+				C958C90B1FD6B86600EC13E8 /* face.jpg in Resources */,
+				C97E1EA01FA8854900888087 /* три ноль девять семь один.mov in Resources */,
+				C958C9141FD6B87A00EC13E8 /* три.mov in Resources */,
+				C958C9151FD6B87A00EC13E8 /* четыре.mov in Resources */,
+				C97E1E9B1FA8854900888087 /* face_left.jpg in Resources */,
+				C958C9131FD6B87A00EC13E8 /* пять.mov in Resources */,
+				C958C9161FD6B87A00EC13E8 /* один.mov in Resources */,
+				C97E1E9E1FA8854900888087 /* right_eye_closed.jpg in Resources */,
+				C958C9121FD6B87A00EC13E8 /* шесть.mov in Resources */,
+				C97E1E9A1FA8854900888087 /* два пять один три семь.mov in Resources */,
+				C97E1EA91FA89E1900888087 /* три один восемь два девять шесть пять ноль семь четыре.wav in Resources */,
+				C958C91F1FD6B88F00EC13E8 /* девять.mov in Resources */,
+				C97E1E9D1FA8854900888087 /* darkglasses.jpg in Resources */,
+				C958C9171FD6B87A00EC13E8 /* семь.mov in Resources */,
+				C97E1E9C1FA8854900888087 /* face_down.jpg in Resources */,
+				C97E1E5A1FA76D4500888087 /* Faces.plist in Resources */,
+				C958C91E1FD6B88F00EC13E8 /* восемь.mov in Resources */,
+				C97E1E991FA8854900888087 /* face_right.jpg in Resources */,
+				C97E1EA81FA89E1900888087 /* ноль один два три четыре пять шесть семь восемь девять.wav in Resources */,
+				C958C9191FD6B88400EC13E8 /* ноль.mov in Resources */,
+				C958C91D1FD6B88F00EC13E8 /* два.mov in Resources */,
+				C97E1EA71FA89E1900888087 /* девять восемь семь шесть пять четыре три два один ноль.wav in Resources */,
+				C97E1EA11FA8854900888087 /* left_eye_closed.jpg in Resources */,
+				C97E1E9F1FA8854900888087 /* face_up.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +504,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C955E13C1D116BA1006D2682 /* OnePassCoreOnlineTests.m in Sources */,
+				C97E1EBD1FA8D08E00888087 /* XCTestCase+Resource.m in Sources */,
+				C97E1E581FA7447800888087 /* OPCOTestPersonFail.m in Sources */,
+				C97E1E5C1FA7708500888087 /* OPCOTestFaceFail.m in Sources */,
+				C97E1EBA1FA8B4D900888087 /* OPCOTestAll.m in Sources */,
+				C97E1E431FA3618800888087 /* OPCOSession.m in Sources */,
+				C97E1EA31FA8999200888087 /* OPCOTestVoiceFail.m in Sources */,
+				C97E1E521FA36A0A00888087 /* OPCOTestSessionFail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,20 +705,27 @@
 		C955E1441D116BA1006D2682 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OnePassCoreOnlineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreOnlineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnePassCoreOnlineTests/OnePassCoreOnlineTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C955E1451D116BA1006D2682 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OnePassCoreOnlineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreOnlineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnePassCoreOnlineTests/OnePassCoreOnlineTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

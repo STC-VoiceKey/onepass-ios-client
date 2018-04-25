@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90A68DA1F8E5BB7009719A6 /* passphrases.strings in Resources */ = {isa = PBXBuildFile; fileRef = C90A68DC1F8E5BB7009719A6 /* passphrases.strings */; };
+		C90A68E51F8E613D009719A6 /* passphrases.plist in Resources */ = {isa = PBXBuildFile; fileRef = C90A68E41F8E613D009719A6 /* passphrases.plist */; };
 		C940328E1D19746800C152EA /* IOPCTransportableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C940328D1D19746800C152EA /* IOPCTransportableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C95C738E1D1ABCD500212B22 /* OPCPassphraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */; };
 		C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D5E31D117A2300A3E42D /* OnePassCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D5EB1D117A2300A3E42D /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D5E01D117A2300A3E42D /* OnePassCore.framework */; };
-		C977D5F01D117A2300A3E42D /* OnePassCoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */; };
 		C977D6111D117ACC00A3E42D /* IOPCTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D6281D1190AC00A3E42D /* IOPCPersonProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B0E70A1F90EBE200850B4D /* IOPCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B0E7091F90EBE200850B4D /* IOPCSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9D3C3791F8E419100BDFB7C /* PassphraseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3C3781F8E419100BDFB7C /* PassphraseManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C90A68DD1F8E5BB9009719A6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/passphrases.strings; sourceTree = "<group>"; };
+		C90A68E01F8E5DCD009719A6 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/passphrases.strings; sourceTree = "<group>"; };
+		C90A68E11F8E5E41009719A6 /* ko-KR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ko-KR"; path = "ko-KR.lproj/passphrases.strings"; sourceTree = "<group>"; };
+		C90A68E41F8E613D009719A6 /* passphrases.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = passphrases.plist; sourceTree = "<group>"; };
 		C940328D1D19746800C152EA /* IOPCTransportableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCTransportableProtocol.h; sourceTree = "<group>"; };
 		C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCPassphraseManager.h; sourceTree = "<group>"; };
 		C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCPassphraseManager.m; sourceTree = "<group>"; };
@@ -37,10 +44,13 @@
 		C977D5E31D117A2300A3E42D /* OnePassCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCore.h; sourceTree = "<group>"; };
 		C977D5E51D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C977D5EA1D117A2300A3E42D /* OnePassCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnePassCoreTests.m; sourceTree = "<group>"; };
 		C977D5F11D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCTransportProtocol.h; sourceTree = "<group>"; };
 		C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCPersonProtocol.h; sourceTree = "<group>"; };
+		C9B0E7091F90EBE200850B4D /* IOPCSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOPCSession.h; sourceTree = "<group>"; };
+		C9D3C3751F8E3B4A00BDFB7C /* OnePassCoreTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnePassCoreTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		C9D3C3781F8E419100BDFB7C /* PassphraseManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassphraseManagerTests.swift; sourceTree = "<group>"; };
+		C9DFD4202073651A000A1A16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/passphrases.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,7 @@
 				C977D6271D1190AC00A3E42D /* IOPCPersonProtocol.h */,
 				C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */,
 				C977D5E51D117A2300A3E42D /* Info.plist */,
+				C9B0E7091F90EBE200850B4D /* IOPCSession.h */,
 			);
 			path = OnePassCore;
 			sourceTree = "<group>";
@@ -97,8 +108,9 @@
 		C977D5EE1D117A2300A3E42D /* OnePassCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				C977D5EF1D117A2300A3E42D /* OnePassCoreTests.m */,
+				C9D3C3781F8E419100BDFB7C /* PassphraseManagerTests.swift */,
 				C977D5F11D117A2300A3E42D /* Info.plist */,
+				C9D3C3751F8E3B4A00BDFB7C /* OnePassCoreTests-Bridging-Header.h */,
 			);
 			path = OnePassCoreTests;
 			sourceTree = "<group>";
@@ -108,6 +120,8 @@
 			children = (
 				C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */,
 				C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */,
+				C90A68E41F8E613D009719A6 /* passphrases.plist */,
+				C90A68DC1F8E5BB7009719A6 /* passphrases.strings */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -123,6 +137,7 @@
 				C977D6111D117ACC00A3E42D /* IOPCTransportProtocol.h in Headers */,
 				C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */,
 				C977D6281D1190AC00A3E42D /* IOPCPersonProtocol.h in Headers */,
+				C9B0E70A1F90EBE200850B4D /* IOPCSession.h in Headers */,
 				C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */,
 				C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */,
 			);
@@ -173,6 +188,7 @@
 		C977D5D71D117A2300A3E42D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
@@ -181,6 +197,8 @@
 					};
 					C977D5E91D117A2300A3E42D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = J9Q3SP8M9U;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -191,6 +209,8 @@
 			knownRegions = (
 				en,
 				ru,
+				pt,
+				"ko-KR",
 			);
 			mainGroup = C977D5D61D117A2300A3E42D;
 			productRefGroup = C977D5E11D117A2300A3E42D /* Products */;
@@ -208,6 +228,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C90A68E51F8E613D009719A6 /* passphrases.plist in Resources */,
+				C90A68DA1F8E5BB7009719A6 /* passphrases.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C977D5F01D117A2300A3E42D /* OnePassCoreTests.m in Sources */,
+				C9D3C3791F8E419100BDFB7C /* PassphraseManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +268,20 @@
 			targetProxy = C977D5EC1D117A2300A3E42D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C90A68DC1F8E5BB7009719A6 /* passphrases.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90A68DD1F8E5BB9009719A6 /* ru */,
+				C90A68E01F8E5DCD009719A6 /* pt */,
+				C90A68E11F8E5E41009719A6 /* ko-KR */,
+				C9DFD4202073651A000A1A16 /* en */,
+			);
+			name = passphrases.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C977D5F21D117A2300A3E42D /* Debug */ = {
@@ -412,20 +448,29 @@
 		C977D5F81D117A2300A3E42D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = J9Q3SP8M9U;
 				INFOPLIST_FILE = OnePassCoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnePassCoreTests/OnePassCoreTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C977D5F91D117A2300A3E42D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = J9Q3SP8M9U;
 				INFOPLIST_FILE = OnePassCoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = STC.OnePassCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnePassCoreTests/OnePassCoreTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

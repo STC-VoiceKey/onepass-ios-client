@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bl7-A2-JrY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bl7-A2-JrY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
         <!--Enroll Face Capture-->
         <scene sceneID="oy4-zk-lim">
             <objects>
-                <viewController title="Enroll Face Capture" id="0eY-qM-I8e" customClass="OPUIEnrollFaceCaptureViewController" sceneMemberID="viewController">
+                <viewController title="Enroll Face Capture" id="0eY-qM-I8e" customClass="OPUIEnrollFaceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jtm-o1-YgN"/>
                         <viewControllerLayoutGuide type="bottom" id="ES2-Go-BMe"/>
@@ -49,7 +49,7 @@
                                             <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="xlC-9z-flq" kind="unwind" identifier="kExitPhotoSegueIdentifier" unwindAction="unwindCancel:" id="2ab-jI-MZo"/>
+                                            <action selector="onCancel:" destination="0eY-qM-I8e" eventType="touchUpInside" id="RjM-ny-jb4"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-dc-CXb">
@@ -118,9 +118,11 @@
                     <navigationItem key="navigationItem" id="hqZ-xx-PtP"/>
                     <connections>
                         <outlet property="activityIndicator" destination="mc1-4t-eiI" id="rRZ-pV-WlM"/>
+                        <outlet property="cancelButton" destination="nMV-g2-eOr" id="sN5-He-Qwy"/>
                         <outlet property="viewFaceCapture" destination="k8o-gC-4Hb" id="bTu-UM-tbb"/>
                         <outlet property="viewMaskContainer" destination="JF7-dc-CXb" id="c9V-OC-SVC"/>
-                        <segue destination="Hvl-MJ-n3g" kind="show" identifier="kPhotoSuccessSegueIdentifier" id="juB-vR-cp7"/>
+                        <segue destination="Hvl-MJ-n3g" kind="show" identifier="kVoiceSegueIdentifier" id="juB-vR-cp7"/>
+                        <segue destination="xlC-9z-flq" kind="unwind" identifier="kExitPhotoSegueIdentifier" unwindAction="unwindCancel:" id="mAb-OA-2J3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzI-Zg-ZpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,7 +181,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will take a photo and record three samples of your voice" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYN-yL-mMI">
-                                <rect key="frame" x="32" y="212" width="311" height="20.5"/>
+                                <rect key="frame" x="32" y="212" width="311" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -197,7 +199,7 @@
                                     <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0eY-qM-I8e" kind="show" id="gTU-QT-XYb"/>
+                                    <action selector="onContinue:" destination="bl7-A2-JrY" eventType="touchUpInside" id="5dA-iR-2B2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -267,16 +269,18 @@
                     <navigationItem key="navigationItem" id="Aic-Pd-T1L"/>
                     <connections>
                         <outlet property="tableView" destination="p6f-4X-Gjk" id="OtX-Jc-PQ2"/>
+                        <segue destination="0eY-qM-I8e" kind="show" identifier="kFaceCaptureSegueIdentifier" id="UFZ-D0-pKY"/>
+                        <segue destination="Hvl-MJ-n3g" kind="show" identifier="kVoiceCaptureSegueIdentifier" id="47s-lB-0ON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yva-xJ-1It" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="484" y="507.79610194902551"/>
         </scene>
-        <!--Enroll Voice Record View Controller-->
+        <!--Enroll Voice View Controller-->
         <scene sceneID="7E9-21-tSB">
             <objects>
-                <viewController storyboardIdentifier="kVoiceRecordStoryboardIdentifier" id="Hvl-MJ-n3g" customClass="OPUIEnrollVoiceRecordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="kVoiceRecordStoryboardIdentifier" id="Hvl-MJ-n3g" customClass="OPUIEnrollVoiceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M3Q-fK-Pgf"/>
                         <viewControllerLayoutGuide type="bottom" id="aT5-wA-TpX"/>
@@ -349,7 +353,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTi-rU-s6Z" customClass="OPUISpacingLabel">
                                 <rect key="frame" x="24" y="319.5" width="327" height="28"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="0 1 2 3 4 5 6 7 8 9">
+                                    <fragment content="* * * * * * * * * *">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="24" name="HelveticaNeue"/>
@@ -382,6 +386,7 @@
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW9-Bu-egf">
                                 <rect key="frame" x="24" y="391.5" width="315" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Too noisy" image="silence">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -522,7 +527,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZU9-fZ-bAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="L56-00-6Kg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="508"/>
+            <point key="canvasLocation" x="2164" y="508"/>
         </scene>
         <!--Indicators View Controller-->
         <scene sceneID="5TA-Oc-GAz">
@@ -597,7 +602,7 @@
     </scenes>
     <resources>
         <image name="eyesclosed" width="32" height="32"/>
-        <image name="light" width="20" height="32"/>
+        <image name="light" width="100" height="160"/>
         <image name="mic" width="21" height="32"/>
         <image name="noface" width="32" height="32"/>
         <image name="otherface" width="32" height="32"/>
@@ -605,4 +610,7 @@
         <image name="stop" width="16" height="16"/>
         <image name="tremor" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="juB-vR-cp7"/>
+    </inferredMetricsTieBreakers>
 </document>

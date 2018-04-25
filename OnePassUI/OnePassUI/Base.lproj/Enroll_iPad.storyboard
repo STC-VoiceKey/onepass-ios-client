@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vlL-WJ-Jl2">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,17 +13,17 @@
         <!--Enroll Face Capture-->
         <scene sceneID="cxr-SG-nEM">
             <objects>
-                <viewController title="Enroll Face Capture" id="2KC-bM-ek4" customClass="OPUIEnrollFaceCaptureViewController" sceneMemberID="viewController">
+                <viewController title="Enroll Face Capture" id="2KC-bM-ek4" customClass="OPUIEnrollFaceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YZ3-Te-xwr"/>
                         <viewControllerLayoutGuide type="bottom" id="Tsw-Pb-cyB"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="ixH-iN-D4T">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roF-AS-5LK" customClass="OPCRPreviewView">
-                                <rect key="frame" x="144" y="192" width="480" height="640"/>
+                                <rect key="frame" x="316" y="97" width="480" height="640"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3L-Lp-xDD">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
@@ -48,6 +48,7 @@
                                             <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="onCancel:" destination="2KC-bM-ek4" eventType="touchUpInside" id="Sdb-3q-nUS"/>
                                             <segue destination="fYJ-Ul-CDe" kind="unwind" identifier="kExitPhotoSegueIdentifier" unwindAction="unwindCancel:" id="uUi-H9-N5J"/>
                                         </connections>
                                     </button>
@@ -72,7 +73,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dpy-52-dVf" customClass="OPUIActivityIndicatorBlackView">
-                                <rect key="frame" x="365" y="493" width="37" height="37"/>
+                                <rect key="frame" x="537.5" y="398.5" width="37" height="37"/>
                                 <color key="color" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -92,11 +93,12 @@
                     <navigationItem key="navigationItem" id="HcZ-er-jLW"/>
                     <connections>
                         <outlet property="activityIndicator" destination="dpy-52-dVf" id="x3O-Y9-06W"/>
+                        <outlet property="cancelButton" destination="jft-A1-j6a" id="cai-Ah-2DN"/>
                         <outlet property="heightConstraint" destination="xbm-6y-pYF" id="fQA-bc-uhX"/>
                         <outlet property="viewFaceCapture" destination="roF-AS-5LK" id="STp-U6-3q8"/>
                         <outlet property="viewMaskContainer" destination="2Tn-n0-HLY" id="A87-TS-iE5"/>
                         <outlet property="widthConstraint" destination="Stu-3w-s5c" id="oh5-Ad-r1e"/>
-                        <segue destination="OZm-8A-2Up" kind="show" identifier="kPhotoSuccessSegueIdentifier" id="XpA-34-7oR">
+                        <segue destination="OZm-8A-2Up" kind="show" identifier="kVoiceSegueIdentifier" id="XpA-34-7oR">
                             <nil key="action"/>
                         </segue>
                     </connections>
@@ -115,11 +117,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zMa-db-Fja"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n1X-H5-xzD">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-Av-EI9" customClass="OPUIWhiteBorderView">
-                                <rect key="frame" x="144" y="192" width="480" height="640"/>
+                                <rect key="frame" x="316" y="97" width="480" height="640"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbG-Kb-5r9">
                                         <rect key="frame" x="204" y="574" width="72" height="46"/>
@@ -179,9 +181,7 @@
                                             <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2KC-bM-ek4" kind="show" id="U6Z-U9-ZM0">
-                                                <nil key="action"/>
-                                            </segue>
+                                            <action selector="onContinue:" destination="vlL-WJ-Jl2" eventType="touchUpInside" id="Ifj-nH-75V"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -221,29 +221,31 @@
                     <navigationItem key="navigationItem" id="ccx-9L-aTj"/>
                     <connections>
                         <outlet property="tableView" destination="Pme-un-74S" id="eLz-8x-9d2"/>
+                        <segue destination="2KC-bM-ek4" kind="show" identifier="kFaceCaptureSegueIdentifier" id="m5o-pG-3HO"/>
+                        <segue destination="OZm-8A-2Up" kind="show" identifier="kVoiceCaptureSegueIdentifier" id="aBM-4o-jm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSb-Nu-djZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="484" y="507.79610194902551"/>
         </scene>
-        <!--Enroll Voice Record View Controller-->
+        <!--Enroll Voice View Controller-->
         <scene sceneID="6w2-8Q-fPI">
             <objects>
-                <viewController storyboardIdentifier="kVoiceRecordStoryboardIdentifier" id="OZm-8A-2Up" customClass="OPUIEnrollVoiceRecordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="kVoiceRecordStoryboardIdentifier" id="OZm-8A-2Up" customClass="OPUIEnrollVoiceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZOC-KY-Suf"/>
                         <viewControllerLayoutGuide type="bottom" id="Km9-QJ-f5L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hFE-bw-NvK">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-aL-Ghc" customClass="OPUIWhiteBorderView">
-                                <rect key="frame" x="144" y="192" width="480" height="640"/>
+                                <rect key="frame" x="316" y="97" width="480" height="640"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m94-cj-jQ9" customClass="OPUIVoiceVisualizerView">
-                                        <rect key="frame" x="0.0" y="353.5" width="480" height="150"/>
+                                        <rect key="frame" x="0.0" y="353" width="480" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="UdY-L6-PEB" customClass="OPUILayoutConstraint">
                                                 <userDefinedRuntimeAttributes>
@@ -270,7 +272,7 @@
                                         </connections>
                                     </view>
                                     <progressView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dTz-db-lOv" customClass="OPUICircleProgressView">
-                                        <rect key="frame" x="207.5" y="487" width="66" height="66"/>
+                                        <rect key="frame" x="207" y="487" width="66" height="66"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="66" id="cDp-Uq-xfe"/>
@@ -280,7 +282,7 @@
                                         <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </progressView>
                                     <button opaque="NO" alpha="0.75" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPo-Ki-cqr">
-                                        <rect key="frame" x="210.5" y="490" width="60" height="60"/>
+                                        <rect key="frame" x="210" y="490" width="60" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="NzL-aE-pcw"/>
@@ -299,7 +301,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20N-bq-EjG">
-                                        <rect key="frame" x="216.5" y="570" width="48" height="30"/>
+                                        <rect key="frame" x="216" y="570" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -308,7 +310,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ8-Km-V87" customClass="OPUISpacingLabel">
-                                        <rect key="frame" x="24" y="306.5" width="432" height="28"/>
+                                        <rect key="frame" x="24" y="306" width="432" height="28"/>
                                         <attributedString key="attributedText">
                                             <fragment content="0 1 2 3 4 5 6 7 8 9">
                                                 <attributes>
@@ -341,7 +343,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKn-jX-KsC">
-                                        <rect key="frame" x="24" y="378.5" width="306" height="32"/>
+                                        <rect key="frame" x="24" y="378" width="306" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Too noisy" image="silence">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -408,6 +410,7 @@
                                     </constraint>
                                     <constraint firstItem="rRC-aV-ZqJ" firstAttribute="leading" secondItem="o98-ey-vqD" secondAttribute="leading" id="B3o-8L-i6W"/>
                                     <constraint firstItem="o98-ey-vqD" firstAttribute="top" secondItem="ef3-aL-Ghc" secondAttribute="top" constant="52" id="D6n-Io-GLn"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RHA-BM-QNJ" secondAttribute="trailing" constant="20" symbolic="YES" id="GFe-YJ-Jte"/>
                                     <constraint firstItem="20N-bq-EjG" firstAttribute="centerX" secondItem="ef3-aL-Ghc" secondAttribute="centerX" id="KrN-hj-yXY"/>
                                     <constraint firstItem="20N-bq-EjG" firstAttribute="top" secondItem="VPo-Ki-cqr" secondAttribute="bottom" constant="20" id="OfY-k0-yz3"/>
                                     <constraint firstItem="RHA-BM-QNJ" firstAttribute="leading" secondItem="4uf-bW-hM0" secondAttribute="trailing" id="PLP-4e-se9"/>
@@ -449,15 +452,15 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-ke-Spz">
-                                <rect key="frame" x="0.0" y="192" width="144" height="640"/>
+                                <rect key="frame" x="0.0" y="97" width="316" height="640"/>
                                 <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4C-Fr-vfL">
-                                <rect key="frame" x="624" y="192" width="144" height="640"/>
+                                <rect key="frame" x="796" y="97" width="541" height="640"/>
                                 <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BNb-VA-S3c" customClass="OPUIActivityIndicatorView">
-                                <rect key="frame" x="365" y="493" width="37" height="37"/>
+                                <rect key="frame" x="537.5" y="398.5" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -470,14 +473,14 @@
                         <constraints>
                             <constraint firstItem="ef3-aL-Ghc" firstAttribute="centerY" secondItem="hFE-bw-NvK" secondAttribute="centerY" id="2o3-LX-vsk"/>
                             <constraint firstItem="BNb-VA-S3c" firstAttribute="centerY" secondItem="hFE-bw-NvK" secondAttribute="centerY" id="7Lr-iZ-VKw"/>
+                            <constraint firstAttribute="trailing" secondItem="F4C-Fr-vfL" secondAttribute="trailing" constant="-225" id="BRJ-wi-vf7"/>
                             <constraint firstItem="BNb-VA-S3c" firstAttribute="centerX" secondItem="hFE-bw-NvK" secondAttribute="centerX" id="Dvn-j6-ERs"/>
                             <constraint firstItem="F4C-Fr-vfL" firstAttribute="top" secondItem="ef3-aL-Ghc" secondAttribute="top" id="La4-YW-iki"/>
                             <constraint firstItem="Dd5-ke-Spz" firstAttribute="bottom" secondItem="ef3-aL-Ghc" secondAttribute="bottom" id="LfO-Ds-0pv"/>
                             <constraint firstItem="F4C-Fr-vfL" firstAttribute="leading" secondItem="ef3-aL-Ghc" secondAttribute="trailing" id="TuB-Bb-B51"/>
-                            <constraint firstItem="Dd5-ke-Spz" firstAttribute="leading" secondItem="hFE-bw-NvK" secondAttribute="leading" id="auz-Gg-ajJ"/>
                             <constraint firstItem="F4C-Fr-vfL" firstAttribute="bottom" secondItem="ef3-aL-Ghc" secondAttribute="bottom" id="bVD-Mq-HHt"/>
-                            <constraint firstAttribute="trailing" secondItem="F4C-Fr-vfL" secondAttribute="trailing" id="dEG-LE-Z6c"/>
                             <constraint firstItem="ef3-aL-Ghc" firstAttribute="centerX" secondItem="hFE-bw-NvK" secondAttribute="centerX" id="gVS-Dg-lWz"/>
+                            <constraint firstItem="Dd5-ke-Spz" firstAttribute="leading" secondItem="hFE-bw-NvK" secondAttribute="leading" id="pzh-gv-Awq"/>
                             <constraint firstItem="Dd5-ke-Spz" firstAttribute="top" secondItem="ef3-aL-Ghc" secondAttribute="top" id="s1N-yz-Zjy"/>
                             <constraint firstItem="ef3-aL-Ghc" firstAttribute="leading" secondItem="Dd5-ke-Spz" secondAttribute="trailing" id="zV7-yh-Qyg"/>
                         </constraints>
@@ -570,7 +573,7 @@
     </scenes>
     <resources>
         <image name="eyesclosed" width="32" height="32"/>
-        <image name="light" width="20" height="32"/>
+        <image name="light" width="32" height="32"/>
         <image name="mic" width="21" height="32"/>
         <image name="noface" width="32" height="32"/>
         <image name="otherface" width="32" height="32"/>
@@ -578,4 +581,7 @@
         <image name="stop" width="16" height="16"/>
         <image name="tremor" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XpA-34-7oR"/>
+    </inferredMetricsTieBreakers>
 </document>

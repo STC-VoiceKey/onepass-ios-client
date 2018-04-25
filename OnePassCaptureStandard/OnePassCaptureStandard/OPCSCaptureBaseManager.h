@@ -29,12 +29,13 @@
 @property ( nonatomic, strong)     AVCaptureVideoDataOutput *videoOutput;
 
 /**
- 
+ The current image in CoreImage format
  */
-#warning docs
 @property ( nonatomic) CIImage *currentImage;
 
-#warning docs
+/**
+ The current interface orientation
+ */
 @property (nonatomic) OPCAvailableOrientation interfaceOrientation;
 
 /**
@@ -85,11 +86,14 @@
 /**
  Is implementation of 'IOPCInterfaceOrientationProtocol'
  */
--(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation;
+//-(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation;
 
 /**
  Updates the selected camera
  */
 -(void)setupCaptureDevice;
+
+#warning docs
+-(CIImage *)fixOrientation:(CIImage *)ciImage;
 
 @end

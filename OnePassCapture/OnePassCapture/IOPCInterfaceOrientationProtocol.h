@@ -12,13 +12,24 @@ typedef enum {
     OPCAvailableOrientationUp,
     OPCAvailableOrientationRight,
     OPCAvailableOrientationLeft
-} OPCAvailableOrientation;
+} OPCAvailableOrientation;//Available interface orientation
 
+/**
+ Provides checking interface orientation
+ */
 @protocol IOPCInterfaceOrientationProtocol <NSObject>
 
 @required
+/**
+ Sets current interface orientatio
 
+ @param orientation The interface orientation
+ */
 -(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation;
+
+/**
+ @return Checking orientation is portrait
+ */
 -(BOOL)isPortraitOrientation;
 
 @end

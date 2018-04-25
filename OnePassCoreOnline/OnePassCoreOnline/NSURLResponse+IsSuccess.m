@@ -29,4 +29,10 @@
     return  (httpResponse.statusCode==500);
 }
 
+-(NSInteger)statusCode {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)self;
+    
+    return  httpResponse.statusCode;
+}
+
 @end

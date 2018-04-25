@@ -5,3 +5,5 @@
   Created by Soloshcheva Aleksandra on 06.07.16.
   Copyright © 2016 Speech Technology Center. All rights reserved.
 */
+
+"You can not disable all modalities. At least one modality must be enabled."="You can not disable all modalities. At least one modality must be enabled.";

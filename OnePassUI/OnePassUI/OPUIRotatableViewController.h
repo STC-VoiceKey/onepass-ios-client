@@ -14,7 +14,14 @@
  */
 @interface OPUIRotatableViewController : OPUITimedBaseViewController
 
+/**
+ Updates interface orientation
+ */
 -(void)updateOrientation;
+
+/**
+ @return Return current interface orientation
+ */
 -(OPCAvailableOrientation)currentOrientation;
 
 @end

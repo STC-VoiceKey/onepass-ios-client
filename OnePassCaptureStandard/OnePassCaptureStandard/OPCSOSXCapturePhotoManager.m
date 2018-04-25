@@ -7,6 +7,7 @@
 //
 
 #import "OPCSOSXCapturePhotoManager.h"
+#import "CIImage+Extra.h"
 
 @implementation OPCSOSXCapturePhotoManager
 
@@ -26,7 +27,6 @@
             break;
         }
     }
-
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate

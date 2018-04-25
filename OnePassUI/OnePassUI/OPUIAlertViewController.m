@@ -116,8 +116,8 @@
 +(UIAlertController *)showWarning:(NSString *)warning
                        withHeader:(NSString *)header
                withViewController:(UIViewController *)viewController
-                    cancelHandler:(void (^)(UIAlertAction *action))okHandler
-                  settingsHandler:(void (^)(UIAlertAction *action))cancelHandler{
+                    cancelHandler:(void (^)(UIAlertAction *action))cancelHandler
+                  settingsHandler:(void (^)(UIAlertAction *action))settingsHandler{
     
     UIAlertController *alertController = [self alertControllerWithTitle:header
                                                                 message:warning
@@ -130,7 +130,7 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", ni)
                                                            style:UIAlertActionStyleDefault
-                                                         handler:okHandler];
+                                                         handler:settingsHandler];
     
     [alertController addAction:cancelAction];
     

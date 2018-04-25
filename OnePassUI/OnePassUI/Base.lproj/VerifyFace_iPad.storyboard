@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c6n-im-o4z">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Enroll Face Capture-->
+        <scene sceneID="ZDY-1G-Bq2">
+            <objects>
+                <viewController title="Enroll Face Capture" id="c6n-im-o4z" customClass="OPUIVerifyFaceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UUM-4C-7vd"/>
+                        <viewControllerLayoutGuide type="bottom" id="or4-kh-b4P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aIl-63-1PH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqM-9A-Bjz">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qv8-I6-7Rh" customClass="OPCRPreviewView">
+                                        <rect key="frame" x="144" y="182" width="480" height="640"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfg-7e-aSu">
+                                                <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVw-pZ-3cd">
+                                                        <rect key="frame" x="77.5" y="13" width="325" height="40"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eyesclosed" translatesAutoresizingMaskIntoConstraints="NO" id="jpI-zf-48d" customClass="OPUIIndicatorImageView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="65" id="FQz-uL-AVt"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="KMy-43-B8V"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="otherface" translatesAutoresizingMaskIntoConstraints="NO" id="SEZ-Me-DKN" customClass="OPUIIndicatorImageView">
+                                                                <rect key="frame" x="65" y="0.0" width="65" height="40"/>
+                                                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noface" translatesAutoresizingMaskIntoConstraints="NO" id="T6w-gw-1QS" customClass="OPUIIndicatorImageView">
+                                                                <rect key="frame" x="130" y="0.0" width="65" height="40"/>
+                                                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="EKO-V4-IMr" customClass="OPUIIndicatorImageView">
+                                                                <rect key="frame" x="195" y="0.0" width="65" height="40"/>
+                                                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tremor" translatesAutoresizingMaskIntoConstraints="NO" id="ckM-oh-vXh" customClass="OPUIIndicatorImageView">
+                                                                <rect key="frame" x="260" y="0.0" width="65" height="40"/>
+                                                                <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="SEZ-Me-DKN" firstAttribute="height" secondItem="jpI-zf-48d" secondAttribute="height" id="7Hy-EF-EyZ"/>
+                                                            <constraint firstItem="T6w-gw-1QS" firstAttribute="height" secondItem="jpI-zf-48d" secondAttribute="height" id="QL5-LJ-Y1K"/>
+                                                            <constraint firstItem="ckM-oh-vXh" firstAttribute="height" secondItem="jpI-zf-48d" secondAttribute="height" id="Qqm-ny-jNF"/>
+                                                            <constraint firstItem="ckM-oh-vXh" firstAttribute="width" secondItem="jpI-zf-48d" secondAttribute="width" id="X8i-rk-pf7"/>
+                                                            <constraint firstItem="T6w-gw-1QS" firstAttribute="width" secondItem="jpI-zf-48d" secondAttribute="width" id="Xs6-Xp-YZx"/>
+                                                            <constraint firstItem="SEZ-Me-DKN" firstAttribute="width" secondItem="jpI-zf-48d" secondAttribute="width" id="gWR-h7-85g"/>
+                                                            <constraint firstItem="EKO-V4-IMr" firstAttribute="height" secondItem="jpI-zf-48d" secondAttribute="height" id="s3B-9h-1gg"/>
+                                                            <constraint firstItem="EKO-V4-IMr" firstAttribute="width" secondItem="jpI-zf-48d" secondAttribute="width" id="vHl-NU-9En"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="66" id="1Vp-3u-MnX"/>
+                                                    <constraint firstItem="zVw-pZ-3cd" firstAttribute="centerY" secondItem="Bfg-7e-aSu" secondAttribute="centerY" id="Zoe-jM-yA0"/>
+                                                    <constraint firstItem="zVw-pZ-3cd" firstAttribute="centerX" secondItem="Bfg-7e-aSu" secondAttribute="centerX" id="wwX-xk-o9z"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="safeArea" id="vTf-SS-xRB"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohe-FR-WPo">
+                                                <rect key="frame" x="212" y="554" width="56" height="46"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="eRQ-zm-8WC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="dPU-Yr-aID" kind="unwind" unwindAction="unwindExit:" id="8K0-lL-eEn"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9t-my-LeG">
+                                                <rect key="frame" x="0.0" y="0.0" width="480" height="555"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0uh-P6-e85" customClass="OPUIActivityIndicatorBlackView">
+                                                <rect key="frame" x="221" y="301.5" width="37" height="37"/>
+                                                <color key="color" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Bfg-7e-aSu" firstAttribute="leading" secondItem="Qv8-I6-7Rh" secondAttribute="leading" id="3iM-9J-E2N"/>
+                                            <constraint firstItem="Ohe-FR-WPo" firstAttribute="centerX" secondItem="Qv8-I6-7Rh" secondAttribute="centerX" id="4Pk-Qs-kSN"/>
+                                            <constraint firstAttribute="width" constant="480" id="C9x-L1-WRE"/>
+                                            <constraint firstAttribute="height" constant="640" id="EH2-5G-Sis"/>
+                                            <constraint firstItem="Bfg-7e-aSu" firstAttribute="top" secondItem="Qv8-I6-7Rh" secondAttribute="top" id="JLF-BY-nfG"/>
+                                            <constraint firstAttribute="trailing" secondItem="V9t-my-LeG" secondAttribute="trailing" id="Q9v-xg-A2W"/>
+                                            <constraint firstItem="V9t-my-LeG" firstAttribute="top" secondItem="Qv8-I6-7Rh" secondAttribute="top" id="RZY-aT-eIc"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bfg-7e-aSu" secondAttribute="trailing" id="bYA-tk-F49"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ohe-FR-WPo" secondAttribute="bottom" constant="40" id="ccf-jg-7ik" customClass="OPUILayoutConstraint">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                                        <real key="value" value="32"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                                        <real key="value" value="40"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                                        <real key="value" value="48"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
+                                            <constraint firstItem="0uh-P6-e85" firstAttribute="centerX" secondItem="Qv8-I6-7Rh" secondAttribute="centerX" id="hHh-e8-eBX"/>
+                                            <constraint firstAttribute="bottom" secondItem="V9t-my-LeG" secondAttribute="bottom" constant="85" id="iiV-xV-T5F"/>
+                                            <constraint firstItem="V9t-my-LeG" firstAttribute="leading" secondItem="Qv8-I6-7Rh" secondAttribute="leading" id="rca-Mt-fLZ"/>
+                                            <constraint firstItem="0uh-P6-e85" firstAttribute="centerY" secondItem="Qv8-I6-7Rh" secondAttribute="centerY" id="xqf-x2-G2m"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Qv8-I6-7Rh" firstAttribute="centerY" secondItem="TqM-9A-Bjz" secondAttribute="centerY" id="6nv-Mn-4hi"/>
+                                    <constraint firstItem="Qv8-I6-7Rh" firstAttribute="centerX" secondItem="TqM-9A-Bjz" secondAttribute="centerX" id="XUF-Kj-qlz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5t0-UU-ga3" firstAttribute="trailing" secondItem="TqM-9A-Bjz" secondAttribute="trailing" id="IGE-RC-qFh"/>
+                            <constraint firstItem="TqM-9A-Bjz" firstAttribute="leading" secondItem="5t0-UU-ga3" secondAttribute="leading" id="Q14-bT-bhk"/>
+                            <constraint firstItem="TqM-9A-Bjz" firstAttribute="top" secondItem="UUM-4C-7vd" secondAttribute="bottom" id="Vg3-9u-Ati"/>
+                            <constraint firstItem="or4-kh-b4P" firstAttribute="top" secondItem="TqM-9A-Bjz" secondAttribute="bottom" id="oLb-6R-nVT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5t0-UU-ga3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lAA-Hc-Sdq"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0uh-P6-e85" id="n5O-jW-Xlq"/>
+                        <outlet property="imageBrightness" destination="EKO-V4-IMr" id="QKZ-Xl-hMi"/>
+                        <outlet property="imageEyesFound" destination="jpI-zf-48d" id="OrH-z5-AbQ"/>
+                        <outlet property="imageFaceFound" destination="T6w-gw-1QS" id="0UT-1F-MBv"/>
+                        <outlet property="imageSingleFace" destination="SEZ-Me-DKN" id="ihy-WV-Yiz"/>
+                        <outlet property="imageTremor" destination="ckM-oh-vXh" id="9ea-GR-aIg"/>
+                        <outlet property="viewMaskContainer" destination="V9t-my-LeG" id="6cY-jj-lUv"/>
+                        <outlet property="viewVideoCapture" destination="Qv8-I6-7Rh" id="2Mb-tW-kLN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Na6-kH-xIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dPU-Yr-aID" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="508"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="eyesclosed" width="32" height="32"/>
+        <image name="light" width="20" height="32"/>
+        <image name="noface" width="32" height="32"/>
+        <image name="otherface" width="32" height="32"/>
+        <image name="tremor" width="32" height="32"/>
+    </resources>
+</document>

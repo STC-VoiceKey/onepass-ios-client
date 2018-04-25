@@ -9,6 +9,7 @@
 #import "OPUILoader.h"
 #import <OnePassCore/OnePassCore.h>
 #import <OnePassCapture/OnePassCapture.h>
+#import "OPUIModalitiesManager.h"
 
 @interface OPUILoader()
 
@@ -21,6 +22,7 @@
  Is the verification 'ResultBlock'
  */
 @property (nonatomic) ResultBlock verifyResultBlock;
+
 
 @end
 
@@ -38,6 +40,8 @@
                         withService:(id<IOPCTransportProtocol>)service
                  withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager;
 
+-(NSString *)verificationStoryboardName;
+
 @end
 
 @implementation OPUILoader
@@ -51,14 +55,14 @@
     return sharedInstance;
 }
 
--(UIViewController *)enrollUILoadWithService:(id<IOPCTransportProtocol>)service withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
+-(UIViewController *)enrollUILoadWithService:(id<IOPCTransportProtocol>)service
+                          withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
     NSString *storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"Enroll_iPad" : @"Enroll_iPhone";
     return [self loadStoryboard:storyboardName withService:service withCaptureManager:manager];
 }
 
 -(UIViewController *)verifyUILoadWithService:(id<IOPCTransportProtocol>) service withCaptureManager:(id<IOPCCaptureManagerProtocol>)manager{
-    NSString *storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"Verify_iPad" : @"Verify_iPhone";
-    return [self loadStoryboard:storyboardName withService:service withCaptureManager:manager];
+   return [self loadStoryboard:self.verificationStoryboardName withService:service withCaptureManager:manager];
 }
 
 @end
@@ -83,6 +87,33 @@
     }
     
     return vc;
+}
+
+-(NSString *)verificationStoryboardName{
+    
+    id<IOPUIModalitiesManagerProtocol> modalityManager = [[OPUIModalitiesManager alloc] init];;
+    
+    NSString *storyboardName;
+    
+    switch (modalityManager.modalityState) {
+        case OPUIModalitiesStateFaceOnly:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyFace_iPad" : @"VerifyFace_iPhone";
+            break;
+            
+        case OPUIModalitiesStateVoiceOnly:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyVoice_iPad" : @"VerifyVoice_iPhone";
+            break;
+            
+        case OPUIModalitiesStateWithOutLiveness:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyFaceAndVoice_iPad" : @"VerifyFaceAndVoice_iPhone";
+            break;
+            
+        default:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"Verify_iPad" : @"Verify_iPhone";
+            break;
+
+    }
+    return storyboardName;
 }
 
 @end

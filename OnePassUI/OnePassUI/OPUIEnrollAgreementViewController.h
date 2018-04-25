@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "OPUIBaseViewController.h"
 
+#import "OPUIEnrollAgreementViewProtocol.h"
+
 /**
  The view controller displays the agreement and requirements
  */
-@interface OPUIEnrollAgreementViewController : OPUIBaseViewController
+@interface OPUIEnrollAgreementViewController : OPUIBaseViewController<OPUIEnrollAgreementViewProtocol>
 
 @end

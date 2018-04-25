@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OPUIErrorViewController">
             <connections>
-                <outlet property="errorLabel" destination="kBJ-oL-GVB" id="OAX-wG-oHP"/>
+                <outlet property="errorLabel" destination="5Nx-hd-Fa0" id="s4o-2e-0Uo"/>
                 <outlet property="titleLabel" destination="ijo-PJ-8J0" id="e2H-DS-xh4"/>
                 <outlet property="view" destination="gXn-jY-pKg" id="w2T-T8-1l9"/>
             </connections>
@@ -52,17 +52,16 @@
                             <color key="textColor" white="1" alpha="0.90363666369999995" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="error" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBJ-oL-GVB">
-                            <rect key="frame" x="100" y="260" width="280" height="120"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nx-hd-Fa0">
+                            <rect key="frame" x="100" y="270" width="280" height="100"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="280" id="Rxa-bo-aYp"/>
-                                <constraint firstAttribute="height" constant="120" id="lJC-c9-VUc"/>
+                                <constraint firstAttribute="width" constant="280" id="5oY-dP-Ckv"/>
+                                <constraint firstAttribute="height" constant="100" id="pqs-ID-vpf"/>
                             </constraints>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
+                            <color key="textColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -71,11 +70,11 @@
                         <constraint firstItem="ijo-PJ-8J0" firstAttribute="centerX" secondItem="cOZ-x4-8LQ" secondAttribute="centerX" id="Idi-yU-Xsm"/>
                         <constraint firstAttribute="bottom" secondItem="9zt-xx-gw0" secondAttribute="bottom" constant="20" id="JD7-YX-2iC"/>
                         <constraint firstItem="ijo-PJ-8J0" firstAttribute="top" secondItem="cOZ-x4-8LQ" secondAttribute="top" constant="60" id="JGt-F3-rS5"/>
-                        <constraint firstItem="kBJ-oL-GVB" firstAttribute="centerX" secondItem="cOZ-x4-8LQ" secondAttribute="centerX" id="MiO-xf-72q"/>
+                        <constraint firstItem="5Nx-hd-Fa0" firstAttribute="centerY" secondItem="cOZ-x4-8LQ" secondAttribute="centerY" id="Y58-7B-b9t"/>
                         <constraint firstItem="ijo-PJ-8J0" firstAttribute="leading" secondItem="cOZ-x4-8LQ" secondAttribute="leadingMargin" constant="30" id="dVt-Cs-vfy"/>
                         <constraint firstAttribute="width" constant="480" id="gY9-qp-nIt"/>
-                        <constraint firstItem="kBJ-oL-GVB" firstAttribute="centerY" secondItem="cOZ-x4-8LQ" secondAttribute="centerY" id="lRN-LW-1IU"/>
                         <constraint firstItem="9zt-xx-gw0" firstAttribute="centerX" secondItem="cOZ-x4-8LQ" secondAttribute="centerX" id="saf-zN-Hj4"/>
+                        <constraint firstItem="5Nx-hd-Fa0" firstAttribute="centerX" secondItem="cOZ-x4-8LQ" secondAttribute="centerX" id="vQf-7Q-mCK"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="frameColor">

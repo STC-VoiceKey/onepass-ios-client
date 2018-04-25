@@ -65,7 +65,9 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
  */
 @property (nonatomic, weak) OPUIVerifyIndicatorViewController *indicatorViewController;
 
-#warning docs
+/**
+ The image view with temporally image which overlay flash affect
+ */
 @property (nonatomic) UIImageView *snapshotView;
 
 @end
@@ -139,9 +141,7 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
 
 -(void)viewTimerDidExpared{
     if (!self.verifyManager.isRecording) {
-        [self.verifyManager stopNoiseAnalyzer];
-        [self.service closeVerification:self.session.verificationSessionID
-                    withCompletionBlock:nil];
+        [self.service closeVerificationWithCompletionBlock:nil];
         dispatch_async( dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -215,13 +215,11 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     UIButton *cancellButton = (UIButton *)sender;
     cancellButton.userInteractionEnabled = YES;
     [self.verifyManager stopRunning];
-    [self.verifyManager stopNoiseAnalyzer];
     if ([self.verifyManager isRecording]) {
         self.verifyManager.responceBlock = nil;
         [self.verifyManager stop];
     }
-    [self.service closeVerification:self.session.verificationSessionID
-                withCompletionBlock:nil];
+    [self.service closeVerificationWithCompletionBlock:nil];
     dispatch_async( dispatch_get_main_queue(), ^{
         [self.navigationController popViewControllerAnimated:YES];
     });
@@ -293,28 +291,24 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
     
     if (error) {
         [self stopActivityAnimating];
-        [self.service closeVerification:[self.session verificationSessionID]
-                    withCompletionBlock:nil];
+        [self.service closeVerificationWithCompletionBlock:nil];
         
         if([error.domain isEqualToString:NSURLErrorDomain]){
             [self showErrorOnMainThread:error];
         } else {
             [self showError:error withTitle:@"Give it another video"];
         }
-        
     } else {
         __weak typeof(self) weakself = self;
 #ifdef DEBUG
-        [self.service verifyScore:[self.session verificationSessionID]
-              withCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+        [self.service verifyScoreWithCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
             weakself.score = [NSDictionary dictionaryWithDictionary:responceObject];
         }];
 #endif
-        [self.service verify:[self.session verificationSessionID]
-         withCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+        
+        [self.service verifyResultWithCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
              [weakself stopActivityAnimating];
-             [weakself.service closeVerification:weakself.session.verificationSessionID
-                             withCompletionBlock:nil];
+             [weakself.service closeVerificationWithCompletionBlock:nil];
              if(!error) {
                  BOOL result = [responceObject[@"status"] isEqualToString:@"SUCCESS"];
                  [OPUILoader.sharedInstance verifyResultBlock](result, responceObject);
@@ -343,7 +337,6 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
             [self.viewVideoCapture addSubview:self.snapshotView];
             [self.viewVideoCapture bringSubviewToFront:self.snapshotView];
         });
-
     }
 }
 
@@ -453,7 +446,7 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
                     if (!weakself.stabilizationTimer) {
                         [weakself initStabilizationTimer];
                     }
-                    [weakself.stabilizationTimer startWithTime:1];//50];
+                    [weakself.stabilizationTimer startWithTime:1];
                 }
             } else {
                 if ([weakself.stabilizationTimer isProcessing]) {

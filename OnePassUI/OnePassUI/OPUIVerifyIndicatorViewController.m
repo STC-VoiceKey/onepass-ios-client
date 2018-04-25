@@ -106,6 +106,8 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
         });
     }
     
+    
+    
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 

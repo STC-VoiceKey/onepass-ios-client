@@ -17,16 +17,11 @@
     
     float scale = newSize.width / self.extent.size.width;
     [filter setValue:@(scale) forKey:@"inputScale"];
-    [filter setValue:@(1.0) forKey:@"inputAspectRatio"];
+    [filter setValue:@(1.0)   forKey:@"inputAspectRatio"];
     
     CIImage *result = [filter valueForKey:@"outputImage"];
     
     return result;
-}
-
--(CIImage *)correctImageOrientation {
-#warning Check image orientation
-    return self;
 }
 
 @end

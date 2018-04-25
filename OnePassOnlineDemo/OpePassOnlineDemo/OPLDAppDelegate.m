@@ -8,11 +8,12 @@
 
 #import "OPLDAppDelegate.h"
 #import <OnePassCapture/OnePassCapture.h>
+#import <OnePassCore/OnePassCore.h>
 #import <OnePassUI/OnePassUI.h>
 #import <OnePassCaptureStandard/OnePassCaptureStandard.h>
 #import <OnePassCoreOnline/OnePassCoreOnline.h>
-
-#import <CallKit/CallKit.h>
+#import "OPODSession.h"
+#import "OPODSettingsManager.h"
 
 @interface OPLDAppDelegate ()
 
@@ -31,13 +32,17 @@
         OPUINavigationController *nc = (OPUINavigationController *)self.window.rootViewController;
         nc.captureManager = OPCSCaptureResourceManager.sharedInstance;
         nc.service = [[OPCOManager alloc] init];
-        NSLog(@"%@",nc.service);
+        
+        id<IOPODSettingsManagerProtocol> configurator = [[OPODSettingsManager alloc] init];
+        
+        [nc.service setSessionData:configurator.cryptedSessionData];
+        [nc.service setServerURL:configurator.serverURL];
+
     }
     [self.window makeKeyAndVisible];
     
-
-    
     return YES;
 }
+
 
 @end

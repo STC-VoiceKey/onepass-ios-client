@@ -8,12 +8,14 @@
 
 #import "OPUIEnrollAgreementViewController.h"
 #import "OPUICorporateColorUtils.h"
+#import "OPUIEnrollAgreementPresenterProtocol.h"
+#import "OPUIEnrollAgreementPresenter.h"
 #import <OnePassCapture/OnePassCapture.h>
 
-static NSString *kCauseListTableCellIdentifier = @"causeListTableCellIdentifier";
+static NSString *kFaceCaptureSegueIdentifier  = @"kFaceCaptureSegueIdentifier";
+static NSString *kVoiceCaptureSegueIdentifier = @"kVoiceCaptureSegueIdentifier";
 
-static NSString *kCauseField = @"cause";
-static NSString *kImageField = @"image";
+static NSString *kCauseListTableCellIdentifier = @"causeListTableCellIdentifier";
 
 @interface OPUIEnrollAgreementViewController ()
 
@@ -27,6 +29,18 @@ static NSString *kImageField = @"image";
  */
 @property (nonatomic,strong) NSArray *dataSource;
 
+@property (nonatomic) id<OPUIEnrollAgreementPresenterProtocol> presenter;
+
+@end
+
+@interface OPUIEnrollAgreementViewController (Private)
+
+-(void)configureTextLabelCell:(UILabel *)label;
+-(void)configureImageCell:(UIImageView *)imageView;
+
+-(NSString *)causeFromRow:(NSDictionary *)row;
+-(UIImage *)imageFromRow:(NSDictionary *)row;
+
 @end
 
 @implementation OPUIEnrollAgreementViewController
@@ -35,25 +49,42 @@ static NSString *kImageField = @"image";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.presenter = [[OPUIEnrollAgreementPresenter alloc] init];
+    
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView  = [[UIView alloc] init];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    self.dataSource = @[@{ kImageField:@"light",        kCauseField:@"Find a well lit place"},
-                        @{ kImageField:@"silence",      kCauseField:@"Make sure it's quiet"},
-                        @{ kImageField:@"eyesnotfound", kCauseField:@"Take off sunglasses"},
-                        @{ kImageField:@"otherface",    kCauseField:@"Make your ordinary face"}];
+    [self.presenter attachView:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [self.presenter deattachView];
 }
 
 -(void)applicationDidEnterBackground{
-    [self  unwindCancel:nil];
+    [self  exit];
 }
 
 #pragma mark - Navigation
 -(IBAction)onCancel:(id)sender{
-    [self  unwindCancel:nil];
+    [self.presenter onCancel];
 }
 
 -(IBAction)unwindCancel:(UIStoryboardSegue *)unwindSegue{
+    [self exit];
+}
+
+- (IBAction)onContinue:(id)sender {
+    [self.presenter onContinue];
+}
+
+-(void)exit {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -67,26 +98,63 @@ static NSString *kImageField = @"image";
                                                    reuseIdentifier:kCauseListTableCellIdentifier];
     if (cell) {
         cell.backgroundColor = [UIColor clearColor];
-        
-        NSDictionary *row = [_dataSource objectAtIndex:indexPath.row];
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        cell.textLabel.text = NSLocalizedStringFromTableInBundle(row[kCauseField], @"OnePassUILocalizable", bundle, nil);
-        cell.textLabel.textColor = OPUIWhiteWithAlpha(1);
-        cell.textLabel.font = OPUIFontSFRegularWithSize(17);
-        cell.textLabel.numberOfLines = 3;
 
-        cell.imageView.image = [UIImage imageNamed:row[kImageField]
-                                          inBundle:bundle
-                     compatibleWithTraitCollection:nil];
-        cell.imageView.alpha = 0.35;
-        cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        cell.imageView.tintColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+        NSDictionary *row = [_dataSource objectAtIndex:indexPath.row];
+
+        [self configureTextLabelCell:cell.textLabel];
+        cell.textLabel.text = [self causeFromRow:row];
+
+        [self configureImageCell:cell.imageView];
+        cell.imageView.image = [self imageFromRow:row];
         
     } else {
         cell = [[UITableViewCell alloc] init];
     }
     
     return cell;
+}
+
+#pragma mark - OPUIEnrollAgreementViewProtocol
+
+- (void)routeToFacePage {
+    [self performSegueOnMainThreadWithIdentifier:kFaceCaptureSegueIdentifier];
+}
+
+- (void)routeToVoicePage {
+    [self performSegueOnMainThreadWithIdentifier:kVoiceCaptureSegueIdentifier];
+}
+
+- (void)showWarnings:(NSArray<NSString *> *)source {
+    self.dataSource = source;
+    [self.tableView reloadData];
+}
+
+@end
+
+@implementation OPUIEnrollAgreementViewController (Private)
+
+-(void)configureTextLabelCell:(UILabel *)label {
+    label.textColor = OPUIWhiteWithAlpha(1);
+    label.font = OPUIFontSFRegularWithSize(17);
+    label.numberOfLines = 3;
+}
+
+-(void)configureImageCell:(UIImageView *)imageView {
+    imageView.alpha = 0.35;
+    imageView.image = [imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    imageView.tintColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+}
+
+-(NSString *)causeFromRow:(NSDictionary *)row {
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    return NSLocalizedStringFromTableInBundle(row[@"cause"], @"OnePassUILocalizable", bundle, nil);
+}
+
+-(UIImage *)imageFromRow:(NSDictionary *)row {
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    return  [UIImage imageNamed:row[@"image"]
+                       inBundle:bundle
+  compatibleWithTraitCollection:nil];
 }
 
 @end

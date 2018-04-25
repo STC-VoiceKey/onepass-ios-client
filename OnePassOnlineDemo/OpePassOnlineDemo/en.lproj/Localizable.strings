@@ -18,3 +18,7 @@
 "Default Settings"="Default Settings";
 "Restore default settings?"="Restore default settings?";
 
+"Not valid url"="Incorrect URL";
+
+"You can not disable all modalities. At least one modality must be enabled."="You can not disable all modalities. At least one modality must be enabled.";
+"All fields must be filled"="All fields must be filled";

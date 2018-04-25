@@ -43,10 +43,10 @@
  The 'IOPCSCapturePhotoManagerProtocol' is for photo capture
  The 'IOPCPortraitFeaturesProtocol' is for checking portrait features checking
  The 'IOPCEnvironmentProtocol' is for environment checking
+ The 'IOPCInterfaceOrientationProtocol' is for changing orientation
 
  @return  The photo capture manager
  */
-#warning docs
 -(id< IOPCCapturePhotoManagerProtocol, IOPCPortraitFeaturesProtocol, IOPCEnvironmentProtocol, IOPCInterfaceOrientationProtocol>)photoManager;
 
 

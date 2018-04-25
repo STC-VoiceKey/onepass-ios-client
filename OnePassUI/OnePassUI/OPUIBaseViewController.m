@@ -15,13 +15,11 @@
 #import "OPUIPopAnimator.h"
 #import "OPUIPushAnimator.h"
 
-#import <CallKit/CallKit.h>
-
-static NSString *kOnePassUserIDKey   = @"kOnePassOnlineDemoKeyChainKey";
+//#import <CallKit/CallKit.h>
 
 static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable";
 
-@interface OPUIBaseViewController()<CXCallObserverDelegate>
+@interface OPUIBaseViewController()//<CXCallObserverDelegate>
 
 /**
  Shows that the controller observes the UIApplicationDidEnterBackgroundNotification event
@@ -31,7 +29,7 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 /**
  Observes the incoming call is come
  */
-@property (nonatomic) CXCallObserver *callObserver;
+//@property (nonatomic) CXCallObserver *callObserver;
 
 @end
 
@@ -42,10 +40,10 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
     [super viewDidLoad];
     self.isObservation = NO;
     
-    self.navigationController.delegate = self;
-    
-    self.callObserver = [[CXCallObserver alloc] init];
-    [self.callObserver setDelegate:self queue:nil];
+//    self.navigationController.delegate = self;
+//
+//    self.callObserver = [[CXCallObserver alloc] init];
+//    [self.callObserver setDelegate:self queue:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -88,15 +86,15 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
         [self removeObserver:self forKeyPath:kIsHostAccessableObservation];
     }
     
-    _callObserver = nil;
+ //   _callObserver = nil;
 }
 
 #pragma mark - CXCallObserverDelegate
-
-- (void)callObserver:(CXCallObserver *)callObserver
-         callChanged:(CXCall *)call{
-    [self applicationDidEnterBackground];
-}
+//
+//- (void)callObserver:(CXCallObserver *)callObserver
+//         callChanged:(CXCall *)call{
+//    [self applicationDidEnterBackground];
+//}
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:kIsHostAccessableObservation]) {
@@ -116,10 +114,6 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 
 -(void)applicationWillEnterForeground{
     [self networkStateChanged:[self.service isHostAccessable]];
-}
-
--(NSString *)userID{
-    return [NSUserDefaults.standardUserDefaults objectForKey:kOnePassUserIDKey];
 }
 
 #pragma mark - Navigation
@@ -163,7 +157,8 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 -(void)performSegueOnMainThreadWithIdentifier:(NSString *)identifier{
     __weak typeof(self) weakself = self;
      dispatch_async(dispatch_get_main_queue(), ^{
-         [weakself performSegueWithIdentifier:identifier sender:self];
+         
+         [weakself performSegueWithIdentifier:identifier sender:weakself];
      });
 }
 
@@ -194,14 +189,14 @@ withLocalizationFile:(NSString *)localizationFile{
                                                                             bundle:[NSBundle bundleForClass:[self class]]];
     
     vc.error = error;
-    vc.titleWarning = NSLocalizedStringFromTableInBundle(title, localizationFile, bundle, nil) ;
+    vc.titleWarning = NSLocalizedStringFromTableInBundle(title, localizationFile, bundle, nil);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.navigationController pushViewController:vc animated:YES];
     });
 }
 
-- (void)addObserverForKeyPath:(NSString *)keyPath{
+- (void)addObserverForKeyPath:(NSString *)keyPath {
     [self addObserver:self
            forKeyPath:keyPath
               options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
@@ -209,14 +204,14 @@ withLocalizationFile:(NSString *)localizationFile{
 }
 
 -(void)addNotificationObserverForName:(NSNotificationName)name
-                         withSelector:(SEL)selector{
+                         withSelector:(SEL)selector {
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:selector
                                                name:name
                                              object:nil];
 }
 
--(void)removeObserverForName:(NSNotificationName)name{
+-(void)removeObserverForName:(NSNotificationName)name {
     [NSNotificationCenter.defaultCenter removeObserver:self
                                                   name:name
                                                 object:nil];
@@ -238,6 +233,10 @@ withLocalizationFile:(NSString *)localizationFile{
     }
     
     return nil;
+}
+
+-(NSString *)userID {
+    return [NSUserDefaults.standardUserDefaults stringForKey:@"kOnePassUserIDKey_v31"];
 }
 
 

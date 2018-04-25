@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Rax-7j-5i8"; */
+"Rax-7j-5i8.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Press the  button and pronounce following digits:"; ObjectID = "bRI-iG-4ll"; */
+"bRI-iG-4ll.text" = "Нажмите кнопку и произнесите следующие цифры:";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "iHQ-eo-AEl"; */
+"iHQ-eo-AEl.normalTitle" = "Слишком шумно";

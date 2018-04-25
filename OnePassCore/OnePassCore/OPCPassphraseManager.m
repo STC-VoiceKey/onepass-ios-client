@@ -9,14 +9,9 @@
 #import "OPCPassphraseManager.h"
 
 /**
- The constant name for the passphrase .plist file name
+ The constant name for the passphrase localization and .plist files name
  */
-static NSString *kPassphrasePlistName  = @"PassphrasePlistName";
-
-/**
- The constant name for the passphrase localization file name
- */
-static NSString *kPassphraseStringName = @"PassphraseStringName";
+static NSString *kPassphraseName = @"passphrases";
 
 @interface OPCPassphraseManager (PrivateMethods)
 
@@ -108,9 +103,10 @@ static NSString *kPassphraseStringName = @"PassphraseStringName";
     
     for (int i = 0; i < randomArray.count; i++){
         NSString *digit = randomArray[i];
-        NSString *localKey = NSLocalizedStringFromTable(digit, self.localizationBundle, nil);
+        NSString *localKey = NSLocalizedStringFromTableInBundle(digit, kPassphraseName, [NSBundle bundleForClass:self.class], nil);
         [localizedArray setObject:localKey atIndexedSubscript:i];
     }
+    
     return localizedArray;
 }
 
@@ -146,18 +142,19 @@ static NSString *kPassphraseStringName = @"PassphraseStringName";
 @implementation OPCPassphraseManager (PrivateMethods)
 
 -(NSString *)pathLocalizationFileName{
-    return [NSBundle.mainBundle pathForResource: [NSBundle.mainBundle objectForInfoDictionaryKey:kPassphraseStringName] ofType:@"strings"];
+    return [[NSBundle bundleForClass:[self class]] pathForResource: kPassphraseName ofType:@"strings"];
 }
 
 -(NSString *)localizationBundle{
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:kPassphraseStringName];
+    
+    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:kPassphraseName];
 }
 
 -(NSArray<NSString *> *)passphraseSymbolArray{
     static dispatch_once_t once;
     static NSArray *passphrases;
     dispatch_once(&once, ^{
-        NSString *ppPlistPath  = [NSBundle.mainBundle pathForResource: [NSBundle.mainBundle objectForInfoDictionaryKey:kPassphrasePlistName] ofType:@"plist"];
+        NSString *ppPlistPath  = [[NSBundle bundleForClass:[self class]] pathForResource: kPassphraseName ofType:@"plist"];
         passphrases = [NSDictionary dictionaryWithContentsOfFile:ppPlistPath][@"passphrase"];
     });
     return passphrases;
@@ -170,7 +167,7 @@ static NSString *kPassphraseStringName = @"PassphraseStringName";
     for (int i = 0; i<self.passphraseSymbolArray.count; i++){
         
         NSString *digit = self.passphraseSymbolArray[i];
-        NSString *localKey = NSLocalizedStringFromTable(digit, self.localizationBundle, nil);
+        NSString *localKey =  NSLocalizedStringFromTableInBundle( digit, kPassphraseName, [NSBundle bundleForClass:self.class], nil);
         [localizedArray setObject:localKey atIndexedSubscript:i];
     }
     
@@ -188,7 +185,7 @@ static NSString *kPassphraseStringName = @"PassphraseStringName";
     for (int i = 0; i < OPCPassphraseManager.sharedInstance.passphraseReverseSymbolArray.count; i++){
         
         NSString *digit = OPCPassphraseManager.sharedInstance.passphraseReverseSymbolArray[i];
-        NSString *localKey = NSLocalizedStringFromTable(digit, self.localizationBundle, nil);
+        NSString *localKey = NSLocalizedStringFromTableInBundle(digit, kPassphraseName, [NSBundle bundleForClass:self.class], nil);
         [localizedArray setObject:localKey atIndexedSubscript:i];
     }
     return localizedArray;

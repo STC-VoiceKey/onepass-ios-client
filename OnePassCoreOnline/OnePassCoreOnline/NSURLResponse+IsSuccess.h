@@ -27,4 +27,6 @@
 
 -(BOOL)is500;
 
+-(NSInteger)statusCode;
+
 @end

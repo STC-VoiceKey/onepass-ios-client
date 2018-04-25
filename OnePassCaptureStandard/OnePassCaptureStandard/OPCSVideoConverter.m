@@ -9,6 +9,8 @@
 #import "OPCSVideoConverter.h"
 #import <AVFoundation/AVFoundation.h>
 
+#import "NSObject+Resolution.h"
+
 @interface OPCSVideoConverter()
 
 /**
@@ -61,9 +63,10 @@
  */
 @property (nonatomic, strong) void (^completionHandler)(NSError *error);
 
-#warning docs
+/**
+ Shows orientation of app interface 
+ */
 @property (nonatomic) OPCAvailableOrientation interfaceOrientation;
-
 
 @end
 
@@ -274,15 +277,28 @@
 }
 
 -(NSDictionary *)videoSettings {
-    return @{
+    
+    if (self.isSmallResolution) {
+        return @{
+                 AVVideoCodecKey: AVVideoCodecH264,
+                 AVVideoWidthKey: !self.isPortraitOrientation ? @320 : @240,
+                 AVVideoHeightKey: !self.isPortraitOrientation ? @240 : @320,
+                 AVVideoCompressionPropertiesKey: @{
+                         AVVideoAverageBitRateKey: @100000,
+                         AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel
+                         }
+                 };
+    } else {
+        return @{
              AVVideoCodecKey: AVVideoCodecH264,
-             AVVideoWidthKey: !self.isPortraitOrientation ? @320 : @240,
-             AVVideoHeightKey: !self.isPortraitOrientation ? @240 : @320,
+             AVVideoWidthKey: !self.isPortraitOrientation ? @640 : @480,
+             AVVideoHeightKey: !self.isPortraitOrientation ? @480 : @640,
              AVVideoCompressionPropertiesKey: @{
-                     AVVideoAverageBitRateKey: @100000,
+                     AVVideoAverageBitRateKey: @500000,
                      AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel
                      }
              };
+    }
 }
 
 -(NSDictionary *)audioSettings {

@@ -11,11 +11,9 @@
 @implementation NSObject (JSON)
 
 - (NSString *)JSONString{
-    
     NSError *error = nil;
     NSData  *data = [NSJSONSerialization dataWithJSONObject:self options:NO error:&error];
     return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];;
 }
-
 
 @end

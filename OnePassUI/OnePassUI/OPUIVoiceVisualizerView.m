@@ -65,7 +65,6 @@ static const float kMaxSampleValue = 32768;
 
 -(void)visualizeVoiceBuffer:(const void *)bytes
                      length:(NSUInteger)length{
-    
     if (!self.isStarted) {
         self.frame = CGRectMake(0, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
         
@@ -84,13 +83,9 @@ static const float kMaxSampleValue = 32768;
                               animations:^{
                 [self.superview setNeedsLayout];
                 [self.superview layoutIfNeeded];
-            }  completion:nil];
-
-//            [UIView animateWithDuration:9.3 delay:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
-//                // weakself.frame = CGRectOffset(weakself.frame , offset, 0);
-//                self.centerConstarint.constant = -120;
-//            } completion:nil];
-            
+                              }  completion:^(BOOL finished) {
+                                  self.centerConstarint.constant = 0;
+                              }];
         });
 
      }
@@ -107,6 +102,7 @@ static const float kMaxSampleValue = 32768;
             __weak typeof(self) weakself = self;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakself displayLine:max];
+                
             });
             max = 0;
         }

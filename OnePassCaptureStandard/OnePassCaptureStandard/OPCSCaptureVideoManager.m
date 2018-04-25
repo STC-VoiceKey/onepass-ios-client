@@ -159,6 +159,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 }
 
 -(void)compressVideo {
+    
     self.videoConverter = [[OPCSVideoConverter alloc] initWithAssetURL:self.urlForTemporallyFile
                                                            toOutputURL:self.urlForCompressedFile];
     self.interfaceOrientation = self.interfaceOrientation;

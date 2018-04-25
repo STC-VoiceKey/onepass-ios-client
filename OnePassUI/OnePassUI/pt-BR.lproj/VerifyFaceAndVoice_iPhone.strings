@@ -1,0 +1,9 @@
+
+/* Class = "UIViewController"; title = "Enroll Face Capture"; ObjectID = "8Ze-g5-yt8"; */
+"8Ze-g5-yt8.title" = "Enroll Face Capture";
+
+/* Class = "UILabel"; text = "pronounce following digits"; ObjectID = "kK9-5h-wur"; */
+"kK9-5h-wur.text" = "pronounce following digits";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "ycP-eG-Q9S"; */
+"ycP-eG-Q9S.normalTitle" = "Cancelar";

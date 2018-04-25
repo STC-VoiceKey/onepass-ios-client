@@ -23,3 +23,8 @@
 "Default Settings"="Настройки по Умолчанию";
 "Restore default settings?"="Восстановить настройки по умолчанию?";
 "Enter email"="Введите почтовый адрес";
+"Not valid url"="Некорректный URL";
+"Enter URL" = "Введите URL";
+
+"You can not disable all modalities. At least one modality must be enabled."="Нельзя отключить все модальности. Хотя бы одна модальность должна быть включена.";
+"All fields must be filled"="Все поля должны быть заполнены";

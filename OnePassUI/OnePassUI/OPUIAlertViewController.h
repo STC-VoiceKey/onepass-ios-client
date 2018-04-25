@@ -43,7 +43,7 @@
  Creates the alert view controller displaying the warning message with the header.
 
  @param warning The warning message.
- @param header The header of the warning message
+ @param header The header of the warning message.
  @param viewController The view controller which shows the warning message.
  @param handler The block to be executed when the user selects the action.
  @return The alert view controller displays the warning message.
@@ -53,19 +53,49 @@
                withViewController:(UIViewController *)viewController
                           handler:(void (^)(UIAlertAction *action))handler;
 
-#warning docs
+
+/**
+ Creates the alert view controller displaying the warning message with the header and 'cancel' and 'delete' buttons.
+
+ @param warning The warning message.
+ @param header The header of the warning message.
+ @param viewController The view controller which shows the warning message.
+ @param cancelHandler The block to be executed when the user selects the cancel action.
+ @param deleteHandler The block to be executed when the user selects the delete action.
+ @return The alert view controller displays the warning message.
+ */
 +(UIAlertController *)showWarning:(NSString *)warning
                        withHeader:(NSString *)header
                withViewController:(UIViewController *)viewController
                     cancelHandler:(void (^)(UIAlertAction *action))cancelHandler
                     deleteHandler:(void (^)(UIAlertAction *action))deleteHandler;
 
+/**
+  Creates the alert view controller displaying the warning message with the header and 'cancel' and 'ok' buttons.
+
+ @param warning The warning message.
+ @param header The header of the warning message.
+ @param viewController The view controller which shows the warning message.
+ @param okHandler The block to be executed when the user selects the OK action.
+ @param cancelHandler The block to be executed when the user selects the cancel action.
+ @return The alert view controller displays the warning message.
+ */
 +(UIAlertController *)showWarning:(NSString *)warning
                        withHeader:(NSString *)header
                withViewController:(UIViewController *)viewController
                         okHandler:(void (^)(UIAlertAction *action))okHandler
                     cancelHandler:(void (^)(UIAlertAction *action))cancelHandler;
 
+/**
+  Creates the alert view controller displaying the warning message with the header and 'cancel' and 'setting' buttons.
+
+ @param warning The warning message.
+ @param header The header of the warning message.
+ @param viewController The view controller which shows the warning message.
+ @param okHandler The block to be executed when the user selects the OK action.
+ @param cancelHandler The block to be executed when the user selects the cancel action.
+ @return The alert view controller displays the warning message.
+ */
 +(UIAlertController *)showWarning:(NSString *)warning
                        withHeader:(NSString *)header
                withViewController:(UIViewController *)viewController

@@ -6,22 +6,9 @@
 //  Copyright © 2017 Speech Technology Center. All rights reserved.
 //
 
-//#import "OPCOV4Manager.h"
 #import <OnePassCore/OnePassCore.h>
 #import "NSObject+JSON.h"
 
-///-------------------------------------------------------------
-/// Static Strings
-///-------------------------------------------------------------
-/**
- The constant name for the server URL in .plist file
- */
-static NSString * _Nonnull kOnePassServerURL   = @"kOnePassServerURL";
-
-/**
- The constant name for the server name in the user defaults store
- */
-static NSString * _Nonnull kOnePassUserIDKey   = @"kOnePassOnlineDemoKeyChainKey";
 ///-------------------------------------------------------------
 /// URL Params
 ///-------------------------------------------------------------
@@ -36,7 +23,7 @@ static NSString * _Nonnull kLDFeaturesURLParam = @"ldFeatures";
 static NSString * _Nonnull kFaceURLParam       = @"faceSample";
 static NSString * _Nonnull kFeaturesURLParam   = @"features";
 
-static NSString * _Nonnull kCreateSession   = @"%@/session";
+static NSString * _Nonnull kSession   = @"%@/session";
 
 /**
  The constant name for the read person GET request
@@ -111,6 +98,14 @@ static NSString * _Nonnull kVerificationVideo        = @"%@/verification/video/d
 static NSString * _Nonnull kVerificationFace        = @"%@/verification/face/file";
 
 /**
+ The constant name for the adding voice for the verification session POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/voice/dynamic/file
+ @endcode
+ */
+static NSString * _Nonnull kVerificationVoice        = @"%@/verification/voice/dynamic/file";
+
+/**
  The constant name for the verifing the person ПУЕ request
  @code
  http://vkplatform.speechpro.com/vkonepass/rest/verification/result
@@ -124,7 +119,7 @@ static NSString * _Nonnull KverificationResult       = @"%@/verification/result"
  http://vkplatform.speechpro.com/vkonepass/rest/verification/score
  @endcode
  */
-static NSString * _Nonnull KverificationResultScore  = @"%@/verification/score";
+static NSString * _Nonnull KverificationResultScore  = @"%@/verification/score?closeSession=false";
 
 /**
  The constant name for closing the verification session DELETE request
@@ -142,10 +137,11 @@ static NSString * _Nonnull kChannelURLParam   = @"channel";
  @see http://vkplatform.speechpro.com/vkonepass/help/
  */
 @interface OPCOManager : NSObject<IOPCTransportProtocol>//OPCOV4Manager
+
 /**
  The server USRL string
  */
-@property (nonatomic,readonly) NSString * _Nonnull serverUrl;
+@property (nonatomic) NSString * _Nonnull serverURL;
 
 /**
  Shows the host accessibility.

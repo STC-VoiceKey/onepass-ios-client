@@ -27,7 +27,9 @@
  */
 -(AVCaptureVideoPreviewLayer *)videoPreviewLayer;
 
-#warning docs
+/**
+ The core animation layer of preview view
+ */
 -(CALayer *)layer;
 
 @end

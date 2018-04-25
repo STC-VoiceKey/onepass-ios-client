@@ -83,9 +83,14 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
  */
 -(void)updateOrientation;
 
-#warning docs
--(void)resetIndicators;
+-(void)addUpdateOrientationObserving;
+-(void)removeUpdateOrientationObserving;
 
+
+/**
+ Resets indicators to off states
+ */
+-(void)resetIndicators;
 
 @end
 
@@ -135,6 +140,8 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     
         self.isListerning = YES;
     }
+    
+    [self addUpdateOrientationObserving];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -153,6 +160,8 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
         
         self.isObserving = NO;
     }
+    
+    [self removeUpdateOrientationObserving];
     
     self.frameCaptureManager = nil;
     self.faceNoFoundTimer = nil;
@@ -180,7 +189,7 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     if(!self.isListerning) {
         return;
     }
-    
+        
     [self updateIndicators];
     
     if(self.isReady!=[self calcReady]) {
@@ -234,7 +243,6 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
         if(![self.faceNoFoundTimer isProcessing]) {
             [self.faceNoFoundTimer startWithTime:2];
         }
-        
     } else {
         [self.faceNoFoundTimer stop];
        
@@ -257,6 +265,7 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     return NO;
 }
 -(void)showMask{
+    
     if(self.isMaskShown) {
         return;
     }
@@ -269,30 +278,20 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
                      animations:^{
                          [self.maskView setAlpha:1.0f];
                      } completion:nil];
-    
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(updateOrientation)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
 }
 
 -(void)hideMask{
     if(!self.isMaskShown) {
         return;
     }
-
-
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 self.maskView.alpha = 0.0f;
-                             });
     
-    [NSNotificationCenter.defaultCenter removeObserver:self
-                                                  name:UIDeviceOrientationDidChangeNotification
-                                                object:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.maskView.alpha = 0.0f;
+    });
+    
 }
 
 -(void)addMask {
-    NSLog(@"add mask");
     NSBundle *currentBundle = [NSBundle bundleForClass:[self class]];
     NSArray *nib = [currentBundle loadNibNamed:@"OPUIFaceNotFoundView" owner:self options:nil];
     self.maskView = (OPUIWarningView *)[nib objectAtIndex:0];
@@ -304,12 +303,12 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     });
     
     self.maskView.alpha = 0;
-
 }
 
 -(void)removeMask {
-    NSLog(@"remove mask");
+    
     [self hideMask];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.maskView removeFromSuperview];
         self.maskView = nil;
@@ -325,11 +324,22 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     }
     self.interfaceOrientation = currentOrientation;
     
-    if (self.isMaskShown) {
+   // if (self.isMaskShown) {
         [self removeMask];
-   //     [self addMask];
-//        [self showMask];
-    }
+   // }
+}
+
+-(void)addUpdateOrientationObserving {
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(updateOrientation)
+                                               name:UIDeviceOrientationDidChangeNotification
+                                             object:nil];
+}
+
+-(void)removeUpdateOrientationObserving {
+    [NSNotificationCenter.defaultCenter removeObserver:self
+                                                  name:UIDeviceOrientationDidChangeNotification
+                                                object:nil];
 }
 
 @end

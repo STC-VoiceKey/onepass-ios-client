@@ -21,15 +21,24 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0</string>
+	<string>3.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>3</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Modalities</key>
+	<dict>
+		<key>face</key>
+		<true/>
+		<key>liveness</key>
+		<true/>
+		<key>voice</key>
+		<true/>
+	</dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -39,17 +48,13 @@
 	<string>Biometric Auth </string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Biometric Auth </string>
-	<key>PassphrasePlistName</key>
-	<string>passphrases</string>
-	<key>PassphraseStringName</key>
-	<string>passphrases</string>
 	<key>STCVersionDescription</key>
-	<string>New API Version</string>
+	<string>Production</string>
 	<key>ServerUrl</key>
-	<string>https://onepass.tech/vkop/rest</string>
+	<string>https://onepass.tech/devvkop/rest</string>
 	<key>ServerUrls</key>
 	<array>
-		<string>https://onepass.tech/vkonepass/rest/v4</string>
+		<string>https://onepass.tech/vkop/rest</string>
 		<string>http://vkplatform.speechpro.com/vkonepass/rest</string>
 		<string>http://52.32.74.240/vkonepass/rest/v4</string>
 		<string>http://79.134.214.10/vkonepass/rest/v4</string>
@@ -59,6 +64,8 @@
 		<key>domainId</key>
 		<string>201</string>
 		<key>password</key>
+		<string>123</string>
+		<key>password1</key>
 		<string>QL0AFWMIX8NRZTKeof9cXsvbvu8=</string>
 		<key>username</key>
 		<string>admin</string>
@@ -106,5 +113,7 @@
 	<integer>1500</integer>
 	<key>iPad</key>
 	<string></string>
+	<key>isSmallResolution</key>
+	<true/>
 </dict>
 </plist>

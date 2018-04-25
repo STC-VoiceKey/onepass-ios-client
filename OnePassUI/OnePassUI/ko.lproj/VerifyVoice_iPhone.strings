@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Rax-7j-5i8"; */
+"Rax-7j-5i8.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "Press the  button and pronounce following digits:"; ObjectID = "bRI-iG-4ll"; */
+"bRI-iG-4ll.text" = "“녹화” 버튼을 누르시고 화면에 나오는 숫자를 차례대로 읽어주세요:";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "iHQ-eo-AEl"; */
+"iHQ-eo-AEl.normalTitle" = "Too noisy";

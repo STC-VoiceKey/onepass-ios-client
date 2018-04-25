@@ -1,0 +1,93 @@
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "1jf-vY-Z0X"; */
+"1jf-vY-Z0X.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Domain Id:"; ObjectID = "1t3-v5-JRw"; */
+"1t3-v5-JRw.text" = "Domain Id:";
+
+/* Class = "UITextField"; placeholder = "Enter username"; ObjectID = "4Zw-jI-oaG"; */
+"4Zw-jI-oaG.placeholder" = "Enter username";
+
+/* Class = "UITableViewSection"; headerTitle = "Session Data"; ObjectID = "6ar-r0-Nls"; */
+"6ar-r0-Nls.headerTitle" = "Session Data";
+
+/* Class = "UIButton"; normalTitle = "Default Settings"; ObjectID = "710-3A-Jnk"; */
+"710-3A-Jnk.normalTitle" = "Default Settings";
+
+/* Class = "UITableViewSection"; headerTitle = "Server URL"; ObjectID = "9rq-79-X4i"; */
+"9rq-79-X4i.headerTitle" = "Server settings";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "CYR-kY-NYa"; */
+"CYR-kY-NYa.text" = "Password:";
+
+/* Class = "UITableViewSection"; headerTitle = "Version"; ObjectID = "EA6-jN-nr0"; */
+"EA6-jN-nr0.headerTitle" = "Version";
+
+/* Class = "UILabel"; text = "URL"; ObjectID = "Fky-47-IfL"; */
+"Fky-47-IfL.text" = "URL";
+
+/* Class = "UITextField"; placeholder = "Enter domain id"; ObjectID = "GWN-bM-qkk"; */
+"GWN-bM-qkk.placeholder" = "Enter domain id";
+
+/* Class = "UILabel"; text = "Username:"; ObjectID = "IMA-Ib-Pyl"; */
+"IMA-Ib-Pyl.text" = "Username:";
+
+/* Class = "UITableViewSection"; headerTitle = "  "; ObjectID = "Kps-5p-DpP"; */
+"Kps-5p-DpP.headerTitle" = "  ";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "LaD-h5-E4x"; */
+"LaD-h5-E4x.text" = "Version";
+
+/* Class = "UILabel"; text = "Username:"; ObjectID = "Lir-nT-yUX"; */
+"Lir-nT-yUX.text" = "Username:";
+
+/* Class = "UIButton"; normalTitle = "Default Settings"; ObjectID = "McL-Py-YSc"; */
+"McL-Py-YSc.normalTitle" = "Default Settings";
+
+/* Class = "UILabel"; text = "Domain Id:"; ObjectID = "OeI-aC-QJd"; */
+"OeI-aC-QJd.text" = "Domain Id:";
+
+/* Class = "UITableViewSection"; headerTitle = "User"; ObjectID = "RVK-BI-oo9"; */
+"RVK-BI-oo9.headerTitle" = "User";
+
+/* Class = "UITextField"; placeholder = "Enter password"; ObjectID = "UIp-Pz-C9z"; */
+"UIp-Pz-C9z.placeholder" = "Enter password";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "bfX-BP-x7B"; */
+"bfX-BP-x7B.text" = "Detail";
+
+/* Class = "UILabel"; text = "user"; ObjectID = "bgV-vG-0Vg"; */
+"bgV-vG-0Vg.text" = "user";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "cVB-k6-dGG"; */
+"cVB-k6-dGG.title" = "Settings";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "dml-s6-Jwg"; */
+"dml-s6-Jwg.title" = " ";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "gRP-fr-oq1"; */
+"gRP-fr-oq1.text" = "Password:";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "ixp-xm-7Wp"; */
+"ixp-xm-7Wp.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "n5a-MG-vOM"; */
+"n5a-MG-vOM.text" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "v3o-hE-fU9"; */
+"v3o-hE-fU9.normalTitle" = "Delete";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "xdX-ap-OPf"; */
+"xdX-ap-OPf.text" = "Detail";
+
+/* Class = "UITableViewSection"; headerTitle = "Session Data"; ObjectID = "6ar-r0-Nls"; */
+"c53-D7-ote.headerTitle" = "Modalities";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "VcY-it-0g4"; */
+"VcY-it-0g4.title" = "Server settings";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "s1f-m8-S1D"; */
+"s1f-m8-S1D.title" = "Authorization";
+
+/* Class = "UITableViewSection"; headerTitle = "Resolution"; ObjectID = "Bvv-4D-HNm"; */
+"Bvv-4D-HNm.headerTitle" = "Resolution";

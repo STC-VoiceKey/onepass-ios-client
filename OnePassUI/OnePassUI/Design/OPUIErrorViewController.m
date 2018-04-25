@@ -11,7 +11,7 @@
 @interface OPUIErrorViewController ()
 
 @property (nonatomic, weak) IBOutlet UILabel    *titleLabel;
-@property (nonatomic, weak) IBOutlet UITextView *errorLabel;
+@property (nonatomic, weak) IBOutlet UILabel    *errorLabel;
 
 @end
 

@@ -42,10 +42,16 @@
 -(id)init {
     self = [super init];
     if (self) {
+//        OPCSFaceBoundPoint externalPercentPoints = [self boundsWithLeftBottomPoint:CGPointMake(0.05, 0.15)
+//                                                                 withRightTopPoint:CGPointMake(0.95, 0.85)];
+//        OPCSFaceBoundPoint interiorPercentPoints = [self boundsWithLeftBottomPoint:CGPointMake(0.35, 0.35)
+//                                                                 withRightTopPoint:CGPointMake(0.65, 0.65)];
+
         OPCSFaceBoundPoint externalPercentPoints = [self boundsWithLeftBottomPoint:CGPointMake(0.05, 0.15)
                                                                  withRightTopPoint:CGPointMake(0.95, 0.85)];
         OPCSFaceBoundPoint interiorPercentPoints = [self boundsWithLeftBottomPoint:CGPointMake(0.30, 0.30)
                                                                  withRightTopPoint:CGPointMake(0.70, 0.70)];
+        
         _percentBoundsPortrait = [self boundsWithExternalBounds:externalPercentPoints withExternalBounds:interiorPercentPoints];
         
         externalPercentPoints  = [self boundsWithLeftBottomPoint:CGPointMake(0.25, 0.10)
@@ -131,15 +137,20 @@
     return bounds;
 }
 
--(BOOL)checkFace:(OPCSFaceBoundPoint)face inBounds:(OPCSFaceBounds)bounds {
+-(BOOL)checkFace:(OPCSFaceBoundPoint)face
+        inBounds:(OPCSFaceBounds)bounds {
     
-    if ( (face.leftBottomPoint.x > bounds.external.leftBottomPoint.x) && (face.leftBottomPoint.x < bounds.interior.leftBottomPoint.x) ) {
+    if ( (face.leftBottomPoint.x > bounds.external.leftBottomPoint.x) &&
+         (face.leftBottomPoint.x < bounds.interior.leftBottomPoint.x) ) {
         
-        if ( (face.leftBottomPoint.y > bounds.external.leftBottomPoint.y) && (face.leftBottomPoint.y < bounds.interior.leftBottomPoint.y) ) {
+        if ( (face.leftBottomPoint.y > bounds.external.leftBottomPoint.y) &&
+             (face.leftBottomPoint.y < bounds.interior.leftBottomPoint.y) ) {
             
-            if ( (face.rightTopPoint.x > bounds.interior.rightTopPoint.x) && (face.rightTopPoint.x < bounds.external.rightTopPoint.x) ) {
+            if ( (face.rightTopPoint.x > bounds.interior.rightTopPoint.x) &&
+                 (face.rightTopPoint.x < bounds.external.rightTopPoint.x) ) {
                 
-                if ( (face.rightTopPoint.y > bounds.interior.rightTopPoint.y) && (face.rightTopPoint.y < bounds.external.rightTopPoint.y)) {
+                if ( (face.rightTopPoint.y > bounds.interior.rightTopPoint.y) &&
+                     (face.rightTopPoint.y < bounds.external.rightTopPoint.y)) {
                     
                     return YES;
                 }
@@ -147,7 +158,6 @@
         }
     }
     
-    return NO;
-    
+    return NO;    
 }
 @end

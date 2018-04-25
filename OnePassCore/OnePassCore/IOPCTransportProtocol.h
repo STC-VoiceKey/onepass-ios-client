@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IOPCVerificationSessionProtocol.h"
+#import "IOPCSession.h"
 
 /**
  Is the block which is called when data is received
@@ -45,7 +46,9 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
 
 @required
 
--(void)changeServerURL:(NSString *)url;
+-(void)setSessionData:(id<IOPCSession>)sessionData;
+
+-(void)setServerURL:(NSString *)url;
 
 ///--------------------------------------------
 /// @name Session service
@@ -98,7 +101,7 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  * @param personId The unique identifier of the person
  * @param block The response block called when the result is received
  */
--(void)addFaceSample:(NSData *)imageData forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block;
+-(void)addFaceSample:(NSData *)imageData withCompletionBlock:(ResponceBlock)block;
 
 /**
  * Adds VoiceFile for the person.
@@ -107,7 +110,7 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  * @param personId The unique identifier of the person
  * @param block The response block called when the result is received
  */
--(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block;
+-(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase withCompletionBlock:(ResponceBlock)block;
 
 ///--------------------------------------------
 /// @name Verification process
@@ -118,74 +121,55 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  * @param personId The unique identifier of the person
  * @param block The response block called when the result is received
  */
--(void)startVerificationSession:(NSString *)personId  withCompletionBlock:(ResponceVerifyBlock)block;
+-(void)startVerificationSession:(NSString *)personId withCompletionBlock:(ResponceVerifyBlock)block;
 
 /**
  * Adds the verification video for the person.
- * @param video The video data as a file 
- * @param session The verification session id.
- * @param passcode The passphrase associated with the video file
+ * @param video The video data as a file
+ * @param passphrase The passphrase associated with the video file
  * @param block The response block called when the result is received
  */
 -(void)addVerificationVideo:(NSData *)video
-                 forSession:(NSString *)session
-               withPasscode:(NSString *)passcode
+             withPassphrase:(NSString *)passphrase
         withCompletionBlock:(ResponceBlock)block;
 
 /**
  * Adds the verification face for the person.
  * @param face The face data as a file
- * @param session The verification session id.
  * @param block The response block called when the result is received
  */
 -(void)addVerificationFace:(NSData *)face
-                forSession:(NSString *)session
        withCompletionBlock:(ResponceBlock)block;
 
 /**
- * Verifies the person authenticity.
- * @param session The verification session id.
+ * Adds the verification voice for the person.
+ * @param voice The voice data as a file
  * @param block The response block called when the result is received
  */
--(void)verify:(NSString *)session withCompletionBlock:(ResponceBlock)block;
+-(void)addVerificationVoice:(NSData *)voice
+             withPassphrase:(NSString *)passphrase
+        withCompletionBlock:(ResponceBlock)block;
+
+/**
+ * Verifies the person authenticity.
+ * @param block The response block called when the result is received
+ */
+-(void)verifyResultWithCompletionBlock:(ResponceBlock)block;
 
 /**
  * Gets the verification session score.
  * @warning Usually used for debugging.
- * @param session The verification session id.
  * @param block The response block called when the result is received
  *
  * @see -verify:withCompletionBlock:
  */
--(void)verifyScore:(NSString *)session withCompletionBlock:(ResponceBlock)block;
+-(void)verifyScoreWithCompletionBlock:(ResponceBlock)block;
 
 /**
  * Closes the verification session.
- * @param session The verification session id.
  * @param block The response block called when the result is received
  */
--(void)closeVerification:(NSString *)session withCompletionBlock:(ResponceBlock)block;
-
-///--------------------------------------------------------
-/// @name Verification process with Liveness (additional)
-///--------------------------------------------------------
-
-/**
- * Adds verification data for the verification session.
- * @warning You can use this method only if you use FaceSDK on the device. In common use @see -addVerificationVideo:forSession:withPasscode:withCompletionBlock:
- * @param imageData The image data as jpeg
- * @param voiceFeatures The voice features (VSDK)
- * @param ldFeatures The LD features (FaceSDK)
- * @param session The verification session id.
- * @param passcode The passphrase associated with the data
- * @param block The response block called when the result is received
- */
--(void)addVerificationData:(NSData *)imageData
-         withVoiceFeatures:(NSData *)voiceFeatures
-            withLdFeatures:(NSData *)ldFeatures
-                forSession:(NSString *)session
-              withPasscode:(NSString *)passcode
-       withCompletionBlock:(ResponceBlock)block;
+-(void)closeVerificationWithCompletionBlock:(ResponceBlock)block;
 
 @end
 

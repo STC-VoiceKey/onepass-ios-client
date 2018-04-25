@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const unsigned char OnePassUIVersionString[];
 
 #import <OnePassUI/OPUILoader.h>
 #import <OnePassUI/OPUITextView.h>
+#import <OnePassUI/OPUITextField.h>
 #import <OnePassUI/UITextView+Placeholder.h>
 #import <OnePassUI/OPUISpacingLabel.h>
 
@@ -32,6 +33,8 @@ FOUNDATION_EXPORT const unsigned char OnePassUIVersionString[];
 #import <OnePassUI/OPUIAlertViewController.h>
 #import <OnePassUI/IOPUILoaderProtocol.h>
 #import <OnePassUI/OPUIBarButtonItem.h>
+
+#import <OnePassUI/OPUIModalitiesManager.h>
 
 
 

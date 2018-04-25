@@ -11,12 +11,13 @@
 #import <OnePassUI/OnePassUI.h>
 #import <OnePassCoreOnline/OnePassCoreOnline.h>
 #import <OnePassCore/OnePassCore.h>
+#import "OPODPerson.h"
 
 #import "OPODLoginButtonPresenter.h"
-#import "NSString+Email.h"
+#import "NSString+Validation.h"
 #import "NSObject+ResourceAccessUtils.h"
 
-extern NSString *kOnePassUserIDKey;
+static NSString *kOnePassUserIDKey = @"kOnePassUserIDKey_v31";
 
 @interface OPODLoginPresenter()
 
@@ -73,7 +74,7 @@ extern NSString *kOnePassUserIDKey;
                                              code:500
                                          userInfo:@{ NSLocalizedDescriptionKey:NSLocalizedString(@"Server not respond",nil) }];
         [self.loginView showError:error];
-         return;
+        return;
     }
     
     [self.loginView startActivityAnimating];
@@ -97,9 +98,9 @@ extern NSString *kOnePassUserIDKey;
                      [weakself.loginView showError:error];
                  }
              } else {
-                 weakself.person = [[OPCOPerson alloc] initWithJSON:responceObject];
+                 weakself.person = [[OPODPerson alloc] initWithJSON:responceObject];
                  if (weakself.person) {
-                     [self.buttonPresenter setStateBasedOnFullEnroll:[weakself.person isFullEnroll]];
+                     [self.buttonPresenter setStateBasedOnFullEnroll:weakself.person.isFullEnroll];
                  } else {
                      [self.buttonPresenter setStateToOFF];
                  }
@@ -123,8 +124,7 @@ extern NSString *kOnePassUserIDKey;
     }];
 }
 
--(BOOL)isAllPermissionAccessable{
-    
+-(BOOL)isAllPermissionAccessable {
     if([self isMicrophoneUndetermined] || [self isCameraUndetermined]) {
         return NO;
     }
@@ -177,7 +177,7 @@ static BOOL isProgress = NO;
     self.currentUser = user;
     if (!isProgress) {
         isProgress = YES;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)),
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),
                        dispatch_get_main_queue(), ^{
                            [self.loginView hideValidationMessage];
                            if(isProgress) {
@@ -189,12 +189,11 @@ static BOOL isProgress = NO;
 }
 
 -(void)setupUser:(NSString *)user{
-    NSLog(@"-------------------------------------------------setupUser");
     if([user isValidEmail]) {
         [self readPerson:user];
-        
         return;
     }
+
     if (user.length > 0) {
         [self.loginView showValidationMessage];
         [self.buttonPresenter setStateToOFF];

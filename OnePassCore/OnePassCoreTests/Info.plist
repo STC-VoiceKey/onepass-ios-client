@@ -20,5 +20,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+    <key>PassphrasePlistName</key>
+    <string>passphrases</string>
+    <key>PassphraseStringName</key>
+    <string>passphrases</string>
 </dict>
 </plist>

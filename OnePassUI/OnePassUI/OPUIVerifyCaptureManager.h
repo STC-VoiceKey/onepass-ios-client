@@ -13,7 +13,6 @@
 
 
 @interface OPUIVerifyCaptureManager : NSObject<IOPCRecordProtocol,
-                                                IOPCNoisyProtocol,
                                               IOPCSessionProtocol>
 
 /**

@@ -14,9 +14,10 @@
 #import <OnePassCore/OnePassCore.h>
 
 #import "OPODLoginPresenter.h"
+#import "OPODSettingsManager.h"
 #import <OnePassUI/UITextView+Placeholder.h>
 
-static NSString *kSettingsSegueIdentifier       = @"SettingsSegueIdentifier";
+static NSString *kSettingsSegueIdentifier       = @"kSettingsSegueIdentifier";
 static NSString *kAccessSegueIdentifier         = @"AccessSegueIdentifier";
 static NSString *kSignUpCompleteSegueIdentifier = @"SignUpCompleteSegueIdentifier";
 
@@ -61,6 +62,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
     __weak typeof(self) weakself = self;
     [OPUILoader.sharedInstance setEnrollResultBlock:^(BOOL result,NSDictionary *score) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loginPresenter savePerson2UserdDefaults:self.emailTextView.text];
             [weakself performSegueOnMainThreadWithIdentifier:kSignUpCompleteSegueIdentifier];
         });
     }];
@@ -70,9 +72,6 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
         [weakself performSegueOnMainThreadWithIdentifier:(result) ? kVerifySuccessSegueIdentifier : kVerifyFailSegueIdentifier];
     }];
     
-//    [self.emailTextView addTarget:self
-//                            action:@selector(onEmailEdited:)
-//                  forControlEvents:UIControlEventEditingChanged];
     self.emailTextView.placeholder = NSLocalizedString(@"Enter email", nil);
     [self assemblyPresenter];
 }
@@ -92,9 +91,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
     [self addNotificationObserverForName:UIKeyboardWillHideNotification
                             withSelector:@selector(keyboardWillDiappeared:)];
 
-    //if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self showKeyboard];
-  //  }
+    [self showKeyboard];
 
     [self networkStateChanged:self.service.isHostAccessable];
 }
@@ -216,6 +213,15 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
 }
 
 - (IBAction)unwindExit:(UIStoryboardSegue *)unwindSegue{
+    id<IOPODSettingsManagerProtocol> settingsManager = [[OPODSettingsManager alloc] init];
+    [self.service setServerURL:settingsManager.serverURL];
+    [self.service setSessionData:settingsManager.cryptedSessionData];
+}
+
+- (IBAction)unwindSettings:(UIStoryboardSegue *)unwindSegue{
+    id<IOPODSettingsManagerProtocol> settingsManager = [[OPODSettingsManager alloc] init];
+    [self.service setServerURL:settingsManager.serverURL];
+    [self.service setSessionData:settingsManager.cryptedSessionData];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -261,7 +267,6 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
         [self.navigationController pushViewController:vc
                                              animated:YES];
     });
-    
 }
 
 -(void)showError:(NSError *)error{
@@ -291,7 +296,7 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
 
 -(void)assemblyPresenter{
     self.loginPresenter = [[OPODLoginPresenter alloc] init];
-    [self.loginPresenter attachView:self];
+    [self.loginPresenter attachView:(id<IOPODLoginViewProtocol,IOPODLoginButtonViewProtocol>)self];
     [self.loginPresenter setService:self.service];
     [self.loginPresenter setCaptureManager:self.captureManager];
 }

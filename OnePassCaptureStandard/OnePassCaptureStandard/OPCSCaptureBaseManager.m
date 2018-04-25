@@ -13,6 +13,7 @@
 
 #import "OPCSFaceManager.h"
 #import "CIImage+Extra.h"
+#import "NSObject+Resolution.h"
 
 @interface OPCSCaptureBaseManager()
 
@@ -54,9 +55,17 @@
  */
 -(void)calcTremor:(CIFaceFeature *)face;
 
-#warning docs
+/**
+ @return The current video stream orientation
+ */
 -(AVCaptureVideoOrientation)videoOrientation;
 
+/**
+ Changes image orientatin to right way
+
+ @param ciImage The source image
+ @return The image with fixed orientation
+ */
 -(CIImage *)fixOrientation:(CIImage *)ciImage;
 
 @end
@@ -112,7 +121,6 @@
     AVCaptureVideoPreviewLayer *previewLayer = (AVCaptureVideoPreviewLayer *)self.viewForRelay.layer;
     [previewLayer setMasksToBounds:YES];
     [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [previewLayer setBackgroundColor:(__bridge CGColorRef _Nullable)([CIColor whiteColor])];
     
     [self setupAVCapture];
 }
@@ -135,6 +143,7 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
+
     [self checkEnviroment:sampleBuffer];
     [self checkPortraitFeatures:sampleBuffer];
 }
@@ -147,25 +156,19 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     });
 }
 
--(void)checkPortraitFeatures:(CMSampleBufferRef)sampleBuffer{
-
+-(void)checkPortraitFeatures:(CMSampleBufferRef)sampleBuffer {
     @autoreleasepool {
         self.currentImage = [self fixOrientation:[self imageFromSampleBuffer:sampleBuffer]];
         
         NSArray *features = [self.detector featuresInImage:self.currentImage
-                                                   options:@{CIDetectorEyeBlink:@YES}];
+                                                   options:@{ CIDetectorEyeBlink:@YES, CIDetectorSmile:@YES }];
         
         if (features.count == 1) {
-            
             self.isSingleFace = YES;
-            
             for(CIFaceFeature* faceFeature in features) {
                 [self calcTremor:faceFeature];
-                
                 if (faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition) {
-                    
                     self.isEyesFound = (!faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed);
-                    
                     self.isFaceFound = [self.faceManager isSuitableFaceByRightEye:faceFeature.rightEyePosition
                                                                         byLeftEye:faceFeature.leftEyePosition
                                                                            inSize:self.currentImage.extent.size];
@@ -227,6 +230,30 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
+-(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation {
+    _interfaceOrientation = orientation;
+    
+    [self.faceManager setInterfaceOrientation:_interfaceOrientation];
+    
+    AVCaptureVideoOrientation videoOrientation;
+    
+    switch (orientation) {
+        case OPCAvailableOrientationRight:
+            videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+            
+        case OPCAvailableOrientationLeft:
+            videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+            
+        default:
+            videoOrientation = AVCaptureVideoOrientationPortrait;
+            break;
+    }
+    
+    self.viewForRelay.videoPreviewLayer.connection.videoOrientation = videoOrientation;
+}
+
 -(BOOL)isPortraitOrientation{
     return (_interfaceOrientation == OPCAvailableOrientationUp);
 }
@@ -268,30 +295,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     self.previousFace = face;
 }
 
--(void)setInterfaceOrientation:(OPCAvailableOrientation)orientation {
-    _interfaceOrientation = orientation;
-    
-    [self.faceManager setInterfaceOrientation:_interfaceOrientation];
-    
-    AVCaptureVideoOrientation videoOrientation;
-    
-    switch (orientation) {
-        case OPCAvailableOrientationRight:
-            videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-            break;
-            
-        case OPCAvailableOrientationLeft:
-            videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-            
-        default:
-            videoOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-    }
-    
-    self.viewForRelay.videoPreviewLayer.connection.videoOrientation = videoOrientation;
-}
-
 -(CIImage *)fixOrientation:(CIImage *)ciImage{
 
     if (_interfaceOrientation==OPCAvailableOrientationLeft) {
@@ -314,5 +317,3 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 @end
-
-

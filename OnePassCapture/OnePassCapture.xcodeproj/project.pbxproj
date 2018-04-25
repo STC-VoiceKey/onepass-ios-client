@@ -147,8 +147,8 @@
 				C9DE447C1ECD93B5004D1608 /* IOPCCheckFacePosition.h */,
 				C9B3C3B61F4B37DA00F6908E /* IOPCInterfaceOrientationProtocol.h */,
 				C926971A1F4DB42D0013E0CC /* IOPCSnapshotProtocol.h */,
-				C9F405861D538AD500007549 /* Info.plist */,
 				C947D8A81F596C0700CC19C7 /* IOPCLoadingImageProtocol.h */,
+				C9F405861D538AD500007549 /* Info.plist */,
 			);
 			path = OnePassCapture;
 			sourceTree = "<group>";

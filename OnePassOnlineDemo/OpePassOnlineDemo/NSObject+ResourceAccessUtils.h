@@ -16,7 +16,7 @@
 -(BOOL)isMicrophoneUndetermined;
 -(BOOL)isCameraUndetermined;
 
--(void)askCameraPermissionWithHandler:(void (^)(BOOL granted))handler;
+-(void)askCameraPermissionWithHandler:(void (^)(BOOL granted))handler;                                                                                         
 -(void)askMicPermissionWithHandler:(void (^)(BOOL granted))handler;
 
 @end

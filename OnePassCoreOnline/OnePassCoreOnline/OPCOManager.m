@@ -17,7 +17,7 @@
 /**
  * The session data: username, password, domain.
  */
-@property (nonatomic,readonly) NSDictionary *session;
+@property (nonatomic) id<IOPCSession> sessionData;
 
 /**
  * The current session id.
@@ -44,7 +44,6 @@
  Shows that the host is accessible
  */
 @property (nonatomic) BOOL isHostAccessable;
-
 
 @end
 
@@ -112,25 +111,7 @@
     self = [super init];
     
     if(self){
-        
-        _session = [NSBundle.mainBundle objectForInfoDictionaryKey:@"SessionData"];
         _isSessionStarted = NO;
-        
-        NSString *serverUrlFromDefaults = [NSUserDefaults.standardUserDefaults stringForKey:kOnePassServerURL];
-        
-        if (serverUrlFromDefaults && serverUrlFromDefaults.length>0) {
-            _serverUrl = [NSString stringWithString:serverUrlFromDefaults];
-        }
-        else{
-            _serverUrl = [NSBundle.mainBundle objectForInfoDictionaryKey:@"ServerUrl"];
-#warning Сделать асерт
-            
-            //            NSAssert( _serverUrl==nil, @"Set Server URL .plist");
-            [NSUserDefaults.standardUserDefaults setObject:_serverUrl forKey:kOnePassServerURL];
-            [NSUserDefaults.standardUserDefaults synchronize];
-        }
-        
-        NSLog(@"server url - %@",_serverUrl);
         
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(reachabilityChanged:)
                                                    name:kReachabilityChangedNotification
@@ -163,14 +144,20 @@
     [self updateInterfaceWithReachability:curReach];
 }
 
+-(void)setServerURL:(NSString *)serverURL {
+    _serverURL = serverURL;
+    self.isSessionStarted = NO;
+}
+
 -(void)createSessionWithCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
     
-    NSDictionary *body = @{kUsernameURLParam:self.session[@"username"],
-                           kPasswordURLParam:self.session[@"password"],
-                           kDomainIdURLParam:self.session[@"domainId"]};
+    NSDictionary *body = @{kUsernameURLParam:self.sessionData.username,
+                           kPasswordURLParam:self.sessionData.password,
+                           kDomainIdURLParam:self.sessionData.domain};
+    NSLog(@"%@",body);
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kCreateSession, self.serverUrl]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kSession, self.serverURL]
                                                           withBody:body
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      NSLog(@"create session -  %@",response);
@@ -184,19 +171,16 @@
                                                                  resultBlock(nil,nil);
                                                              }
                                                          } else {
-                                                             if ([response is404] || [response is500]) {
-                                                                 if(resultBlock) {
-                                                                     resultBlock(nil,[NSError errorWithDomain:@"com.speachpro.onepass"
-                                                                                                         code:404
-                                                                                                     userInfo:@{  NSLocalizedDescriptionKey:@"Incorrect URL. Please, enter the correct one." }]);
-                                                                 }
-                                                             }
+                                                             if(resultBlock) {
+                                                                 NSError *error = (data != nil)? [self errorWithData:data] :[NSError errorWithDomain:@"com.speachpro.onepass"
+                                                                                                                                                code:response.statusCode
+                                                                                                                                            userInfo:nil];
+                                                                 resultBlock(nil,error);
+                                                            }
                                                          }
                                                      } else {
                                                          if(resultBlock) {
-                                                             resultBlock(nil,[NSError errorWithDomain:@"com.speachpro.onepass"
-                                                                                                 code:404
-                                                                                             userInfo:@{ NSLocalizedDescriptionKey: @"Incorrect URL. Please, enter the correct one." }]);
+                                                             resultBlock(nil,error);
                                                          }
                                                      }
                                                      
@@ -207,15 +191,28 @@
 }
 
 -(void)deleteSessionWithCompletionBlock:(ResponceBlock)block {
-    if(block){
-        block(nil,nil);
-    }
+    ResponceBlock resultBlock = block;
+
+    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kSession, self.serverURL]
+                                                   completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                       if (!error) {
+                                                           NSLog(@"delete server session %@",response);
+                                                           if(resultBlock) {
+                                                               resultBlock( nil, [response isSuccess] ? nil : [self errorWithData:data]);
+                                                           }
+                                                       } else {
+                                                           if(resultBlock) {
+                                                               resultBlock(nil,error);
+                                                           }
+                                                       }
+                                                    }];
+    [task resume];
 }
 
 -(void)createPerson:(NSString *)personId withCompletionBlock:(ResponceBlock) block {
     ResponceBlock resultBlock = block;
     self.transactionId = nil;
-    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kStartRegistration,self.serverUrl,personId ]
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kStartRegistration,self.serverURL,personId ]
                                                           withBody:nil
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      NSLog(@"create person -  %@",response);
@@ -231,9 +228,9 @@
     [task resume];
 }
 
--(void)addFaceSample:(NSData *)imageData forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block {
+-(void)addFaceSample:(NSData *)imageData withCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddRegistrationFaceFile,self.serverUrl]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddRegistrationFaceFile,self.serverURL]
                                                           withBody:@{kDataURLParam:[imageData base64EncodedStringWithOptions:0]}
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      if (!error){
@@ -243,18 +240,17 @@
                                                          resultBlock(nil,error);
                                                          return ;
                                                      }
-                                                     
                                                  }];
     [task resume];
 }
 
--(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase forPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block {
+-(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase withCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddRegistrationVoiceFile,self.serverUrl]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddRegistrationVoiceFile,self.serverURL]
                                                           withBody:@{ kDataURLParam:[voiceData base64EncodedStringWithOptions:0],
                                                                       kPasswordURLParam:passphrase,
-                                                                      kGenderURLParam:@0,
+                                                                     // kGenderURLParam:@0,
                                                                       kChannelURLParam:@0 }
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      
@@ -273,7 +269,7 @@
     ResponceVerifyBlock resultBlock = block;
     
     self.transactionId = nil;
-    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kStartVerification,self.serverUrl,personId]
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kStartVerification,self.serverURL,personId]
                                                          withBody:nil
                                                 completionHandler:^(NSData * _Nullable data,
                                                                     NSURLResponse * _Nullable response,
@@ -290,7 +286,7 @@
                                                                 resultBlock(vSession,nil);
                                                             }
                                                         } else
-                                                            if(resultBlock) resultBlock(nil,[self errorWithData:data]);
+                                                            if(resultBlock) resultBlock(nil, [self errorWithData:data]);
                                                         
                                                     } else {
                                                         resultBlock(nil,error);
@@ -301,14 +297,14 @@
     [task resume];
 }
 
+#warning Remove passphrase from server
 -(void)addVerificationVideo:(NSData *)video
-                 forSession:(NSString *)session
-               withPasscode:(NSString *)passcode
+             withPassphrase:(NSString *)passphrase
         withCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationVideo, self.serverUrl, session]
-                                                          withBody:@{kDataURLParam:[video base64EncodedStringWithOptions:0],kPasswordURLParam:passcode}
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationVideo, self.serverURL]
+                                                          withBody:@{ kDataURLParam:[video base64EncodedStringWithOptions:0], kPasswordURLParam:passphrase }
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      if (!error){
                                                          NSLog(@"add video sample %@",response);
@@ -324,11 +320,10 @@
 }
 
 -(void)addVerificationFace:(NSData *)face
-                forSession:(NSString *)session
        withCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationFace, self.serverUrl, session]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationFace, self.serverURL]
                                                           withBody:@{kDataURLParam:[face base64EncodedStringWithOptions:0]}
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      if (!error){
@@ -344,9 +339,32 @@
     [task resume];
 }
 
--(void)verify:(NSString *)session withCompletionBlock:(ResponceBlock)block {
+-(void)addVerificationVoice:(NSData *)voice
+             withPassphrase:(NSString *)passphrase
+        withCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
-    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:KverificationResult,self.serverUrl]
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationVoice, self.serverURL]
+                                                          withBody:@{ kDataURLParam:[voice base64EncodedStringWithOptions:0],
+                                                                      kPasswordURLParam:passphrase,
+                                                                      kChannelURLParam:@0 }
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     if (!error){
+                                                         NSLog(@"add voice sample %@",response);
+                                                         if(resultBlock) {
+                                                             resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                         }
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    [task resume];
+}
+
+-(void)verifyResultWithCompletionBlock:(ResponceBlock)block {
+    ResponceBlock resultBlock = block;
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:KverificationResult,self.serverURL]
                                                          withBody:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
                                   {
@@ -364,9 +382,9 @@
     [task resume];
 }
 
--(void)verifyScore:(NSString *)session withCompletionBlock:(ResponceBlock)block {
+-(void)verifyScoreWithCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
-    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:KverificationResultScore, self.serverUrl, session]
+    NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:KverificationResultScore, self.serverURL]
                                                          withBody:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     if (!error) {
@@ -383,9 +401,9 @@
     [task resume];
 }
 
--(void)closeVerification:(NSString *)session withCompletionBlock:(ResponceBlock)block {
+-(void)closeVerificationWithCompletionBlock:(ResponceBlock)block {
     ResponceBlock resultBlock = block;
-    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kVerification,self.serverUrl,session]
+    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kVerification,self.serverURL]
                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                        if (!error) {
                                                            NSLog(@"close session %@",response);
@@ -393,8 +411,9 @@
                                                                resultBlock( nil, [response isSuccess] ? nil : [self errorWithData:data]);
                                                            }
                                                        } else {
-                                                           if(resultBlock) resultBlock(nil,error);
-                                                           return ;
+                                                           if(resultBlock) {
+                                                               resultBlock(nil,error);
+                                                           }
                                                        }
                                                    }];
     
@@ -429,7 +448,7 @@
                            kLDFeaturesURLParam:@{kDataURLParam:[ldFeatures base64EncodedStringWithOptions:0]},
                            kPasswordURLParam:passcode};
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddData2VerificationSession,_serverUrl,session]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddData2VerificationSession,_serverURL,session]
                                                           withBody:body
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                      if (!error){
@@ -443,17 +462,10 @@
     [task resume];
 }
 
-
--(void)changeServerURL:(NSString *)url {
-    _serverUrl = url;
-//    [NSUserDefaults.standardUserDefaults setObject:_serverUrl forKey:kOnePassServerURL];
-//    [NSUserDefaults.standardUserDefaults synchronize];
-}
-
 -(void)deletePerson:(NSString *)personId withCompletionBlock:(ResponceBlock) block{
     ResponceBlock resultBlock = block;
     
-    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kDeletePersonById,_serverUrl,personId]
+    NSURLSessionDataTask *task = [self taskDeleteRequestForURLString:[NSString stringWithFormat:kDeletePersonById,_serverURL,personId]
                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                        if (!error){
                                                            NSLog(@"delete person -  %@",response);
@@ -470,18 +482,21 @@
 -(void)readPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block{
     ResponceBlock resultBlock = block;
 
-    __unused NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kReadPersonById, _serverUrl, personId]
+    __unused NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kReadPersonById, self.serverURL, personId]
                                                                   withBody:nil
                                                          completionHandler:^(NSData * _Nullable data,
                                                                              NSURLResponse * _Nullable response,
                                                                              NSError * _Nullable error){
                                                              NSLog(@"read person %@",response);
-                                                             NSLog(@"%@",error);
                                                              if(!error){
                                                                  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                                                  if(resultBlock){
-                                                                     if([response isSuccess]) resultBlock(json,nil);
-                                                                     else                     resultBlock(nil,[self errorWithData:data]);
+                                                                     if([response isSuccess]) {
+                                                                         resultBlock(json,nil);
+                                                                      }
+                                                                     else {
+                                                                         resultBlock(nil,[self errorWithData:data]);
+                                                                     }
                                                                  }
                                                              }else{
                                                                  resultBlock(nil,error);
@@ -492,6 +507,7 @@
 
     [task resume];
 }
+
 @end
 
 //-----------------------
@@ -561,6 +577,7 @@
     
     if (self.sessionId) {
         [request addValue:self.sessionId forHTTPHeaderField:@"X-Session-Id"];
+        NSLog(@"request for session %@",self.sessionId);
     }
     
     if (self.transactionId) {
@@ -593,10 +610,6 @@
     return [NSError errorWithDomain:@"com.speachpro.onepass"
                                code:400
                            userInfo:@{ NSLocalizedDescriptionKey: errorString }];    
-}
-
--(NSString *)userID{
-    return [NSUserDefaults.standardUserDefaults objectForKey:kOnePassUserIDKey];
 }
 
 @end

@@ -34,7 +34,6 @@
 
 -(void)orientationChanged{
     [self updateOrientation];
-    NSLog(@"current orientation %d", self.currentOrientation);
 }
 
 -(void)updateOrientation{

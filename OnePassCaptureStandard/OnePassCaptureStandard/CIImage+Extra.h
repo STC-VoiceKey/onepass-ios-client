@@ -17,13 +17,4 @@
  */
 - (CIImage *)scaledToSize:(CGSize)newSize;
 
-
-/**
- Corrects the orientation of image
- 
- @param image The source image
- @return The corrected image
- */
--(CIImage *)correctImageOrientation;
-
 @end

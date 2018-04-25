@@ -11,6 +11,7 @@
 #import <ImageIO/ImageIO.h>
 
 #import "CIImage+Extra.h"
+#import "NSObject+Resolution.h"
 
 @interface OPCSCapturePhotoManager(PrivateMethods)
 
@@ -25,7 +26,6 @@
 
 -(void)takePicture {
     if (self.loadImageBlock) {
-        
         CIImage *sizedImage = [self.currentImage scaledToSize:self.size];
         
         if (sizedImage) {
@@ -47,8 +47,11 @@
 }
 
 -(CGSize)size{
-#warning move to plist
-    return self.isPortraitOrientation ? CGSizeMake(320, 240) : CGSizeMake(240, 320);
+    if ([self isSmallResolution]) {
+        return (self.isPortraitOrientation == OPCAvailableOrientationUp) ? CGSizeMake(240, 320) : CGSizeMake(320, 240);
+    }
+    
+    return self.isPortraitOrientation ? CGSizeMake(640, 480) : CGSizeMake(480, 640);
 }
 
 @end
