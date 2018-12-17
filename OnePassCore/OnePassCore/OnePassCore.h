@@ -19,4 +19,5 @@ FOUNDATION_EXPORT const unsigned char OnePassCoreVersionString[];
 #import <OnePassCore/IOPCTransportableProtocol.h>
 #import <OnePassCore/IOPCPersonProtocol.h>
 #import <OnePassCore/OPCPassphraseManager.h>
+#import <OnePassCore/OPCDeviceUtil.h>
 #import <OnePassCore/IOPCSession.h>

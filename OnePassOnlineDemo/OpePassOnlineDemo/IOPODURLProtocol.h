@@ -13,6 +13,7 @@
 @protocol IOPODURLViewProtocol <IOPODSettingBaseViewProtocol>
 
 -(void)showURL:(NSString *)url;
+-(void)showSessionURL:(NSString *)url;
 
 -(void)showValidationMessage;
 -(void)hideValidationMessage;
@@ -30,10 +31,13 @@
 -(void)attachView:(id<IOPODURLViewProtocol>)configView;
 
 -(void)onURLChanged:(NSString *)url;
+-(void)onSessionURLChanged:(NSString *)url;
 -(void)onChange:(id<IOPCSession>)session;
 
 -(void)didPasswordReset:(id<IOPCSession>)session;
 -(void)didPasswordClear:(id<IOPCSession>)session;
--(void)saveURL:(NSString *)url andSession:(id<IOPCSession>)session;
+-(void)saveURL:(NSString *)url
+ andSessionURL:(NSString *)sessionUrl
+    andSession:(id<IOPCSession>)session;
 
 @end

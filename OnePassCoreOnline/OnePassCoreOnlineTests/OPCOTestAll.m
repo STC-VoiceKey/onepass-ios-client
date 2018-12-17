@@ -31,8 +31,9 @@
     self.person = [NSUUID UUID].UUIDString;
     
     self.transport = [[OPCOManager alloc] init];
-    [self.transport setServerURL:@"https://onepass.tech/vkop/rest"];
-    [self.transport setSessionData:[OPCOSession goodSessionData]];
+    [self.transport setServerURL:@"http://vkadmin4.stc/vkonepass/rest"];
+    [self.transport setSessionServerURL:@"http://vkadmin4.stc/vksession/rest"];
+    [self.transport setSessionData:OPCOSession.goodSessionData];
 }
 
 - (void)tearDown {
@@ -46,6 +47,7 @@
     [self createPerson];
     [self addFace];
     [self addVoices];
+    [self addStaticVoices];
     [self checkPerson];
     
     [self startVerification];
@@ -99,6 +101,12 @@
     [self addVoice:@"три один восемь два девять шесть пять ноль семь четыре"];
 }
 
+-(void)addStaticVoices {
+    [self addStaticVoice:@"ноль один два три четыре пять шесть семь восемь девять"];
+    [self addStaticVoice:@"девять восемь семь шесть пять четыре три два один ноль"];
+    [self addStaticVoice:@"три один восемь два девять шесть пять ноль семь четыре"];
+}
+
 -(void)addVoice:(NSString *)voice {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add Voice to Person"];
     NSData *voiceData = [self voiceFor:voice];
@@ -109,6 +117,18 @@
                  XCTAssertNil(responceObject,@"");
                  [expectation fulfill];
              }];
+    [self waitForExpectationsWithTimeout:20.0 handler:nil];
+}
+
+-(void)addStaticVoice:(NSString *)voice {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add Static Voice to Person"];
+    NSData *voiceData = [self voiceFor:voice];
+    [self.transport addStaticVoiceFile:voiceData
+                   withCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+                       XCTAssertNil(error,@"");
+                       XCTAssertNil(responceObject,@"");
+                       [expectation fulfill];
+                   }];
     [self waitForExpectationsWithTimeout:20.0 handler:nil];
 }
 

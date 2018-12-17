@@ -36,7 +36,6 @@
 
 -(void)logDataImage:(NSData *)data;
 
-
 @end
 
 @implementation OPUIEnrollFacePresenter
@@ -79,8 +78,9 @@
     __weak typeof(self) weakself = self;
     
     [self.photoCaptureManager setLoadImageBlock:^(CIImage *image, NSError *error) {
+        NSLog(@"setLoadImageBlock");
+        
         [weakself.view disableCancel];
-            NSLog(@"setLoadImageBlock process");
         
         if (error) {
             [weakself.view showError:error];
@@ -112,7 +112,11 @@
                         if (weakself.modalitiesManager.isVoiceOn) {
                             [weakself.view routeToVoicePage];
                         } else {
-                            [OPUILoader.sharedInstance enrollResultBlock](YES,nil);
+                            if (weakself.modalitiesManager.isStaticVoiceOn) {
+                                [weakself.view routeToStaticVoicePage];
+                            } else {
+                                [OPUILoader.sharedInstance enrollResultBlock](YES,nil);
+                            }
                         }
                         [weakself.view hideActivity];
                         [weakself.view enableCancel];
@@ -131,11 +135,9 @@
 }
 
 -(void)didStable{
-    NSLog(@"didStable");
     if (self.photoCaptureManager.isRunning) {
         [self.view showActivity];
         [self.photoCaptureManager stopRunning];
-        NSLog(@"takePicture");
         [self.photoCaptureManager takePicture];
     }
 }

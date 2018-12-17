@@ -23,6 +23,7 @@
 #import "OPUIBlockSecondTimer.h"
 
 static NSString *kVoiceSegueIdentifier = @"kVoiceSegueIdentifier";
+static NSString *kStaticVoiceFromFaceSegueIdentifier = @"kStaticVoiceFromFaceSegueIdentifier";
 static NSString *kExitPhotoSegueIdentifier    = @"kExitPhotoSegueIdentifier";
 static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
 
@@ -115,7 +116,7 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
         self.indicatorViewController.viewMaskContainer   = self.viewMaskContainer;
     }
 
-    [self updateOrientation];
+   [self.presenter didOrientationChanged:self.currentOrientation];
     
     self.stabilizationTimer = nil;
 }
@@ -208,6 +209,10 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     [self performSegueOnMainThreadWithIdentifier:kVoiceSegueIdentifier];
 }
 
+-(void)routeToStaticVoicePage{
+    [self performSegueOnMainThreadWithIdentifier:kStaticVoiceFromFaceSegueIdentifier];
+}
+
 -(void)disableCancel{
     self.cancelButton.enabled = NO;
 }
@@ -234,7 +239,6 @@ static NSString *kIndicatorSegueIdentifier    = @"kIndicatorSegueIdentifier";
     __weak typeof(self) weakself = self;
     weakself.stabilizationTimer = [[OPUIBlockSecondTimer alloc] initTimerWithProgressBlock:nil
                                                                            withResultBlock:^(float seconds) {
-                                                                               NSLog(@"initStabilizationTimer");
                                                                                [weakself.presenter didStable];
                                                                            }];
 }

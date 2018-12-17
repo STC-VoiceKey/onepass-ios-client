@@ -51,6 +51,7 @@ static NSString *observeNoiseValue   = @"self.frameCaptureManager.isNoNoisy";
     [super viewDidLoad];
 
     self.isNoisyObserving = NO;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

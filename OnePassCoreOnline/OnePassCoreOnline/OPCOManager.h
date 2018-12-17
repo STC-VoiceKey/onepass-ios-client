@@ -13,7 +13,7 @@
 /// URL Params
 ///-------------------------------------------------------------
 static NSString * _Nonnull kUsernameURLParam   = @"username";
-static NSString * _Nonnull kDomainIdURLParam   = @"domainId";
+static NSString * _Nonnull kDomainIdURLParam   = @"domain_id";
 static NSString * _Nonnull kPersonIdURLParam   = @"personId";
 static NSString * _Nonnull kSampleURLParam     = @"sample";
 static NSString * _Nonnull kDataURLParam       = @"data";
@@ -22,6 +22,7 @@ static NSString * _Nonnull kGenderURLParam     = @"gender";
 static NSString * _Nonnull kLDFeaturesURLParam = @"ldFeatures";
 static NSString * _Nonnull kFaceURLParam       = @"faceSample";
 static NSString * _Nonnull kFeaturesURLParam   = @"features";
+static NSString * _Nonnull kDeviceURLParam     = @"device_info";
 
 static NSString * _Nonnull kSession   = @"%@/session";
 
@@ -74,6 +75,14 @@ static NSString * _Nonnull kAddRegistrationFaceFile  = @"%@/registration/face/fi
 static NSString * _Nonnull kAddRegistrationVoiceFile = @"%@/registration/voice/dynamic/file";
 
 /**
+ The constant name for the adding voice file(static passphrase) for the enrollment reference POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/registration/voice/static/file
+ @endcode
+ */
+static NSString * _Nonnull kAddRegistrationStaticVoiceFile = @"%@/registration/voice/static/file";
+
+/**
  The constant name for the start verification POST request
  @code
  http://vkplatform.speechpro.com/vkonepass/rest/verification/person/www%40qqq.aaa
@@ -104,6 +113,14 @@ static NSString * _Nonnull kVerificationFace        = @"%@/verification/face/fil
  @endcode
  */
 static NSString * _Nonnull kVerificationVoice        = @"%@/verification/voice/dynamic/file";
+
+/**
+ The constant name for the adding voice(static passphrase) for the verification session POST request
+ @code
+ http://vkplatform.speechpro.com/vkonepass/rest/verification/voice/static/file
+ @endcode
+ */
+static NSString * _Nonnull kVerificationStaticVoice  = @"%@/verification/voice/static/file";
 
 /**
  The constant name for the verifing the person ПУЕ request
@@ -142,6 +159,11 @@ static NSString * _Nonnull kChannelURLParam   = @"channel";
  The server USRL string
  */
 @property (nonatomic) NSString * _Nonnull serverURL;
+
+/**
+ The session server USRL string
+ */
+@property (nonatomic) NSString * _Nonnull sessionServerURL;
 
 /**
  Shows the host accessibility.

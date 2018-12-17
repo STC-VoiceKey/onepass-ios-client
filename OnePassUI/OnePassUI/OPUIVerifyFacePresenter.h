@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "OPUIVerifyFacePresenterProtocol.h"
 #import <OnePassCapture/OnePassCapture.h>
+#import "OPUIVerifyFaceViewProtocol.h"
 
 @interface OPUIVerifyFacePresenter : NSObject<OPUIVerifyFacePresenterProtocol>
+
+@property id<OPUIVerifyFaceViewProtocol> view;
+
+-(void)stopPhotoManager;
 
 @end

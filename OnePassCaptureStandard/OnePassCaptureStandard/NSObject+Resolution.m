@@ -8,7 +8,7 @@
 
 #import "NSObject+Resolution.h"
 
-static NSString *kOnePassResolution = @"kOnePassResolution_v31";
+static NSString *kOnePassResolution = @"kOnePassResolution_v32";
 
 @implementation NSObject (Resolution)
 

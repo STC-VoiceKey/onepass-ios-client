@@ -34,6 +34,8 @@
 
 -(void)attachView {
     [self.presenter attachView:self];
+    
+    [self.presenter didOrientationChanged:self.currentOrientation];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

@@ -21,16 +21,19 @@
 
 -(void)showFaceModality:(BOOL)isFace;
 -(void)showVoiceModality:(BOOL)isVoice;
+-(void)showStaticVoiceModality:(BOOL)isStaticVoice;
 -(void)showLivenessModality:(BOOL)isLiveness;
 
 -(void)showModalityWarning;
 
 -(void)enabledFaceModality;
 -(void)enabledVoiceModality;
+-(void)enabledStaticVoiceModality;
 -(void)enabledLivenessModality;
 
 -(void)disableFaceModality;
 -(void)disableVoiceModality;
+-(void)disableStaticVoiceModality;
 -(void)disableLivenessModality;
 
 -(void)setSmallResolution;
@@ -57,10 +60,12 @@
 -(void)changeFaceModality:(BOOL)onFace;
 -(void)changeVoiceModality:(BOOL)onVoice;
 -(void)changeLivenessModality:(BOOL)onLiveness;
+-(void)changeStaticVoiceModality:(BOOL)onStaticVoice;
 
 -(void)saveModalities;
 
 -(BOOL)isModalitiesValid;
+-(BOOL)isVoiceModalitiesValid;
 
 -(void)changeResolution:(BOOL)isSmallResolution;
 

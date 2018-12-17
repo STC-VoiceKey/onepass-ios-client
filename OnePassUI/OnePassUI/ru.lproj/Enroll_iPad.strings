@@ -26,8 +26,13 @@
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
 "20N-bq-EjG.normalTitle" = "Отмена";
 
+"yAI-je-CuJ.normalTitle" = "Отмена";
 //AKn-jX-KsC
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "AKn-jX-KsC"; */
+"P2P-3p-2EW.normalTitle" = "Слишком шумно";
+
 "AKn-jX-KsC.normalTitle" = "Слишком шумно";
 
 /*------------------------------*/
+/* Class = "UILabel"; text = "Press the button and pronounce passphrase."; ObjectID = "YQo-DU-Hlu"; */
+"xtE-2M-6rU.text" = "Нажмите кнопку и произнесите парольную фразу.";

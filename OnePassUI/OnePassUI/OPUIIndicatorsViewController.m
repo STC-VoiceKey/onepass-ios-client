@@ -108,6 +108,8 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     
     [super viewWillAppear:animated];
     
+    self.imageBrightness.active = NO;
+    
     [self resetIndicators];
     
     if (self.frameCaptureManager){
@@ -189,12 +191,13 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
     if(!self.isListerning) {
         return;
     }
-        
+    
     [self updateIndicators];
     
-    if(self.isReady!=[self calcReady]) {
-        self.isReady = [self calcReady];
-        self.readyBlock(self.isReady);
+    BOOL result = [self calcReady];
+    if(self.isReady!=result) {
+        self.isReady = result;
+        self.readyBlock(result);
     }
 }
 
@@ -207,6 +210,7 @@ static NSString *observeisNoTremor   = @"self.frameCaptureManager.isNoTremor";
 }
 
 -(BOOL)calcReady{
+    
     return [self.frameCaptureManager isEyesFound]
         && [self.frameCaptureManager isFaceFound]
         && [self.frameCaptureManager isSingleFace]

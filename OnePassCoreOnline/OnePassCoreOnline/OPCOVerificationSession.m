@@ -14,12 +14,12 @@
     self = [super init];
     
     if (self) {
-        if (json[@"verificationId"] && json[@"password"]) {
-            self.verificationSessionID = json[@"verificationId"];
+        if (json[@"verification_id"] && json[@"password"]) {
+            self.verificationSessionID = json[@"verification_id"];
             self.passphrase = json[@"password"] ;
         } else {
-            if (json[@"transactionId"] && json[@"password"]) {
-                self.verificationSessionID = json[@"transactionId"];
+            if (json[@"transaction_id"] && json[@"password"]) {
+                self.verificationSessionID = json[@"transaction_id"];
                 self.passphrase = json[@"password"] ;
             }
         }

@@ -15,7 +15,8 @@
 
 @protocol OPUIVoicePresenterProtocol <NSObject>
 
--(id)initWith:(id<IOPCCaptureVoiceManagerProtocol>)voiceManager withService:(id<IOPCTransportProtocol>)service;
+-(id)initWithVoiceManager:(id<IOPCCaptureVoiceManagerProtocol>)voiceManager
+              withService:(id<IOPCTransportProtocol>)service;
 
 -(void)attachView:(id<OPUIVoiceViewProtocol>)view;
 -(void)deattachView;

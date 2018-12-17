@@ -10,6 +10,7 @@
 #import "OPCOVerificationSession.h"
 #import "NSURLResponse+IsSuccess.h"
 
+
 #import "Reachability.h"
 
 @interface OPCOManager()
@@ -146,6 +147,10 @@
 
 -(void)setServerURL:(NSString *)serverURL {
     _serverURL = serverURL;
+}
+
+-(void)setSessionServerURL:(NSString *)url {
+    _sessionServerURL = url;
     self.isSessionStarted = NO;
 }
 
@@ -154,10 +159,12 @@
     
     NSDictionary *body = @{kUsernameURLParam:self.sessionData.username,
                            kPasswordURLParam:self.sessionData.password,
-                           kDomainIdURLParam:self.sessionData.domain};
+                           kDomainIdURLParam:self.sessionData.domain
+                           //,kDeviceURLParam:[OPCDeviceUtil device]
+                           };
     NSLog(@"%@",body);
     
-    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kSession, self.serverURL]
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kSession, self.sessionServerURL]
                                                           withBody:body
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      NSLog(@"create session -  %@",response);
@@ -165,7 +172,7 @@
                                                      if (!error) {
                                                          if ([response isSuccess]) {
                                                              NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                             _sessionId = json[@"sessionId"];
+                                                             self.sessionId = json[@"session_id"];
                                                              self.isSessionStarted = YES;
                                                              if(resultBlock) {
                                                                  resultBlock(nil,nil);
@@ -218,7 +225,7 @@
                                                      NSLog(@"create person -  %@",response);
                                                      if(!error){
                                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                         self.transactionId = json[@"transactionId"];
+                                                         self.transactionId = json[@"transaction_id"];
                                                      }
                                                      if(resultBlock) {
                                                          resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
@@ -265,6 +272,26 @@
     [task resume];
 }
 
+- (void)addStaticVoiceFile:(NSData *)voiceData
+       withCompletionBlock:(ResponceBlock)block {
+    ResponceBlock resultBlock = block;
+    
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kAddRegistrationStaticVoiceFile, self.serverURL]
+                                                          withBody:@{ kDataURLParam:[voiceData base64EncodedStringWithOptions:0],
+                                                                      kChannelURLParam:@0 }
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     
+                                                     NSLog(@"%@", response);
+                                                     if (!error){
+                                                         if(resultBlock) resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    [task resume];
+}
+
 -(void)startVerificationSession:(NSString *)personId withCompletionBlock:(ResponceVerifyBlock)block {
     ResponceVerifyBlock resultBlock = block;
     
@@ -281,7 +308,7 @@
 
                                                         if ([response isSuccess]) {
                                                             OPCOVerificationSession *vSession = [[OPCOVerificationSession alloc] initWithJSON:json];
-                                                            self.transactionId = json[@"transactionId"];
+                                                            self.transactionId = json[@"transaction_id"];
                                                             if(resultBlock) {
                                                                 resultBlock(vSession,nil);
                                                             }
@@ -293,7 +320,6 @@
                                                         return ;
                                                     }
                                                 }];
-    
     [task resume];
 }
 
@@ -351,6 +377,26 @@
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
                                                      if (!error){
                                                          NSLog(@"add voice sample %@",response);
+                                                         if(resultBlock) {
+                                                             resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
+                                                         }
+                                                     } else {
+                                                         resultBlock(nil,error);
+                                                         return ;
+                                                     }
+                                                 }];
+    [task resume];
+}
+
+- (void)addVerificationStaticVoice:(NSData *)voice
+               withCompletionBlock:(ResponceBlock)block {
+    ResponceBlock resultBlock = block;
+    NSURLSessionDataTask *task = [self taskPostRequestForURLString:[NSString stringWithFormat:kVerificationStaticVoice, self.serverURL]
+                                                          withBody:@{ kDataURLParam:[voice base64EncodedStringWithOptions:0],
+                                                                      kChannelURLParam:@0 }
+                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+                                                     if (!error){
+                                                         NSLog(@"add static voice sample %@",response);
                                                          if(resultBlock) {
                                                              resultBlock(nil,[response isSuccess] ? nil : [self errorWithData:data]);
                                                          }
@@ -481,7 +527,7 @@
 
 -(void)readPerson:(NSString *)personId withCompletionBlock:(ResponceBlock)block{
     ResponceBlock resultBlock = block;
-
+    NSLog(@"%@",[NSString stringWithFormat:kReadPersonById, self.serverURL, personId]);
     __unused NSURLSessionDataTask *task = [self taskGetRequestForURLString:[NSString stringWithFormat:kReadPersonById, self.serverURL, personId]
                                                                   withBody:nil
                                                          completionHandler:^(NSData * _Nullable data,
@@ -588,28 +634,61 @@
                                          completionHandler:^(NSData * _Nullable data,
                                                              NSURLResponse * _Nullable response,
                                                              NSError * _Nullable error) {
+                                             NSLog(@"response %@",response);
+                                             NSError *resultError = [self errorWithData:data];
+                                             NSLog(@"resultError = %@",resultError);
+                                             if( resultError && [resultError.localizedFailureReason isEqualToString:@"SESSION_INVALID_OR_EXPIRED"]) {
+                                                 [self createSessionWithCompletionBlock:^(NSDictionary *responceObject, NSError *error) {
+                                                     if (!error) {
+                                                         NSLog(@"re-send %@",request);
+                          
+                                                         [request setValue:self.sessionId forHTTPHeaderField:@"X-Session-Id"];
+                                                         [[NSURLSession.sharedSession dataTaskWithRequest:request
+                                                                                        completionHandler:^(NSData * _Nullable data,
+                                                                                                            NSURLResponse * _Nullable response,
+                                                                                                            NSError * _Nullable error) {
+                                                                                            if (completionHandler) {
+                                                                                                completionHandler( data, response, error);
+                                                                                            }
+                                                                                        }] resume] ;
+                                                         return ;
+                                                     } else {
+                                                         if (completionHandler) {
+                                                             completionHandler( data, response, error);
+                                                         }
+                                                     }
+                                                 }];
+                                                 return ;
+                                             }
+                                             
                                              if (completionHandler) {
-                                                 completionHandler(data,response,error);
+                                                 completionHandler( data, response, error);
                                              }
                                          }];
 }
 
 -(NSError *)errorWithData:(NSData *)errorData{
+    
+    if (!errorData) {
+        return nil;
+    }
+    
     NSString *errorString;
+    NSString *errorReason;
     
     NSError *error ;
     NSDictionary *errorDictionary = [NSJSONSerialization JSONObjectWithData:errorData options:0 error:&error];
     if(error){
         errorString = [[NSString alloc] initWithData:errorData encoding: NSUTF8StringEncoding];
+        errorReason = @"";
     } else {
-        errorString = errorDictionary[@"message"];
+        errorString = errorDictionary[@"message"] ? errorDictionary[@"message"] : @"";
+        errorReason = errorDictionary[@"reason"]  ? errorDictionary[@"reason"]  : @"";
     }
     
-    NSLog(@"%@",errorString);
-    
-    return [NSError errorWithDomain:@"com.speachpro.onepass"
-                               code:400
-                           userInfo:@{ NSLocalizedDescriptionKey: errorString }];    
+    return !errorString ? nil : [NSError errorWithDomain:@"com.speachpro.onepass"
+                                                    code:400
+                                                userInfo:@{ NSLocalizedDescriptionKey: errorString , NSLocalizedFailureReasonErrorKey:errorReason}];
 }
 
 @end

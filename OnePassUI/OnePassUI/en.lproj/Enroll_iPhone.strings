@@ -18,6 +18,9 @@
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OO3-qw-a3m"; */
 "OO3-qw-a3m.normalTitle" = "Cancel";
 
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Sgx-dg-Jqz"; */
+"Sgx-dg-Jqz.normalTitle" = "Cancel";
+
 /* Class = "UILabel"; text = "0 1 2 3 4 5 6 7 8 9"; ObjectID = "TTi-rU-s6Z"; */
 "TTi-rU-s6Z.text" = "0 1 2 3 4 5 6 7 8 9";
 
@@ -48,3 +51,7 @@
 
 /* Class = "UILabel"; text = "Face off-center"; ObjectID = "NaK-Ua-OyC"; */
 "NaK-Ua-OyC.warning" = "Please position your face into the mask";
+
+/* Class = "UILabel"; text = "Press the button and pronounce passphrase."; ObjectID = "YQo-DU-Hlu"; */
+"miF-1g-bi6.text" = "Press the button and pronounce the passphrase.";
+

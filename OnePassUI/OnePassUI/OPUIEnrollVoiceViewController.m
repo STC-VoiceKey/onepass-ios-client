@@ -26,7 +26,7 @@ static NSString *kVoiceSussessSegueIdentifier      = @"kVoiceSussessSegueIdentif
 
     [self configurePageLabel];
     
-    self.presenter = [[OPUIEnrollVoicePresenter alloc] initWith:self.captureManager.voiceManager withService:self.service];
+    self.presenter = [[OPUIEnrollVoicePresenter alloc] initWithVoiceManager:self.captureManager.voiceManager withService:self.service];
     self.enrollPresenter  = (id<OPUIEnrollVoicePresenterProtocol>)self.presenter;
 }
 

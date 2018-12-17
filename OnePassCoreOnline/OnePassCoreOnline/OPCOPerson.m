@@ -28,11 +28,11 @@
         NSInteger validModelCount = 0 ;
         for (NSDictionary *model in json[@"models"]) {
             
-            if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samplesCount"] integerValue]==1) ) {
+            if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samples_count"] integerValue]==1) ) {
                 validModelCount++;
             }
             
-            if ([model[@"type"] isEqualToString:@"DYNAMIC_VOICE_KEY"] && ([model[@"samplesCount"] integerValue]==3) ) {
+            if ([model[@"type"] isEqualToString:@"DYNAMIC_VOICE_KEY"] && ([model[@"samples_count"] integerValue]==3) ) {
                 validModelCount++;
             }
         }

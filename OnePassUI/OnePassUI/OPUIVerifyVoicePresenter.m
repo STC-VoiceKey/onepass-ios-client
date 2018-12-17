@@ -16,7 +16,7 @@
 
 @interface OPUIVerifyVoicePresenter()
 
-@property (nonatomic) id<OPUIVerifyVoiceServiceProtocol> service;
+@property (nonatomic) id<OPUIVerifyVoiceServiceProtocol> verifyService;
 @property (nonatomic) id<OPUIVerifyVoiceViewProtocol> verifyView;
 @property (nonatomic) id<IOPUIPassphraseManagerProtocol> passphraseManager;
 
@@ -37,10 +37,10 @@
     
     self.passphraseManager = [[OPUIPassphraseManager alloc] init];
     
-    self.service = [[OPUIVerifyVoiceService alloc] init];
-    [self.service setService:self.view.service];
+    self.verifyService = [[OPUIVerifyVoiceService alloc] init];
+    [self.verifyService setService:self.view.service];
     
-    [self.service startVerificationForUser:self.verifyView.user
+    [self.verifyService startVerificationForUser:self.verifyView.user
                                withHandler:^(NSDictionary *result, NSError *error) {
                                    if (error) {
                                        [self.verifyView showError:error];
@@ -53,7 +53,7 @@
 -(void)processVoice:(NSData *)data{
     [self.view showActivity];
     __weak typeof(self) weakself = self;
-    [self.service verifyVoice:data
+    [self.verifyService verifyVoice:data
                   withHandler:^(NSDictionary *result, NSError *error) {
                       [weakself.view hideActivity];
                       if (error) {
@@ -82,8 +82,6 @@
         [self.view showDigit:convertedDigits];
     }
 }
-
-
 
 @end
 

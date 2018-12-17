@@ -12,8 +12,8 @@
 
 +(id<IOPCSession>)goodSessionData {
     id<IOPCSession> session = [[OPCOSession alloc] init];
-    session.username = @"admin";
-    session.password = @"QL0AFWMIX8NRZTKeof9cXsvbvu8=";
+    session.username = @"vk_user";
+    session.password = @"123";
     session.domain   = @"201";
     return session;
 }

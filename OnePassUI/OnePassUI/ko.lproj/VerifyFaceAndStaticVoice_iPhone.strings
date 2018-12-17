@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "3LB-9P-LJc"; */
+"3LB-9P-LJc.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "7lE-Zv-Ifn"; */
+"7lE-Zv-Ifn.normalTitle" = "Too noisy";
+
+/* Class = "UILabel"; text = "Press the  button and pronounce passphrase"; ObjectID = "8Y3-eQ-eAj"; */
+"8Y3-eQ-eAj.text" = "Press the  button and pronounce passphrase";
+
+/* Class = "UIViewController"; title = "Enroll Face Capture"; ObjectID = "x3X-EQ-bT7"; */
+"x3X-EQ-bT7.title" = "Enroll Face Capture";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xsA-ZJ-XNu"; */
+"xsA-ZJ-XNu.normalTitle" = "Cancel";

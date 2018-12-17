@@ -7,3 +7,6 @@
 */
 
 "You can not disable all modalities. At least one modality must be enabled."="You can not disable all modalities. At least one modality must be enabled.";
+
+"Choose one voice modatity."="Choose one voice modatity.";
+"To take a photo and a video we need to access your camera" = "Необходимо разрешить доступ к камере, чтобы получить снимок и видео";

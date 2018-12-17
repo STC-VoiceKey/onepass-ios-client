@@ -14,6 +14,7 @@
 
 static NSString *kFaceCaptureSegueIdentifier  = @"kFaceCaptureSegueIdentifier";
 static NSString *kVoiceCaptureSegueIdentifier = @"kVoiceCaptureSegueIdentifier";
+static NSString *kStaticVoiceSegueIdentifier  = @"kStaticVoiceSegueIdentifier";
 
 static NSString *kCauseListTableCellIdentifier = @"causeListTableCellIdentifier";
 
@@ -123,6 +124,11 @@ static NSString *kCauseListTableCellIdentifier = @"causeListTableCellIdentifier"
 - (void)routeToVoicePage {
     [self performSegueOnMainThreadWithIdentifier:kVoiceCaptureSegueIdentifier];
 }
+
+- (void)routeToStaticVoicePage {
+    [self performSegueOnMainThreadWithIdentifier:kStaticVoiceSegueIdentifier];
+}
+
 
 - (void)showWarnings:(NSArray<NSString *> *)source {
     self.dataSource = source;

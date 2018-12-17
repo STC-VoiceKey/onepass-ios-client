@@ -28,7 +28,8 @@
 
 //AKn-jX-KsC
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "AKn-jX-KsC"; */
-"AKn-jX-KsC.normalTitle" = "Too noisy";
+"P2P-3p-2EW.normalTitle" = "Too noisy";
 /*------------------------------*/
 
-
+/* Class = "UILabel"; text = "Press the button and pronounce passphrase."; ObjectID = "YQo-DU-Hlu"; */
+"xtE-2M-6rU.text" = "Press the button and pronounce the passphrase.";

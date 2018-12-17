@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <OnePassCore/OnePassCore.h>
 
 typedef void (^OPUIResultBlock) (NSDictionary *result, NSError *error);
 

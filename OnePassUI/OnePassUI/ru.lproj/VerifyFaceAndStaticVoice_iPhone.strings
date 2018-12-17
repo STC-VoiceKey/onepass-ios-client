@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "3LB-9P-LJc"; */
+"3LB-9P-LJc.normalTitle" = "Отмена";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "7lE-Zv-Ifn"; */
+"7lE-Zv-Ifn.normalTitle" = "Слишком шумно";
+
+/* Class = "UILabel"; text = "Press the  button and pronounce passphrase"; ObjectID = "8Y3-eQ-eAj"; */
+"8Y3-eQ-eAj.text" = "Нажмите кнопку и произнесите парольную фразу";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xsA-ZJ-XNu"; */
+"xsA-ZJ-XNu.normalTitle" = "Отмена";

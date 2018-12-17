@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "OPUIVerifyVoiceViewProtocol.h"
+#import "OPUIVoiceViewProtocol.h"
 #import "OPUIVoiceServiceProtocol.h"
 #import "OPUIVoicePresenterProtocol.h"
 
@@ -16,7 +16,7 @@
 
 @property (nonatomic) id<IOPCCaptureVoiceManagerProtocol>  voiceManager;
 
-@property (nonatomic) id<OPUIVerifyVoiceViewProtocol> view;
+@property (nonatomic) id<OPUIVoiceViewProtocol> view;
 
 @property (nonatomic) id<OPUIVoiceServiceProtocol> service;
 

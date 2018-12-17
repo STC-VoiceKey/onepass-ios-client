@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "OPUIVerifyFaceViewProtocol.h"
-#import "OPUIRotatableViewController.h"
+#import "OPUIIndicatorViewController.h"
 
-@interface OPUIVerifyFaceViewController : OPUIRotatableViewController<OPUIVerifyFaceViewProtocol>
+#import "OPUIVerifyFacePresenterProtocol.h"
+
+@interface OPUIVerifyFaceViewController : OPUIIndicatorViewController<OPUIVerifyFaceViewProtocol>
+
+@property (nonatomic) id<OPUIVerifyFacePresenterProtocol> presenter;
+
 -(void)attachView;
+
 @end

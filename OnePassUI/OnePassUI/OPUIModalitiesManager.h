@@ -12,10 +12,11 @@ typedef enum : NSUInteger {
     OPUIModalitiesStateNone,
     OPUIModalitiesStateFaceOnly,
     OPUIModalitiesStateVoiceOnly,
-    OPUIModalitiesStateWithOutLiveness,
-    OPUIModalitiesStateAll
+    OPUIModalitiesStateStaticVoiceOnly,
+    OPUIModalitiesStateFaceAndVoice,
+    OPUIModalitiesStateFaceAndVoiceWithLiveness,
+    OPUIModalitiesStateFaceAndStaticVoice
 } OPUIModalitiesStates;
-
 
 @protocol IOPUIModalitiesManagerProtocol
 
@@ -23,6 +24,7 @@ typedef enum : NSUInteger {
 
 -(BOOL)isFaceOn;
 -(BOOL)isVoiceOn;
+-(BOOL)isStaticVoiceOn;
 -(BOOL)isLivenessOn;
 
 @end

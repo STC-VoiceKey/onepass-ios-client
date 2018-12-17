@@ -8,6 +8,8 @@
 
 #import "UIDevice+Platform.h"
 
+#import <OnePassCore/OnePassCore.h>
+
 #include <sys/socket.h> // Per msqr
 #include <sys/sysctl.h>
 #include <net/if.h>
@@ -16,7 +18,7 @@
 @implementation UIDevice (Platform)
 
 -(UIDeviceGroup)deviceType {
-    NSString *result = [self getSysInfoByName:"hw.machine"];
+    NSString *result = [OPCDeviceUtil device];
     
     if([result  containsString:@"iPad"] ||
        [result  containsString:@"iPhone7,1"] ||
@@ -54,17 +56,5 @@
     return UIDeviceGroupUnknown;
 }
 
-- (NSString *) getSysInfoByName:(char *)typeSpecifier {
-    size_t size;
-    sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
-    
-    char *answer = malloc(size);
-    sysctlbyname(typeSpecifier, answer, &size, NULL, 0);
-    
-    NSString *results = [NSString stringWithCString:answer encoding:NSUTF8StringEncoding];
-    
-    free(answer);
-    return results;
-}
 
 @end

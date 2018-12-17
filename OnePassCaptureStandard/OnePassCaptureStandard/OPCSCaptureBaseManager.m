@@ -60,14 +60,6 @@
  */
 -(AVCaptureVideoOrientation)videoOrientation;
 
-/**
- Changes image orientatin to right way
-
- @param ciImage The source image
- @return The image with fixed orientation
- */
--(CIImage *)fixOrientation:(CIImage *)ciImage;
-
 @end
 
 @implementation OPCSCaptureBaseManager
@@ -164,30 +156,31 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                                                    options:@{ CIDetectorEyeBlink:@YES, CIDetectorSmile:@YES }];
         
         if (features.count == 1) {
-            self.isSingleFace = YES;
+            [self updateIsSingleFace:YES];
+
             for(CIFaceFeature* faceFeature in features) {
                 [self calcTremor:faceFeature];
                 if (faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition) {
-                    self.isEyesFound = (!faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed);
-                    self.isFaceFound = [self.faceManager isSuitableFaceByRightEye:faceFeature.rightEyePosition
-                                                                        byLeftEye:faceFeature.leftEyePosition
-                                                                           inSize:self.currentImage.extent.size];
+                    [self updateIsEyesFound:(!faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed)];
+                    [self updateIsFaceFound:[self.faceManager isSuitableFaceByRightEye:faceFeature.rightEyePosition
+                                                                             byLeftEye:faceFeature.leftEyePosition
+                                                                                inSize:self.currentImage.extent.size]];
                 } else {
-                    self.isEyesFound = NO;
+                    [self updateIsEyesFound:NO];
                 }
             }
         } else {
             
             if (features.count == 0) {
-                self.isFaceFound = NO;
+                [self updateIsFaceFound:NO];
                 self.previousFace = nil;
             }
             
             if (features.count > 1) {
                 if (!self.isFaceFound) {
-                    self.isSingleFace = NO;
+                    [self updateIsSingleFace:NO];
                 } else {
-                    self.isSingleFace = NO;
+                    [self updateIsSingleFace:NO];
                     self.previousFace = nil;
                 }
             }
@@ -200,33 +193,33 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return [[CIImage alloc] initWithCVPixelBuffer:cvImage];
 }
 
--(void)setIsFaceFound:(BOOL)isFaceFound {
-    if (_isFaceFound != isFaceFound) {
-        _isFaceFound = isFaceFound;
+-(void)updateIsFaceFound:(BOOL)isFaceFound {
+    if (self.isFaceFound != isFaceFound) {
+        self.isFaceFound = isFaceFound;
     }
 }
 
--(void)setIsEyesFound:(BOOL)isEyesFound {
-    if (_isEyesFound != isEyesFound) {
-        _isEyesFound = isEyesFound;
+-(void)updateIsEyesFound:(BOOL)isEyesFound {
+    if (self.isEyesFound != isEyesFound) {
+        self.isEyesFound = isEyesFound;
     }
 }
 
--(void)setIsSingleFace:(BOOL)isSingleFace{
-    if (_isSingleFace != isSingleFace) {
-        _isSingleFace = isSingleFace;
+-(void)updateIsSingleFace:(BOOL)isSingleFace{
+    if (self.isSingleFace != isSingleFace) {
+        self.isSingleFace = isSingleFace;
     }
 }
 
--(void)setIsNoTremor:(BOOL)isNoTremor {
-    if (_isNoTremor != isNoTremor) {
-        _isNoTremor = isNoTremor;
+-(void)updateIsNoTremor:(BOOL)isNoTremor {
+    if (self.isNoTremor != isNoTremor) {
+        self.isNoTremor = isNoTremor;
     }
 }
 
--(void)setIsBrightness:(BOOL)isBrightness {
-    if (_isBrightness != isBrightness) {
-        _isBrightness = isBrightness;
+-(void)updateIsBrightness:(BOOL)isBrightness {
+    if (self.isBrightness != isBrightness) {
+        self.isBrightness = isBrightness;
     }
 }
 
@@ -258,6 +251,19 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return (_interfaceOrientation == OPCAvailableOrientationUp);
 }
 
+-(CIImage *)fixOrientation:(CIImage *)ciImage{
+    
+    if (_interfaceOrientation==OPCAvailableOrientationLeft) {
+        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationLeft];
+    }
+    
+    if (_interfaceOrientation==OPCAvailableOrientationRight) {
+        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationRight];
+    }
+    
+    return ciImage;
+}
+
 @end
 
 @implementation OPCSCaptureBaseManager(PrivateMethods)
@@ -271,7 +277,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSDictionary *exifMetadata = [[metadata objectForKey:(NSString *)kCGImagePropertyExifDictionary] mutableCopy];
     float brightnessValue = [[exifMetadata objectForKey:(NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
     
-    self.isBrightness = (brightnessValue > 0);
+    [self updateIsBrightness:(brightnessValue > 0)];
 }
 
 -(void)calcTremor:(CIFaceFeature *)face {
@@ -288,25 +294,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             CGPoint prevFaceCenter = CGPointMake(x, y);
             
             float delta = sqrt(pow(faceCenter.x - prevFaceCenter.x, 2) + pow(faceCenter.y - prevFaceCenter.y, 2));
-            self.isNoTremor = (delta < 10);
+            [self updateIsNoTremor:(delta < 10)];
         }
     }
     
     self.previousFace = face;
 }
 
--(CIImage *)fixOrientation:(CIImage *)ciImage{
-
-    if (_interfaceOrientation==OPCAvailableOrientationLeft) {
-        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationLeft];
-    }
-    
-    if (_interfaceOrientation==OPCAvailableOrientationRight) {
-        return [ciImage imageByApplyingOrientation:kCGImagePropertyOrientationRight];
-    }
-    
-    return ciImage;
-}
 
 -(CGSize)imageSize{
     return (_interfaceOrientation == OPCAvailableOrientationUp) ? CGSizeMake(480, 640) : CGSizeMake(640, 480);

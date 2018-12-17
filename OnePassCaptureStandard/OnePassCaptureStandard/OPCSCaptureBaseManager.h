@@ -93,7 +93,9 @@
  */
 -(void)setupCaptureDevice;
 
-#warning docs
+/**
+ Fixs the image orientation
+ */
 -(CIImage *)fixOrientation:(CIImage *)ciImage;
 
 @end

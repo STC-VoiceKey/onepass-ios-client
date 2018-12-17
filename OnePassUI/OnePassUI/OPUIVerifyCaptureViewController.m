@@ -93,9 +93,14 @@ static NSString *kVerifyIndicatorSegueIdentifier    = @"kVerifyIndicatorSegueIde
 -(void)verificationDataAdded:(NSDictionary *)responceObject
                    withError:(NSError *)error;
 
-#warning docs
-
+/**
+ Shows the temporally snapshot to resolve the camera flashing issue
+ */
 -(void)showSnapshot;
+
+/**
+ Hides the temporally snapshot
+ */
 -(void)hideSnapshot;
 
 @end

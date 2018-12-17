@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4n-nS-6NG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4n-nS-6NG">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,7 +80,7 @@
                                                 <viewLayoutGuide key="safeArea" id="ygb-5x-qjB"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jO2-YS-OQW">
-                                                <rect key="frame" x="212.5" y="554" width="56" height="46"/>
+                                                <rect key="frame" x="212" y="554" width="56" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="VxD-rf-f9R"/>
                                                 </constraints>
@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="6E6-xi-yTl" id="Cyc-cw-2JY"/>
                         <outlet property="digitLabel" destination="U43-Tn-dUj" id="1wn-dN-D75"/>
+                        <outlet property="heightConstraint" destination="46U-Ak-pzx" id="Bae-Au-EES"/>
                         <outlet property="imageBrightness" destination="2OI-7Z-aVr" id="mCT-6y-0Bz"/>
                         <outlet property="imageEyesFound" destination="uum-W2-QNh" id="xEJ-2P-haY"/>
                         <outlet property="imageFaceFound" destination="Y5H-SG-I0s" id="Lg4-Cv-y3z"/>
@@ -206,6 +207,7 @@
                         <outlet property="timeProgress" destination="yNv-og-97J" id="YPV-Jb-qQv"/>
                         <outlet property="viewMaskContainer" destination="ctj-p9-Up9" id="yff-EJ-ECr"/>
                         <outlet property="viewVideoCapture" destination="of4-gJ-N4f" id="3nd-cf-AiU"/>
+                        <outlet property="widthConstraint" destination="0fd-ZA-n6R" id="Rak-eb-pIA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="veT-h5-i7C" userLabel="First Responder" sceneMemberID="firstResponder"/>

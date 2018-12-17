@@ -177,7 +177,11 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
     return YES;
 }
 
-- (BOOL)textViewShouldReturn:(UITextField *)textField{
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if( [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound ) {
+        return YES;
+    }
+    
     [self hideKeyboard];
     if(self.signInButton.isEnabled) {
         [self onSignIN:nil];
@@ -186,13 +190,14 @@ static NSString *kVerifySuccessSegueIdentifier = @"kVerifySuccessSegueIdentifier
             [self onSignUP:nil];
         }
     }
-    return YES;
+    
+    return NO;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    [self.loginPresenter updateUser:self.emailTextView.text];
+    NSString *user = [self.emailTextView.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+    [self.loginPresenter updateUser:user];
 }
-
 
 -(void)hideValidationMessage{
     [self.emailTextView hideValidationMessage];

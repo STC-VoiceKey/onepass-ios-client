@@ -157,8 +157,7 @@ static NSString *kIsHostAccessableObservation = @"self.service.isHostAccessable"
 -(void)performSegueOnMainThreadWithIdentifier:(NSString *)identifier{
     __weak typeof(self) weakself = self;
      dispatch_async(dispatch_get_main_queue(), ^{
-         
-         [weakself performSegueWithIdentifier:identifier sender:weakself];
+            [weakself performSegueWithIdentifier:identifier sender:weakself];
      });
 }
 
@@ -236,7 +235,7 @@ withLocalizationFile:(NSString *)localizationFile{
 }
 
 -(NSString *)userID {
-    return [NSUserDefaults.standardUserDefaults stringForKey:@"kOnePassUserIDKey_v31"];
+    return [NSUserDefaults.standardUserDefaults stringForKey:@"kOnePassUserIDKey_v32"];
 }
 
 

@@ -22,8 +22,6 @@ static NSString *observeisNoTremor   = @"self.photoCaptureManager.isNoTremor";
 
 @interface OPUIVerifyFacePresenter()
 
-@property id<OPUIVerifyFaceViewProtocol> view;
-
 @property (nonatomic) id<IOPCCapturePhotoManagerProtocol,
                             IOPCPortraitFeaturesProtocol,
                                  IOPCEnvironmentProtocol,
@@ -55,25 +53,30 @@ static NSString *observeisNoTremor   = @"self.photoCaptureManager.isNoTremor";
 
     self.service = [[OPUIVerifyFaceService alloc] init];
     [self.service attachView:self.view];
-    
+
     [self configureHelperTimer];
 
     self.isListerning = YES;
-    
+
     [self configureIndicators];
     [self updateIndicators];
 }
 
-- (void)deattachView { 
+- (void)deattachView {
+    self.view = nil;
+    
     [self.photoCaptureManager stopRunning];
+    
+    self.photoCaptureManager.loadImageBlock = nil;
+    self.photoCaptureManager = nil;
+    
+    self.service = nil;
     
     [self removeObserver:self forKeyPath:observeIsEyesFound];
     [self removeObserver:self forKeyPath:observeIsFaceFound];
     [self removeObserver:self forKeyPath:observeIsSingleFace];
 //    [self removeObserver:self forKeyPath:observeIsBrightness];
     [self removeObserver:self forKeyPath:observeisNoTremor];
-    
-    self.view = nil;
 }
 
 - (void)didCancel { 
@@ -92,6 +95,7 @@ static NSString *observeisNoTremor   = @"self.photoCaptureManager.isNoTremor";
     
     if (self.isReady && self.isListerning) {
         [self.photoCaptureManager takePicture];
+        NSLog(@"OPUIVerifyFacePresenter  takePicture");
     }
 }
 
@@ -113,7 +117,7 @@ static NSString *observeisNoTremor   = @"self.photoCaptureManager.isNoTremor";
     
     __weak typeof(self) weakself = self;
     [self.view showActivity];
-    [self.photoCaptureManager stopRunning];
+    [self stopPhotoManager];
     
     [self.service verifyPhoto:image
                       withHandler:^(NSDictionary *result, NSError *error) {
@@ -128,6 +132,10 @@ static NSString *observeisNoTremor   = @"self.photoCaptureManager.isNoTremor";
                           [OPUILoader.sharedInstance verifyResultBlock](verified, result);
                           
                       }];
+}
+
+-(void)stopPhotoManager {
+     [self.photoCaptureManager stopRunning];
 }
 
 @end

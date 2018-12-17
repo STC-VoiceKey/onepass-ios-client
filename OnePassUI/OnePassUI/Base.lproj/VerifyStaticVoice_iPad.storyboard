@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iqY-fV-5ko">
+    <device id="ipad10_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Verify Static Voice View Controller-->
+        <scene sceneID="pJU-pM-D9y">
+            <objects>
+                <viewController storyboardIdentifier="kVoiceRecordStoryboardIdentifier" id="iqY-fV-5ko" customClass="OPUVerifyStaticVoiceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xac-Z4-yir"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCp-HN-0Oa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BXn-3c-Gn7">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf3-kc-LrZ" customClass="OPUIWhiteBorderView">
+                                <rect key="frame" x="177" y="236" width="480" height="640"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hml-3W-TId" customClass="OPUIVoiceVisualizerView">
+                                        <rect key="frame" x="0.0" y="367" width="480" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="eRS-4b-g7N" customClass="OPUILayoutConstraint">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="middleDevicesValue">
+                                                        <real key="value" value="150"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="largeDevicesValue">
+                                                        <real key="value" value="150"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="smallDevicesValue">
+                                                        <real key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="waveColor">
+                                                <color key="value" red="1" green="0.85882352939999995" blue="0.28235294119999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="centerConstarint" destination="70e-xH-yJV" id="pf1-bR-nmW"/>
+                                        </connections>
+                                    </view>
+                                    <progressView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-HK-reF" customClass="OPUICircleProgressView">
+                                        <rect key="frame" x="207" y="514" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="progressTintColor" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </progressView>
+                                    <button opaque="NO" alpha="0.75" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEW-AE-fmY">
+                                        <rect key="frame" x="210" y="517" width="60" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="DVe-GT-ehK"/>
+                                            <constraint firstAttribute="width" constant="60" id="s8I-NM-Qj1"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="mic">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="stop">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onStart:" destination="iqY-fV-5ko" eventType="touchUpInside" id="JBA-La-J4Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcn-zd-lae">
+                                        <rect key="frame" x="216" y="597" width="48" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="v11-Yj-Q02" kind="unwind" identifier="kExitVoiceSegueIdentifier" unwindAction="unwindExit:" id="13t-kx-NG5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the  button and pronounce following digits:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B1-cB-dWS">
+                                        <rect key="frame" x="32" y="196" width="416" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="YqX-O5-ptR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="0.90363666369999995" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfv-PH-Wu7">
+                                        <rect key="frame" x="28" y="378" width="424" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Too noisy" image="silence">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1iL-jG-BpP" customClass="OPUIActivityIndicatorView">
+                                        <rect key="frame" x="221.5" y="210" width="37" height="37"/>
+                                        <color key="color" red="0.0" green="0.1647058824" blue="0.25882352939999997" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="zpp-HK-reF" firstAttribute="centerX" secondItem="rEW-AE-fmY" secondAttribute="centerX" id="0eS-we-Nmb"/>
+                                    <constraint firstItem="2B1-cB-dWS" firstAttribute="leading" secondItem="qf3-kc-LrZ" secondAttribute="leading" constant="32" id="4UU-qE-EHE"/>
+                                    <constraint firstItem="2B1-cB-dWS" firstAttribute="top" secondItem="NMi-Lg-vLa" secondAttribute="top" constant="196" id="4lr-I6-Ezw"/>
+                                    <constraint firstItem="Hml-3W-TId" firstAttribute="centerX" secondItem="qf3-kc-LrZ" secondAttribute="centerX" id="70e-xH-yJV"/>
+                                    <constraint firstItem="bfv-PH-Wu7" firstAttribute="top" secondItem="2B1-cB-dWS" secondAttribute="bottom" constant="62" id="9Mw-oQ-nX1"/>
+                                    <constraint firstItem="1iL-jG-BpP" firstAttribute="top" secondItem="NMi-Lg-vLa" secondAttribute="top" constant="210" id="AoH-lG-KQD"/>
+                                    <constraint firstItem="zpp-HK-reF" firstAttribute="centerY" secondItem="rEW-AE-fmY" secondAttribute="centerY" id="CCL-ZV-Zx8"/>
+                                    <constraint firstAttribute="height" constant="640" id="IJr-rt-agc"/>
+                                    <constraint firstItem="NMi-Lg-vLa" firstAttribute="trailing" secondItem="2B1-cB-dWS" secondAttribute="trailing" constant="32" id="JSF-fC-QKl"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bfv-PH-Wu7" secondAttribute="trailing" constant="20" id="NXO-xC-BHl"/>
+                                    <constraint firstItem="gcn-zd-lae" firstAttribute="top" secondItem="rEW-AE-fmY" secondAttribute="bottom" constant="20" id="NZy-51-7wd"/>
+                                    <constraint firstAttribute="width" constant="480" id="Odg-PP-WTD"/>
+                                    <constraint firstItem="gcn-zd-lae" firstAttribute="centerX" secondItem="qf3-kc-LrZ" secondAttribute="centerX" id="R8h-nl-c0B"/>
+                                    <constraint firstItem="rEW-AE-fmY" firstAttribute="top" secondItem="Hml-3W-TId" secondAttribute="bottom" id="YDw-YQ-TTH"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2B1-cB-dWS" secondAttribute="trailing" id="Z8V-0n-84U"/>
+                                    <constraint firstItem="bfv-PH-Wu7" firstAttribute="leading" secondItem="qf3-kc-LrZ" secondAttribute="leadingMargin" constant="20" id="ZNl-k4-sIQ"/>
+                                    <constraint firstItem="zpp-HK-reF" firstAttribute="width" secondItem="rEW-AE-fmY" secondAttribute="width" multiplier="1.1" id="ZZl-Sa-rOg"/>
+                                    <constraint firstItem="rEW-AE-fmY" firstAttribute="centerX" secondItem="qf3-kc-LrZ" secondAttribute="centerX" id="b0K-bm-nRW"/>
+                                    <constraint firstItem="2B1-cB-dWS" firstAttribute="centerX" secondItem="qf3-kc-LrZ" secondAttribute="centerX" id="cBh-fS-sNh"/>
+                                    <constraint firstItem="zpp-HK-reF" firstAttribute="height" secondItem="rEW-AE-fmY" secondAttribute="height" multiplier="1.1" id="gTE-gf-zjs"/>
+                                    <constraint firstItem="NMi-Lg-vLa" firstAttribute="bottom" secondItem="gcn-zd-lae" secondAttribute="bottom" constant="13" id="jV5-0n-BTF"/>
+                                    <constraint firstItem="1iL-jG-BpP" firstAttribute="centerX" secondItem="qf3-kc-LrZ" secondAttribute="centerX" id="sZ9-jP-I8E"/>
+                                    <constraint firstItem="Hml-3W-TId" firstAttribute="leading" secondItem="NMi-Lg-vLa" secondAttribute="leading" id="vXR-PL-8iu"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="NMi-Lg-vLa"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="frameColor">
+                                        <color key="value" white="1" alpha="0.50706976232394363" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qf3-kc-LrZ" firstAttribute="centerX" secondItem="BXn-3c-Gn7" secondAttribute="centerX" id="PXQ-I1-DyV"/>
+                            <constraint firstItem="qf3-kc-LrZ" firstAttribute="centerY" secondItem="BXn-3c-Gn7" secondAttribute="centerY" id="sks-vb-th8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hYB-Yu-7BF"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="1iL-jG-BpP" id="eDp-bt-or5"/>
+                        <outlet property="noiseIndicator" destination="bfv-PH-Wu7" id="QAX-34-OlA"/>
+                        <outlet property="startButton" destination="rEW-AE-fmY" id="pZX-M4-UJ2"/>
+                        <outlet property="timeProgress" destination="zpp-HK-reF" id="7nr-LH-yhC"/>
+                        <outlet property="voiceView" destination="Hml-3W-TId" id="W6l-fP-Ir4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqx-o2-AUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="v11-Yj-Q02" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2163.28125" y="507.42187499999994"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mic" width="21" height="32"/>
+        <image name="silence" width="32" height="32"/>
+        <image name="stop" width="16" height="16"/>
+    </resources>
+</document>

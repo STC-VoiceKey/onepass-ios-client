@@ -13,6 +13,8 @@
 		C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C95C738E1D1ABCD500212B22 /* OPCPassphraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */; };
 		C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C96C5FD4213675240030CDDF /* OPCDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C96C5FD2213675240030CDDF /* OPCDeviceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C96C5FD5213675240030CDDF /* OPCDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C5FD3213675240030CDDF /* OPCDeviceUtil.m */; };
 		C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D5E31D117A2300A3E42D /* OnePassCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C977D5EB1D117A2300A3E42D /* OnePassCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D5E01D117A2300A3E42D /* OnePassCore.framework */; };
 		C977D6111D117ACC00A3E42D /* IOPCTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C977D6101D117ACC00A3E42D /* IOPCTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +42,8 @@
 		C95C738B1D1ABCD500212B22 /* OPCPassphraseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCPassphraseManager.h; sourceTree = "<group>"; };
 		C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCPassphraseManager.m; sourceTree = "<group>"; };
 		C96079611D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOPCVerificationSessionProtocol.h; sourceTree = "<group>"; };
+		C96C5FD2213675240030CDDF /* OPCDeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPCDeviceUtil.h; sourceTree = "<group>"; };
+		C96C5FD3213675240030CDDF /* OPCDeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPCDeviceUtil.m; sourceTree = "<group>"; };
 		C977D5E01D117A2300A3E42D /* OnePassCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnePassCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C977D5E31D117A2300A3E42D /* OnePassCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnePassCore.h; sourceTree = "<group>"; };
 		C977D5E51D117A2300A3E42D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				C95C738C1D1ABCD500212B22 /* OPCPassphraseManager.m */,
 				C90A68E41F8E613D009719A6 /* passphrases.plist */,
 				C90A68DC1F8E5BB7009719A6 /* passphrases.strings */,
+				C96C5FD2213675240030CDDF /* OPCDeviceUtil.h */,
+				C96C5FD3213675240030CDDF /* OPCDeviceUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -138,6 +144,7 @@
 				C96079621D1D4C0400B9F55E /* IOPCVerificationSessionProtocol.h in Headers */,
 				C977D6281D1190AC00A3E42D /* IOPCPersonProtocol.h in Headers */,
 				C9B0E70A1F90EBE200850B4D /* IOPCSession.h in Headers */,
+				C96C5FD4213675240030CDDF /* OPCDeviceUtil.h in Headers */,
 				C95C738D1D1ABCD500212B22 /* OPCPassphraseManager.h in Headers */,
 				C977D5E41D117A2300A3E42D /* OnePassCore.h in Headers */,
 			);
@@ -189,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Speech Technology Center";
 				TargetAttributes = {
 					C977D5DF1D117A2300A3E42D = {
@@ -247,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96C5FD5213675240030CDDF /* OPCDeviceUtil.m in Sources */,
 				C95C738E1D1ABCD500212B22 /* OPCPassphraseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +306,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -305,6 +314,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -363,6 +373,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -370,6 +381,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -396,6 +408,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";

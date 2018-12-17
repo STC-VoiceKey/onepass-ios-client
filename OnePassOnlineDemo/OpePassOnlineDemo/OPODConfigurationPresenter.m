@@ -49,6 +49,7 @@
     self.configView = configView;
     
     [self.service setServerURL:self.configurator.serverURL];
+    [self.service setSessionServerURL:self.configurator.sessionServerURL];
     [self.service setSessionData:self.configurator.cryptedSessionData];
     
     [self.configView showURL:self.configurator.serverURL];
@@ -86,11 +87,17 @@
 -(void)changeFaceModality:(BOOL)onFace {
     [self changeModality:@"face" withValue:onFace];
 }
+
 -(void)changeVoiceModality:(BOOL)onVoice {
     [self changeModality:@"voice" withValue:onVoice];
 }
+
 -(void)changeLivenessModality:(BOOL)onLiveness {
     [self changeModality:@"liveness" withValue:onLiveness];
+}
+
+-(void)changeStaticVoiceModality:(BOOL)onStaticVoice {
+    [self changeModality:@"staticVoice" withValue:onStaticVoice];
 }
 
 -(void)saveModalities {
@@ -99,12 +106,14 @@
 
 -(void)updateModilitiesView {
     NSMutableDictionary *modalities = [NSMutableDictionary dictionaryWithDictionary:self.modalities];
-    BOOL isFace = [modalities[@"face"] boolValue];
-    BOOL isVoice = [modalities[@"voice"] boolValue];
-    BOOL isLiveness = [modalities[@"liveness"] boolValue];
+    BOOL isFace   = [modalities[@"face"] boolValue];
+    BOOL isVoice  = [modalities[@"voice"] boolValue];
+    BOOL isLiveness    = [modalities[@"liveness"] boolValue];
+    BOOL isStaticVoice = [modalities[@"staticVoice"] boolValue];
     
     [self.configView showFaceModality:isFace];
     [self.configView showVoiceModality:isVoice];
+    [self.configView showStaticVoiceModality:isStaticVoice];
     [self.configView showLivenessModality:isLiveness];
 
     if(!isFace) {
@@ -115,6 +124,10 @@
     if (!isVoice) {
         [self.configView disableLivenessModality];
         return;
+    }
+    
+    if (isStaticVoice) {
+        [self.configView disableLivenessModality];
     }
     
     [self.configView enabledLivenessModality];
@@ -135,8 +148,20 @@
 -(BOOL)isModalitiesValid {
     BOOL isFace  = [self.modalities[@"face"] boolValue];
     BOOL isVoice = [self.modalities[@"voice"] boolValue];
+    BOOL isStaticVoice = [self.modalities[@"staticVoice"] boolValue];
     
-    return (isFace || isVoice) ;
+    if (isVoice && isStaticVoice) {
+        return NO;
+    }
+    
+    return (isFace || isVoice || isStaticVoice) ;
+}
+
+-(BOOL)isVoiceModalitiesValid {
+    BOOL isVoice = [self.modalities[@"voice"] boolValue];
+    BOOL isStaticVoice = [self.modalities[@"staticVoice"] boolValue];
+    
+    return !(isVoice && isStaticVoice) ;
 }
 
 @end

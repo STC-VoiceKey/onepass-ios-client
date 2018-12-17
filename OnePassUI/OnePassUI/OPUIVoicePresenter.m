@@ -45,7 +45,7 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
 
 @implementation OPUIVoicePresenter
 
--(id)initWith:(id<IOPCCaptureVoiceManagerProtocol>)voiceManager
+-(id)initWithVoiceManager:(id<IOPCCaptureVoiceManagerProtocol>)voiceManager
   withService:(id<IOPCTransportProtocol>)service {
     self = [super init];
     if (self) {
@@ -64,16 +64,16 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
     [self configureTimer];
     
     [self configureVoiceManager];
+    [self.noiseAnalyzer startNoiseAnalyzer];
 }
 
 - (void)deattachView {
     if([self.voiceManager isRecording]) {
+        [self.voiceManager setLoadDataBlock:nil];
         [self.voiceManager stop];
     } else {
         if (self.noiseAnalyzer) {
             [self removeObserver:self forKeyPath:observeNoiseValue];
-            
-            [self.noiseAnalyzer stopNoiseAnalyzer];
             self.noiseAnalyzer = nil;
         }
     }
@@ -106,8 +106,8 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
 }
 
 
-- (void)processVoice {
-}
+//- (void)processVoice {
+//}
 
 
 - (void)startRecord {
@@ -115,6 +115,7 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
     
     if (self.noiseAnalyzer) {
         [self.noiseAnalyzer stopNoiseAnalyzer];
+        [self.view hideNoiseIndicator];
     }
     
     [self.view showWaveView];
@@ -142,8 +143,13 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
                 [self.view hideNoiseIndicator];
                 [self.view enabledStartButton];
             } else {
-                [self.view showNoiseIndicator];
-                [self.view disabledStartButton];
+                if(!self.voiceManager.isRecording) {
+                    [self.view showNoiseIndicator];
+                    [self.view disabledStartButton];
+                } else {
+                    [self.view hideNoiseIndicator];
+                    [self.view enabledStartButton];
+                }
             }
         });
     }
@@ -191,7 +197,7 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
         [self.view hideNoiseIndicator];
         
         self.noiseAnalyzer = (id<IOPCNoisyProtocol>)self.voiceManager;
-        [self.noiseAnalyzer startNoiseAnalyzer];
+
     }
 }
 

@@ -38,10 +38,16 @@
 /* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "nMV-g2-eOr"; */
 "nMV-g2-eOr.normalTitle" = "Отмена";
 
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Sgx-dg-Jqz"; */
+"Sgx-dg-Jqz.normalTitle" = "Отмена";
+
 /* Class = "UILabel"; text = "Будет сделана Ваша фотография и записаны три образца Вашего голоса"; ObjectID = "vYN-yL-mMI"; */
 "vYN-yL-mMI.text" = "Будет сделана Ваша фотография и записаны три образца Вашего голоса";
 
 /* Class = "UILabel"; text = "Face off-center"; ObjectID = "NaK-Ua-OyC"; */
 "NaK-Ua-OyC.warning" = "Пожалуйста совместите свое лицо с маской";
 
-"xW9-Bu-egf.normalTitle" = "Слишком шумно";
+"oNd-9i-BEI.normalTitle" = "Слишком шумно";
+
+/* Class = "UILabel"; text = "Press the button and pronounce passphrase."; ObjectID = "YQo-DU-Hlu"; */
+"miF-1g-bi6.text" = "Нажмите кнопку и произнесите парольную фразу.";

@@ -134,6 +134,7 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
     
     if (self.isReady) {
         [self.faceManager takePicture];
+        NSLog(@"OPUIVerifyFaceAndVoicePresenter  takePicture");
     }
 }
 
@@ -158,7 +159,6 @@ static NSString *observeNoiseValue   = @"self.voiceManager.isNoNoisy";
         weakself.ciImage = image;
         weakself.isPhotoCaptured = YES;
         [weakself startRecord];
-#warning Сделать фотоманагер для предоставления имиджа
     }];
     
     

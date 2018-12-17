@@ -18,6 +18,7 @@
 @property (nonatomic) id<IOPODURLPresenterProtocol> presenter;
 
 @property (weak, nonatomic) IBOutlet OPUITextField *urlTextView;
+@property (weak, nonatomic) IBOutlet OPUITextField *sessionUrlTextView;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -37,7 +38,9 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.urlTextView       addTarget:self action:@selector(onURLChanged) forControlEvents:UIControlEventEditingChanged];    
+    [self.urlTextView         addTarget:self action:@selector(onURLChanged)       forControlEvents:UIControlEventEditingChanged];
+    [self.sessionUrlTextView  addTarget:self action:@selector(onServerURLChanged) forControlEvents:UIControlEventEditingChanged];
+
     [self.usernameTextField addTarget:self action:@selector(onChange:)    forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(onChange:)    forControlEvents:UIControlEventEditingChanged];
     [self.domainTextField   addTarget:self action:@selector(onChange:)    forControlEvents:UIControlEventEditingChanged];
@@ -45,6 +48,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.urlTextView.placeholder = NSLocalizedString(@"Enter URL",nil);
+    self.sessionUrlTextView.placeholder = NSLocalizedString(@"Enter session URL",nil);
     
     self.presenter = [[OPODURLPresenter alloc] init];
     [self.presenter attachView:self];
@@ -55,10 +59,25 @@
     [self.presenter configureDidAppeared];
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    header.textLabel.textColor = [UIColor colorWithRed:255.0/255.0
+                                                 green:219.0/255.0
+                                                  blue:072.0/255.0
+                                                 alpha:1.0];
+}
+
 #pragma mark - IOPODURLViewProtocol
 -(void)showURL:(NSString *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.urlTextView.text = url;
+    });
+}
+
+-(void)showSessionURL:(NSString *)url {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.sessionUrlTextView.text = url;
     });
 }
 
@@ -112,6 +131,7 @@
 #pragma mark - IBActions
 - (IBAction)onSave:(id)sender {
     [self.presenter saveURL:self.urlTextView.text
+              andSessionURL:self.sessionUrlTextView.text
                  andSession:self.currentData];
 }
 
@@ -135,6 +155,10 @@
 
 -(IBAction)onURLChanged {
     [self.presenter onURLChanged:self.urlTextView.text];
+}
+
+-(IBAction)onServerURLChanged {
+    [self.presenter onSessionURLChanged:self.sessionUrlTextView.text];
 }
 
 -(IBAction)onChange:(UITextField *)sender {    

@@ -22,16 +22,9 @@
 @interface OPUIVerifyFaceViewController ()
 
 #pragma mark - Outlets
+
 @property (nonatomic, weak) IBOutlet OPCRPreviewView *viewVideoCapture;
 @property (nonatomic, weak) IBOutlet UIView          *viewMaskContainer;
-
-@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageSingleFace;
-@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageFaceFound;
-@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageEyesFound;
-@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageBrightness;
-@property (nonatomic, weak) IBOutlet OPUIIndicatorImageView   *imageTremor;
-
-@property (nonatomic) id<OPUIVerifyFacePresenterProtocol> presenter;
 
 @property (nonatomic) OPUIWarningView *maskView;
 
@@ -50,25 +43,26 @@
 @implementation OPUIVerifyFaceViewController
 
 #pragma mark - Lifecircle
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+
+-(void)viewDidLoad{
     self.presenter = [[OPUIVerifyFacePresenter alloc] init];
+    [super viewDidLoad];
+}
+
+-(void)dealloc{
+    self.presenter = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self attachView];
-    [self updateOrientation];
-}
-
--(void)attachView {
+    
     [self.presenter attachView:self];
+    
+    [self.presenter didOrientationChanged:self.currentOrientation];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
     [self.presenter deattachView];
 }
 
@@ -76,46 +70,6 @@
     dispatch_async( dispatch_get_main_queue(), ^{
         [self.navigationController popViewControllerAnimated:YES];
     });
-}
-
-- (void)highlightEyesClosedIndicator {
-    self.imageEyesFound.active = YES;
-}
-
-- (void)highlightFaceOffCenterIndicator {
-    self.imageFaceFound.active = YES;
-}
-
-- (void)highlightManyFacesIndicator {
-    self.imageSingleFace.active = YES;
-}
-
-- (void)highlightPureLightIndicator {
-    self.imageBrightness.active = YES;
-}
-
-- (void)highlightShackingIndicator {
-    self.imageTremor.active = YES;
-}
-
-- (void)offEyesClosedIndicator {
-    self.imageEyesFound.active = NO;
-}
-
-- (void)offFaceOffCenterIndicator {
-    self.imageFaceFound.active = NO;
-}
-
-- (void)offManyFacesIndicator {
-    self.imageSingleFace.active = NO;
-}
-
-- (void)offPureLightIndicator {
-    self.imageBrightness.active = NO;
-}
-
-- (void)offShackingIndicator {
-    self.imageTremor.active = NO;
 }
 
 - (id<IOPCCapturePhotoManagerProtocol,
@@ -177,16 +131,13 @@
     if (self.maskView == nil ) {
         [self addMask];
     }
+    
     self.maskView.alpha = 0;
     [UIView animateWithDuration:0.5f
                      animations:^{
                          [self.maskView setAlpha:1.0f];
                      } completion:nil];
     
-//    [NSNotificationCenter.defaultCenter addObserver:self
-//                                           selector:@selector(updateOrientation)
-//                                               name:UIDeviceOrientationDidChangeNotification
-//                                             object:nil];
 }
 
 -(void)hideMask{
@@ -198,9 +149,6 @@
         self.maskView.alpha = 0.0f;
     });
     
-//    [NSNotificationCenter.defaultCenter removeObserver:self
-//                                                  name:UIDeviceOrientationDidChangeNotification
-//                                                object:nil];
 }
 
 -(void)addMask {
@@ -236,7 +184,10 @@
     if (self.isMaskShown) {
         [self removeMask];
     }
+    
     [self.presenter didOrientationChanged:self.currentOrientation];
+    
+    [super updateOrientation];
 }
 
 @end

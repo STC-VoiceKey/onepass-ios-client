@@ -12,11 +12,12 @@
 #import <OnePassCore/OnePassCore.h>
 #import <CommonCrypto/CommonDigest.h>
 
-static NSString *kOnePassServerURL  = @"kOnePassRestURL_v31";
-static NSString *kOnePassSession    = @"kOnePassSessionData_v31";
-static NSString *kOnePassModalities = @"kOnePassModalities_v31";
-static NSString *kOnePassResolution = @"kOnePassResolution_v31";
-static NSString *kOnePassUserIDKey  = @"kOnePassUserIDKey_v31";
+static NSString *kOnePassServerURL         = @"kOnePassRestURL_v32";
+static NSString *kOnePassSessionServerURL  = @"kOnePassSessionRestURL_v32";
+static NSString *kOnePassSession           = @"kOnePassSessionData_v32";
+static NSString *kOnePassModalities        = @"kOnePassModalities_v32";
+static NSString *kOnePassResolution        = @"kOnePassResolution_v32";
+static NSString *kOnePassUserIDKey         = @"kOnePassUserIDKey_v32";
 
 @interface OPODSettingsManager(Private)
 
@@ -56,8 +57,31 @@ static NSString *kOnePassUserIDKey  = @"kOnePassUserIDKey_v31";
     [self saveServerURL:url];
 }
 
+-(NSString *)sessionServerURL {
+    NSString *sessionServerUrlFromDefaults = [NSUserDefaults.standardUserDefaults stringForKey:kOnePassSessionServerURL];
+    
+    if (sessionServerUrlFromDefaults && sessionServerUrlFromDefaults.length>0) {
+        return [NSString stringWithString:sessionServerUrlFromDefaults];
+    } else {
+        return self.defaultSessionServerURL;
+    }
+}
+
+-(NSString *)defaultSessionServerURL {
+    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"ServerSessionUrl"];
+}
+
+-(void)changeSessionServerURL:(NSString *)url {
+    [self saveSessionServerURL:url];
+}
+
 -(void)saveServerURL:(NSString *)url {
     [NSUserDefaults.standardUserDefaults setObject:url forKey:kOnePassServerURL];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
+-(void)saveSessionServerURL:(NSString *)url {
+    [NSUserDefaults.standardUserDefaults setObject:url forKey:kOnePassSessionServerURL];
     [NSUserDefaults.standardUserDefaults synchronize];
 }
 
@@ -74,7 +98,7 @@ static NSString *kOnePassUserIDKey  = @"kOnePassUserIDKey_v31";
 - (id<IOPCSession>)cryptedSessionData {
     id<IOPCSession> sessionData = [self sessionData];
     
-    sessionData.password = [self sha1:sessionData.password];
+    sessionData.password = sessionData.password;//[self sha1:sessionData.password];
     
     return sessionData;
 }
@@ -155,9 +179,6 @@ static NSString *kOnePassUserIDKey  = @"kOnePassUserIDKey_v31";
     
     return self.defaultResolution;
 }
-
-
-
 
 -(BOOL)defaultResolution {
     BOOL resolution = [[NSBundle.mainBundle objectForInfoDictionaryKey:@"isSmallResolution"] boolValue];

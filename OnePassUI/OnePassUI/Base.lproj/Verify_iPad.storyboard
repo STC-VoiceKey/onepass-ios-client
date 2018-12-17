@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XVp-ko-SPa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XVp-ko-SPa">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kaa-7e-wyI" customClass="OPUIActivityIndicatorBlackView">
-                                <rect key="frame" x="365" y="493" width="37" height="37"/>
+                                <rect key="frame" x="365.5" y="493.5" width="37" height="37"/>
                                 <color key="color" red="0.94901960780000005" green="0.78823529410000004" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -156,7 +156,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mn-ep-MPL">
-                                <rect key="frame" x="142" y="13" width="195" height="40"/>
+                                <rect key="frame" x="175" y="13" width="130" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="otherface" translatesAutoresizingMaskIntoConstraints="NO" id="fUJ-Qb-avM" customClass="OPUIIndicatorImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
@@ -170,15 +170,9 @@
                                         <rect key="frame" x="65" y="0.0" width="65" height="40"/>
                                         <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light" translatesAutoresizingMaskIntoConstraints="NO" id="iF2-2Q-tqt" customClass="OPUIIndicatorImageView">
-                                        <rect key="frame" x="130" y="0.0" width="65" height="40"/>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ZOS-u0-auA" firstAttribute="width" secondItem="fUJ-Qb-avM" secondAttribute="width" id="SMF-AE-Y1O"/>
-                                    <constraint firstItem="iF2-2Q-tqt" firstAttribute="width" secondItem="fUJ-Qb-avM" secondAttribute="width" id="gXn-CX-Rhp"/>
-                                    <constraint firstItem="iF2-2Q-tqt" firstAttribute="height" secondItem="fUJ-Qb-avM" secondAttribute="height" id="oQr-Zh-XXa"/>
                                     <constraint firstItem="ZOS-u0-auA" firstAttribute="height" secondItem="fUJ-Qb-avM" secondAttribute="height" id="vpe-7W-qZn"/>
                                 </constraints>
                             </stackView>
@@ -200,7 +194,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="light" width="100" height="160"/>
         <image name="noface" width="32" height="32"/>
         <image name="otherface" width="32" height="32"/>
     </resources>

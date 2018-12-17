@@ -22,3 +22,8 @@
 
 "You can not disable all modalities. At least one modality must be enabled."="You can not disable all modalities. At least one modality must be enabled.";
 "All fields must be filled"="All fields must be filled";
+
+"Choose one voice modatity."="Choose one voice modatity.";
+
+"To take a photo and a video we need to access your camera" = "To take a photo and a video we need to access your camera";
+"To take a voice and a video we need to access your microphone" = "To take a voice and a video we need to access your microphone";

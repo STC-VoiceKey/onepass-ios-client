@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8l4-wV-3DJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8l4-wV-3DJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHQ-eo-AEl">
-                                <rect key="frame" x="205" y="391.5" width="134" height="32"/>
+                                <rect key="frame" x="36" y="391.5" width="303" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" red="1" green="0.27794442149999998" blue="0.2687352382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Too noisy" image="silence">
@@ -159,7 +157,7 @@
                             </constraint>
                             <constraint firstItem="yzA-h0-QNP" firstAttribute="centerY" secondItem="Sys-JV-Jt6" secondAttribute="centerY" id="HUi-H5-JMQ"/>
                             <constraint firstItem="c49-cn-1mK" firstAttribute="top" secondItem="Rax-7j-5i8" secondAttribute="bottom" constant="40" id="Hp8-Dm-YXm"/>
-                            <constraint firstItem="iHQ-eo-AEl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UoM-ni-BCI" secondAttribute="leadingMargin" id="LwQ-xX-YyF"/>
+                            <constraint firstItem="iHQ-eo-AEl" firstAttribute="leading" secondItem="UoM-ni-BCI" secondAttribute="leadingMargin" constant="20" id="LwQ-xX-YyF"/>
                             <constraint firstItem="942-nv-X6X" firstAttribute="centerY" secondItem="UoM-ni-BCI" secondAttribute="centerY" id="OYk-8D-HBv"/>
                             <constraint firstItem="DQS-UW-2b6" firstAttribute="trailing" secondItem="bRI-iG-4ll" secondAttribute="trailing" constant="32" id="Pc4-zF-0Yg"/>
                             <constraint firstItem="c49-cn-1mK" firstAttribute="top" secondItem="Q1r-TY-LLJ" secondAttribute="bottom" constant="150" id="Plj-hk-W7e"/>

@@ -17,7 +17,7 @@
 #import "NSString+Validation.h"
 #import "NSObject+ResourceAccessUtils.h"
 
-static NSString *kOnePassUserIDKey = @"kOnePassUserIDKey_v31";
+static NSString *kOnePassUserIDKey = @"kOnePassUserIDKey_v32";
 
 @interface OPODLoginPresenter()
 
@@ -115,6 +115,7 @@ static NSString *kOnePassUserIDKey = @"kOnePassUserIDKey_v31";
         if(!error) {
             [weakself readPerson:user];
         } else {
+            
             [weakself.loginView stopActivityAnimating];
             if([error.domain isEqualToString:NSURLErrorDomain]) {
                 [self.buttonPresenter setStateToOFF];
@@ -175,6 +176,7 @@ static NSString *kOnePassUserIDKey = @"kOnePassUserIDKey_v31";
 static BOOL isProgress = NO;
 -(void)updateUser:(NSString *)user {
     self.currentUser = user;
+    [self.buttonPresenter setStateToOFF];
     if (!isProgress) {
         isProgress = YES;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)),

@@ -41,7 +41,13 @@
     if (self.modalities.isFaceOn) {
         [self.view routeToFacePage];
     } else {
-        [self.view routeToVoicePage];
+        if (self.modalities.isVoiceOn) {
+            [self.view routeToVoicePage];
+        } else {
+            if (self.modalities.isStaticVoiceOn) {
+                [self.view routeToStaticVoicePage];
+            }
+        }
     }
 }
 

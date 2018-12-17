@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Press the  button and pronounce passphrase"; ObjectID = "lVR-HK-C56"; */
+"lVR-HK-C56.text" = "Press the  button and pronounce passphrase";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "t2M-UK-tNn"; */
+"t2M-UK-tNn.normalTitle" = "Too noisy";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xti-MG-PZx"; */
+"xti-MG-PZx.normalTitle" = "Cancelar";

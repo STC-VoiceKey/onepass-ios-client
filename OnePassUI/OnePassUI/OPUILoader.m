@@ -91,7 +91,7 @@
 
 -(NSString *)verificationStoryboardName{
     
-    id<IOPUIModalitiesManagerProtocol> modalityManager = [[OPUIModalitiesManager alloc] init];;
+    id<IOPUIModalitiesManagerProtocol> modalityManager = [[OPUIModalitiesManager alloc] init];
     
     NSString *storyboardName;
     
@@ -104,8 +104,16 @@
             storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyVoice_iPad" : @"VerifyVoice_iPhone";
             break;
             
-        case OPUIModalitiesStateWithOutLiveness:
+        case OPUIModalitiesStateStaticVoiceOnly:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyStaticVoice_iPad" : @"VerifyStaticVoice_iPhone";
+            break;
+            
+        case OPUIModalitiesStateFaceAndVoice:
             storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyFaceAndVoice_iPad" : @"VerifyFaceAndVoice_iPhone";
+            break;
+            
+        case OPUIModalitiesStateFaceAndStaticVoice:
+            storyboardName = (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? @"VerifyFaceAndStaticVoice_iPad" : @"VerifyFaceAndStaticVoice_iPhone";
             break;
             
         default:
@@ -113,6 +121,8 @@
             break;
 
     }
+    
+    NSLog(@"storyboardName = %@",storyboardName);
     return storyboardName;
 }
 

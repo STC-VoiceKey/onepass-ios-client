@@ -12,7 +12,5 @@
 
 @protocol OPUIVerifyVoiceViewProtocol <OPUIVoiceViewProtocol>
 
--(NSString *)user;
--(void)showAlertError:(NSError *)error;
 
 @end

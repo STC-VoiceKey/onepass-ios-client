@@ -108,7 +108,6 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     }
 }
 
-
 -(CIImage *)snapshot {
     return self.currentImage;
 }

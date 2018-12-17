@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.1</string>
+	<string>3.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -36,6 +36,8 @@
 		<true/>
 		<key>liveness</key>
 		<true/>
+		<key>staticVoice</key>
+		<false/>
 		<key>voice</key>
 		<true/>
 	</dict>
@@ -45,13 +47,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Biometric Auth </string>
+	<string>To take a photo and a video we need to access your camera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Biometric Auth </string>
+	<string>To take a voice and a video we need to access your microphone</string>
 	<key>STCVersionDescription</key>
 	<string>Production</string>
+	<key>ServerSessionUrl</key>
+	<string>https://onepass.tech/vksession/rest</string>
 	<key>ServerUrl</key>
-	<string>https://onepass.tech/devvkop/rest</string>
+	<string>https://onepass.tech/vkop/rest</string>
 	<key>ServerUrls</key>
 	<array>
 		<string>https://onepass.tech/vkop/rest</string>
@@ -68,7 +72,7 @@
 		<key>password1</key>
 		<string>QL0AFWMIX8NRZTKeof9cXsvbvu8=</string>
 		<key>username</key>
-		<string>admin</string>
+		<string>vk_user</string>
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>

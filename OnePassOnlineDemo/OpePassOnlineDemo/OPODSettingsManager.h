@@ -20,6 +20,10 @@
 -(NSString *)defaultURL;
 -(void)changeServerURL:(NSString *)url;
 
+-(NSString *)sessionServerURL;
+-(NSString *)defaultSessionServerURL;
+-(void)changeSessionServerURL:(NSString *)url;
+
 -(id<IOPCSession>)sessionData;
 -(id<IOPCSession>)cryptedSessionData;
 -(NSString *)crypte:(NSString *)password;

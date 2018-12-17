@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfH-tN-sRj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfH-tN-sRj">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1L-Ma-HWq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1L-Ma-HWq" customClass="OPUIWhiteBorderView">
                                 <rect key="frame" x="144" y="192" width="480" height="640"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tU-38-M51" customClass="OPUIVoiceVisualizerView">
@@ -143,9 +141,11 @@
                                     <constraint firstItem="8Ma-Nc-dda" firstAttribute="centerY" secondItem="b1L-Ma-HWq" secondAttribute="centerY" id="1zI-p0-HRe"/>
                                     <constraint firstItem="ljZ-VB-HRK" firstAttribute="top" secondItem="bmR-FO-8fh" secondAttribute="bottom" constant="20" id="3L9-Tz-VfC"/>
                                     <constraint firstItem="4tU-38-M51" firstAttribute="top" secondItem="8Ma-Nc-dda" secondAttribute="bottom" constant="33" id="3er-bK-1Sr"/>
+                                    <constraint firstItem="ljZ-VB-HRK" firstAttribute="top" secondItem="bmR-FO-8fh" secondAttribute="bottom" constant="20" id="4PM-ri-Luk"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6dg-0h-1mK" secondAttribute="trailing" id="53O-Zu-tBj"/>
                                     <constraint firstItem="4tU-38-M51" firstAttribute="centerX" secondItem="b1L-Ma-HWq" secondAttribute="centerX" id="8zZ-hc-a0Q"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="mng-rp-Ffb" secondAttribute="trailing" constant="20" id="AnE-Gd-AfB"/>
+                                    <constraint firstItem="bmR-FO-8fh" firstAttribute="centerX" secondItem="b1L-Ma-HWq" secondAttribute="centerX" id="BqM-e4-M3j"/>
                                     <constraint firstItem="dp1-R2-3mh" firstAttribute="centerY" secondItem="bmR-FO-8fh" secondAttribute="centerY" id="FOK-S9-pI9"/>
                                     <constraint firstItem="6dg-0h-1mK" firstAttribute="leading" secondItem="b1L-Ma-HWq" secondAttribute="leading" constant="32" id="Hp3-lv-7vm"/>
                                     <constraint firstItem="ljZ-VB-HRK" firstAttribute="centerX" secondItem="b1L-Ma-HWq" secondAttribute="centerX" id="Nu2-DP-GZe"/>
@@ -179,6 +179,14 @@
                                     </constraint>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="1Fl-xm-4K6"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="frameColor">
+                                        <color key="value" white="1" alpha="0.5070697623" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -192,6 +200,7 @@
                         <outlet property="activityIndicator" destination="EIi-Pi-GcB" id="hxt-Ec-nKq"/>
                         <outlet property="noiseIndicator" destination="mng-rp-Ffb" id="KmX-UQ-SCi"/>
                         <outlet property="sequenceLabel" destination="8Ma-Nc-dda" id="IX7-gS-TPm"/>
+                        <outlet property="startButton" destination="bmR-FO-8fh" id="3f8-pB-wsd"/>
                         <outlet property="timeProgress" destination="dp1-R2-3mh" id="e20-mw-cec"/>
                         <outlet property="voiceView" destination="4tU-38-M51" id="p8I-DA-gK1"/>
                     </connections>

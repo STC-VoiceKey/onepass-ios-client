@@ -17,6 +17,11 @@
 
 @implementation OPUIRotatableViewController
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    [self updateOrientation];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [ NSNotificationCenter.defaultCenter addObserver:self
@@ -42,18 +47,15 @@
     if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
         self.widthConstraint.constant  = 640;
         self.heightConstraint.constant = 480;
-        
     } else {
         self.widthConstraint.constant  = 480;
         self.heightConstraint.constant = 640;
     }
-    
 }
 
 -(OPCAvailableOrientation)currentOrientation {
 
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {        
         UIInterfaceOrientation interfaceOrientation = UIApplication.sharedApplication.statusBarOrientation;
         
         if (interfaceOrientation==UIInterfaceOrientationLandscapeRight) {
@@ -63,8 +65,7 @@
         if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
             return OPCAvailableOrientationLeft;
         }
-    }
-    
+    }    
     return OPCAvailableOrientationUp;
 }
 

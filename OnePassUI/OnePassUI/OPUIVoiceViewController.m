@@ -43,9 +43,8 @@ static NSString *kExitVoiceSegueIdentifier         = @"kExitVoiceSegueIdentifier
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
     [self.presenter deattachView];
+    [super viewDidDisappear:animated];
 }
 
 -(void)applicationDidEnterBackground{
@@ -153,6 +152,17 @@ static NSString *kExitVoiceSegueIdentifier         = @"kExitVoiceSegueIdentifier
 
 -(id<IOPCVoiceVisualizerProtocol>)visualView {
     return self.voiceView;
+}
+
+-(NSString *)user{
+    return self.userID;
+}
+
+-(void)showAlertError:(NSError *)error{
+    __weak typeof(self) weakself = self;
+    [OPUIAlertViewController showError:error
+                    withViewController:weakself
+                               handler:nil];
 }
 
 @end

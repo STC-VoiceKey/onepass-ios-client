@@ -50,6 +50,8 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
 
 -(void)setServerURL:(NSString *)url;
 
+-(void)setSessionServerURL:(NSString *)url;
+
 ///--------------------------------------------
 /// @name Session service
 ///--------------------------------------------
@@ -98,7 +100,6 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
 /**
  * Adds FaceSample for the person.
  * @param imageData The image data as jpeg
- * @param personId The unique identifier of the person
  * @param block The response block called when the result is received
  */
 -(void)addFaceSample:(NSData *)imageData withCompletionBlock:(ResponceBlock)block;
@@ -107,10 +108,17 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  * Adds VoiceFile for the person.
  * @param voiceData The voice data as a file (voice samples with the header)
  * @param passphrase The passphrase associated with the voice file
- * @param personId The unique identifier of the person
  * @param block The response block called when the result is received
  */
 -(void)addVoiceFile:(NSData *)voiceData withPassphrase:(NSString *)passphrase withCompletionBlock:(ResponceBlock)block;
+
+/**
+ * Adds Static VoiceFile for the person.
+ * @param voiceData The voice data as a file (voice samples with the header)
+ * @param block The response block called when the result is received
+ */
+-(void)addStaticVoiceFile:(NSData *)voiceData withCompletionBlock:(ResponceBlock)block;
+
 
 ///--------------------------------------------
 /// @name Verification process
@@ -148,6 +156,14 @@ typedef void (^ResponceVerifyBlock) (id<IOPCVerificationSessionProtocol> session
  */
 -(void)addVerificationVoice:(NSData *)voice
              withPassphrase:(NSString *)passphrase
+        withCompletionBlock:(ResponceBlock)block;
+
+/**
+ * Adds the verification static voice for the person.
+ * @param voice The voice data as a file
+ * @param block The response block called when the result is received
+ */
+-(void)addVerificationStaticVoice:(NSData *)voice
         withCompletionBlock:(ResponceBlock)block;
 
 /**

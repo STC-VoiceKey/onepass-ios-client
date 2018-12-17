@@ -25,6 +25,13 @@
 "Enter email"="Введите почтовый адрес";
 "Not valid url"="Некорректный URL";
 "Enter URL" = "Введите URL";
+"Enter session URL" = "Введите сервера URL сессии";
 
 "You can not disable all modalities. At least one modality must be enabled."="Нельзя отключить все модальности. Хотя бы одна модальность должна быть включена.";
+"Choose one voice modatity."="Выберети одну голосовую модальность.";
+
 "All fields must be filled"="Все поля должны быть заполнены";
+
+"To take a photo and a video we need to access your camera" = "Необходимо разрешить доступ к камере, чтобы получить снимок и видео";
+
+"To take a voice and a video we need to access your microphone" = "Необходимо разрешить доступ к микрофону, чтобы получить голос и видео";

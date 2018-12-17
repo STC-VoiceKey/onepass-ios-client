@@ -16,6 +16,7 @@
 -(void)showError:(NSError *)error;
 
 -(void)routeToVoicePage;
+-(void)routeToStaticVoicePage;
 
 -(void)exit;
 

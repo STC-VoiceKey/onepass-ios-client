@@ -37,6 +37,7 @@
         
         [nc.service setSessionData:configurator.cryptedSessionData];
         [nc.service setServerURL:configurator.serverURL];
+        [nc.service setSessionServerURL:configurator.sessionServerURL];
 
     }
     [self.window makeKeyAndVisible];

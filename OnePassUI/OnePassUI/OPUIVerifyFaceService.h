@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CIImage+Extra.h"
 
 #import "OPUIVerifyFaceViewProtocol.h"
 

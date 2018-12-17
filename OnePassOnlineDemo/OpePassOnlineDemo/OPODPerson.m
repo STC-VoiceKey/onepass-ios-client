@@ -34,15 +34,32 @@
 
         if(self.modalitiesManager.modalityState == OPUIModalitiesStateFaceOnly) {
             self.isFullEnroll = [self isFullEnrollOnlyFaceOn:json];
+            return self;
         }
         
         if(self.modalitiesManager.modalityState == OPUIModalitiesStateVoiceOnly) {
             self.isFullEnroll = [self isFullEnrollOnlyVoiceOn:json];
+            return self;
         }
         
-        if( (self.modalitiesManager.modalityState != OPUIModalitiesStateVoiceOnly) &&
-            (self.modalitiesManager.modalityState != OPUIModalitiesStateFaceOnly) )  {
-            self.isFullEnroll = [self isFullEnrollForAllModalities:json];
+        if(self.modalitiesManager.modalityState == OPUIModalitiesStateStaticVoiceOnly) {
+            self.isFullEnroll = [self isFullEnrollOnlyStaticVoiceOn:json];
+            return self;
+        }
+        
+        if (self.modalitiesManager.modalityState == OPUIModalitiesStateFaceAndStaticVoice) {
+            self.isFullEnroll = [self isFullEnrollForFaceAndStaticVoiceModalities:json];
+            return self;
+        }
+        
+        if (self.modalitiesManager.modalityState == OPUIModalitiesStateFaceAndVoice) {
+            self.isFullEnroll = [self isFullEnrollForFaceAndVoiceModalities:json];
+            return self;
+        }
+        
+        if (self.modalitiesManager.modalityState == OPUIModalitiesStateFaceAndVoiceWithLiveness) {
+            self.isFullEnroll = [self isFullEnrollForFaceAndVoiceModalities:json];
+            return self;
         }
     }
     return self;
@@ -50,7 +67,7 @@
 
 -(BOOL)isFullEnrollOnlyFaceOn:(NSDictionary *)json {
     for (NSDictionary *model in json[@"models"]) {
-        if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samplesCount"] integerValue]==1) ) {
+        if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samples_count"] integerValue]==1) ) {
             return YES;
         }
     }
@@ -59,28 +76,28 @@
 
 -(BOOL)isFullEnrollOnlyVoiceOn:(NSDictionary *)json {
      for (NSDictionary *model in json[@"models"]) {
-         if ([model[@"type"] isEqualToString:@"DYNAMIC_VOICE_KEY"] && ([model[@"samplesCount"] integerValue]==3) ) {
+         if ([model[@"type"] isEqualToString:@"DYNAMIC_VOICE_KEY"] && ([model[@"samples_count"] integerValue]==3) ) {
              return YES;
          }
      }
     return NO;
 }
 
--(BOOL)isFullEnrollForAllModalities:(NSDictionary *)json {
-    
-    NSUInteger count = 0;
-    
+-(BOOL)isFullEnrollOnlyStaticVoiceOn:(NSDictionary *)json {
     for (NSDictionary *model in json[@"models"]) {
-        if ([model[@"type"] isEqualToString:@"FACE_STC"] && ([model[@"samplesCount"] integerValue]==1) ) {
-            count++;
-        }
-        
-        if ([model[@"type"] isEqualToString:@"DYNAMIC_VOICE_KEY"] && ([model[@"samplesCount"] integerValue]==3) ) {
-            count++;
+        if ([model[@"type"] isEqualToString:@"STATIC_VOICE_KEY"] && ([model[@"samples_count"] integerValue]==3) ) {
+            return YES;
         }
     }
-    
-    return (count==2) ? YES : NO;
+    return NO;
+}
+
+-(BOOL)isFullEnrollForFaceAndVoiceModalities:(NSDictionary *)json {
+    return [self isFullEnrollOnlyFaceOn:json] && [self isFullEnrollOnlyVoiceOn:json];
+}
+
+-(BOOL)isFullEnrollForFaceAndStaticVoiceModalities:(NSDictionary *)json {
+    return [self isFullEnrollOnlyFaceOn:json] && [self isFullEnrollOnlyStaticVoiceOn:json];
 }
 
 @end

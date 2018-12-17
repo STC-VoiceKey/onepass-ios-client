@@ -29,6 +29,7 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 
 @property (weak, nonatomic) IBOutlet UISwitch *faceSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *voiceSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *staticVoiceSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *livenessSwitch;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *resolutionControl;
@@ -45,6 +46,7 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 -(void)resetHighlightLabel:(UILabel *)label;
 
 -(void)showModalitiesWarning;
+-(void)showVoiceModalitiesWarning;
 
 @end
 
@@ -116,6 +118,12 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
     });
 }
 
+-(void)showStaticVoiceModality:(BOOL)isStaticVoice {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.staticVoiceSwitch.on = isStaticVoice;
+    });
+}
+
 -(void)showLivenessModality:(BOOL)isLiveness{
     dispatch_async(dispatch_get_main_queue(), ^{
         self.livenessSwitch.on = isLiveness;
@@ -134,6 +142,12 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
     });
 }
 
+-(void)enabledStaticVoiceModality {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.staticVoiceSwitch.enabled = YES;
+    });
+}
+
 -(void)enabledLivenessModality {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.livenessSwitch.enabled = YES;
@@ -149,6 +163,12 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 -(void)disableVoiceModality {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.voiceSwitch.enabled = NO;
+    });
+}
+
+-(void)disableStaticVoiceModality {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.staticVoiceSwitch.enabled = NO;
     });
 }
 
@@ -212,6 +232,11 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
     });
 }
 
+- (void)showModalityWarning {
+    
+}
+
+
 
 -(void)exit{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -231,7 +256,11 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 #pragma mark - IBActions
 -(IBAction)onExit:(id)sender {
     if (![self.presenter isModalitiesValid]) {
-        [self showModalitiesWarning];
+        if (![self.presenter isVoiceModalitiesValid]) {
+            [self showVoiceModalitiesWarning];
+        } else {
+            [self showModalitiesWarning];
+        }
         return ;
     }
     [self.presenter saveModalities];
@@ -250,6 +279,10 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
     [self.presenter changeVoiceModality:self.voiceSwitch.isOn];
 }
 
+-(IBAction)onStaticVoiceSwitched:(id)sender {
+    [self.presenter changeStaticVoiceModality:self.staticVoiceSwitch.isOn];
+}
+
 -(IBAction)onLivenessSwitched:(id)sender {
     [self.presenter changeLivenessModality:self.livenessSwitch.isOn];
 }
@@ -264,7 +297,11 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:kUnwindSettingsSegueIdentifier]) {
         if (![self.presenter isModalitiesValid]) {
-            [self showModalitiesWarning];
+            if (![self.presenter isVoiceModalitiesValid]) {
+                [self showVoiceModalitiesWarning];
+            } else {
+                [self showModalitiesWarning];
+            }
             return NO;
         }
         [self.presenter saveModalities];
@@ -291,6 +328,14 @@ static NSString *kUnwindSettingsSegueIdentifier = @"kUnwindSettingsSegueIdentifi
 -(void)showModalitiesWarning{
     dispatch_async(dispatch_get_main_queue(), ^{
         [OPUIAlertViewController showWarning:NSLocalizedString(@"You can not disable all modalities. At least one modality must be enabled.", nil)
+                          withViewController:self
+                                     handler:nil];
+    });
+}
+
+-(void)showVoiceModalitiesWarning{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [OPUIAlertViewController showWarning:NSLocalizedString(@"Choose one voice modatity.", nil)
                           withViewController:self
                                      handler:nil];
     });

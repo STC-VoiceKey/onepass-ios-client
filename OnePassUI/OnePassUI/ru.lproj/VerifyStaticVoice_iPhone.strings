@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Press the  button and pronounce passphrase"; ObjectID = "lVR-HK-C56"; */
+"miF-1g-bi6.text" = "Нажмите кнопку и произнесите парольную фразу";
+
+/* Class = "UIButton"; normalTitle = "Too noisy"; ObjectID = "t2M-UK-tNn"; */
+"oNd-9i-BEI.normalTitle" = "Слишком шумно";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xti-MG-PZx"; */
+"Sgx-dg-Jqz.normalTitle" = "Отмена";

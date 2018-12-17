@@ -14,6 +14,7 @@
 
 -(void)routeToFacePage;
 -(void)routeToVoicePage;
+-(void)routeToStaticVoicePage;
 
 -(void)exit;
 

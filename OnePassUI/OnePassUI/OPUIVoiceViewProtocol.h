@@ -37,5 +37,8 @@
 -(id<IOPCVoiceVisualizerProtocol>)visualView;
 -(id<IOPCTransportProtocol>)service;
 
+-(NSString *)user;
+
+-(void)showAlertError:(NSError *)error;
 
 @end

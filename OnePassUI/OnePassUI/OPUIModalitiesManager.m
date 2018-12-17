@@ -20,7 +20,7 @@
     
     self = [super init];
     if (self) {
-        NSDictionary *usersModalities   = [NSUserDefaults.standardUserDefaults objectForKey:@"kOnePassModalities_v31"];
+        NSDictionary *usersModalities   = [NSUserDefaults.standardUserDefaults objectForKey:@"kOnePassModalities_v32"];
         NSDictionary *defaultModalities = [NSBundle.mainBundle objectForInfoDictionaryKey:@"Modalities"];
         
         self.defaultModalities = (usersModalities != nil) ? usersModalities : defaultModalities;
@@ -42,17 +42,29 @@
     return [[self.defaultModalities objectForKey:@"voice"] boolValue];
 }
 
+- (BOOL)isStaticVoiceOn {
+    return [[self.defaultModalities objectForKey:@"staticVoice"] boolValue];
+}
+
 -(OPUIModalitiesStates)modalityState {
     if (self.isFaceOn && self.isVoiceOn) {
-        return (self.isLivenessOn) ? OPUIModalitiesStateAll : OPUIModalitiesStateWithOutLiveness;
+        return (self.isLivenessOn) ? OPUIModalitiesStateFaceAndVoiceWithLiveness : OPUIModalitiesStateFaceAndVoice;
     }
     
-    if (self.isFaceOn & !self.isVoiceOn) {
+    if (self.isFaceOn & !self.isVoiceOn & !self.isStaticVoiceOn) {
         return OPUIModalitiesStateFaceOnly;
     }
     
-    if (!self.isFaceOn & self.isVoiceOn) {
+    if (!self.isFaceOn & self.isVoiceOn & !self.isStaticVoiceOn) {
         return OPUIModalitiesStateVoiceOnly;
+    }
+    
+    if (!self.isFaceOn & !self.isVoiceOn & self.isStaticVoiceOn) {
+        return OPUIModalitiesStateStaticVoiceOnly;
+    }
+    
+    if (self.isFaceOn & !self.isVoiceOn & self.isStaticVoiceOn) {
+        return OPUIModalitiesStateFaceAndStaticVoice;
     }
     
     return OPUIModalitiesStateNone;
